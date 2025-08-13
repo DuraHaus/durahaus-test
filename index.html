@@ -1,80 +1,78 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>DuraHaus — Painting & Construction</title>
-  <meta name="description" content="Premium residential & commercial painting in Southwest Ohio. Simple estimates, tidy jobsites, results that last.">
-  <meta name="robots" content="noindex, nofollow"><!-- remove on go-live -->
-  <link rel="icon" href="assets/favicon.png">
-  <style>
-    :root{
-      --ink:#0d0f12; --sub:#62656d; --bg:#f7f8fa; --card:#fff; --brand:#141a24;
-      --accent:#1a73e8; --line:#eceff3; --radius:14px; --shadow:0 6px 20px rgba(0,0,0,.06);
-    }
-    *{box-sizing:border-box}
-    body{margin:0;font:16px/1.5 system-ui,-apple-system,Segoe UI,Roboto,Arial;color:var(--ink);background:var(--bg)}
-    a{color:inherit;text-decoration:none}
-    img{display:block;max-width:100%;height:auto}
-    .wrap{max-width:1120px;margin:auto;padding:0 18px}
-    /* Header */
-    header{position:sticky;top:0;background:#fff;border-bottom:1px solid var(--line);z-index:50}
-    .nav{height:64px;display:flex;align-items:center;justify-content:space-between}
-    .brand{display:flex;align-items:center;gap:10px}
-    .brand img{width:34px;height:34px}
-    .cta{display:flex;gap:10px;align-items:center}
-    .btn{padding:10px 16px;border:1px solid #e6e8ee;border-radius:10px;background:#fff}
-    .btn.primary{background:var(--brand);color:#fff;border-color:var(--brand)}
-    /* Hero */
-    .hero{display:grid;gap:22px;grid-template-columns:1fr;align-items:center;padding:48px 0}
-    .hero h1{margin:0 0 6px;font-size:40px;line-height:1.08}
-    .hero p{margin:0 0 14px;color:var(--sub)}
-    @media(min-width:900px){.hero{grid-template-columns:1.2fr 1fr;padding:64px 0}}
-    .chips{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
-    .chip{padding:8px 12px;background:#fff;border:1px solid var(--line);border-radius:999px;color:#51545a}
-    /* Sections */
-    .section{padding:36px 0}
-    .section h2{margin:0 0 12px}
-    /* Services */
-    .grid{display:grid;gap:18px}
-    .services{grid-template-columns:repeat(2,1fr)}
-    @media(min-width:900px){.services{grid-template-columns:repeat(4,1fr)}}
-    .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:16px}
-    .card h3{margin:.25rem 0 .1rem;font-size:16px}
-    .card p{margin:0;color:var(--sub);font-size:14px}
-    /* Before/After slider */
-    .ba{position:relative;border-radius:12px;overflow:hidden;border:1px solid var(--line)}
-    .ba img{width:100%}
-    .ba .after{position:absolute;inset:0;overflow:hidden}
-    .ba .after img{position:absolute;left:0;top:0;height:100%;width:100%;object-fit:cover;clip-path:inset(0 0 0 50%)}
-    .ba input{position:absolute;inset:0;opacity:0}
-    .ba .handle{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
-      width:44px;height:44px;border-radius:50%;background:#fff;border:1px solid var(--line);display:grid;place-items:center;box-shadow:var(--shadow)}
-    /* Process */
-    .process{grid-template-columns:repeat(5,1fr)}
-    .step{padding:16px;border:1px dashed var(--line);border-radius:12px;background:#fff}
-    /* Reviews */
-    .reviews{grid-template-columns:repeat(3,1fr)}
-    @media(max-width:900px){.reviews{grid-template-columns:1fr}}
-    /* Owner */
-    .owner{display:grid;gap:18px;grid-template-columns:1fr}
-    @media(min-width:900px){.owner{grid-template-columns:1fr 1.2fr}}
-    /* Footer */
-    footer{padding:28px 0;border-top:1px solid var(--line);color:#70737a}
-    .brandrow{display:flex;gap:22px;align-items:center;flex-wrap:wrap;margin-bottom:10px}
-    .brandrow img{height:24px;filter:grayscale(1);opacity:.9}
-    /* Sticky mobile CTA */
-    .sticky{position:fixed;left:50%;transform:translateX(-50%);bottom:14px;background:#fff;border:1px solid #e6e8ee;border-radius:999px;
-      padding:8px 10px;display:flex;gap:10px;box-shadow:var(--shadow)}
-    @media(min-width:780px){.sticky{display:none}}
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>DuraHaus — Painting & Construction</title>
+<meta name="description" content="Premium residential & commercial painting in Southwest Ohio. Simple estimates, tidy jobsites, results that last.">
+<meta name="robots" content="noindex, nofollow"><!-- remove on go-live -->
+<link rel="icon" href="assets/favicon.png">
+<style>
+  :root{
+    --ink:#0d0f12; --sub:#62656d; --bg:#f7f8fa; --card:#fff; --brand:#141a24;
+    --accent:#1a73e8; --line:#eceff3; --radius:14px; --shadow:0 6px 20px rgba(0,0,0,.06);
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font:16px/1.5 system-ui,-apple-system,Segoe UI,Roboto,Arial;color:var(--ink);background:var(--bg)}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1120px;margin:auto;padding:0 18px}
+  header{position:sticky;top:0;background:#fff;border-bottom:1px solid var(--line);z-index:50}
+  .nav{height:64px;display:flex;align-items:center;justify-content:space-between}
+  .brand{display:flex;align-items:center;gap:10px}
+  .btn{padding:10px 16px;border:1px solid #e6e8ee;border-radius:10px;background:#fff}
+  .btn.primary{background:var(--brand);color:#fff;border-color:var(--brand)}
+  .cta{display:flex;gap:10px;align-items:center}
+  .hero{display:grid;gap:22px;grid-template-columns:1fr;align-items:center;padding:48px 0}
+  .hero h1{margin:0 0 6px;font-size:40px;line-height:1.08}
+  .hero p{margin:0 0 14px;color:var(--sub)}
+  @media(min-width:900px){.hero{grid-template-columns:1.2fr 1fr;padding:64px 0}}
+  .chips{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
+  .chip{padding:8px 12px;background:#fff;border:1px solid var(--line);border-radius:999px;color:#51545a;white-space:nowrap}
+  .section{padding:36px 0}
+  .section h2{margin:0 0 12px}
+  .grid{display:grid;gap:18px}
+  .services{grid-template-columns:repeat(2,1fr)}
+  @media(min-width:900px){.services{grid-template-columns:repeat(4,1fr)}}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:16px}
+  .card h3{margin:.25rem 0 .1rem;font-size:16px}
+  .card p{margin:0;color:var(--sub);font-size:14px}
+  /* Before/After slider */
+  .ba{position:relative;border-radius:12px;overflow:hidden;border:1px solid var(--line);background:#f0f2f5}
+  .ba img{width:100%;display:block}
+  .ba .after{position:absolute;inset:0;overflow:hidden}
+  .ba .after img{position:absolute;left:0;top:0;height:100%;width:100%;object-fit:cover;clip-path:inset(0 0 0 50%)}
+  .ba input{position:absolute;inset:0;opacity:0}
+  .ba .handle{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:44px;height:44px;border-radius:50%;background:#fff;border:1px solid var(--line);display:grid;place-items:center;box-shadow:var(--shadow)}
+  .process{grid-template-columns:repeat(5,1fr)}
+  .step{padding:16px;border:1px dashed var(--line);border-radius:12px;background:#fff}
+  .reviews{grid-template-columns:repeat(3,1fr)}
+  @media(max-width:900px){.reviews{grid-template-columns:1fr}}
+  .owner{display:grid;gap:18px;grid-template-columns:1fr}
+  @media(min-width:900px){.owner{grid-template-columns:1fr 1.2fr}}
+  footer{padding:28px 0;border-top:1px solid var(--line);color:#70737a}
+  .brandrow{display:flex;gap:22px;align-items:center;flex-wrap:wrap;margin-bottom:10px}
+  .brandrow img,.brandrow svg{height:24px;opacity:.9;filter:grayscale(1)}
+  .sticky{position:fixed;left:50%;transform:translateX(-50%);bottom:14px;background:#fff;border:1px solid #e6e8ee;border-radius:999px;padding:8px 10px;display:flex;gap:10px;box-shadow:var(--shadow)}
+  @media(min-width:780px){.sticky{display:none}}
+  /* graceful image placeholder */
+  .ph{display:block;width:100%;background:linear-gradient(135deg,#f3f5f8,#e9edf3);border:1px solid var(--line);border-radius:12px;aspect-ratio:16/10;position:relative}
+  .ph::after{content:"Image placeholder";position:absolute;inset:0;display:grid;place-items:center;color:#9aa1ab;font-size:14px}
+  .avatarph{aspect-ratio:4/3}
+  .logobadge{display:inline-flex;align-items:center;gap:8px;padding:6px 10px;border:1px solid var(--line);border-radius:8px;background:#fff}
+</style>
 </head>
 <body>
 
 <header>
   <div class="wrap nav">
     <div class="brand">
-      <img src="assets/logo.svg" alt="DuraHaus">
+      <!-- Inline logo placeholder: replace with <img src="assets/logo.svg"> later -->
+      <svg width="34" height="34" viewBox="0 0 64 64" aria-label="DuraHaus logo">
+        <rect x="2" y="18" width="60" height="40" rx="6" fill="#141a24"/>
+        <path d="M6 20 L32 4 L58 20" fill="#141a24" stroke="#141a24" stroke-width="2"/>
+        <rect x="14" y="34" width="12" height="24" fill="#fff"/>
+        <rect x="34" y="30" width="18" height="18" fill="#2b3340"/>
+      </svg>
       <strong>DuraHaus</strong>
     </div>
     <nav class="cta">
@@ -102,7 +100,12 @@
         <span class="chip">Fully Insured</span>
       </div>
     </div>
-    <img src="assets/hero.webp" alt="Recent DuraHaus exterior project">
+    <!-- If assets/hero.webp exists it will show; otherwise the .ph block appears -->
+    <picture>
+      <source srcset="assets/hero.webp" type="image/webp">
+      <img src="assets/hero.jpg" alt="Recent DuraHaus exterior project" onerror="this.replaceWith(document.getElementById('heroPh').content.cloneNode(true))">
+    </picture>
+    <template id="heroPh"><div class="ph"></div></template>
   </section>
 
   <!-- SERVICES -->
@@ -124,8 +127,8 @@
   <section class="section">
     <h2>Before & After</h2>
     <div class="ba" id="ba">
-      <img src="assets/before.jpg" alt="Before">
-      <div class="after"><img src="assets/after.jpg" alt="After"></div>
+      <img src="assets/before.jpg" alt="Before" onerror="this.classList.add('ph')">
+      <div class="after"><img src="assets/after.jpg" alt="After" onerror="this.classList.add('ph')"></div>
       <div class="handle" aria-hidden="true">↔</div>
       <input type="range" id="slider" min="0" max="100" value="50" aria-label="Reveal after image">
     </div>
@@ -156,7 +159,13 @@
 
   <!-- OWNER NOTE -->
   <section class="section owner">
-    <img class="card" src="assets/owner.webp" alt="Jay Hinton, Owner">
+    <!-- owner image with graceful fallback -->
+    <picture>
+      <source srcset="assets/owner.webp" type="image/webp">
+      <img src="assets/owner.jpg" alt="Jay Hinton, Owner" class="card" onerror="this.replaceWith(document.getElementById('ownerPh').content.cloneNode(true))">
+    </picture>
+    <template id="ownerPh"><div class="card ph avatarph"></div></template>
+
     <div class="card">
       <h2>Meet the owner</h2>
       <p>Hi, I’m Jay. DuraHaus is about craftsmanship, straight talk, and leaving your place cleaner than we found it. If you want a smooth process and a finish that looks great up close, we’d love to help.</p>
@@ -173,20 +182,26 @@
   <div class="wrap">
     <div class="brandrow">
       <span style="font-size:14px;color:#848892">We proudly use leading products</span>
-      <img src="assets/logos/sherwin-williams.svg" alt="Sherwin-Williams">
-      <img src="assets/logos/benjamin-moore.svg" alt="Benjamin Moore">
-      <img src="assets/logos/minwax.svg" alt="Minwax">
+      <!-- Inline placeholder badges; replace with <img src="assets/logos/..."> later -->
+      <span class="logobadge">
+        <svg viewBox="0 0 100 24" width="90"><text x="0" y="17" font-family="system-ui,Segoe UI" font-size="14">Sherwin-Williams</text></svg>
+      </span>
+      <span class="logobadge">
+        <svg viewBox="0 0 110 24" width="100"><text x="0" y="17" font-family="system-ui,Segoe UI" font-size="14">Benjamin Moore</text></svg>
+      </span>
+      <span class="logobadge">
+        <svg viewBox="0 0 70 24" width="64"><text x="0" y="17" font-family="system-ui,Segoe UI" font-size="14">Minwax</text></svg>
+      </span>
       <a class="btn" href="products.html">See all products</a>
     </div>
     <small>DuraHaus Painting & Construction • Butler, Hamilton & Warren Counties • <a href="tel:+15136684382">513-668-4382</a> • <a href="mailto:durahaus.solutions@gmail.com">durahaus.solutions@gmail.com</a></small>
   </div>
 </footer>
 
-<!-- Sticky CTA for mobile -->
 <a class="sticky" href="quote.html"><strong>Book Free Estimate</strong></a>
 
 <script>
-  // Before/After slider logic (no libs)
+  // Before/After slider logic
   (function(){
     const slider = document.getElementById('slider');
     const after = document.querySelector('#ba .after img');
