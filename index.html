@@ -3,328 +3,201 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>DuraHaus — Painting and Construction</title>
-  <meta name="description" content="Interior & exterior painting, cabinets, stain, concrete coatings, drywall and sealing. Clean, on-time, built to perform.">
-  <link rel="preload" as="image" href="/assets/stock-hero.webp">
+  <title>DuraHaus — Painting & Construction</title>
+  <meta name="description" content="Premium residential & commercial painting in Southwest Ohio. Simple estimates, tidy jobsites, results that last.">
+  <meta name="robots" content="noindex, nofollow"><!-- remove on go-live -->
+  <link rel="icon" href="assets/favicon.png">
   <style>
     :root{
-      --bg:#0a0a0a; --panel:#101010; --ink:#ffffff; --muted:#bdbdbd;
-      --line:#1a1a1a; --max:1120px; --r:14px; --gap:28px;
+      --ink:#0d0f12; --sub:#62656d; --bg:#f7f8fa; --card:#fff; --brand:#141a24;
+      --accent:#1a73e8; --line:#eceff3; --radius:14px; --shadow:0 6px 20px rgba(0,0,0,.06);
     }
-    *{box-sizing:border-box} html,body{height:100%}
-    body{margin:0;background:var(--bg);color:var(--ink);
-      font:16px/1.55 ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;
-      -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;}
+    *{box-sizing:border-box}
+    body{margin:0;font:16px/1.5 system-ui,-apple-system,Segoe UI,Roboto,Arial;color:var(--ink);background:var(--bg)}
     a{color:inherit;text-decoration:none}
-    img{display:block;width:100%;height:auto;background:#0d0d0d}
-    .brand img{background:transparent!important}
-    .container{max-width:var(--max);margin:0 auto;padding:0 20px}
-
+    img{display:block;max-width:100%;height:auto}
+    .wrap{max-width:1120px;margin:auto;padding:0 18px}
     /* Header */
-    header{position:sticky;top:0;z-index:50;background:rgba(10,10,10,.92);
-      backdrop-filter:saturate(140%) blur(8px);border-bottom:1px solid var(--line)}
-    .nav{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:12px 0}
-    .brand{display:flex;align-items:center;gap:14px;min-width:0}
-    .brand picture{display:block;line-height:0}
-    .brand img{height:56px;width:auto;display:block}
-    .brand .wordmark{font-weight:800;letter-spacing:.03em;white-space:nowrap}
-
-    .navlinks{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-left:20px}
-    .pill{padding:.5rem .8rem;border:1px solid var(--line);border-radius:999px;font-size:14px}
-    .cta{background:#fff;color:#000;border-color:#fff;font-weight:700}
-    .iconbtn{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border:1px solid var(--line);border-radius:999px}
-    .iconbtn svg{width:18px;height:18px;fill:#fff}
-    @media (max-width:600px){
-      .nav{padding:10px 0}
-      .brand img{height:44px}
-      .pill{font-size:13px;padding:.45rem .7rem}
-      .iconbtn{width:38px;height:38px}
-    }
-
+    header{position:sticky;top:0;background:#fff;border-bottom:1px solid var(--line);z-index:50}
+    .nav{height:64px;display:flex;align-items:center;justify-content:space-between}
+    .brand{display:flex;align-items:center;gap:10px}
+    .brand img{width:34px;height:34px}
+    .cta{display:flex;gap:10px;align-items:center}
+    .btn{padding:10px 16px;border:1px solid #e6e8ee;border-radius:10px;background:#fff}
+    .btn.primary{background:var(--brand);color:#fff;border-color:var(--brand)}
     /* Hero */
-    .hero{display:grid;grid-template-columns:1fr;background:#0c0c0c;border-bottom:1px solid var(--line)}
-    .hero__media{position:relative;aspect-ratio:16/9;max-height:70vh;overflow:hidden}
-    .hero__media img{width:100%;height:100%;object-fit:cover;opacity:.95;filter:grayscale(1) contrast(1.05)}
-    .hero__copy{padding:3rem 0}
-    h1{margin:0 0 .6rem;font-size:clamp(32px,5.2vw,56px);line-height:1.05;letter-spacing:-.01em}
-    .lead{color:var(--muted);font-size:clamp(16px,1.8vw,19px)}
-    .row{display:grid;grid-template-columns:1fr;gap:var(--gap);margin:3rem 0}
-    @media (min-width:860px){
-      .hero{grid-template-columns:1.05fr .95fr}
-      .hero__copy{padding:4.2rem 0 4rem 2rem}
-      .row{grid-template-columns:1.05fr .95fr;align-items:center}
-    }
-
-    /* Cards / grids */
-    .card{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
-    .card .pad{padding:1.1rem}
-    h2{margin:0 0 .4rem;font-size:clamp(22px,2.2vw,28px)}
-    p{margin:.25rem 0 0}
-    .grid{display:grid;gap:var(--gap);grid-template-columns:1fr}
-    @media (min-width:900px){.grid{grid-template-columns:repeat(3,1fr)}}
-
-    /* Why */
-    .why{margin:3rem auto 0}
-    .why .cols{display:grid;gap:var(--gap)}
-    @media (min-width:900px){.why .cols{grid-template-columns:repeat(3,1fr)}}
-    .why .tile{border:1px solid var(--line);border-radius:var(--r);padding:1.2rem;background:var(--panel)}
-    .why h3{margin:.1rem 0 .4rem;font-size:1.1rem}
-
-    /* FAQ */
-    .faq{margin:3rem auto}
-    .faq details{border:1px solid var(--line);border-radius:12px;padding:.9rem 1.1rem;background:var(--panel)}
-    .faq details+details{margin-top:12px}
-    .faq summary{cursor:pointer;list-style:none;font-weight:700}
-    .faq summary::-webkit-details-marker{display:none}
-    .faq .a{color:var(--muted);margin:.6rem 0 0}
-
-    /* CTA band */
-    .band{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;padding:1.2rem;border:1px solid var(--line);border-radius:var(--r);background:var(--panel)}
-
-    /* Pre‑footer (stamp + mini nav) */
-    .prefooter{margin:3rem auto 1.5rem;display:flex;gap:22px;align-items:center;justify-content:space-between;flex-wrap:wrap}
-    .prefooter .stampwrap{display:flex;align-items:center;gap:14px}
-    .prefooter img{width:128px;height:auto;opacity:.95;filter:invert(1) brightness(1.6);background:transparent}
-    .prefooter .menu{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
-    @media (max-width:720px){
-      .prefooter{justify-content:center;text-align:center}
-      .prefooter .menu{justify-content:center}
-    }
-
+    .hero{display:grid;gap:22px;grid-template-columns:1fr;align-items:center;padding:48px 0}
+    .hero h1{margin:0 0 6px;font-size:40px;line-height:1.08}
+    .hero p{margin:0 0 14px;color:var(--sub)}
+    @media(min-width:900px){.hero{grid-template-columns:1.2fr 1fr;padding:64px 0}}
+    .chips{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
+    .chip{padding:8px 12px;background:#fff;border:1px solid var(--line);border-radius:999px;color:#51545a}
+    /* Sections */
+    .section{padding:36px 0}
+    .section h2{margin:0 0 12px}
+    /* Services */
+    .grid{display:grid;gap:18px}
+    .services{grid-template-columns:repeat(2,1fr)}
+    @media(min-width:900px){.services{grid-template-columns:repeat(4,1fr)}}
+    .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:16px}
+    .card h3{margin:.25rem 0 .1rem;font-size:16px}
+    .card p{margin:0;color:var(--sub);font-size:14px}
+    /* Before/After slider */
+    .ba{position:relative;border-radius:12px;overflow:hidden;border:1px solid var(--line)}
+    .ba img{width:100%}
+    .ba .after{position:absolute;inset:0;overflow:hidden}
+    .ba .after img{position:absolute;left:0;top:0;height:100%;width:100%;object-fit:cover;clip-path:inset(0 0 0 50%)}
+    .ba input{position:absolute;inset:0;opacity:0}
+    .ba .handle{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+      width:44px;height:44px;border-radius:50%;background:#fff;border:1px solid var(--line);display:grid;place-items:center;box-shadow:var(--shadow)}
+    /* Process */
+    .process{grid-template-columns:repeat(5,1fr)}
+    .step{padding:16px;border:1px dashed var(--line);border-radius:12px;background:#fff}
+    /* Reviews */
+    .reviews{grid-template-columns:repeat(3,1fr)}
+    @media(max-width:900px){.reviews{grid-template-columns:1fr}}
+    /* Owner */
+    .owner{display:grid;gap:18px;grid-template-columns:1fr}
+    @media(min-width:900px){.owner{grid-template-columns:1fr 1.2fr}}
     /* Footer */
-    footer{border-top:1px solid var(--line);margin-top:2rem}
-    .foot{display:grid;gap:18px;align-items:center;padding:1.2rem 0;grid-template-columns:1fr}
-    small{color:var(--muted)}
-
-    /* Buttons */
-    .btn{display:inline-flex;align-items:center;gap:.5rem;padding:.85rem 1.1rem;border-radius:12px;border:1px solid var(--line)}
-    .btn--light{background:#fff;color:#000;border-color:#fff;font-weight:700}
-    .btn--ghost{background:transparent}
-    .stack{display:flex;gap:.7rem;flex-wrap:wrap}
-
-    /* Social (prefooter) */
-    .social{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
-    .social .hint{color:var(--muted);font-size:.9rem}
-    .social .iconbtn svg{width:16px;height:16px}
+    footer{padding:28px 0;border-top:1px solid var(--line);color:#70737a}
+    .brandrow{display:flex;gap:22px;align-items:center;flex-wrap:wrap;margin-bottom:10px}
+    .brandrow img{height:24px;filter:grayscale(1);opacity:.9}
+    /* Sticky mobile CTA */
+    .sticky{position:fixed;left:50%;transform:translateX(-50%);bottom:14px;background:#fff;border:1px solid #e6e8ee;border-radius:999px;
+      padding:8px 10px;display:flex;gap:10px;box-shadow:var(--shadow)}
+    @media(min-width:780px){.sticky{display:none}}
   </style>
 </head>
 <body>
 
-  <!-- Header -->
-  <header>
-    <div class="container nav">
-      <a class="brand" href="/" aria-label="DuraHaus home">
-        <picture>
-          <source srcset="/assets/durahaus-logo.svg" type="image/svg+xml">
-          <source srcset="/assets/durahaus-logo.png" type="image/png">
-          <img src="/assets/durahaus-logo.jpg" alt="DuraHaus logo"
-               onerror="this.closest('.brand').querySelector('.wordmark').style.display='block'">
-        </picture>
-        <span class="wordmark" style="display:none">DURAHAUS</span>
-      </a>
-
-      <nav class="navlinks" aria-label="Primary">
-        <a href="/services.html" class="pill">Services</a>
-        <a href="/projects.html" class="pill">Projects</a>
-        <a href="/about.html" class="pill">About</a>
-        <a class="iconbtn" href="tel:15136684382" aria-label="Call DuraHaus">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.2c1.2 2.4 3.1 4.3 5.5 5.5l1.8-1.8c.3-.3.7-.4 1.1-.3 1 .3 2 .5 3 .5.6 0 1 .4 1 1v3.1c0 .6-.4 1-1 1C10.3 19.2 4.8 13.7 4.8 6.1c0-.6.4-1 1-1H9c.6 0 1 .4 1 1 0 1 .2 2 .5 3 .1.4 0 .8-.3 1.1l-1.6 2z"/></svg>
-        </a>
-        <a class="pill cta" href="/quote.html">Get a Quote</a>
-      </nav>
+<header>
+  <div class="wrap nav">
+    <div class="brand">
+      <img src="assets/logo.svg" alt="DuraHaus">
+      <strong>DuraHaus</strong>
     </div>
-  </header>
-
-  <!-- Hero -->
-  <section class="hero">
-    <div class="hero__media">
-      <img src="/assets/stock-hero.webp" alt="Cincinnati high-end home exterior">
-    </div>
-    <div class="hero__copy container">
-      <h1>Professional Painting. Clean, On-Time.<br>Protecting What’s Built.</h1>
-      <p class="lead">
-        From interiors to exteriors, cabinets to concrete — we approach every job with care, craftsmanship, and materials built to perform. All to make your home more beautiful, more durable, and better protected against time and weather.
-      </p>
-      <div class="stack" style="margin-top:1.1rem">
-        <a class="btn btn--light" href="/quote.html">Get a Free Quote</a>
-        <a class="btn btn--ghost" href="/projects.html">See Projects</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Mission -->
-  <section class="container row">
-    <div class="card">
-      <img src="/assets/stock-exterior.webp" alt="Exterior detail" style="filter:grayscale(1);">
-    </div>
-    <div>
-      <h2>Protecting What’s Built. <br>Enhancing What’s Seen.</h2>
-      <p class="lead">
-        At DuraHaus that is our mission. We supply customers with specialized skills and knowledge in Interior/Exterior Painting, Cabinetry Finishes, Staining & Wood Finishes, Surface‑Protecting Coatings, Concrete Coatings, Drywall Repair, Interior/Exterior Sealing and more.
-      </p>
-      <div class="stack" style="margin-top:1rem">
-        <a class="btn btn--light" href="/services.html">Explore Services</a>
-        <a class="btn btn--ghost" href="tel:15136684382">Call Us</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Services grid -->
-  <section class="container" style="margin-top:2rem">
-    <div class="grid">
-      <a class="card" href="/services.html#interior">
-        <img src="/assets/stock-interior.webp" alt="Interior painting" style="height:340px;object-fit:cover;filter:grayscale(1);">
-        <div class="pad">
-          <h3 style="margin:0 0 .25rem">Interior Painting</h3>
-          <p>Walls, ceilings, trim, and cabinetry — dust‑controlled and precise.</p>
-        </div>
-      </a>
-
-      <a class="card" href="/services.html#exterior">
-        <img src="/assets/stock-exterior.webp" alt="Exterior painting" style="height:340px;object-fit:cover;filter:grayscale(1);">
-        <div class="pad">
-          <h3 style="margin:0 0 .25rem">Exterior Painting</h3>
-          <p>Premium prep and coatings that handle Midwest weather.</p>
-        </div>
-      </a>
-
-      <a class="card" href="/services.html#concrete">
-        <img src="/assets/stock-concrete.webp" alt="Concrete coatings" style="height:340px;object-fit:cover;filter:grayscale(1);">
-        <div class="pad">
-          <h3 style="margin:0 0 .25rem">Concrete Coatings</h3>
-          <p>Garage, patios, and basements — durable and easy to clean.</p>
-        </div>
-      </a>
-    </div>
-  </section>
-
-  <!-- Why Choose Us -->
-  <section class="container why">
-    <h2 style="margin-bottom:.6rem">Why Choose DuraHaus</h2>
-    <div class="cols">
-      <div class="tile">
-        <h3>Clean, Professional</h3>
-        <p class="lead">Protected surfaces, tidy jobsites, respectful crew. Your home stays livable while we work.</p>
-      </div>
-      <div class="tile">
-        <h3>Built to Perform</h3>
-        <p class="lead">Spec’d primers and topcoats for Ohio climate. Prep and systems designed to last.</p>
-      </div>
-      <div class="tile">
-        <h3>Transparent & On‑Time</h3>
-        <p class="lead">Written, itemized quotes and reliable scheduling. Communication from start to finish.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- More services -->
-  <section class="container" style="margin-top:2rem">
-    <div class="grid">
-      <a class="card" href="/services.html#cabinets">
-        <img src="/assets/stock-cabinets.webp" alt="Cabinet refinishing" style="height:340px;object-fit:cover;filter:grayscale(1);">
-        <div class="pad">
-          <h3 style="margin:0 0 .25rem">Cabinet Refinishing</h3>
-          <p>Factory‑smooth primers and hard‑wearing topcoats.</p>
-        </div>
-      </a>
-
-      <a class="card" href="/services.html#stain">
-        <img src="/assets/stock-stain.webp" alt="Deck & stain" style="height:340px;object-fit:cover;filter:grayscale(1);">
-        <div class="pad">
-          <h3 style="margin:0 0 .25rem">Staining & Wood Care</h3>
-          <p>Decks, doors, and rails prepped and finished right.</p>
-        </div>
-      </a>
-
-      <a class="card" href="/services.html#drywall">
-        <img src="/assets/stock-drywall.webp" alt="Drywall repair" style="height:340px;object-fit:cover;filter:grayscale(1);">
-        <div class="pad">
-          <h3 style="margin:0 0 .25rem">Drywall & Repair</h3>
-          <p>Repairs and resurfacing for flat, paint‑ready surfaces.</p>
-        </div>
-      </a>
-    </div>
-  </section>
-
-  <!-- FAQ -->
-  <section class="container faq">
-    <h2 style="margin-bottom:.6rem">FAQs</h2>
-    <details><summary>Do you offer free estimates?</summary>
-      <div class="a">Yes. We can visit on‑site within 48 hours in most cases and provide a written, itemized quote.</div>
-    </details>
-    <details><summary>How soon can you start?</summary>
-      <div class="a">Scheduling depends on scope and season. Smaller interior projects can often begin within 1–2 weeks.</div>
-    </details>
-    <details><summary>What materials do you use?</summary>
-      <div class="a">We spec pro‑grade primers, enamels, and exterior coatings matched to each substrate for durability and finish quality.</div>
-    </details>
-    <details><summary>Are you insured and do you provide a warranty?</summary>
-      <div class="a">Yes—fully insured. We include a workmanship warranty with every project. Details are listed on your written quote.</div>
-    </details>
-  </section>
-
-  <!-- CTA band -->
-  <section class="container" style="margin:3rem auto 2rem">
-    <div class="band">
-      <div>
-        <h2 style="margin:.2rem 0">Ready to start?</h2>
-        <p style="margin:.2rem 0;color:var(--muted)">Fast estimates, tidy jobsites, and results that hold up.</p>
-      </div>
-      <div class="stack">
-        <a class="btn btn--light" href="/quote.html">Request a Quote</a>
-        <a class="iconbtn" href="tel:15136684382" aria-label="Call DuraHaus">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.2c1.2 2.4 3.1 4.3 5.5 5.5l1.8-1.8c.3-.3.7-.4 1.1-.3 1 .3 2 .5 3 .5.6 0 1 .4 1 1v3.1c0 .6-.4 1-1 1C10.3 19.2 4.8 13.7 4.8 6.1c0-.6.4-1 1-1H9c.6 0 1 .4 1 1 0 1 .2 2 .5 3 .1.4 0 .8-.3 1.1l-1.6 2z"/></svg>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Pre‑footer: stamp + mini nav -->
-  
-<div class="container prefooter">
-  <div class="stampwrap">
-    <img src="/assets/seal-white.PNG" alt="DuraHaus stamp (white)">
-  </div>
-
-  <nav class="menu" aria-label="Footer quick links">
-    <a href="/services.html" class="pill">Services</a>
-    <a href="/projects.html" class="pill">Projects</a>
-    <a href="/about.html" class="pill">About</a>
-    <a class="iconbtn" href="tel:15136684382" aria-label="Call DuraHaus">
-      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.2c1.2 2.4 3.1 4.3 5.5 5.5l1.8-1.8c.3-.3.7-.4 1.1-.3 1 .3 2 .5 3 .5.6 0 1 .4 1 1v3.1c0 .6-.4 1-1 1C10.3 19.2 4.8 13.7 4.8 6.1c0-.6.4-1 1-1H9c.6 0 1 .4 1 1 0 1 .2 2 .5 3 .1.4 0 .8-.3 1.1l-1.6 2z"/></svg>
-    </a>
-    <a class="pill cta" href="/quote.html">Get a Quote</a>
-  </nav>
-
-  <div class="social" aria-label="Find us on">
-    <span class="hint">Find us on:</span>
-    <a class="iconbtn" href="https://share.google/XiAqMLBx4gLJR31Dx" target="_blank" rel="noopener" aria-label="Google Business Profile">
-      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a7 7 0 0 0-7 7c0 4.6 6.1 12 6.4 12.4.3.4.8.4 1.1 0C12.9 21 19 13.6 19 9a7 7 0 0 0-7-7Zm0 9.5A2.5 2.5 0 1 1 12 6a2.5 2.5 0 0 1 0 5.5Z"/></svg>
-    </a>
-    <a class="iconbtn" href="https://www.facebook.com/share/16mxN9iVbn/?mibextid=wwXIfr" target="_blank" rel="noopener" aria-label="Facebook">
-      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 9H15V6h-1.5C11.6 6 11 7.2 11 8.7V10H9v3h2v7h3v-7h2.1l.4-3H14v-1c0-.6.2-1 .5-1Z"/></svg>
-    </a>
-  </div>
-</div>
-
-    <nav class="menu" aria-label="Footer quick links">
-      <a href="/services.html" class="pill">Services</a>
-      <a href="/projects.html" class="pill">Projects</a>
-      <a href="/about.html" class="pill">About</a>
-      <a class="iconbtn" href="tel:15136684382" aria-label="Call DuraHaus">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.2c1.2 2.4 3.1 4.3 5.5 5.5l1.8-1.8c.3-.3.7-.4 1.1-.3 1 .3 2 .5 3 .5.6 0 1 .4 1 1v3.1c0 .6-.4 1-1 1C10.3 19.2 4.8 13.7 4.8 6.1c0-.6.4-1 1-1H9c.6 0 1 .4 1 1 0 1 .2 2 .5 3 .1.4 0 .8-.3 1.1l-1.6 2z"/></svg>
-      </a>
-      <a class="pill cta" href="/quote.html">Get a Quote</a>
+    <nav class="cta">
+      <a class="btn" href="products.html">Products</a>
+      <a class="btn" href="projects.html">Projects</a>
+      <a class="btn primary" href="quote.html">Book Free Estimate</a>
     </nav>
   </div>
+</header>
 
-  <!-- Footer -->
-  <footer>
-    <div class="container foot">
-      <small>© <span id="y"></span> DuraHaus Painting & Construction. All rights reserved.</small>
+<main class="wrap">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div>
+      <h1>Professional Painting. Simply Done.</h1>
+      <p>Interior, exterior, cabinets, and commercial—done with careful prep, tidy jobsites, and clear communication.</p>
+      <div class="cta" style="margin-top:10px">
+        <a class="btn primary" href="quote.html">Book Free Estimate</a>
+        <a class="btn" href="sms:+15136684382">Text Us</a>
+      </div>
+      <div class="chips">
+        <span class="chip">★★★★★ Google Rated</span>
+        <span class="chip">Written Warranty on Every Job</span>
+        <span class="chip">Fully Insured</span>
+      </div>
     </div>
-  </footer>
+    <img src="assets/hero.webp" alt="Recent DuraHaus exterior project">
+  </section>
 
-  <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
+  <!-- SERVICES -->
+  <section class="section">
+    <h2>What we do</h2>
+    <div class="grid services">
+      <article class="card"><h3>Interior Painting</h3><p>Walls, ceilings, trim.</p></article>
+      <article class="card"><h3>Exterior Painting</h3><p>Siding, brick, trim.</p></article>
+      <article class="card"><h3>Cabinet Refinishing</h3><p>Factory-smooth finishes.</p></article>
+      <article class="card"><h3>Deck & Fence</h3><p>Stain and protection.</p></article>
+      <article class="card"><h3>Concrete & Masonry</h3><p>Basements, patios, brick.</p></article>
+      <article class="card"><h3>Commercial</h3><p>Retail, office, multi-unit.</p></article>
+      <article class="card"><h3>Drywall & Repair</h3><p>Patches, texture, skim.</p></article>
+      <article class="card"><h3>Sealants & Weatherproof</h3><p>Caulking, waterproofing.</p></article>
+    </div>
+  </section>
+
+  <!-- BEFORE / AFTER SLIDER -->
+  <section class="section">
+    <h2>Before & After</h2>
+    <div class="ba" id="ba">
+      <img src="assets/before.jpg" alt="Before">
+      <div class="after"><img src="assets/after.jpg" alt="After"></div>
+      <div class="handle" aria-hidden="true">↔</div>
+      <input type="range" id="slider" min="0" max="100" value="50" aria-label="Reveal after image">
+    </div>
+    <div style="margin-top:10px"><a class="btn" href="projects.html">See More Transformations</a></div>
+  </section>
+
+  <!-- PROCESS -->
+  <section class="section">
+    <h2>How it works</h2>
+    <div class="grid process">
+      <div class="step"><strong>1. Estimate</strong><br>On-site or virtual. Clear pricing.</div>
+      <div class="step"><strong>2. Schedule</strong><br>Pick a start date that works.</div>
+      <div class="step"><strong>3. Prep</strong><br>Protect, patch, prime.</div>
+      <div class="step"><strong>4. Paint</strong><br>Pro methods, great products.</div>
+      <div class="step"><strong>5. Walkthrough</strong><br>We fix anything you spot.</div>
+    </div>
+  </section>
+
+  <!-- REVIEWS -->
+  <section class="section">
+    <h2>Recent feedback</h2>
+    <div class="grid reviews">
+      <div class="card"><p>“Flawless cabinet finish and zero mess.” — Mason</p></div>
+      <div class="card"><p>“Crew was on time every day. Great results.” — West Chester</p></div>
+      <div class="card"><p>“Brick refresh made our home pop.” — Blue Ash</p></div>
+    </div>
+  </section>
+
+  <!-- OWNER NOTE -->
+  <section class="section owner">
+    <img class="card" src="assets/owner.webp" alt="Jay Hinton, Owner">
+    <div class="card">
+      <h2>Meet the owner</h2>
+      <p>Hi, I’m Jay. DuraHaus is about craftsmanship, straight talk, and leaving your place cleaner than we found it. If you want a smooth process and a finish that looks great up close, we’d love to help.</p>
+      <div class="cta">
+        <a class="btn primary" href="quote.html">Get an Estimate</a>
+        <a class="btn" href="products.html">Products We Trust</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="brandrow">
+      <span style="font-size:14px;color:#848892">We proudly use leading products</span>
+      <img src="assets/logos/sherwin-williams.svg" alt="Sherwin-Williams">
+      <img src="assets/logos/benjamin-moore.svg" alt="Benjamin Moore">
+      <img src="assets/logos/minwax.svg" alt="Minwax">
+      <a class="btn" href="products.html">See all products</a>
+    </div>
+    <small>DuraHaus Painting & Construction • Butler, Hamilton & Warren Counties • <a href="tel:+15136684382">513-668-4382</a> • <a href="mailto:durahaus.solutions@gmail.com">durahaus.solutions@gmail.com</a></small>
+  </div>
+</footer>
+
+<!-- Sticky CTA for mobile -->
+<a class="sticky" href="quote.html"><strong>Book Free Estimate</strong></a>
+
+<script>
+  // Before/After slider logic (no libs)
+  (function(){
+    const slider = document.getElementById('slider');
+    const after = document.querySelector('#ba .after img');
+    const handle = document.querySelector('#ba .handle');
+    function update(v){
+      after.style.clipPath = `inset(0 0 0 ${v}%)`;
+      handle.style.left = v + '%';
+    }
+    slider.addEventListener('input', e => update(e.target.value));
+    update(50);
+  })();
+</script>
 </body>
 </html>
