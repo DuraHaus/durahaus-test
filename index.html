@@ -8,57 +8,111 @@
 <meta name="robots" content="noindex, nofollow"><!-- remove on go-live -->
 <link rel="icon" href="assets/favicon.png">
 <style>
+  /* ========== THEME TOKENS ========== */
   :root{
-    --ink:#0d0f12; --sub:#62656d; --bg:#f7f8fa; --card:#fff; --brand:#141a24;
-    --accent:#1a73e8; --line:#eceff3; --radius:14px; --shadow:0 6px 20px rgba(0,0,0,.06);
+    --bg: #f7f8fa;
+    --elev: #ffffff;
+    --ink: #0e1116;
+    --sub: #636872;
+    --line:#e9edf3;
+    --brand:#111823;
+    --accent:#1a73e8;
+    --radius:14px; --shadow:0 6px 20px rgba(0,0,0,.06);
   }
+  /* Dark theme (matches your main site tone) */
+  :root[data-theme="dark"]{
+    --bg:#0d0f12; --elev:#151820;
+    --ink:#e9edf6; --sub:#a3a9b4;
+    --line:#232835; --brand:#e9edf6;
+    --accent:#6aa8ff; --shadow:0 8px 28px rgba(0,0,0,.45);
+  }
+  /* Respect OS preference on first load */
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#0d0f12; --elev:#151820;
+      --ink:#e9edf6; --sub:#a3a9b4;
+      --line:#232835; --brand:#e9edf6;
+      --accent:#6aa8ff; --shadow:0 8px 28px rgba(0,0,0,.45);
+    }
+  }
+
+  /* ========== BASE ========== */
   *{box-sizing:border-box}
-  body{margin:0;font:16px/1.5 system-ui,-apple-system,Segoe UI,Roboto,Arial;color:var(--ink);background:var(--bg)}
+  html,body{height:100%}
+  body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 system-ui,-apple-system,Segoe UI,Roboto,Arial}
   a{color:inherit;text-decoration:none}
-  .wrap{max-width:1120px;margin:auto;padding:0 18px}
-  header{position:sticky;top:0;background:#fff;border-bottom:1px solid var(--line);z-index:50}
-  .nav{height:64px;display:flex;align-items:center;justify-content:space-between}
+  img{display:block;max-width:100%;height:auto}
+  .wrap{max-width:1160px;margin:auto;padding:0 18px}
+
+  /* ========== HEADER ========== */
+  header{position:sticky;top:0;background:var(--elev);border-bottom:1px solid var(--line);z-index:50;backdrop-filter:saturate(140%) blur(6px)}
+  .nav{height:68px;display:flex;align-items:center;justify-content:space-between;gap:14px}
   .brand{display:flex;align-items:center;gap:10px}
-  .btn{padding:10px 16px;border:1px solid #e6e8ee;border-radius:10px;background:#fff}
-  .btn.primary{background:var(--brand);color:#fff;border-color:var(--brand)}
-  .cta{display:flex;gap:10px;align-items:center}
-  .hero{display:grid;gap:22px;grid-template-columns:1fr;align-items:center;padding:48px 0}
-  .hero h1{margin:0 0 6px;font-size:40px;line-height:1.08}
-  .hero p{margin:0 0 14px;color:var(--sub)}
-  @media(min-width:900px){.hero{grid-template-columns:1.2fr 1fr;padding:64px 0}}
-  .chips{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
-  .chip{padding:8px 12px;background:#fff;border:1px solid var(--line);border-radius:999px;color:#51545a;white-space:nowrap}
+  .brand svg{width:34px;height:34px}
+  .nav-actions{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .btn{padding:10px 16px;border:1px solid var(--line);border-radius:10px;background:var(--elev)}
+  .btn.primary{background:var(--brand);color:var(--bg);border-color:var(--brand)}
+  .btn.ghost{background:transparent}
+  .theme-toggle{min-width:44px}
+
+  /* ========== HERO (simplified spacing + bigger type) ========== */
+  .hero{display:grid;gap:24px;grid-template-columns:1fr;align-items:center;padding:56px 0 28px}
+  @media(min-width:960px){.hero{grid-template-columns:1.15fr .95fr;padding:72px 0 36px}}
+  .headline{font-size:44px;line-height:1.05;margin:0 0 8px}
+  @media(min-width:960px){.headline{font-size:52px}}
+  .lede{color:var(--sub);margin:0 0 14px}
+  .chips{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+  .chip{padding:8px 12px;background:var(--elev);border:1px solid var(--line);border-radius:999px;color:var(--sub);white-space:nowrap}
+
+  /* ========== SECTION BASE ========== */
   .section{padding:36px 0}
   .section h2{margin:0 0 12px}
+
+  /* ========== SERVICES (denser on desktop) ========== */
   .grid{display:grid;gap:18px}
   .services{grid-template-columns:repeat(2,1fr)}
-  @media(min-width:900px){.services{grid-template-columns:repeat(4,1fr)}}
-  .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:16px}
-  .card h3{margin:.25rem 0 .1rem;font-size:16px}
+  @media(min-width:960px){.services{grid-template-columns:repeat(4,1fr)}}
+  .card{background:var(--elev);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:16px}
+  .card h3{margin:.25rem 0 .2rem;font-size:16px}
   .card p{margin:0;color:var(--sub);font-size:14px}
-  /* Before/After slider */
-  .ba{position:relative;border-radius:12px;overflow:hidden;border:1px solid var(--line);background:#f0f2f5}
-  .ba img{width:100%;display:block}
+
+  /* ========== BEFORE/AFTER ========== */
+  .ba{position:relative;border-radius:12px;overflow:hidden;border:1px solid var(--line);background:linear-gradient(135deg,#f0f3f7,#e6ebf3)}
+  :root[data-theme="dark"] .ba{background:linear-gradient(135deg,#1b2230,#141a23)}
+  .ba img{width:100%}
   .ba .after{position:absolute;inset:0;overflow:hidden}
-  .ba .after img{position:absolute;left:0;top:0;height:100%;width:100%;object-fit:cover;clip-path:inset(0 0 0 50%)}
+  .ba .after img{position:absolute;inset:0;object-fit:cover;width:100%;height:100%;clip-path:inset(0 0 0 50%)}
+  .ba .handle{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:44px;height:44px;border-radius:50%;display:grid;place-items:center;background:var(--elev);border:1px solid var(--line);box-shadow:var(--shadow)}
   .ba input{position:absolute;inset:0;opacity:0}
-  .ba .handle{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:44px;height:44px;border-radius:50%;background:#fff;border:1px solid var(--line);display:grid;place-items:center;box-shadow:var(--shadow)}
+
+  /* ========== PROCESS ========== */
   .process{grid-template-columns:repeat(5,1fr)}
-  .step{padding:16px;border:1px dashed var(--line);border-radius:12px;background:#fff}
+  @media(max-width:960px){.process{grid-template-columns:1fr 1fr}}
+  .step{padding:16px;border:1px dashed var(--line);border-radius:12px;background:var(--elev)}
+
+  /* ========== REVIEWS ========== */
   .reviews{grid-template-columns:repeat(3,1fr)}
-  @media(max-width:900px){.reviews{grid-template-columns:1fr}}
+  @media(max-width:960px){.reviews{grid-template-columns:1fr}}
+  
+  /* ========== OWNER ========== */
   .owner{display:grid;gap:18px;grid-template-columns:1fr}
-  @media(min-width:900px){.owner{grid-template-columns:1fr 1.2fr}}
-  footer{padding:28px 0;border-top:1px solid var(--line);color:#70737a}
-  .brandrow{display:flex;gap:22px;align-items:center;flex-wrap:wrap;margin-bottom:10px}
-  .brandrow img,.brandrow svg{height:24px;opacity:.9;filter:grayscale(1)}
-  .sticky{position:fixed;left:50%;transform:translateX(-50%);bottom:14px;background:#fff;border:1px solid #e6e8ee;border-radius:999px;padding:8px 10px;display:flex;gap:10px;box-shadow:var(--shadow)}
+  @media(min-width:960px){.owner{grid-template-columns:1fr 1.15fr}}
+
+  /* ========== FOOTER ========== */
+  footer{padding:28px 0;border-top:1px solid var(--line);color:var(--sub)}
+  .brandrow{display:flex;gap:16px;align-items:center;flex-wrap:wrap;margin-bottom:12px}
+  .brandrow img,.brandrow svg{height:22px;opacity:.9;filter:grayscale(1)}
+
+  /* ========== MOBILE STICKY CTA ========== */
+  .sticky{position:fixed;left:50%;transform:translateX(-50%);bottom:14px;background:var(--elev);border:1px solid var(--line);border-radius:999px;padding:8px 10px;display:flex;gap:10px;box-shadow:var(--shadow)}
   @media(min-width:780px){.sticky{display:none}}
-  /* graceful image placeholder */
-  .ph{display:block;width:100%;background:linear-gradient(135deg,#f3f5f8,#e9edf3);border:1px solid var(--line);border-radius:12px;aspect-ratio:16/10;position:relative}
-  .ph::after{content:"Image placeholder";position:absolute;inset:0;display:grid;place-items:center;color:#9aa1ab;font-size:14px}
+
+  /* graceful image placeholders */
+  .ph{display:block;width:100%;background:linear-gradient(135deg,#f3f6fb,#e7ecf5);border:1px solid var(--line);border-radius:12px;aspect-ratio:16/10;position:relative}
+  :root[data-theme="dark"] .ph{background:linear-gradient(135deg,#1c2432,#121721)}
+  .ph::after{content:"Image placeholder";position:absolute;inset:0;display:grid;place-items:center;color:var(--sub);font-size:14px}
   .avatarph{aspect-ratio:4/3}
-  .logobadge{display:inline-flex;align-items:center;gap:8px;padding:6px 10px;border:1px solid var(--line);border-radius:8px;background:#fff}
+  .logobadge{display:inline-flex;align-items:center;gap:8px;padding:6px 10px;border:1px solid var(--line);border-radius:8px;background:var(--elev)}
 </style>
 </head>
 <body>
@@ -66,20 +120,22 @@
 <header>
   <div class="wrap nav">
     <div class="brand">
-      <!-- Inline logo placeholder: replace with <img src="assets/logo.svg"> later -->
-      <svg width="34" height="34" viewBox="0 0 64 64" aria-label="DuraHaus logo">
-        <rect x="2" y="18" width="60" height="40" rx="6" fill="#141a24"/>
-        <path d="M6 20 L32 4 L58 20" fill="#141a24" stroke="#141a24" stroke-width="2"/>
-        <rect x="14" y="34" width="12" height="24" fill="#fff"/>
+      <!-- Inline logo (replace with assets/logo.svg later if you want) -->
+      <svg viewBox="0 0 64 64" aria-label="DuraHaus logo">
+        <rect x="2" y="18" width="60" height="40" rx="6" fill="var(--brand)"/>
+        <path d="M6 20 L32 4 L58 20" fill="var(--brand)" stroke="var(--brand)" stroke-width="2"/>
+        <rect x="14" y="34" width="12" height="24" fill="var(--bg)"/>
         <rect x="34" y="30" width="18" height="18" fill="#2b3340"/>
       </svg>
       <strong>DuraHaus</strong>
     </div>
-    <nav class="cta">
-      <a class="btn" href="products.html">Products</a>
-      <a class="btn" href="projects.html">Projects</a>
+
+    <div class="nav-actions">
+      <a class="btn ghost" href="products.html">Products</a>
+      <a class="btn ghost" href="projects.html">Projects</a>
+      <button class="btn theme-toggle" id="themeBtn" aria-label="Toggle dark mode">🌙</button>
       <a class="btn primary" href="quote.html">Book Free Estimate</a>
-    </nav>
+    </div>
   </div>
 </header>
 
@@ -88,9 +144,9 @@
   <!-- HERO -->
   <section class="hero">
     <div>
-      <h1>Professional Painting. Simply Done.</h1>
-      <p>Interior, exterior, cabinets, and commercial—done with careful prep, tidy jobsites, and clear communication.</p>
-      <div class="cta" style="margin-top:10px">
+      <h1 class="headline">Professional Painting. Simply Done.</h1>
+      <p class="lede">Interior, exterior, cabinets, and commercial—done with careful prep, tidy jobsites, and clear communication.</p>
+      <div class="nav-actions" style="gap:10px;margin:10px 0 4px">
         <a class="btn primary" href="quote.html">Book Free Estimate</a>
         <a class="btn" href="sms:+15136684382">Text Us</a>
       </div>
@@ -100,7 +156,8 @@
         <span class="chip">Fully Insured</span>
       </div>
     </div>
-    <!-- If assets/hero.webp exists it will show; otherwise the .ph block appears -->
+
+    <!-- Hero media with graceful fallback -->
     <picture>
       <source srcset="assets/hero.webp" type="image/webp">
       <img src="assets/hero.jpg" alt="Recent DuraHaus exterior project" onerror="this.replaceWith(document.getElementById('heroPh').content.cloneNode(true))">
@@ -123,7 +180,7 @@
     </div>
   </section>
 
-  <!-- BEFORE / AFTER SLIDER -->
+  <!-- BEFORE / AFTER -->
   <section class="section">
     <h2>Before & After</h2>
     <div class="ba" id="ba">
@@ -157,9 +214,8 @@
     </div>
   </section>
 
-  <!-- OWNER NOTE -->
+  <!-- OWNER -->
   <section class="section owner">
-    <!-- owner image with graceful fallback -->
     <picture>
       <source srcset="assets/owner.webp" type="image/webp">
       <img src="assets/owner.jpg" alt="Jay Hinton, Owner" class="card" onerror="this.replaceWith(document.getElementById('ownerPh').content.cloneNode(true))">
@@ -169,7 +225,7 @@
     <div class="card">
       <h2>Meet the owner</h2>
       <p>Hi, I’m Jay. DuraHaus is about craftsmanship, straight talk, and leaving your place cleaner than we found it. If you want a smooth process and a finish that looks great up close, we’d love to help.</p>
-      <div class="cta">
+      <div class="nav-actions" style="gap:10px">
         <a class="btn primary" href="quote.html">Get an Estimate</a>
         <a class="btn" href="products.html">Products We Trust</a>
       </div>
@@ -181,37 +237,51 @@
 <footer>
   <div class="wrap">
     <div class="brandrow">
-      <span style="font-size:14px;color:#848892">We proudly use leading products</span>
-      <!-- Inline placeholder badges; replace with <img src="assets/logos/..."> later -->
-      <span class="logobadge">
-        <svg viewBox="0 0 100 24" width="90"><text x="0" y="17" font-family="system-ui,Segoe UI" font-size="14">Sherwin-Williams</text></svg>
-      </span>
-      <span class="logobadge">
-        <svg viewBox="0 0 110 24" width="100"><text x="0" y="17" font-family="system-ui,Segoe UI" font-size="14">Benjamin Moore</text></svg>
-      </span>
-      <span class="logobadge">
-        <svg viewBox="0 0 70 24" width="64"><text x="0" y="17" font-family="system-ui,Segoe UI" font-size="14">Minwax</text></svg>
-      </span>
+      <span style="font-size:14px;color:var(--sub)">We proudly use leading products</span>
+      <!-- Text badges as placeholders (swap for real logos in assets/logos/) -->
+      <span class="logobadge"><svg viewBox="0 0 120 24" width="104"><text x="0" y="17" font-family="system-ui,Segoe UI" font-size="14" fill="currentColor">Sherwin-Williams</text></svg></span>
+      <span class="logobadge"><svg viewBox="0 0 130 24" width="116"><text x="0" y="17" font-family="system-ui,Segoe UI" font-size="14" fill="currentColor">Benjamin Moore</text></svg></span>
+      <span class="logobadge"><svg viewBox="0 0 70 24" width="64"><text x="0" y="17" font-family="system-ui,Segoe UI" font-size="14" fill="currentColor">Minwax</text></svg></span>
       <a class="btn" href="products.html">See all products</a>
     </div>
     <small>DuraHaus Painting & Construction • Butler, Hamilton & Warren Counties • <a href="tel:+15136684382">513-668-4382</a> • <a href="mailto:durahaus.solutions@gmail.com">durahaus.solutions@gmail.com</a></small>
   </div>
 </footer>
 
+<!-- Mobile sticky CTA -->
 <a class="sticky" href="quote.html"><strong>Book Free Estimate</strong></a>
 
 <script>
-  // Before/After slider logic
+  /* ========== BEFORE/AFTER SLIDER ========== */
   (function(){
     const slider = document.getElementById('slider');
     const after = document.querySelector('#ba .after img');
     const handle = document.querySelector('#ba .handle');
-    function update(v){
-      after.style.clipPath = `inset(0 0 0 ${v}%)`;
-      handle.style.left = v + '%';
-    }
+    function update(v){ after.style.clipPath = `inset(0 0 0 ${v}%)`; handle.style.left = v + '%'; }
     slider.addEventListener('input', e => update(e.target.value));
     update(50);
+  })();
+
+  /* ========== THEME TOGGLE (remembers choice) ========== */
+  (function(){
+    const root = document.documentElement;
+    const btn = document.getElementById('themeBtn');
+    const saved = localStorage.getItem('dh-theme');
+    if (saved) root.setAttribute('data-theme', saved);
+
+    function setTheme(next){
+      if (next === 'light') root.setAttribute('data-theme','light');
+      else if (next === 'dark') root.setAttribute('data-theme','dark');
+      else root.removeAttribute('data-theme'); // system
+      localStorage.setItem('dh-theme', next);
+      btn.textContent = root.getAttribute('data-theme') === 'dark' ? '☀️' : '🌙';
+    }
+    btn.addEventListener('click', ()=>{
+      const cur = root.getAttribute('data-theme') || 'system';
+      setTheme(cur === 'dark' ? 'light' : 'dark');
+    });
+    // init button icon
+    btn.textContent = (root.getAttribute('data-theme') === 'dark') ? '☀️' : '🌙';
   })();
 </script>
 </body>
