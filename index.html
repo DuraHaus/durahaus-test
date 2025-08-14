@@ -4,169 +4,243 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>DuraHaus — Professional Painting. Simply Done.</title>
-<meta name="description" content="Premium residential & commercial painting in Southwest Ohio. Interior, exterior, cabinets & concrete—careful prep, tidy jobsites, results that last.">
+<meta name="description" content="Interior, exterior, cabinets & concrete—careful prep, tidy jobsites, and results that last. Serving Butler, Hamilton & Warren Counties.">
 <link rel="canonical" href="./index.html">
 <meta name="theme-color" content="#0a0a0a" media="(prefers-color-scheme: dark)">
 <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
 <meta property="og:type" content="website">
 <meta property="og:title" content="DuraHaus — Professional Painting. Simply Done.">
-<meta property="og:description" content="Interior, exterior, and cabinets—clean process, durable results.">
-<meta property="og:image" content="assets/og-hero.jpg">
-<meta property="og:url" content="./index.html">
+<meta property="og:description" content="Clean process. Durable finishes. Easy to work with.">
+<meta property="og:image" content="assets/stock-hero.webp">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="icon" href="assets/favicon.png">
-<link rel="preload" as="image" href="assets/hero-1600.webp" imagesrcset="assets/hero-800.webp 800w, assets/hero-1200.webp 1200w, assets/hero-1600.webp 1600w" imagesizes="(min-width: 900px) 50vw, 100vw" fetchpriority="high">
+<link rel="icon" href="assets/durahaus-logo.svg" type="image/svg+xml">
+<link rel="preload" as="image" href="assets/stock-hero.webp" fetchpriority="high">
 <style>
-  :root{--bg:#0a0a0a;--panel:#101010;--ink:#fff;--muted:#bdbdbd;--line:#1a1a1a;--brand:#fff;--accent:#6aa8ff;--max:1120px;--r:14px;--gap:28px;--focus:2px dotted #8bb6ff}
-  :root[data-theme="light"]{--bg:#f7f7f9;--panel:#fff;--ink:#0b0d10;--muted:#636871;--line:#e8eaf0;--brand:#111823;--accent:#1a73e8;--focus:2px dotted #1a73e8}
-  @media(prefers-color-scheme:light){:root:not([data-theme="dark"]){--bg:#f7f7f9;--panel:#fff;--ink:#0b0d10;--muted:#636871;--line:#e8eaf0;--brand:#111823;--accent:#1a73e8;--focus:2px dotted #1a73e8}}
-  *{box-sizing:border-box}html,body{height:100%}
-  body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 system-ui,-apple-system,Segoe UI,Roboto,Arial;display:flex;flex-direction:column;min-height:100dvh}
-  img{display:block;max-width:100%;height:auto;background:#0d0d0d}
-  a{color:inherit;text-decoration:none}
-  a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{outline:var(--focus);outline-offset:2px;border-radius:8px}
-  .container{max-width:var(--max);margin-inline:auto;padding:0 20px} main{flex:1 0 auto}
-  header{position:sticky;top:0;z-index:50;background:color-mix(in oklab,var(--bg) 92%,transparent);border-bottom:1px solid var(--line);backdrop-filter:saturate(140%) blur(8px)}
-  .nav{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 0}
-  .brand{display:flex;align-items:center;gap:10px}.brand img{height:40px;width:auto}
-  .navlinks{display:flex;gap:10px;flex-wrap:wrap}
+  /* ====== Mobile-first theme ====== */
+  :root{--bg:#0a0a0a;--panel:#101010;--ink:#fff;--muted:#bdbdbd;--line:#1a1a1a;--brand:#fff;--max:1120px;--r:14px;--gap:24px;--focus:2px dotted #8bb6ff}
+  :root[data-theme="light"]{--bg:#f7f7f9;--panel:#fff;--ink:#0b0d10;--muted:#636871;--line:#e8eaf0;--brand:#111823;--focus:2px dotted #1a73e8}
+  *{box-sizing:border-box} html,body{height:100%}
+  body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 system-ui,-apple-system,Segoe UI,Roboto,Arial;display:flex;flex-direction:column;min-height:100dvh;-webkit-font-smoothing:antialiased}
+  a{color:inherit;text-decoration:none} img{display:block;max-width:100%;height:auto;background:#0d0d0d}
+  :focus-visible{outline:var(--focus);outline-offset:2px;border-radius:10px}
+  .container{max-width:var(--max);margin:0 auto;padding:0 18px}
+  main{flex:1 0 auto}
+
+  /* Header */
+  header{position:sticky;top:0;z-index:50;background:color-mix(in oklab,var(--bg) 92%,transparent);backdrop-filter:saturate(140%) blur(8px);border-bottom:1px solid var(--line)}
+  .nav{display:flex;align-items:center;justify-content:space-between;padding:10px 0;gap:10px}
+  .brand{display:flex;align-items:center;gap:10px}
+  .brand img{height:40px;width:auto}
+  .navlinks{display:flex;gap:8px;flex-wrap:wrap}
   .pill{padding:.5rem .8rem;border:1px solid var(--line);border-radius:999px;font-size:14px}
   .pill--solid{background:var(--brand);color:var(--bg);border-color:var(--brand);font-weight:700}
-  .toggle{padding:.5rem .8rem}
+
+  /* Hero */
   .hero{display:grid;grid-template-columns:1fr;background:var(--panel);border-bottom:1px solid var(--line)}
   .hero__media{aspect-ratio:16/9;max-height:70vh;overflow:hidden}
-  .hero__copy{padding:3rem 0}
-  h1{margin:0 0 .6rem;font-size:clamp(32px,5vw,56px);line-height:1.05}
-  .lead{color:var(--muted)} .chips{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
-  @media(min-width:900px){.hero{grid-template-columns:1.15fr .85fr}.hero__copy{padding:4rem 0 4rem 2rem}}
+  .hero__media img{width:100%;height:100%;object-fit:cover}
+  .hero__copy{padding:2rem 0}
+  h1{margin:0 0 .5rem;font-size:clamp(30px,6vw,52px);line-height:1.05}
+  .lead{color:var(--muted)}
+  .chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+
+  /* Grids / cards */
   .grid{display:grid;gap:var(--gap)}
-  .grid--4{grid-template-columns:1fr}@media(min-width:960px){.grid--4{grid-template-columns:repeat(4,1fr)}}
+  .grid--2{grid-template-columns:1fr}
+  .grid--4{grid-template-columns:1fr}
   .card{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
-  .card .pad{padding:14px}.card h3{margin:.25rem 0 .25rem;font-size:16px}.card p{margin:0;color:var(--muted);font-size:14px}
+  .card .pad{padding:14px}
+  .card h3{margin:.2rem 0 .2rem;font-size:16px}
+  .card p{margin:0;color:var(--muted);font-size:14px}
+
+  /* Before/After slider */
   .ba{position:relative;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:color-mix(in oklab,var(--panel),#000 4%)}
-  .ba img{width:100%}.ba .after{position:absolute;inset:0;overflow:hidden}
+  .ba img{width:100%}
+  .ba .after{position:absolute;inset:0;overflow:hidden}
   .ba .after img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;clip-path:inset(0 0 0 50%)}
   .ba input[type=range]{position:absolute;inset:0;opacity:0}
   .ba .handle{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:44px;height:44px;border-radius:50%;display:grid;place-items:center;background:var(--panel);border:1px solid var(--line)}
-  .process{display:grid;gap:12px}@media(min-width:900px){.process{grid-template-columns:repeat(5,1fr)}}
-  .step{background:var(--panel);border:1px dashed var(--line);border-radius:12px;padding:14px}
-  .reviews{display:grid;gap:18px}@media(min-width:900px){.reviews{grid-template-columns:repeat(3,1fr)}}
-  footer{border-top:1px solid var(--line);margin-top:2rem}.foot{padding:1.2rem 0}
-  .brandrow{display:flex;gap:16px;align-items:center;flex-wrap:wrap}.muted{color:var(--muted)}
+
+  /* Process / reviews */
+  .process{display:grid;gap:10px}
+  .step{background:var(--panel);border:1px dashed var(--line);border-radius:12px;padding:12px}
+  .reviews{display:grid;gap:12px}
+
+  /* Prefooter + footer */
+  .pre{display:flex;gap:12px;align-items:center;flex-wrap:wrap;justify-content:space-between}
+  .pre img{width:96px;height:auto;opacity:.95;filter:invert(1) brightness(1.6);background:transparent}
+  footer{border-top:1px solid var(--line);margin-top:2rem}
+  .foot{padding:1rem 0}
+  .muted{color:var(--muted)}
+
+  /* Sticky mobile CTA */
   .sticky{position:fixed;left:50%;transform:translateX(-50%);bottom:14px;background:var(--panel);border:1px solid var(--line);border-radius:999px;padding:8px 12px;display:flex;gap:10px;box-shadow:0 8px 28px rgba(0,0,0,.35)}
-  @media(min-width:780px){.sticky{display:none}}
+  @media (min-width:880px){
+    .hero{grid-template-columns:1.15fr .85fr}
+    .hero__copy{padding:3rem 0 3rem 2rem}
+    .grid--4{grid-template-columns:repeat(4,1fr)}
+    .grid--2{grid-template-columns:1.1fr .9fr;align-items:center}
+    .process{grid-template-columns:repeat(5,1fr)}
+    .reviews{grid-template-columns:repeat(3,1fr)}
+    .sticky{display:none}
+  }
 </style>
 </head>
 <body>
 <header>
   <div class="container nav">
-    <div class="brand"><img src="assets/logo.svg" alt="DuraHaus logo"><strong>DuraHaus</strong></div>
-    <nav class="navlinks">
-      <a href="services.html" class="pill">Services</a>
-      <a href="projects.html" class="pill">Projects</a>
-      <a href="products.html" class="pill">Products</a>
-      <a href="quote.html" class="pill pill--solid">Get a Quote</a>
+    <a class="brand" href="index.html" aria-label="DuraHaus home">
+      <img src="assets/durahaus-logo.svg" alt="DuraHaus logo">
+    </a>
+    <nav class="navlinks" aria-label="Primary">
+      <a class="pill" href="services.html">Services</a>
+      <a class="pill" href="projects.html">Projects</a>
+      <a class="pill" href="products.html">Products</a>
+      <a class="pill" href="about.html">About</a>
+      <button id="themeBtn" class="pill" type="button" aria-label="Toggle theme">🌙</button>
+      <a class="pill pill--solid" href="quote.html">Get a Quote</a>
     </nav>
-    <button class="toggle" onclick="toggleTheme()">☀️/🌙</button>
   </div>
 </header>
 
 <main>
-<section class="hero container">
-  <div class="hero__copy">
-    <h1>Professional Painting. Simply Done.</h1>
-    <p class="lead">Residential & commercial painting with careful prep, tidy jobsites, and results that last.</p>
-    <div class="chips">
-      <span class="pill">✅ Written Warranty</span>
-      <span class="pill">🏠 Fully Insured</span>
-      <span class="pill">⭐ 5-Star Rated</span>
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero__media">
+      <img src="assets/stock-hero.webp" alt="Freshly painted home exterior by DuraHaus" fetchpriority="high" decoding="async">
     </div>
-  </div>
-  <div class="hero__media">
-    <img src="assets/hero-1600.webp" alt="Freshly painted home exterior">
-  </div>
-</section>
+    <div class="hero__copy container">
+      <h1>Professional Painting. Simply Done.</h1>
+      <p class="lead">Interior, exterior, and cabinets—done with careful prep, tidy jobsites, and clear communication.</p>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:10px">
+        <a class="pill pill--solid" href="quote.html">Book Free Estimate</a>
+        <a class="pill" href="sms:+15136684382">Text Us</a>
+      </div>
+      <div class="chips">
+        <span class="pill">★★★★★ Google Rated</span>
+        <span class="pill">Written Workmanship Warranty</span>
+        <span class="pill">Fully Insured</span>
+      </div>
+    </div>
+  </section>
 
-<section class="container">
-  <h2>Our Services</h2>
-  <div class="grid grid--4">
-    <div class="card"><img src="assets/service1.webp" alt=""><div class="pad"><h3>Interior Painting</h3><p>Walls, ceilings, trim & doors.</p></div></div>
-    <div class="card"><img src="assets/service2.webp" alt=""><div class="pad"><h3>Exterior Painting</h3><p>Full exterior, siding & brick.</p></div></div>
-    <div class="card"><img src="assets/service3.webp" alt=""><div class="pad"><h3>Cabinet Refinishing</h3><p>Factory-smooth finishes.</p></div></div>
-    <div class="card"><img src="assets/service4.webp" alt=""><div class="pad"><h3>Concrete Coatings</h3><p>Basements, garages, patios.</p></div></div>
-  </div>
-</section>
+  <!-- Services (wired to your assets) -->
+  <section class="container" style="margin-top:1.6rem">
+    <h2 style="margin:0 0 .6rem">What we do</h2>
+    <div class="grid grid--4">
+      <article class="card"><img src="assets/stock-interior.webp" alt="Interior painting"><div class="pad"><h3>Interior Painting</h3><p>Walls, ceilings, trim.</p></div></article>
+      <article class="card"><img src="assets/stock-exterior.webp" alt="Exterior painting"><div class="pad"><h3>Exterior Painting</h3><p>Siding, brick, trim.</p></div></article>
+      <article class="card"><img src="assets/stock-cabinets.webp" alt="Cabinet refinishing"><div class="pad"><h3>Cabinet Refinishing</h3><p>Factory-smooth enamels.</p></div></article>
+      <article class="card"><img src="assets/stock-concrete.webp" alt="Concrete coatings"><div class="pad"><h3>Concrete Coatings</h3><p>Garages, patios, basements.</p></div></article>
+      <article class="card"><img src="assets/stock-drywall.webp" alt="Drywall & repair"><div class="pad"><h3>Drywall & Repair</h3><p>Patching & skim coats.</p></div></article>
+      <article class="card"><img src="assets/stock-stain.webp" alt="Staining & wood care"><div class="pad"><h3>Stain & Wood Care</h3><p>Decks, doors, rails.</p></div></article>
+      <article class="card"><img src="assets/stock-caulking.webp" alt="Caulking & sealants"><div class="pad"><h3>Caulking & Sealants</h3><p>Weatherproof, clean lines.</p></div></article>
+      <article class="card"><img src="assets/stock-metal.webp" alt="Metal painting"><div class="pad"><h3>Metal Painting</h3><p>Rails, doors, equipment.</p></div></article>
+      <article class="card"><img src="assets/stock-waterproof.webp" alt="Waterproof coatings"><div class="pad"><h3>Waterproof Coatings</h3><p>Protective membranes & sealers.</p></div></article>
+    </div>
+  </section>
 
-<section class="container">
-  <h2>Before & After</h2>
-  <div class="ba">
-    <img src="assets/before.jpg" alt="Before">
-    <div class="after"><img src="assets/after.jpg" alt="After"></div>
-    <input type="range" min="0" max="100" value="50" oninput="document.querySelector('.ba .after img').style.clipPath=`inset(0 0 0 ${this.value}%)`">
-    <div class="handle">⇆</div>
-  </div>
-</section>
+  <!-- Before / After (uses available assets just for preview) -->
+  <section class="container" style="margin-top:1.6rem">
+    <h2 style="margin:0 0 .6rem">Before & After</h2>
+    <div class="grid grid--2">
+      <div>
+        <div class="ba" id="ba1">
+          <!-- For preview: interior as "before", exterior as "after" (replace with real pair anytime) -->
+          <img src="assets/stock-interior.webp" alt="Before">
+          <div class="after"><img src="assets/stock-exterior.webp" alt="After"></div>
+          <div class="handle" aria-hidden="true">↔</div>
+          <input type="range" min="0" max="100" value="50" aria-label="Reveal after image">
+        </div>
+      </div>
+      <div class="card"><div class="pad">
+        <h3 style="margin:0 0 .25rem">Tidy process. Durable finish.</h3>
+        <p class="lead" style="color:var(--muted)">Estimate → Schedule → Prep → Paint → Walkthrough. If something’s not right, we make it right.</p>
+        <div style="margin-top:10px;display:flex;gap:10px;flex-wrap:wrap">
+          <a class="pill pill--solid" href="quote.html">Get an Estimate</a>
+          <a class="pill" href="products.html">Products We Trust</a>
+        </div>
+      </div></div>
+    </div>
+  </section>
 
-<section class="container">
-  <h2>How It Works</h2>
-  <div class="process">
-    <div class="step">1. Free Estimate</div>
-    <div class="step">2. Color & Product Selection</div>
-    <div class="step">3. Schedule</div>
-    <div class="step">4. Prep & Paint</div>
-    <div class="step">5. Final Walkthrough</div>
-  </div>
-</section>
+  <!-- Reviews -->
+  <section class="container" style="margin-top:1.6rem">
+    <h2 style="margin:0 0 .6rem">Recent feedback</h2>
+    <div class="reviews">
+      <div class="card"><div class="pad">“Flawless cabinet finish and zero mess.” — Mason</div></div>
+      <div class="card"><div class="pad">“Crew was on time every day. Great results.” — West Chester</div></div>
+      <div class="card"><div class="pad">“Brick refresh made our home pop.” — Blue Ash</div></div>
+    </div>
+  </section>
 
-<section class="container">
-  <h2>Reviews</h2>
-  <div class="reviews">
-    <div class="card"><div class="pad"><strong>“Perfect results.”</strong><p>- Jane D.</p></div></div>
-    <div class="card"><div class="pad"><strong>“On time & neat.”</strong><p>- Mike S.</p></div></div>
-    <div class="card"><div class="pad"><strong>“Highly recommend.”</strong><p>- Sarah L.</p></div></div>
-  </div>
-</section>
+  <!-- Owner + badge -->
+  <section class="container" style="margin-top:1.6rem">
+    <div class="card"><div class="pad">
+      <div style="display:flex;gap:14px;align-items:center;flex-wrap:wrap">
+        <img src="assets/seal-white.webp" alt="DuraHaus seal" width="96" height="96" style="background:transparent;filter:invert(1) brightness(1.6);border-radius:12px">
+        <div>
+          <h2 style="margin:.1rem 0 .4rem">Meet the owner</h2>
+          <p>“We care about edges, cleanup, and communication. If you want a finish that looks great up close and a process that’s easy, we’re your team.” — Jay Hinton</p>
+        </div>
+      </div>
+      <div style="margin-top:10px;display:flex;gap:10px;flex-wrap:wrap">
+        <a class="pill pill--solid" href="quote.html">Book Free Estimate</a>
+        <a class="pill" href="sms:+15136684382">Text Us</a>
+      </div>
+    </div></div>
+  </section>
 
-<section class="container">
-  <h2>Color Tools</h2>
-  <p>Explore colors with our partners:</p>
-  <ul>
-    <li><a href="https://www.sherwin-williams.com/visualizer" target="_blank">Sherwin-Williams Color Visualizer</a></li>
-    <li><a href="https://www.benjaminmoore.com/en-us/personal-color-viewer" target="_blank">Benjamin Moore Personal Color Viewer</a></li>
-  </ul>
-</section>
-
-<section class="container">
-  <h2>Service Areas</h2>
-  <p>Serving Butler, Hamilton, and Warren Counties, including West Chester, Mason, Hamilton, Fairfield, and more.</p>
-</section>
+  <!-- Service areas -->
+  <section class="container" style="margin-top:1.6rem">
+    <h2 style="margin:0 0 .6rem">Service areas</h2>
+    <p class="muted">Butler, Hamilton & Warren Counties — including West Chester, Mason, Hamilton, Fairfield, Liberty Township, Blue Ash, Loveland, and nearby.</p>
+  </section>
 </main>
 
 <footer>
   <div class="container foot">
-    <div class="brandrow">
-      <img src="assets/sherwin-williams.svg" alt="Sherwin-Williams" height="30">
-      <img src="assets/benjamin-moore.svg" alt="Benjamin Moore" height="30">
-      <img src="assets/minwax.svg" alt="Minwax" height="30">
-    </div>
-    <p class="muted">© 2025 DuraHaus Painting & Construction</p>
+    <small>© <span id="y"></span> DuraHaus Painting & Construction • <a href="tel:+15136684382">513-668-4382</a> • <a href="mailto:durahaus.solutions@gmail.com">durahaus.solutions@gmail.com</a></small>
   </div>
 </footer>
 
-<div class="sticky">
-  <a href="quote.html" class="pill pill--solid">Request Quote</a>
-</div>
+<!-- Sticky CTA (mobile) -->
+<a class="sticky" href="quote.html" aria-label="Book a free estimate"><strong>Book Free Estimate</strong></a>
 
 <script>
-function toggleTheme(){
-  const root=document.documentElement;
-  if(root.dataset.theme==="light"){root.dataset.theme="dark";localStorage.setItem("theme","dark");}
-  else{root.dataset.theme="light";localStorage.setItem("theme","light");}
-}
-(function(){
-  const saved=localStorage.getItem("theme");
-  if(saved){document.documentElement.dataset.theme=saved;}
-})();
+  // Year
+  document.getElementById('y').textContent = new Date().getFullYear();
+
+  // Theme toggle + remember
+  (function(){
+    const root=document.documentElement, btn=document.getElementById('themeBtn');
+    const saved=localStorage.getItem('dh-theme'); if(saved) root.setAttribute('data-theme', saved);
+    btn.textContent = (root.getAttribute('data-theme')==='light') ? '🌙' : '☀️';
+    btn.addEventListener('click', ()=>{
+      const cur=root.getAttribute('data-theme')||'dark';
+      const next=cur==='dark'?'light':'dark';
+      root.setAttribute('data-theme', next);
+      localStorage.setItem('dh-theme', next);
+      btn.textContent = next==='light' ? '🌙' : '☀️';
+    });
+  })();
+
+  // Before/After slider (keyboard + pointer)
+  (function(el){
+    const r=el.querySelector('input[type=range]'), after=el.querySelector('.after img'), h=el.querySelector('.handle');
+    function update(v){ after.style.clipPath=`inset(0 0 0 ${v}%)`; h.style.left=v+'%'; }
+    r.addEventListener('input', e=>update(e.target.value));
+    r.addEventListener('keydown', e=>{
+      const step=(e.shiftKey?10:2);
+      if(e.key==='ArrowLeft'){ r.value=Math.max(0, r.value-step); r.dispatchEvent(new Event('input')); }
+      if(e.key==='ArrowRight'){ r.value=Math.min(100, Number(r.value)+step); r.dispatchEvent(new Event('input')); }
+    });
+    update(50);
+  })(document.getElementById('ba1'));
+
+  // LocalBusiness schema
+  const ld={ "@context":"https://schema.org","@type":"LocalBusiness","name":"DuraHaus Painting & Construction","image":"assets/stock-hero.webp","telephone":"+1-513-668-4382","address":{"@type":"PostalAddress","addressRegion":"OH","addressCountry":"US"},"areaServed":["Butler County","Hamilton County","Warren County"],"url":"./index.html" };
+  const s=document.createElement('script'); s.type='application/ld+json'; s.textContent=JSON.stringify(ld); document.head.appendChild(s);
 </script>
 </body>
 </html>
