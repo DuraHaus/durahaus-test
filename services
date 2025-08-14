@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Services — DuraHaus Painting & Construction</title>
+<meta name="description" content="Interior & exterior painting, cabinets, concrete coatings, drywall repair, staining, caulking, metal, waterproof coatings.">
+<link rel="canonical" href="./services.html">
+<meta name="theme-color" content="#0a0a0a" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+<style>
+:root{--bg:#0a0a0a;--panel:#101010;--ink:#fff;--muted:#bdbdbd;--line:#1a1a1a;--max:1120px;--r:14px;--gap:28px;--brand:#fff}
+:root[data-theme="light"]{--bg:#f7f7f9;--panel:#fff;--ink:#0b0d10;--muted:#606772;--line:#e7eaf0;--brand:#111823}
+*{box-sizing:border-box}html,body{height:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 system-ui,-apple-system,Segoe UI,Roboto,Arial;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%;height:auto;background:#0d0d0d}
+.container{max-width:var(--max);margin:0 auto;padding:0 20px}
+header{position:sticky;top:0;z-index:50;background:rgba(10,10,10,.92);backdrop-filter:saturate(140%) blur(8px);border-bottom:1px solid var(--line)}
+:root[data-theme="light"] header{background:rgba(250,250,252,.85)}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:12px 0}
+.brand{display:flex;align-items:center;gap:14px}
+.brand img{height:56px}
+.navlinks{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+.pill{padding:.5rem .8rem;border:1px solid var(--line);border-radius:999px;font-size:14px}
+.pill--solid{background:var(--brand);color:var(--bg);border-color:var(--brand);font-weight:700}
+.iconbtn{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border:1px solid var(--line);border-radius:999px}
+main{padding-bottom:40px}
+h1{font-size:clamp(30px,6vw,44px);margin:20px 0 10px}
+.lead{color:var(--muted)}
+.grid{display:grid;gap:var(--gap)}
+@media(min-width:900px){.grid--3{grid-template-columns:repeat(3,1fr)}.grid--2{grid-template-columns:repeat(2,1fr)}}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
+.card .pad{padding:14px}
+section{margin:2rem 0}
+.badge{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:.35rem .6rem;font-size:13px;color:var(--muted)}
+footer{border-top:1px solid var(--line);margin-top:2rem}.foot{padding:1.2rem 0}.muted{color:var(--muted)}
+.toggle{padding:.5rem .8rem;border:1px solid var(--line);border-radius:999px;background:transparent}
+</style>
+</head>
+<body>
+<header>
+  <div class="container nav">
+    <a class="brand" href="index.html" aria-label="DuraHaus home"><img src="assets/durahaus-logo.svg" alt="DuraHaus logo"></a>
+    <nav class="navlinks" aria-label="Primary">
+      <a class="pill" href="services.html" aria-current="page">Services</a>
+      <a class="pill" href="projects.html">Projects</a>
+      <a class="pill" href="products.html">Products</a>
+      <a class="pill" href="about.html">About</a>
+      <a class="pill pill--solid" href="quote.html">Get a Quote</a>
+      <button id="themeBtn" class="toggle" type="button" aria-label="Toggle theme">🌙</button>
+    </nav>
+  </div>
+</header>
+
+<main class="container">
+  <h1>What we do</h1>
+  <p class="lead">Clean prep, tidy jobsites, and durable finishes—done with pro materials and clear communication.</p>
+
+  <!-- Top grid -->
+  <section>
+    <div class="grid grid--3">
+      <article class="card" id="interior">
+        <img src="assets/stock-interior.webp" alt="Interior painting">
+        <div class="pad">
+          <h3>Interior Painting</h3>
+          <p>Walls, ceilings, trim, doors, accent walls. Dust-controlled sanding and crisp lines.</p>
+          <div class="badge">Popular: Whole-home refresh</div>
+        </div>
+      </article>
+      <article class="card" id="exterior">
+        <img src="assets/stock-exterior.webp" alt="Exterior painting">
+        <div class="pad">
+          <h3>Exterior Painting</h3>
+          <p>Siding, brick, stucco, trim. Weather-tough primers and topcoats for Midwest conditions.</p>
+          <div class="badge">Seasonal scheduling</div>
+        </div>
+      </article>
+      <article class="card" id="cabinets">
+        <img src="assets/stock-cabinets.webp" alt="Cabinet refinishing">
+        <div class="pad">
+          <h3>Cabinet Refinishing</h3>
+          <p>Factory-smooth enamels and hard-wearing clear coats. Doors sprayed, boxes masked and rolled.</p>
+          <div class="badge">Kitchen & bath</div>
+        </div>
+      </article>
+      <article class="card" id="concrete">
+        <img src="assets/stock-concrete.webp" alt="Concrete coatings">
+        <div class="pad">
+          <h3>Concrete Coatings</h3>
+          <p>Garages, basements, patios. Moisture-tolerant primers and abrasion-resistant finishes.</p>
+        </div>
+      </article>
+      <article class="card" id="drywall">
+        <img src="assets/stock-drywall.webp" alt="Drywall & repair">
+        <div class="pad">
+          <h3>Drywall & Repair</h3>
+          <p>Patching, skim coats, texture matching, ceiling repairs. Paint-ready surfaces.</p>
+        </div>
+      </article>
+      <article class="card" id="stain">
+        <img src="assets/stock-stain.webp" alt="Staining & wood care">
+        <div class="pad">
+          <h3>Stain & Wood Care</h3>
+          <p>Decks, doors, handrails. Proper prep, moisture checks, and even penetration.</p>
+        </div>
+      </article>
+      <article class="card" id="caulking">
+        <img src="assets/stock-caulking.webp" alt="Caulking & sealants">
+        <div class="pad">
+          <h3>Caulking & Sealants</h3>
+          <p>High-movement, paintable sealants for trim, windows, and transitions. Clean lines.</p>
+        </div>
+      </article>
+      <article class="card" id="metal">
+        <img src="assets/stock-metal.webp" alt="Metal painting">
+        <div class="pad">
+          <h3>Metal Painting</h3>
+          <p>Rails, doors, equipment. Rust conversion where needed and proper metal primers.</p>
+        </div>
+      </article>
+      <article class="card" id="waterproof">
+        <img src="assets/stock-waterproof.webp" alt="Waterproof coatings">
+        <div class="pad">
+          <h3>Waterproof Coatings</h3>
+          <p>Sealants and elastomerics to protect masonry, brick, and problem areas.</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- Process -->
+  <section>
+    <h2>Our process</h2>
+    <div class="grid grid--2">
+      <div class="card"><div class="pad"><strong>1) Walk-through & quote</strong><br>Itemized, written scope with options when helpful.</div></div>
+      <div class="card"><div class="pad"><strong>2) Scheduling</strong><br>Clear start date, daily hours, and communication plan.</div></div>
+      <div class="card"><div class="pad"><strong>3) Prep</strong><br>Protection, repairs, sanding, caulking, priming.</div></div>
+      <div class="card"><div class="pad"><strong>4) Finish</strong><br>Coatings matched to the surface and environment.</div></div>
+      <div class="card"><div class="pad"><strong>5) Clean-up</strong><br>Jobsite left cleaner than we found it.</div></div>
+      <div class="card"><div class="pad"><strong>6) Walk-through</strong><br>We fix anything you spot—then we’re on call if needed.</div></div>
+    </div>
+  </section>
+
+  <!-- Service areas -->
+  <section>
+    <h2>Service areas</h2>
+    <p class="muted">Butler, Hamilton & Warren Counties — including West Chester, Mason, Hamilton, Fairfield, Liberty Township, Blue Ash, Loveland, and nearby.</p>
+  </section>
+
+  <section>
+    <div class="card"><div class="pad" style="display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between">
+      <div><strong>Ready to start?</strong><br><span class="muted">Fast estimates, tidy jobsites, and results that last.</span></div>
+      <div style="display:flex;gap:10px;flex-wrap:wrap">
+        <a class="pill pill--solid" href="quote.html">Request a Quote</a>
+        <a class="pill" href="tel:+15136684382">Call 513-668-4382</a>
+      </div>
+    </div></div>
+  </section>
+</main>
+
+<footer>
+  <div class="container foot"><small class="muted">© <span id="y"></span> DuraHaus Painting & Construction.</small></div>
+</footer>
+
+<script>
+document.getElementById('y').textContent=new Date().getFullYear();
+(function(){const r=document.documentElement,b=document.getElementById('themeBtn');const s=localStorage.getItem('dh-theme');if(s)r.setAttribute('data-theme',s);b.textContent=(r.getAttribute('data-theme')==='light')?'🌙':'☀️';b.addEventListener('click',()=>{const cur=r.getAttribute('data-theme')||'dark',next=cur==='dark'?'light':'dark';r.setAttribute('data-theme',next);localStorage.setItem('dh-theme',next);b.textContent=next==='light'?'🌙':'☀️';});})();
+</script>
+</body>
+</html>
