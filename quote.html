@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Get a Quote — DuraHaus</title>
+<link rel="canonical" href="./quote.html">
+<meta name="theme-color" content="#0a0a0a" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+<style>
+:root{--bg:#0a0a0a;--panel:#101010;--ink:#fff;--muted:#bdbdbd;--line:#1a1a1a;--max:800px;--r:14px;--gap:24px;--brand:#fff}
+:root[data-theme="light"]{--bg:#f7f7f9;--panel:#fff;--ink:#0b0d10;--muted:#606772;--line:#e7eaf0;--brand:#111823}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 system-ui,-apple-system,Segoe UI,Roboto,Arial}
+a{text-decoration:none;color:inherit}
+.container{max-width:var(--max);margin:0 auto;padding:0 20px}
+header{position:sticky;top:0;z-index:50;background:rgba(10,10,10,.92);backdrop-filter:saturate(140%) blur(8px);border-bottom:1px solid var(--line)}
+:root[data-theme="light"] header{background:rgba(250,250,252,.85)}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:12px 0}
+.brand img{height:56px}
+.navlinks{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+.pill{padding:.5rem .8rem;border:1px solid var(--line);border-radius:999px;font-size:14px}
+.pill--solid{background:var(--brand);color:var(--bg);border-color:var(--brand);font-weight:700}
+.toggle{padding:.5rem .8rem;border:1px solid var(--line);border-radius:999px;background:transparent}
+h1{font-size:clamp(30px,6vw,44px);margin:20px 0 10px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
+.card .pad{padding:16px}
+label{display:block;margin:.6rem 0 .25rem}
+input,textarea,select{width:100%;padding:.8rem;border-radius:10px;border:1px solid var(--line);background:var(--panel);color:var(--ink)}
+textarea{min-height:140px;resize:vertical}
+small.muted{color:var(--muted)}
+footer{border-top:1px solid var(--line);margin-top:2rem}.foot{padding:1.2rem 0}
+</style>
+</head>
+<body>
+<header>
+  <div class="container nav">
+    <a class="brand" href="index.html"><img src="assets/durahaus-logo.svg" alt="DuraHaus logo"></a>
+    <nav class="navlinks">
+      <a class="pill" href="services.html">Services</a>
+      <a class="pill" href="projects.html">Projects</a>
+      <a class="pill" href="products.html">Products</a>
+      <a class="pill" href="about.html">About</a>
+      <a class="pill pill--solid" href="quote.html" aria-current="page">Get a Quote</a>
+      <button id="themeBtn" class="toggle" type="button">🌙</button>
+    </nav>
+  </div>
+</header>
+
+<main class="container">
+  <h1>Book a free estimate</h1>
+  <p class="muted">Tell us about your project. We’ll reply quickly with next steps and available times.</p>
+
+  <div class="card">
+    <div class="pad">
+      <!-- Mailto fallback; swap to your form handler later -->
+      <form action="mailto:durahaus.solutions@gmail.com" method="post" enctype="text/plain">
+        <label for="name">Name</label><input id="name" name="Name" required>
+        <label for="email">Email</label><input id="email" name="Email" type="email" required>
+        <label for="phone">Phone</label><input id="phone" name="Phone" inputmode="tel" placeholder="513-___-____" required>
+        <label for="service">Service</label>
+        <select id="service" name="Service">
+          <option>Interior Painting</option><option>Exterior Painting</option><option>Cabinet Refinishing</option>
+          <option>Concrete Coatings</option><option>Drywall & Repair</option><option>Stain & Wood Care</option>
+          <option>Caulking & Sealants</option><option>Metal Painting</option><option>Waterproof Coatings</option>
+        </select>
+        <label for="address">City / Area</label><input id="address" name="Area" placeholder="e.g., Mason, West Chester">
+        <label for="msg">Project details</label><textarea id="msg" name="Details" placeholder="Rooms, colors, timing, notes…"></textarea>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:10px">
+          <button class="pill pill--solid" type="submit">Send Request</button>
+          <a class="pill" href="tel:+15136684382">Or call 513-668-4382</a>
+        </div>
+        <small class="muted">We include a written workmanship warranty with every job.</small>
+      </form>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="container foot"><small class="muted">© <span id="y"></span> DuraHaus Painting & Construction.</small></div>
+</footer>
+
+<script>
+document.getElementById('y').textContent=new Date().getFullYear();
+(function(){const r=document.documentElement,b=document.getElementById('themeBtn');const s=localStorage.getItem('dh-theme');if(s)r.setAttribute('data-theme',s);b.textContent=(r.getAttribute('data-theme')==='light')?'🌙':'☀️';b.addEventListener('click',()=>{const cur=r.getAttribute('data-theme')||'dark',next=cur==='dark'?'light':'dark';r.setAttribute('data-theme',next);localStorage.setItem('dh-theme',next);b.textContent=next==='light'?'🌙':'☀️';});})();
+</script>
+</body>
+</html>
