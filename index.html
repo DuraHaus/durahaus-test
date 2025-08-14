@@ -7,7 +7,7 @@
   <meta name="description" content="Interior & exterior painting, cabinets, stain, concrete coatings, drywall and sealing. Clean, on-time, built to perform.">
   <link rel="preload" as="image" href="/assets/stock-hero.webp">
 
-  <!-- === Additions: SEO/sharing polish (kept light, non-intrusive) === -->
+  <!-- (light SEO polish) -->
   <link rel="canonical" href="./index.html">
   <meta name="theme-color" content="#0a0a0a" media="(prefers-color-scheme: dark)">
   <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
@@ -17,13 +17,20 @@
   <meta property="og:image" content="/assets/stock-hero.webp">
   <meta property="og:url" content="./index.html">
   <meta name="twitter:card" content="summary_large_image">
-  <!-- === /Additions === -->
 
   <style>
     :root{
       --bg:#0a0a0a; --panel:#101010; --ink:#ffffff; --muted:#bdbdbd;
       --line:#1a1a1a; --max:1120px; --r:14px; --gap:28px;
+      --brand:#ffffff;
+      --focus:2px dotted #8bb6ff;
     }
+    /* Light theme when toggled */
+    :root[data-theme="light"]{
+      --bg:#f7f7f9; --panel:#ffffff; --ink:#0b0d10; --muted:#606772;
+      --line:#e7eaf0; --brand:#111823; --focus:2px dotted #1a73e8;
+    }
+
     *{box-sizing:border-box} html,body{height:100%}
     body{margin:0;background:var(--bg);color:var(--ink);
       font:16px/1.55 ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;
@@ -32,10 +39,12 @@
     img{display:block;width:100%;height:auto;background:#0d0d0d}
     .brand img{background:transparent!important}
     .container{max-width:var(--max);margin:0 auto;padding:0 20px}
+    :focus-visible{outline:var(--focus);outline-offset:2px;border-radius:10px}
 
     /* Header */
     header{position:sticky;top:0;z-index:50;background:rgba(10,10,10,.92);
       backdrop-filter:saturate(140%) blur(8px);border-bottom:1px solid var(--line)}
+    :root[data-theme="light"] header{background:rgba(250,250,252,.85)}
     .nav{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:12px 0}
     .brand{display:flex;align-items:center;gap:14px;min-width:0}
     .brand picture{display:block;line-height:0}
@@ -44,11 +53,12 @@
 
     .navlinks{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-left:20px}
     .pill{padding:.5rem .8rem;border:1px solid var(--line);border-radius:999px;font-size:14px}
-    .pill--solid{background:#fff;color:#000;border-color:#fff;font-weight:700}
+    .pill--solid{background:var(--brand);color:var(--bg);border-color:var(--brand);font-weight:700}
     .pill--ghost{background:transparent}
-    .cta{background:#fff;color:#000;border-color:#fff;font-weight:700} /* existing style, still used elsewhere */
     .iconbtn{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border:1px solid var(--line);border-radius:999px}
-    .iconbtn svg{width:18px;height:18px;fill:#fff}
+    .iconbtn svg{width:18px;height:18px;fill:currentColor}
+    .toggle{padding:.5rem .8rem;border:1px solid var(--line);border-radius:999px;background:transparent}
+
     @media (max-width:600px){
       .nav{padding:10px 0}
       .brand img{height:44px}
@@ -58,6 +68,7 @@
 
     /* Hero */
     .hero{display:grid;grid-template-columns:1fr;background:#0c0c0c;border-bottom:1px solid var(--line)}
+    :root[data-theme="light"] .hero{background:#ffffff}
     .hero__media{position:relative;aspect-ratio:16/9;max-height:70vh;overflow:hidden}
     .hero__media img{width:100%;height:100%;object-fit:cover;opacity:.95;}
     .hero__copy{padding:3rem 0}
@@ -76,7 +87,8 @@
     h2{margin:0 0 .4rem;font-size:clamp(22px,2.2vw,28px)}
     p{margin:.25rem 0 0}
     .grid{display:grid;gap:var(--gap);grid-template-columns:1fr}
-    @media (min-width:900px){.grid{grid-template-columns:repeat(3,1fr)}}
+    @media (min-width:900px){.grid--3{grid-template-columns:repeat(3,1fr)}}
+    @media (min-width:960px){.grid--4{grid-template-columns:repeat(4,1fr)}}
 
     /* Why */
     .why{margin:3rem auto 0}
@@ -113,43 +125,21 @@
 
     /* Contact strip (above footer) */
     .contactbar{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:#0e0e10}
+    :root[data-theme="light"] .contactbar{background:#f0f2f6}
     .contactbar .row{display:flex;gap:16px;align-items:center;justify-content:flex-start;flex-wrap:wrap;margin:0;padding:14px 0}
     .contactbar a{display:inline-flex;align-items:center;gap:8px;color:#d9d9db;font-size:15px}
+    :root[data-theme="light"] .contactbar a{color:#1b1f28}
     .contactbar a:hover{color:#fff}
+    :root[data-theme="light"] .contactbar a:hover{color:#000}
     .contactbar svg{width:20px;height:20px;fill:currentColor}
 
-    /* Sticky tidy footer for short pages (optional) */
-    html, body { height: 100%; }
-    body { min-height: 100dvh; display: flex; flex-direction: column; }
-    main { flex: 1 0 auto; }
-
-    /* === Carousel === */
-    .carousel{position:relative;overflow:hidden}
-    .carousel-track{
-      display:flex;
-      transition:transform 280ms ease;
-      touch-action: pan-y; /* allows horizontal swipe on iOS */
-      user-select:none; -webkit-user-drag:none;
-    }
-    .carousel img{width:100%;height:340px;object-fit:cover;flex:0 0 100%}
-    .carousel-btn{position:absolute;top:50%;transform:translateY(-50%);border:none;background:rgba(0,0,0,.45);color:#fff;padding:6px 10px;border-radius:10px;cursor:pointer;z-index:2}
-    .carousel-btn.prev{left:8px}.carousel-btn.next{right:8px}
-    .carousel-btn:hover{background:rgba(0,0,0,.65)}
-    .carousel-dots{display:none !important;} /* keep in DOM, hidden */
-
-    /* Make the text block the only clickable area under the image */
-    .card .pad.service-link { display:block; border-top:1px solid var(--line); }
-
-    /* === Additions: small, scoped styles === */
+    /* Before/After slider (if you keep it later) */
     .ba{position:relative;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:#0e0e10}
     .ba img{width:100%}
     .ba .after{position:absolute;inset:0;overflow:hidden}
     .ba .after img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;clip-path:inset(0 0 0 50%)}
     .ba input[type=range]{position:absolute;inset:0;opacity:0}
     .ba .handle{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:44px;height:44px;border-radius:50%;display:grid;place-items:center;background:var(--panel);border:1px solid var(--line)}
-    .sticky{position:fixed;left:50%;transform:translateX(-50%);bottom:14px;background:var(--panel);border:1px solid var(--line);border-radius:999px;padding:8px 12px;display:flex;gap:10px;box-shadow:0 8px 28px rgba(0,0,0,.35)}
-    @media(min-width:860px){.sticky{display:none}}
-    /* === /Additions === */
   </style>
 </head>
 <body>
@@ -175,6 +165,7 @@
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.2c1.2 2.4 3.1 4.3 5.5 5.5l1.8-1.8c.3-.3.7-.4 1.1-.3 1 .3 2 .5 3 .5.6 0 1 .4 1 1v3.1c0 .6-.4 1-1 1C10.3 19.2 4.8 13.7 4.8 6.1c0-.6.4-1 1-1H9c.6 0 1 .4 1 1 0 1 .2 2 .5 3 .1.4 0 .8-.3 1.1l-1.6 2z"/></svg>
         </a>
         <a class="pill pill--solid" href="/quote.html">Get a Quote</a>
+        <button id="themeBtn" class="toggle" type="button" aria-label="Toggle theme">🌙</button>
       </nav>
     </div>
   </header>
@@ -191,7 +182,6 @@
           From interiors to exteriors, cabinets to concrete — we approach every job with care, craftsmanship, and materials built to perform. All to make your home more beautiful, more durable, and better protected against time and weather.
         </p>
         <div class="stack" style="margin-top:1.1rem">
-          <!-- pill version -->
           <a class="pill pill--solid" href="/services.html">Explore Services</a>
         </div>
       </div>
@@ -208,159 +198,27 @@
           At DuraHaus that is our mission. We supply customers with specialized skills and knowledge in Interior/Exterior Painting, Cabinetry Finishes, Staining & Wood Finishes, Surface-Protecting Coatings, Concrete Coatings, Drywall Repair, Interior/Exterior Sealing and more.
         </p>
         <div class="stack" style="margin-top:1rem">
-          <!-- pill versions -->
           <a class="pill pill--solid" href="/about.html">About</a>
           <a class="pill pill--ghost" href="tel:15136684382">Call Us</a>
         </div>
       </div>
     </section>
 
-    <!-- Services grid -->
+    <!-- What we do (replaces carousels) -->
     <section class="container" style="margin-top:2rem">
-      <div class="grid">
-
-        <!-- Interior Painting -->
-        <div class="card">
-          <div class="carousel" data-carousel>
-            <button class="carousel-btn prev" aria-label="Previous image" data-prev>‹</button>
-            <div class="carousel-track" data-track>
-              <img src="/assets/stock-interior.webp" alt="Interior painting 1">
-              <img src="/assets/stock-interior.webp" alt="Interior painting 2">
-              <img src="/assets/stock-interior.webp" alt="Interior painting 3">
-            </div>
-            <button class="carousel-btn next" aria-label="Next image" data-next>›</button>
-            <div class="carousel-dots" data-dots></div>
-          </div>
-          <a class="pad service-link" href="/services.html#interior">
-            <h3 style="margin:0 0 .25rem">Interior Painting</h3>
-            <p>Walls, ceilings, trim, and cabinetry — dust-controlled and precise.</p>
-          </a>
-        </div>
-
-        <!-- Exterior Painting -->
-        <div class="card">
-          <div class="carousel" data-carousel>
-            <button class="carousel-btn prev" aria-label="Previous image" data-prev>‹</button>
-            <div class="carousel-track" data-track>
-              <img src="/assets/stock-exterior.webp" alt="Exterior painting 1">
-              <img src="/assets/stock-exterior.webp" alt="Exterior painting 2">
-              <img src="/assets/stock-exterior.webp" alt="Exterior painting 3">
-            </div>
-            <button class="carousel-btn next" aria-label="Next image" data-next>›</button>
-            <div class="carousel-dots" data-dots></div>
-          </div>
-          <a class="pad service-link" href="/services.html#exterior">
-            <h3 style="margin:0 0 .25rem">Exterior Painting</h3>
-            <p>Premium prep and coatings that handle Midwest weather.</p>
-          </a>
-        </div>
-
-        <!-- Concrete Coatings -->
-        <div class="card">
-          <div class="carousel" data-carousel>
-            <button class="carousel-btn prev" aria-label="Previous image" data-prev>‹</button>
-            <div class="carousel-track" data-track>
-              <img src="/assets/stock-concrete.webp" alt="Concrete coatings 1">
-              <img src="/assets/stock-concrete.webp" alt="Concrete coatings 2">
-              <img src="/assets/stock-concrete.webp" alt="Concrete coatings 3">
-            </div>
-            <button class="carousel-btn next" aria-label="Next image" data-next>›</button>
-            <div class="carousel-dots" data-dots></div>
-          </div>
-          <a class="pad service-link" href="/services.html#concrete">
-            <h3 style="margin:0 0 .25rem">Concrete Coatings</h3>
-            <p>Garage, patios, and basements — durable and easy to clean.</p>
-          </a>
-        </div>
-
+      <h2 style="margin:0 0 .6rem">What we do</h2>
+      <div class="grid grid--4">
+        <article class="card"><img src="/assets/stock-interior.webp" alt="Interior painting"><div class="pad"><h3 style="margin:0 0 .25rem">Interior Painting</h3><p>Walls, ceilings, trim, doors.</p></div></article>
+        <article class="card"><img src="/assets/stock-exterior.webp" alt="Exterior painting"><div class="pad"><h3 style="margin:0 0 .25rem">Exterior Painting</h3><p>Siding, brick, trim.</p></div></article>
+        <article class="card"><img src="/assets/stock-cabinets.webp" alt="Cabinet refinishing"><div class="pad"><h3 style="margin:0 0 .25rem">Cabinet Refinishing</h3><p>Factory-smooth enamels.</p></div></article>
+        <article class="card"><img src="/assets/stock-concrete.webp" alt="Concrete coatings"><div class="pad"><h3 style="margin:0 0 .25rem">Concrete Coatings</h3><p>Garages, patios, basements.</p></div></article>
+        <article class="card"><img src="/assets/stock-drywall.webp" alt="Drywall repair"><div class="pad"><h3 style="margin:0 0 .25rem">Drywall & Repair</h3><p>Patching & resurfacing.</p></div></article>
+        <article class="card"><img src="/assets/stock-stain.webp" alt="Staining & wood care"><div class="pad"><h3 style="margin:0 0 .25rem">Stain & Wood Care</h3><p>Decks, doors, rails.</p></div></article>
+        <article class="card"><img src="/assets/stock-caulking.webp" alt="Caulking & sealants"><div class="pad"><h3 style="margin:0 0 .25rem">Caulking & Sealants</h3><p>Weatherproof, clean lines.</p></div></article>
+        <article class="card"><img src="/assets/stock-metal.webp" alt="Metal painting"><div class="pad"><h3 style="margin:0 0 .25rem">Metal Painting</h3><p>Rails, doors, equipment.</p></div></article>
+        <article class="card"><img src="/assets/stock-waterproof.webp" alt="Waterproof coatings"><div class="pad"><h3 style="margin:0 0 .25rem">Waterproof Coatings</h3><p>Protective membranes & sealers.</p></div></article>
       </div>
     </section>
-
-    <!-- More services -->
-    <section class="container" style="margin-top:2rem">
-      <div class="grid">
-
-        <!-- Cabinet Refinishing -->
-        <div class="card">
-          <div class="carousel" data-carousel>
-            <button class="carousel-btn prev" aria-label="Previous image" data-prev>‹</button>
-            <div class="carousel-track" data-track>
-              <img src="/assets/stock-cabinets.webp" alt="Cabinet refinishing 1">
-              <img src="/assets/stock-cabinets.webp" alt="Cabinet refinishing 2">
-              <img src="/assets/stock-cabinets.webp" alt="Cabinet refinishing 3">
-            </div>
-            <button class="carousel-btn next" aria-label="Next image" data-next>›</button>
-            <div class="carousel-dots" data-dots></div>
-          </div>
-          <a class="pad service-link" href="/services.html#cabinets">
-            <h3 style="margin:0 0 .25rem">Cabinet Refinishing</h3>
-            <p>Factory-smooth primers and hard-wearing topcoats.</p>
-          </a>
-        </div>
-
-        <!-- Staining & Wood Care -->
-        <div class="card">
-          <div class="carousel" data-carousel>
-            <button class="carousel-btn prev" aria-label="Previous image" data-prev>‹</button>
-            <div class="carousel-track" data-track>
-              <img src="/assets/stock-stain.webp" alt="Staining and wood care 1">
-              <img src="/assets/stock-stain.webp" alt="Staining and wood care 2">
-              <img src="/assets/stock-stain.webp" alt="Staining and wood care 3">
-            </div>
-            <button class="carousel-btn next" aria-label="Next image" data-next>›</button>
-            <div class="carousel-dots" data-dots></div>
-          </div>
-          <a class="pad service-link" href="/services.html#stain">
-            <h3 style="margin:0 0 .25rem">Staining & Wood Care</h3>
-            <p>Decks, doors, and rails prepped and finished right.</p>
-          </a>
-        </div>
-
-        <!-- Drywall & Repair -->
-        <div class="card">
-          <div class="carousel" data-carousel>
-            <button class="carousel-btn prev" aria-label="Previous image" data-prev>‹</button>
-            <div class="carousel-track" data-track>
-              <img src="/assets/stock-drywall.webp" alt="Drywall repair 1">
-              <img src="/assets/stock-drywall.webp" alt="Drywall repair 2">
-              <img src="/assets/stock-drywall.webp" alt="Drywall repair 3">
-            </div>
-            <button class="carousel-btn next" aria-label="Next image" data-next>›</button>
-            <div class="carousel-dots" data-dots></div>
-          </div>
-          <a class="pad service-link" href="/services.html#drywall">
-            <h3 style="margin:0 0 .25rem">Drywall & Repair</h3>
-            <p>Repairs and resurfacing for flat, paint-ready surfaces.</p>
-          </a>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- === Additions: Before & After + Color tools (kept tight & low on page) === -->
-    <section class="container" style="margin-top:2rem">
-      <h2 style="margin:0 0 .6rem">Before & After</h2>
-      <div class="row" style="margin:0">
-        <div>
-          <div class="ba" id="ba1">
-            <!-- For demo: interior as "before", exterior as "after" — swap with real pair anytime -->
-            <img src="/assets/stock-interior.webp" alt="Before">
-            <div class="after"><img src="/assets/stock-exterior.webp" alt="After"></div>
-            <div class="handle" aria-hidden="true">↔</div>
-            <input type="range" min="0" max="100" value="50" aria-label="Reveal after image">
-          </div>
-        </div>
-        <div>
-          <h3 style="margin:.8rem 0 .3rem">Color Tools</h3>
-          <p class="lead" style="color:var(--muted);margin:0 0 .6rem">Explore colors before we visit:</p>
-          <div style="display:flex;gap:10px;flex-wrap:wrap">
-            <a class="pill" href="https://www.sherwin-williams.com/visualizer" target="_blank" rel="noopener">Sherwin-Williams Visualizer</a>
-            <a class="pill" href="https://www.benjaminmoore.com/en-us/personal-color-viewer" target="_blank" rel="noopener">Benjamin Moore Viewer</a>
-          </div>
-        </div>
-      </div>
-    </section>
-    <!-- === /Additions === -->
 
     <!-- FAQ -->
     <section class="container faq">
@@ -441,139 +299,27 @@
     </div>
   </footer>
 
-  <!-- Sticky CTA (mobile only) -->
-  <a class="sticky" href="/quote.html" aria-label="Book a free estimate"><strong>Book Free Estimate</strong></a>
-
   <script>
+    // Year
     document.getElementById('y').textContent = new Date().getFullYear();
 
-    // === Carousel (Pointer Events with touch/mouse fallback) ===
+    // Light/Dark toggle (remembers choice)
     (function(){
-      const carousels = document.querySelectorAll('[data-carousel]');
-
-      function attachPointer(c){
-        const track = c.querySelector('[data-track]');
-        const slides = [...track.children];
-        const prev = c.querySelector('[data-prev]');
-        const next = c.querySelector('[data-next]');
-        const dotsWrap = c.querySelector('[data-dots]');
-
-        // create dots (hidden by CSS, kept for a11y/state)
-        slides.forEach((_, idx)=>{
-          const b = document.createElement('button');
-          b.type = 'button';
-          b.setAttribute('aria-label', 'Go to slide '+(idx+1));
-          b.addEventListener('click', (e)=>{ e.stopPropagation(); go(idx); });
-          dotsWrap.appendChild(b);
-        });
-
-        let i = 0;
-        let startX = 0, dragX = 0;
-        let dragging = false;
-
-        function update(){
-          track.style.transform = `translateX(${i * -100}%)`;
-          [...dotsWrap.children].forEach((d, di)=> d.setAttribute('aria-current', di===i));
-          prev.style.visibility = (i===0)?'hidden':'visible';
-          next.style.visibility = (i===slides.length-1)?'hidden':'visible';
-        }
-        function clamp(n){ return Math.max(0, Math.min(slides.length-1, n)); }
-        function go(n){ i = clamp(n); update(); }
-        function nextSlide(){ go(i+1); }
-        function prevSlide(){ go(i-1); }
-
-        // Stop bubbling so the card link isn't triggered
-        [prev, next, dotsWrap, track].forEach(el=>{
-          el && el.addEventListener('click', ev=>ev.stopPropagation());
-        });
-
-        prev.addEventListener('click', prevSlide);
-        next.addEventListener('click', nextSlide);
-
-        // Pointer events (best on iOS/Android + desktop)
-        const usePointer = 'PointerEvent' in window;
-
-        if (usePointer) {
-          track.addEventListener('pointerdown', onPointerDown);
-          // prevent images from being draggable ghosts
-          track.querySelectorAll('img').forEach(img=> img.draggable = false);
-        } else {
-          // Fallback to touch/mouse
-          track.addEventListener('touchstart', onStart, {passive:true});
-          track.addEventListener('mousedown', onStart);
-        }
-
-        function onPointerDown(e){
-          if (e.pointerType === 'mouse' && e.button !== 0) return;
-          dragging = true;
-          startX = e.clientX;
-          dragX = 0;
-          track.setPointerCapture?.(e.pointerId);
-          document.addEventListener('pointermove', onPointerMove);
-          document.addEventListener('pointerup', onPointerUp);
-        }
-        function onPointerMove(e){
-          if(!dragging) return;
-          dragX = e.clientX - startX;
-          track.style.transition = 'none';
-          const pct = (dragX / track.clientWidth) * 100;
-          track.style.transform = `translateX(calc(${i * -100}% + ${pct}%))`;
-        }
-        function onPointerUp(e){
-          if(!dragging) return;
-          track.style.transition = '';
-          const threshold = track.clientWidth * 0.15;
-          if (Math.abs(dragX) > threshold){
-            if (dragX < 0) nextSlide(); else prevSlide();
-          } else {
-            update();
-          }
-          dragging = false;
-          document.removeEventListener('pointermove', onPointerMove);
-          document.removeEventListener('pointerup', onPointerUp);
-        }
-
-        // Touch/mouse fallback
-        function onStart(e){
-          dragging = true;
-          startX = getX(e);
-          dragX = 0;
-          document.addEventListener('touchmove', onMove, {passive:false});
-          document.addEventListener('mousemove', onMove);
-          document.addEventListener('touchend', onEnd);
-          document.addEventListener('mouseup', onEnd);
-        }
-        function onMove(e){
-          if(!dragging) return;
-          dragX = getX(e) - startX;
-          track.style.transition = 'none';
-          const pct = (dragX / track.clientWidth) * 100;
-          track.style.transform = `translateX(calc(${i * -100}% + ${pct}%))`;
-          e.preventDefault?.(); // keep horizontal swipe active on iOS
-        }
-        function onEnd(){
-          track.style.transition = '';
-          const threshold = track.clientWidth * 0.15;
-          if (Math.abs(dragX) > threshold){
-            if (dragX < 0) nextSlide(); else prevSlide();
-          } else {
-            update();
-          }
-          dragging = false;
-          document.removeEventListener('touchmove', onMove);
-          document.removeEventListener('mousemove', onMove);
-          document.removeEventListener('touchend', onEnd);
-          document.removeEventListener('mouseup', onEnd);
-        }
-        function getX(e){ return (e.touches && e.touches[0]?.clientX) ?? e.clientX; }
-
-        update();
-      }
-
-      carousels.forEach(attachPointer);
+      const root=document.documentElement;
+      const btn=document.getElementById('themeBtn');
+      const saved=localStorage.getItem('dh-theme');
+      if(saved) root.setAttribute('data-theme', saved);
+      btn.textContent = (root.getAttribute('data-theme')==='light') ? '🌙' : '☀️';
+      btn.addEventListener('click', ()=>{
+        const cur=root.getAttribute('data-theme')||'dark';
+        const next=cur==='dark'?'light':'dark';
+        root.setAttribute('data-theme', next);
+        localStorage.setItem('dh-theme', next);
+        btn.textContent = next==='light' ? '🌙' : '☀️';
+      });
     })();
 
-    // === Additions: Accessible Before/After slider ===
+    // (Optional) Before/After slider hook — keep if you add the BA section later
     (function(el){
       if(!el) return;
       const r=el.querySelector('input[type=range]'),
@@ -588,31 +334,6 @@
       });
       update(50);
     })(document.getElementById('ba1'));
-    // === /Additions ===
   </script>
-
-  <!-- === Additions: Structured data using your on-page content === -->
-  <script type="application/ld+json">
-  [{
-    "@context":"https://schema.org",
-    "@type":"LocalBusiness",
-    "name":"DuraHaus Painting & Construction",
-    "image":"/assets/stock-hero.webp",
-    "telephone":"+1-513-668-4382",
-    "address":{"@type":"PostalAddress","addressRegion":"OH","addressCountry":"US"},
-    "areaServed":["Butler County","Hamilton County","Warren County"],
-    "url":"./index.html"
-  },{
-    "@context":"https://schema.org",
-    "@type":"FAQPage",
-    "mainEntity":[
-      {"@type":"Question","name":"Do you offer free estimates?","acceptedAnswer":{"@type":"Answer","text":"Yes. We can visit on-site within 48 hours in most cases and provide a written, itemized quote."}},
-      {"@type":"Question","name":"How soon can you start?","acceptedAnswer":{"@type":"Answer","text":"Scheduling depends on scope and season. Smaller interior projects can often begin within 1–2 weeks."}},
-      {"@type":"Question","name":"What materials do you use?","acceptedAnswer":{"@type":"Answer","text":"We spec pro-grade primers, enamels, and exterior coatings matched to each substrate for durability and finish quality."}},
-      {"@type":"Question","name":"Are you insured and do you provide a warranty?","acceptedAnswer":{"@type":"Answer","text":"Yes—fully insured. We include a workmanship warranty with every project. Details are listed on your written quote."}}
-    ]
-  }]
-  </script>
-  <!-- === /Additions === -->
 </body>
 </html>
