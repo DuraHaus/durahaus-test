@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>About — DuraHaus Painting & Construction</title>
+<link rel="canonical" href="./about.html">
+<meta name="theme-color" content="#0a0a0a" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+<style>
+:root{--bg:#0a0a0a;--panel:#101010;--ink:#fff;--muted:#bdbdbd;--line:#1a1a1a;--max:1120px;--r:14px;--gap:24px;--brand:#fff}
+:root[data-theme="light"]{--bg:#f7f7f9;--panel:#fff;--ink:#0b0d10;--muted:#606772;--line:#e7eaf0;--brand:#111823}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 system-ui,-apple-system,Segoe UI,Roboto,Arial}
+a{text-decoration:none;color:inherit}img{display:block;max-width:100%;height:auto;background:#0d0d0d}
+.container{max-width:var(--max);margin:0 auto;padding:0 20px}
+header{position:sticky;top:0;z-index:50;background:rgba(10,10,10,.92);backdrop-filter:saturate(140%) blur(8px);border-bottom:1px solid var(--line)}
+:root[data-theme="light"] header{background:rgba(250,250,252,.85)}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:12px 0}
+.brand img{height:56px}
+.navlinks{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+.pill{padding:.5rem .8rem;border:1px solid var(--line);border-radius:999px;font-size:14px}
+.pill--solid{background:var(--brand);color:var(--bg);border-color:var(--brand);font-weight:700}
+.toggle{padding:.5rem .8rem;border:1px solid var(--line);border-radius:999px;background:transparent}
+h1{font-size:clamp(30px,6vw,44px);margin:20px 0 10px}
+.grid{display:grid;gap:var(--gap)}@media(min-width:900px){.grid--2{grid-template-columns:1.15fr .85fr}}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
+.card .pad{padding:14px}
+.badge{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:.3rem .6rem;font-size:12px;color:var(--muted)}
+footer{border-top:1px solid var(--line);margin-top:2rem}.foot{padding:1.2rem 0}.muted{color:var(--muted)}
+label{display:block;margin:.6rem 0 .25rem}
+input,textarea{width:100%;padding:.7rem;border-radius:10px;border:1px solid var(--line);background:var(--panel);color:var(--ink)}
+textarea{min-height:120px;resize:vertical}
+</style>
+</head>
+<body>
+<header>
+  <div class="container nav">
+    <a class="brand" href="index.html"><img src="assets/durahaus-logo.svg" alt="DuraHaus logo"></a>
+    <nav class="navlinks">
+      <a class="pill" href="services.html">Services</a>
+      <a class="pill" href="projects.html">Projects</a>
+      <a class="pill" href="products.html">Products</a>
+      <a class="pill" href="about.html" aria-current="page">About</a>
+      <a class="pill pill--solid" href="quote.html">Get a Quote</a>
+      <button id="themeBtn" class="toggle" type="button">🌙</button>
+    </nav>
+  </div>
+</header>
+
+<main class="container">
+  <h1>Meet the owner</h1>
+  <div class="grid grid--2">
+    <div class="card"><img src="assets/stock-interior.webp" alt="DuraHaus work"></div>
+    <div class="card"><div class="pad">
+      <p>Hi, I’m Jay. DuraHaus is about craftsmanship, straight talk, and leaving your place cleaner than we found it. If you want a smooth process and a finish that looks great up close, we’d love to help.</p>
+      <p><span class="badge">Written workmanship warranty</span> <span class="badge">Fully insured</span> <span class="badge">★★★★★ Google rated</span></p>
+      <p><a class="pill pill--solid" href="quote.html">Request a Quote</a></p>
+    </div></div>
+  </div>
+
+  <section style="margin-top:1.6rem">
+    <h2>Why DuraHaus</h2>
+    <div class="grid">
+      <div class="card"><div class="pad"><strong>Prep makes the paint.</strong><br><span class="muted">Repairs and surface prep get most of our time. That’s how finishes last.</span></div></div>
+      <div class="card"><div class="pad"><strong>Clear communication.</strong><br><span class="muted">You’ll know what’s happening each day, and we’ll flag surprises early.</span></div></div>
+      <div class="card"><div class="pad"><strong>Clean jobsites.</strong><br><span class="muted">Protection, tidy edges, and careful cleanup are non-negotiable.</span></div></div>
+    </div>
+  </section>
+
+  <section style="margin-top:1.6rem">
+    <h2>Say hello</h2>
+    <div class="card"><div class="pad">
+      <form action="mailto:durahaus.solutions@gmail.com" method="post" enctype="text/plain">
+        <label for="name">Name</label><input id="name" name="Name" required>
+        <label for="email">Email</label><input id="email" name="Email" type="email" required>
+        <label for="msg">Message</label><textarea id="msg" name="Message" placeholder="Tell us about your project…"></textarea>
+        <div style="margin-top:.8rem;display:flex;gap:10px;flex-wrap:wrap">
+          <button class="pill pill--solid" type="submit">Send</button>
+          <a class="pill" href="tel:+15136684382">Or call 513-668-4382</a>
+        </div>
+      </form>
+    </div></div>
+  </section>
+</main>
+
+<footer>
+  <div class="container foot"><small class="muted">© <span id="y"></span> DuraHaus Painting & Construction.</small></div>
+</footer>
+
+<script>
+document.getElementById('y').textContent=new Date().getFullYear();
+(function(){const r=document.documentElement,b=document.getElementById('themeBtn');const s=localStorage.getItem('dh-theme');if(s)r.setAttribute('data-theme',s);b.textContent=(r.getAttribute('data-theme')==='light')?'🌙':'☀️';b.addEventListener('click',()=>{const cur=r.getAttribute('data-theme')||'dark',next=cur==='dark'?'light':'dark';r.setAttribute('data-theme',next);localStorage.setItem('dh-theme',next);b.textContent=next==='light'?'🌙':'☀️';});})();
+</script>
+</body>
+</html>
