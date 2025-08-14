@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Projects — DuraHaus Painting & Construction</title>
+<link rel="canonical" href="./projects.html">
+<meta name="theme-color" content="#0a0a0a" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+<style>
+:root{--bg:#0a0a0a;--panel:#101010;--ink:#fff;--muted:#bdbdbd;--line:#1a1a1a;--max:1120px;--r:14px;--gap:24px;--brand:#fff}
+:root[data-theme="light"]{--bg:#f7f7f9;--panel:#fff;--ink:#0b0d10;--muted:#606772;--line:#e7eaf0;--brand:#111823}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 system-ui,-apple-system,Segoe UI,Roboto,Arial}
+a{text-decoration:none;color:inherit}img{display:block;max-width:100%;height:auto;background:#0d0d0d}
+.container{max-width:var(--max);margin:0 auto;padding:0 20px}
+header{position:sticky;top:0;z-index:50;background:rgba(10,10,10,.92);backdrop-filter:saturate(140%) blur(8px);border-bottom:1px solid var(--line)}
+:root[data-theme="light"] header{background:rgba(250,250,252,.85)}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:12px 0}
+.brand{display:flex;gap:14px;align-items:center}.brand img{height:56px}
+.navlinks{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+.pill{padding:.5rem .8rem;border:1px solid var(--line);border-radius:999px;font-size:14px}
+.pill--solid{background:var(--brand);color:var(--bg);border-color:var(--brand);font-weight:700}
+.toggle{padding:.5rem .8rem;border:1px solid var(--line);border-radius:999px;background:transparent}
+h1{font-size:clamp(30px,6vw,44px);margin:20px 0 10px}
+.grid{display:grid;gap:var(--gap)}@media(min-width:900px){.grid--3{grid-template-columns:repeat(3,1fr)}}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
+.card .pad{padding:12px}
+.badge{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:.3rem .6rem;font-size:12px;color:var(--muted)}
+footer{border-top:1px solid var(--line);margin-top:2rem}.foot{padding:1.2rem 0}.muted{color:var(--muted)}
+/* simple before/after */
+.ba{position:relative;border-top:1px solid var(--line)}
+.ba .after{position:absolute;inset:0;overflow:hidden}
+.ba .after img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;clip-path:inset(0 0 0 50%)}
+.ba input{position:absolute;inset:0;opacity:0}
+.ba .handle{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:40px;height:40px;border-radius:50%;display:grid;place-items:center;background:var(--panel);border:1px solid var(--line)}
+</style>
+</head>
+<body>
+<header>
+  <div class="container nav">
+    <a class="brand" href="index.html"><img src="assets/durahaus-logo.svg" alt="DuraHaus logo"></a>
+    <nav class="navlinks">
+      <a class="pill" href="services.html">Services</a>
+      <a class="pill" href="projects.html" aria-current="page">Projects</a>
+      <a class="pill" href="products.html">Products</a>
+      <a class="pill" href="about.html">About</a>
+      <a class="pill pill--solid" href="quote.html">Get a Quote</a>
+      <button id="themeBtn" class="toggle" type="button">🌙</button>
+    </nav>
+  </div>
+</header>
+
+<main class="container">
+  <h1>Recent work</h1>
+  <p class="muted">A few snapshots—ask if you want a reference local to your neighborhood.</p>
+
+  <section class="grid grid--3">
+    <article class="card">
+      <img src="assets/stock-interior.webp" alt="Interior repaint">
+      <div class="pad"><strong>Whole-home interior repaint</strong><br><span class="badge">West Chester</span></div>
+    </article>
+    <article class="card">
+      <img src="assets/stock-cabinets.webp" alt="Cabinet refinishing">
+      <div class="pad"><strong>Cabinet refinishing</strong><br><span class="badge">Mason</span></div>
+    </article>
+    <article class="card">
+      <img src="assets/stock-exterior.webp" alt="Exterior repaint">
+      <div class="pad"><strong>Exterior refresh</strong><br><span class="badge">Blue Ash</span></div>
+    </article>
+
+    <!-- simple before/after using available assets as demo -->
+    <article class="card">
+      <div class="ba" id="ba1">
+        <img src="assets/stock-interior.webp" alt="Before">
+        <div class="after"><img src="assets/stock-exterior.webp" alt="After"></div>
+        <div class="handle">↔</div>
+        <input type="range" min="0" max="100" value="50" aria-label="Reveal after image">
+      </div>
+      <div class="pad"><strong>Before & After</strong><br><span class="muted">Swap with your own pair anytime.</span></div>
+    </article>
+
+    <article class="card">
+      <img src="assets/stock-concrete.webp" alt="Concrete coating">
+      <div class="pad"><strong>Garage floor coating</strong><br><span class="badge">Liberty Township</span></div>
+    </article>
+    <article class="card">
+      <img src="assets/stock-stain.webp" alt="Deck staining">
+      <div class="pad"><strong>Deck stain & rails</strong><br><span class="badge">Loveland</span></div>
+    </article>
+  </section>
+
+  <section style="margin-top:1.8rem">
+    <div class="card"><div class="pad" style="display:flex;gap:10px;flex-wrap:wrap;align-items:center;justify-content:space-between">
+      <div><strong>Want a specific example?</strong><br><span class="muted">Tell us your neighborhood and style—we’ll share a matching project.</span></div>
+      <a class="pill pill--solid" href="quote.html">Ask for examples</a>
+    </div></div>
+  </section>
+</main>
+
+<footer>
+  <div class="container foot"><small class="muted">© <span id="y"></span> DuraHaus Painting & Construction.</small></div>
+</footer>
+
+<script>
+document.getElementById('y').textContent=new Date().getFullYear();
+(function(){const r=document.documentElement,b=document.getElementById('themeBtn');const s=localStorage.getItem('dh-theme');if(s)r.setAttribute('data-theme',s);b.textContent=(r.getAttribute('data-theme')==='light')?'🌙':'☀️';b.addEventListener('click',()=>{const cur=r.getAttribute('data-theme')||'dark',next=cur==='dark'?'light':'dark';r.setAttribute('data-theme',next);localStorage.setItem('dh-theme',next);b.textContent=next==='light'?'🌙':'☀️';});})();
+(function(el){if(!el)return;const r=el.querySelector('input'),a=el.querySelector('.after img'),h=el.querySelector('.handle');function u(v){a.style.clipPath=`inset(0 0 0 ${v}%)`;h.style.left=v+'%'}r.addEventListener('input',e=>u(e.target.value));u(50);})(document.getElementById('ba1'));
+</script>
+</body>
+</html>
