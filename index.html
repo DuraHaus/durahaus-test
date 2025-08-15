@@ -49,7 +49,7 @@
     .brand{display:flex;align-items:center;gap:14px;min-width:0}
     .brand picture{display:block;line-height:0}
     .brand img{height:56px;width:auto;display:block}
-    /* Light mode logo inversion */
+    /* Light mode logo inversion (quick fix) */
     :root[data-theme="light"] .brand img{ filter: invert(1) grayscale(1) brightness(0); }
     .brand .wordmark{font-weight:800;letter-spacing:.03em;white-space:nowrap}
 
@@ -75,6 +75,7 @@
     .hero__media img{width:100%;height:100%;object-fit:cover;opacity:.95;}
     .hero__copy{padding:3rem 0}
     h1{margin:0 0 .6rem;font-size:clamp(32px,5.2vw,56px);line-height:1.05;letter-spacing:-.01em}
+    h2{margin:0 0 .6rem;font-size:clamp(22px,2.2vw,28px)}
     .lead{color:var(--muted);font-size:clamp(16px,1.8vw,19px)}
     .row{display:grid;grid-template-columns:1fr;gap:var(--gap);margin:3rem 0}
     @media (min-width:860px){
@@ -86,7 +87,6 @@
     /* Cards / grids */
     .card{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
     .card .pad{padding:1.1rem}
-    h2{margin:0 0 .6rem;font-size:clamp(22px,2.2vw,28px)}
     p{margin:.25rem 0 0}
     .grid{display:grid;gap:var(--gap);grid-template-columns:1fr}
     @media (min-width:900px){.grid--3{grid-template-columns:repeat(3,1fr)}}
@@ -143,16 +143,28 @@
     .ba input[type=range]{position:absolute;inset:0;opacity:0}
     .ba .handle{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:44px;height:44px;border-radius:50%;display:grid;place-items:center;background:var(--panel);border:1px solid var(--line)}
 
-    /* Color Preview tool */
-    .colorlab .pad{display:grid;gap:14px}
-    .colorlab-wrap{position:relative;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:#0e0e10}
-    .colorlab-wrap img{display:block;width:100%;height:auto;object-fit:cover}
-    .colorlab-wrap .overlay{position:absolute;inset:0;mix-blend-mode:multiply;opacity:.65;pointer-events:none}
-    .controls{display:flex;flex-wrap:wrap;gap:10px}
-    .controls label{display:flex;align-items:center;gap:8px;border:1px solid var(--line);border-radius:10px;padding:.5rem .7rem;background:var(--panel)}
-    .controls input[type="color"]{width:32px;height:32px;border:none;background:transparent;padding:0}
-    .controls input[type="range"]{width:160px}
-    .controls input[type="file"]{max-width:220px}
+    /* === Color Studio: Smart Select === */
+    .colorai .pad{display:grid;gap:14px}
+    .cai-toolbar{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px}
+    .cai-left,.cai-mid,.cai-right{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+    .cai-file{display:flex;align-items:center;gap:8px;border:1px solid var(--line);border-radius:10px;padding:.5rem .7rem;background:var(--panel)}
+    .cai-file input[type=file]{max-width:220px}
+    .cai-mode{display:flex;gap:8px}
+    .cai-tab{border:1px solid var(--line);background:var(--panel);color:var(--ink);padding:.5rem .8rem;border-radius:999px;cursor:pointer}
+    .cai-tab.is-active{background:var(--brand);color:var(--bg);border-color:var(--brand);font-weight:700}
+    .cai-range,label{display:flex;align-items:center;gap:8px;border:1px solid var(--line);border-radius:10px;padding:.4rem .6rem;background:var(--panel)}
+    .cai-range input[type=range]{width:140px}
+    .cai-stage{position:relative;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:#0e0e10}
+    .cai-view{display:block;width:100%;height:auto}
+    .cai-tip{position:absolute;bottom:10px;left:10px;background:rgba(0,0,0,.55);color:#fff;padding:.35rem .55rem;border-radius:8px;font-size:.85rem}
+    :root[data-theme="light"] .cai-tip{background:rgba(0,0,0,.35)}
+    .cai-controls{display:grid;gap:8px}
+    .cai-row{display:flex;gap:8px;align-items:center;flex-wrap:wrap;border:1px solid var(--line);border-radius:10px;padding:.55rem .7rem;background:var(--panel)}
+    .cai-row strong{min-width:160px}
+    .cai-row input[type=color]{width:34px;height:34px;border:none;background:transparent;padding:0}
+    .cai-row input[type=range]{width:160px}
+    .cai-swatches{display:flex;gap:6px}
+    .cai-swatch{width:22px;height:22px;border-radius:6px;border:1px solid var(--line);cursor:pointer}
   </style>
 </head>
 <body>
@@ -255,21 +267,61 @@
       </div>
     </section>
 
-    <!-- Color Preview Tool (keeps users on your site) -->
+    <!-- Color Studio (Smart Select, no pre-made masks) -->
     <section class="container" style="margin-top:2rem">
       <h2>Preview a color in your space</h2>
-      <div class="card colorlab">
+
+      <div class="card colorai">
         <div class="pad">
-          <div class="colorlab-wrap">
-            <img id="roomBase" src="/assets/stock-interior.webp" alt="Room photo for color preview">
-            <div id="roomOverlay" class="overlay" style="background:#8aa6c1;"></div>
+          <div class="cai-toolbar">
+            <div class="cai-left">
+              <label class="cai-file">Use your photo
+                <input type="file" id="caiUpload" accept="image/*">
+              </label>
+              <div class="cai-mode" role="tablist" aria-label="Mode">
+                <button class="cai-tab is-active" data-mode="interior" role="tab" aria-selected="true">Interior</button>
+                <button class="cai-tab" data-mode="exterior" role="tab" aria-selected="false">Exterior</button>
+              </div>
+            </div>
+
+            <div class="cai-mid">
+              <label>Surface
+                <select id="caiSurface">
+                  <option value="walls">Walls</option>
+                  <option value="ceiling">Ceiling</option>
+                  <option value="trim">Trim</option>
+                  <option value="cabinets">Cabinets</option>
+                  <option value="siding">Siding</option>
+                  <option value="fascia">Fascia/Soffits/Gables</option>
+                  <option value="doors">Doors</option>
+                </select>
+              </label>
+              <label>Tolerance
+                <input type="range" id="caiTol" min="5" max="60" value="25">
+              </label>
+              <label>Feather
+                <input type="range" id="caiFeather" min="0" max="8" value="2">
+              </label>
+            </div>
+
+            <div class="cai-right">
+              <button class="pill" id="caiAdd" aria-pressed="true" title="Add selection (A)">Add</button>
+              <button class="pill" id="caiSubtract" aria-pressed="false" title="Subtract selection (S)">Subtract</button>
+              <button class="pill" id="caiUndo" title="Undo (Z)">Undo</button>
+              <label class="cai-range">Overlay
+                <input type="range" id="caiGlobalStrength" min="25" max="100" value="70">
+              </label>
+            </div>
           </div>
-          <div class="controls">
-            <label>Color <input type="color" id="colorPicker" value="#8aa6c1"></label>
-            <label>Strength <input type="range" id="strength" min="0" max="100" value="65"></label>
-            <label>Use your photo <input type="file" id="uploader" accept="image/*"></label>
+
+          <div class="cai-stage">
+            <canvas id="caiView" class="cai-view" aria-label="Color studio canvas"></canvas>
+            <div class="cai-tip">Click the area you want to recolor. Hold <kbd>S</kbd> or toggle “Subtract” to remove parts.</div>
           </div>
-          <small class="muted">Quick visualization only — colors vary by lighting, sheen, and device.</small>
+
+          <div id="caiControls" class="cai-controls"></div>
+
+          <small class="muted">Visualization only — actual results vary by lighting, sheen, and device.</small>
         </div>
       </div>
     </section>
@@ -389,29 +441,333 @@
       update(50);
     })(document.getElementById('ba1'));
 
-    // Color Preview tool
+    /* === Color Studio: Smart Select (LAB flood fill) === */
     (function(){
-      const overlay=document.getElementById('roomOverlay');
-      const base=document.getElementById('roomBase');
-      const picker=document.getElementById('colorPicker');
-      const strength=document.getElementById('strength');
-      const uploader=document.getElementById('uploader');
+      const PRESETS = {
+        interior: {
+          base: "/assets/stock-interior.webp",
+          surfaces: [
+            {key:"walls",   label:"Walls",   color:"#D9D9D9", strength:70},
+            {key:"ceiling", label:"Ceiling", color:"#FFFFFF", strength:55},
+            {key:"trim",    label:"Trim",    color:"#F2F2F2", strength:65},
+            {key:"cabinets",label:"Cabinets",color:"#E6E6E6", strength:70},
+            {key:"doors",   label:"Doors",   color:"#6B7A8F", strength:75},
+          ]
+        },
+        exterior: {
+          base: "/assets/stock-exterior.webp",
+          surfaces: [
+            {key:"siding",  label:"Siding",  color:"#C9CDD1", strength:70},
+            {key:"fascia",  label:"Fascia / Soffits / Gables", color:"#EEEEEE", strength:70},
+            {key:"trim",    label:"Trim",    color:"#EDEDED", strength:65},
+            {key:"doors",   label:"Doors",   color:"#435B71", strength:80},
+          ]
+        }
+      };
+      const SWATCHES = ["#FFFFFF","#F5F5F5","#EDEDED","#D9D9D9","#C9CDD1","#B0B8BF","#8AA6C1","#6B7A8F","#435B71","#2F3E4A","#1D1F22"];
 
-      function setColor(){ overlay.style.backgroundColor = picker.value; }
-      function setStrength(){ overlay.style.opacity = (Number(strength.value)||0)/100; }
+      const cvs = document.getElementById('caiView');
+      const up = document.getElementById('caiUpload');
+      const tabs = document.querySelectorAll('.cai-tab');
+      const surfaceSel = document.getElementById('caiSurface');
+      const tol = document.getElementById('caiTol');
+      const feather = document.getElementById('caiFeather');
+      const btnAdd = document.getElementById('caiAdd');
+      const btnSub = document.getElementById('caiSubtract');
+      const btnUndo = document.getElementById('caiUndo');
+      const globalStrength = document.getElementById('caiGlobalStrength');
+      const controls = document.getElementById('caiControls');
 
-      picker.addEventListener('input', setColor);
-      strength.addEventListener('input', setStrength);
+      let mode = 'interior';
+      let baseImg = new Image();
+      let userBaseURL = null;
+      let w=0,h=0;
+      let ctx = cvs.getContext('2d');
+      let baseCanvas = document.createElement('canvas');
+      let baseCtx = baseCanvas.getContext('2d');
+      const layers = new Map(); // key -> {mask, mctx, history:ImageData[]}
+      const settings = new Map(); // key -> {color,strength}
+      let activeKey = 'walls';
+      let addMode = true;
 
-      uploader.addEventListener('change', (e)=>{
-        const file=e.target.files && e.target.files[0];
-        if(!file) return;
-        const url=URL.createObjectURL(file);
-        base.src=url;
-        base.onload=function(){ URL.revokeObjectURL(url); };
+      function clamp(v,a,b){ return Math.max(a, Math.min(b,v)); }
+      function rgb2xyz(r,g,b){
+        r/=255; g/=255; b/=255;
+        r = r>0.04045 ? ((r+0.055)/1.055)**2.4 : r/12.92;
+        g = g>0.04045 ? ((g+0.055)/1.055)**2.4 : g/12.92;
+        b = b>0.04045 ? ((b+0.055)/1.055)**2.4 : b/12.92;
+        const x = (r*0.4124 + g*0.3576 + b*0.1805)/0.95047;
+        const y = (r*0.2126 + g*0.7152 + b*0.0722)/1.00000;
+        const z = (r*0.0193 + g*0.1192 + b*0.9505)/1.08883;
+        return [x,y,z];
+      }
+      function xyz2lab(x,y,z){
+        function f(t){ return t>0.008856 ? Math.cbrt(t) : (7.787*t + 16/116); }
+        const fx=f(x), fy=f(y), fz=f(z);
+        const L=116*fy-16, a=500*(fx-fy), b=200*(fy-fz);
+        return [L,a,b];
+      }
+      function rgb2lab(r,g,b){ const [x,y,z]=rgb2xyz(r,g,b); return xyz2lab(x,y,z); }
+      function deltaE(lab1, lab2){
+        const dL = lab1[0]-lab2[0], da=lab1[1]-lab2[1], db=lab1[2]-lab2[2];
+        return Math.sqrt(dL*dL+da*da+db*db);
+      }
+
+      function setMode(next){
+        mode = next;
+        tabs.forEach(t=>{
+          const active = t.dataset.mode===mode;
+          t.classList.toggle('is-active', active);
+          t.setAttribute('aria-selected', active?'true':'false');
+        });
+        buildFromPreset();
+      }
+
+      function buildFromPreset(){
+        layers.clear(); settings.clear(); controls.innerHTML="";
+        const preset = PRESETS[mode];
+        if(!userBaseURL){ baseImg.src = preset.base; }
+        preset.surfaces.forEach(s=>{
+          settings.set(s.key, {color:s.color, strength:s.strength});
+          const row = document.createElement('div');
+          row.className = 'cai-row';
+          row.innerHTML = `
+            <strong>${s.label}</strong>
+            <input type="color" value="${s.color}" data-key="${s.key}" aria-label="${s.label} color">
+            <label>Strength <input type="range" min="0" max="100" value="${s.strength}" data-strength="${s.key}"></label>
+            <div class="cai-swatches">
+              ${SWATCHES.map(c=>`<button class="cai-swatch" type="button" data-key="${s.key}" data-color="${c}" title="${c}" style="background:${c}"></button>`).join('')}
+            </div>
+          `;
+          controls.appendChild(row);
+        });
+        surfaceSel.innerHTML = preset.surfaces.map(s=>`<option value="${s.key}">${s.label}</option>`).join('');
+        activeKey = preset.surfaces[0].key;
+        surfaceSel.value = activeKey;
+        if (w && h) initMasks();
+        render();
+      }
+
+      function initMasks(){
+        settings.forEach((_, key)=>{
+          const mask = document.createElement('canvas');
+          mask.width = w; mask.height = h;
+          const mctx = mask.getContext('2d');
+          layers.set(key, {mask, mctx, history:[]});
+        });
+      }
+
+      function fitCanvasTo(img){
+        const maxW = cvs.parentElement.clientWidth;
+        const ratio = img.width / img.height;
+        const dispW = Math.min(maxW, img.width);
+        const dispH = Math.round(dispW / ratio);
+        w = img.width; h = img.height;
+        cvs.width = dispW; cvs.height = dispH;
+        baseCanvas.width = w; baseCanvas.height = h;
+        baseCtx.drawImage(img, 0, 0, w, h);
+        if(layers.size===0) initMasks();
+        render();
+      }
+
+      function drawSurface(key){
+        const L = layers.get(key);
+        if(!L) return;
+        const {mask} = L;
+        const {color, strength} = settings.get(key);
+        const temp = document.createElement('canvas');
+        temp.width = w; temp.height = h;
+        const tctx = temp.getContext('2d');
+        tctx.fillStyle = color;
+        tctx.globalAlpha = clamp((strength/100)*(globalStrength.value/100), 0, 1);
+        tctx.fillRect(0,0,w,h);
+        tctx.globalCompositeOperation = 'destination-in';
+        tctx.drawImage(mask,0,0);
+        ctx.save();
+        ctx.globalCompositeOperation = 'multiply';
+        ctx.drawImage(temp, 0, 0, w, h, 0, 0, cvs.width, cvs.height);
+        ctx.restore();
+      }
+
+      function render(){
+        ctx.clearRect(0,0,cvs.width,cvs.height);
+        ctx.drawImage(baseCanvas, 0, 0, w, h, 0, 0, cvs.width, cvs.height);
+        settings.forEach((_, key)=> drawSurface(key));
+      }
+
+      function selectAt(xDisp, yDisp){
+        if(!w||!h) return;
+        const scaleX = w / cvs.width;
+        const scaleY = h / cvs.height;
+        const x = Math.floor(xDisp * scaleX);
+        const y = Math.floor(yDisp * scaleY);
+
+        const src = baseCtx.getImageData(0,0,w,h);
+        const data = src.data;
+        const idx0 = (y*w + x)*4;
+        const seed = [data[idx0], data[idx0+1], data[idx0+2]];
+        const seedLab = rgb2lab(seed[0], seed[1], seed[2]);
+        const thr = Number(tol.value);
+
+        const stack = [[x,y]];
+        const visited = new Uint8Array(w*h);
+        const sel = new Uint8ClampedArray(w*h);
+        const dirs = [[1,0],[-1,0],[0,1],[0,-1]];
+        while(stack.length){
+          const [cx,cy] = stack.pop();
+          if(cx<0||cy<0||cx>=w||cy>=h) continue;
+          const i = cy*w + cx;
+          if(visited[i]) continue;
+          visited[i]=1;
+          const di = i*4;
+          const lab = rgb2lab(data[di], data[di+1], data[di+2]);
+          if(deltaE(lab, seedLab) <= thr){
+            sel[i]=255;
+            for(const d of dirs) stack.push([cx+d[0], cy+d[1]]);
+          }
+        }
+
+        const f = Number(feather.value);
+        let mask = sel;
+        if(f>0){
+          mask = boxBlur(mask, w, h, f);
+        }
+
+        const layer = layers.get(activeKey);
+        snapshot(layer);
+        const mimg = layer.mctx.getImageData(0,0,w,h);
+        for(let i=0;i<w*h;i++){
+          const a = mimg.data[i*4+3];
+          const m = mask[i];
+          mimg.data[i*4+3] = addMode ? clamp(a + m, 0, 255) : clamp(a - m, 0, 255);
+        }
+        layer.mctx.putImageData(mimg,0,0);
+        render();
+      }
+
+      function boxBlur(mask, w, h, r){
+        let out = mask.slice(0);
+        const passes = Math.max(1, Math.min(3, Math.round(r/2)));
+        for(let p=0;p<passes;p++){
+          out = blur1D(out, w, h, Math.max(1,r));
+          out = blur1D(out, h, w, Math.max(1,r), true);
+        }
+        return out;
+      }
+      function blur1D(buf, w, h, r, transpose=false){
+        const out = new Uint8ClampedArray(w*h);
+        const win = r*2+1;
+        for(let y=0;y<h;y++){
+          let sum=0;
+          for(let x=0;x<win && x<w;x++){
+            const xi = transpose ? (x*h + y) : (y*w + x);
+            sum += buf[xi];
+          }
+          for(let x=0;x<w;x++){
+            const li = x-r-1, ri = x+r;
+            if(li>=0){
+              const idx = transpose ? (li*h + y) : (y*w + li);
+              sum -= buf[idx];
+            }
+            if(ri<w){
+              const idx = transpose ? (ri*h + y) : (y*w + ri);
+              sum += buf[idx];
+            }
+            const oi = transpose ? (x*h + y) : (y*w + x);
+            out[oi] = Math.round(sum / Math.min(win, w));
+          }
+        }
+        return out;
+      }
+
+      function snapshot(layer){
+        try{
+          const snap = layer.mctx.getImageData(0,0,w,h);
+          layer.history.push(snap);
+          if(layer.history.length>20) layer.history.shift();
+        }catch(e){}
+      }
+      function undoLayer(key){
+        const layer = layers.get(key);
+        const last = layer.history.pop();
+        if(last){
+          layer.mctx.putImageData(last,0,0);
+          render();
+        }
+      }
+
+      cvs.addEventListener('click', (e)=>{
+        const rect = cvs.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        selectAt(x,y);
+      });
+      document.addEventListener('keydown', (e)=>{
+        if(e.key==='s' || e.key==='S'){ addMode=false; btnSub.ariaPressed="true"; btnAdd.ariaPressed="false"; }
+        if(e.key==='a' || e.key==='A'){ addMode=true; btnAdd.ariaPressed="true"; btnSub.ariaPressed="false"; }
+        if(e.key==='z' || e.key==='Z'){ undoLayer(activeKey); }
       });
 
-      setColor(); setStrength();
+      btnAdd.addEventListener('click', ()=>{ addMode=true; btnAdd.ariaPressed="true"; btnSub.ariaPressed="false"; });
+      btnSub.addEventListener('click', ()=>{ addMode=false; btnSub.ariaPressed="true"; btnAdd.ariaPressed="false"; });
+      btnUndo.addEventListener('click', ()=> undoLayer(activeKey));
+      surfaceSel.addEventListener('change', ()=> activeKey = surfaceSel.value);
+      globalStrength.addEventListener('input', render);
+
+      controls.addEventListener('input', (e)=>{
+        const colorEl = e.target.closest('input[type="color"]');
+        const rngEl = e.target.closest('input[type="range"]');
+        if(colorEl){
+          const key = colorEl.dataset.key;
+          settings.get(key).color = colorEl.value;
+          render();
+        }
+        if(rngEl && rngEl.dataset.strength){
+          const key = rngEl.dataset.strength;
+          settings.get(key).strength = Number(rngEl.value);
+          render();
+        }
+      });
+      controls.addEventListener('click', (e)=>{
+        const sw = e.target.closest('cai-swatch') || e.target.closest('.cai-swatch');
+        if(sw){
+          const key = sw.dataset.key, c = sw.dataset.color;
+          const input = controls.querySelector(`input[type="color"][data-key="${key}"]`);
+          input.value = c;
+          settings.get(key).color = c;
+          render();
+        }
+      });
+
+      up.addEventListener('change', (e)=>{
+        const f = e.target.files && e.target.files[0];
+        if(!f) return;
+        const url = URL.createObjectURL(f);
+        userBaseURL = url;
+        const img = new Image();
+        img.onload = ()=>{
+          baseImg = img;
+          fitCanvasTo(baseImg);
+          URL.revokeObjectURL(url);
+        };
+        img.src = url;
+      });
+
+      tabs.forEach(t=> t.addEventListener('click', ()=>{
+        setMode(t.dataset.mode);
+      }));
+
+      function boot(){
+        baseImg.crossOrigin = "anonymous";
+        baseImg.onload = ()=>{ fitCanvasTo(baseImg); };
+        baseImg.src = PRESETS[mode].base;
+        buildFromPreset();
+        window.addEventListener('resize', ()=>{
+          if(!w||!h) return;
+          fitCanvasTo(baseImg);
+        });
+      }
+      boot();
     })();
   </script>
 </body>
