@@ -22,10 +22,9 @@
     :root{
       --bg:#0a0a0a; --panel:#101010; --ink:#ffffff; --muted:#bdbdbd;
       --line:#1a1a1a; --max:1120px; --r:14px; --gap:28px;
-      --brand:#ffffff;
-      --focus:2px dotted #8bb6ff;
+      --brand:#ffffff; --focus:2px dotted #8bb6ff;
     }
-    /* Light theme when toggled */
+    /* Light theme */
     :root[data-theme="light"]{
       --bg:#f7f7f9; --panel:#ffffff; --ink:#0b0d10; --muted:#606772;
       --line:#e7eaf0; --brand:#111823; --focus:2px dotted #1a73e8;
@@ -47,10 +46,10 @@
       backdrop-filter:saturate(140%) blur(8px);border-bottom:1px solid var(--line)}
     :root[data-theme="light"] header{background:rgba(250,250,252,.85)}
     .nav{display:flex;align-items:center;gap:32px;padding:12px 0}
-    .brand{display:flex;align-items:center;gap:14px;min-width:0;margin-right:auto} /* pushes the navlinks to the right */
+    .brand{display:flex;align-items:center;gap:14px;min-width:0;margin-right:auto}
     .brand picture{display:block;line-height:0}
     .brand img{height:56px;width:auto;display:block}
-    /* Quick fix: invert white logo in light mode */
+    /* invert white logo in light mode */
     :root[data-theme="light"] .brand img{ filter: invert(1) grayscale(1) brightness(0); }
     .brand .wordmark{font-weight:800;letter-spacing:.03em;white-space:nowrap}
 
@@ -93,18 +92,14 @@
     @media (min-width:900px){.grid--3{grid-template-columns:repeat(3,1fr)}}
     @media (min-width:960px){.grid--4{grid-template-columns:repeat(4,1fr)}}
 
-    /* Why */
-    .why{margin:3rem auto 0}
-    .why .cols{display:grid;gap:var(--gap)}
-    @media (min-width:900px){.why .cols{grid-template-columns:repeat(4,1fr)}}
-    .why .tile{border:1px solid var(--line);border-radius:var(--r);padding:1.2rem;background:var(--panel)}
-    .why h3{margin:.1rem 0 .35rem;font-size:1.1rem}
-
-    /* Steps/System */
+    /* Combined Why + System */
+    .ws{display:grid;gap:var(--gap)}
+    @media (min-width:960px){.ws{grid-template-columns:1.1fr .9fr}}
+    .ws .tile{border:1px solid var(--line);border-radius:var(--r);padding:1.2rem;background:var(--panel)}
     .steps{display:grid;gap:var(--gap)}
     @media (min-width:900px){.steps{grid-template-columns:repeat(5,1fr)}}
     .step{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:1rem}
-    .step b, .step h3{display:block;margin-bottom:.35rem}
+    .step h3{margin:.1rem 0 .35rem;font-size:1.05rem}
 
     /* FAQ (minimal style) */
     .faq{margin:3rem auto}
@@ -117,7 +112,7 @@
     /* CTA band */
     .band{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;padding:1.2rem;border:1px solid var(--line);border-radius:var(--r);background:var(--panel)}
 
-    /* Pre-footer (stamp + mini nav) */
+    /* Pre-footer */
     .prefooter{margin:3rem auto 1.5rem;display:flex;gap:22px;align-items:center;justify-content:space-between;flex-wrap:wrap}
     .prefooter .stampwrap{display:flex;align-items:center;gap:14px}
     .prefooter img{width:128px;height:auto;opacity:.95;filter:invert(1) brightness(1.6);background:transparent}
@@ -132,7 +127,7 @@
     .foot{display:grid;gap:18px;align-items:center;padding:1.2rem 0;grid-template-columns:1fr}
     small{color:var(--muted)}
 
-    /* Contact strip (above footer) */
+    /* Contact strip */
     .contactbar{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:#0e0e10}
     :root[data-theme="light"] .contactbar{background:#f0f2f6}
     .contactbar .row{display:flex;gap:16px;align-items:center;justify-content:flex-start;flex-wrap:wrap;margin:0;padding:14px 0}
@@ -213,74 +208,57 @@
       </div>
     </section>
 
-    <!-- WHY CHOOSE -->
-    <section class="container why" aria-labelledby="why">
-      <h2 id="why">Why homeowners choose DuraHaus</h2>
-      <div class="cols">
-        <div class="tile">
-          <h3>Durability & protection, first.</h3>
-          <p class="muted">We spec systems that defend your home from moisture, UV, and wear — so the finish looks better and lasts longer.</p>
+    <!-- COMBINED: Why DuraHaus + Our System -->
+    <section class="container" style="margin-top:2rem">
+      <div class="ws">
+        <!-- Left: Why choose us (benefits) -->
+        <div>
+          <h2>Why homeowners choose DuraHaus</h2>
+          <div class="tile" style="margin-top:12px">
+            <h3 style="margin:.1rem 0 .35rem">Durability & protection, first.</h3>
+            <p class="muted">We specify systems that defend against moisture, UV, and wear—so finishes look better and last longer.</p>
+          </div>
+          <div class="tile" style="margin-top:12px">
+            <h3 style="margin:.1rem 0 .35rem">On-time, clear communication.</h3>
+            <p class="muted">Defined start dates, daily updates, and tidy sites. You always know what’s next.</p>
+          </div>
+          <div class="tile" style="margin-top:12px">
+            <h3 style="margin:.1rem 0 .35rem">Skilled craftsmanship.</h3>
+            <p class="muted">Repairs done right, clean lines, consistent film builds, and manufacturer-matched products.</p>
+          </div>
+          <div class="tile" style="margin-top:12px">
+            <h3 style="margin:.1rem 0 .35rem">Workmanship warranty.</h3>
+            <p class="muted">A written workmanship warranty comes with every project. Details are listed on your quote.</p>
+          </div>
         </div>
-        <div class="tile">
-          <h3>On-time scheduling.</h3>
-          <p class="muted">Clear start dates, daily updates, and a predictable finish.</p>
-        </div>
-        <div class="tile">
-          <h3>Skilled craftsmanship.</h3>
-          <p class="muted">Experienced technicians, clean lines, and consistent film builds for a premium result.</p>
-        </div>
-        <div class="tile">
-          <h3>Written workmanship warranty.</h3>
-          <p class="muted">Included with every project. Details are on your quote.</p>
-        </div>
-      </div>
-    </section>
 
-    <!-- The DuraHaus System (service-agnostic) -->
-    <section class="container" style="margin-top:2rem; margin-bottom:0;">
-      <h2>The DuraHaus System</h2>
-      <p class="lead" style="margin-top:.5rem; max-width:720px;">
-        Every surface is different. Our step-by-step process makes sure paint, sealants, drywall, and coatings
-        last longer, look sharper, and protect your home the right way.
-      </p>
-
-      <div class="steps" style="margin-top:2rem;">
-        <div class="step">
-          <h3>DuraSpec</h3>
-          <p class="muted">We inspect surfaces, exposure, and goals to choose the right products and system.</p>
+        <!-- Right: The DuraHaus System (simple, detailed) -->
+        <div>
+          <h2>The DuraHaus System</h2>
+          <p class="muted" style="margin:.2rem 0 1rem">One framework for paint, sealants, drywall, and coatings.</p>
+          <div class="steps">
+            <div class="step">
+              <h3>DuraSpec</h3>
+              <p class="muted">We inspect surfaces, exposure, and your goals to choose the right products and system.</p>
+            </div>
+            <div class="step">
+              <h3>DuraPrep</h3>
+              <p class="muted">Repair, sand, clean, mask, and control dust so coatings bond and stay.</p>
+            </div>
+            <div class="step">
+              <h3>DuraSeal</h3>
+              <p class="muted">Seal joints and penetrations with the correct sealant or membrane.</p>
+            </div>
+            <div class="step">
+              <h3>DuraCoat</h3>
+              <p class="muted">Prime and finish with paints, enamels, stains, or concrete systems matched to the surface.</p>
+            </div>
+            <div class="step">
+              <h3>DuraCare</h3>
+              <p class="muted">Final walkthrough, documentation, and care tips + workmanship warranty.</p>
+            </div>
+          </div>
         </div>
-        <div class="step">
-          <h3>DuraPrep</h3>
-          <p class="muted">Repair, sand, clean, mask, and control dust so coatings bond and stay.</p>
-        </div>
-        <div class="step">
-          <h3>DuraSeal</h3>
-          <p class="muted">Seal joints and penetrations with the correct sealant or membrane.</p>
-        </div>
-        <div class="step">
-          <h3>DuraCoat</h3>
-          <p class="muted">Prime and finish with paints, enamels, stains, or concrete systems matched to the surface.</p>
-        </div>
-        <div class="step">
-          <h3>DuraCare</h3>
-          <p class="muted">Final walkthrough, documentation, and care tips + workmanship warranty.</p>
-        </div>
-      </div>
-
-      <!-- Quick mapping tiles to show breadth -->
-      <div class="grid grid--3" style="margin-top:1.2rem">
-        <div class="card"><div class="pad">
-          <b>Interiors & Drywall</b>
-          <p class="muted">Patch & skim • caulk • bonding primers • washable topcoats.</p>
-        </div></div>
-        <div class="card"><div class="pad">
-          <b>Exteriors & Sealants</b>
-          <p class="muted">Joint sealing • elastomerics • masonry stains • UV-tough finishes.</p>
-        </div></div>
-        <div class="card"><div class="pad">
-          <b>Cabinets & Concrete</b>
-          <p class="muted">Degrease/etch • epoxy/urethane floors • cabinet enamels.</p>
-        </div></div>
       </div>
     </section>
 
