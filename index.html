@@ -7,7 +7,7 @@
   <meta name="description" content="Interior & exterior painting, cabinets, stain, concrete coatings, drywall and sealing. Clean, on-time, built to perform.">
   <link rel="preload" as="image" href="/assets/stock-hero.webp">
 
-  <!-- (light SEO polish) -->
+  <!-- light SEO polish -->
   <link rel="canonical" href="./index.html">
   <meta name="theme-color" content="#0a0a0a" media="(prefers-color-scheme: dark)">
   <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
@@ -24,13 +24,13 @@
       --line:#1a1a1a; --max:1120px; --r:14px; --gap:28px;
       --brand:#ffffff; --focus:2px dotted #8bb6ff;
     }
-    /* Light theme */
     :root[data-theme="light"]{
       --bg:#f7f7f9; --panel:#ffffff; --ink:#0b0d10; --muted:#606772;
       --line:#e7eaf0; --brand:#111823; --focus:2px dotted #1a73e8;
     }
 
-    *{box-sizing:border-box} html,body{height:100%}
+    *{box-sizing:border-box}
+    html,body{height:100%}
     body{margin:0;background:var(--bg);color:var(--ink);
       font:16px/1.55 ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;
       -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;}
@@ -38,41 +38,40 @@
     img{display:block;width:100%;height:auto;background:#0d0d0d}
     .brand img{background:transparent!important}
     .container{max-width:var(--max);margin:0 auto;padding:0 20px}
-    .muted{color:var(--muted)}
     :focus-visible{outline:var(--focus);outline-offset:2px;border-radius:10px}
 
     /* Header */
     header{position:sticky;top:0;z-index:50;background:rgba(10,10,10,.92);
       backdrop-filter:saturate(140%) blur(8px);border-bottom:1px solid var(--line)}
     :root[data-theme="light"] header{background:rgba(250,250,252,.85)}
-    .nav{display:flex;align-items:center;gap:32px;padding:12px 0}
-    .brand{display:flex;align-items:center;gap:14px;min-width:0;margin-right:auto}
+    .nav{display:flex;align-items:center;justify-content:space-between;gap:22px;padding:12px 0}
+    .brand{display:flex;align-items:center;gap:14px;min-width:0;margin-right:28px} /* extra space away from pills */
     .brand picture{display:block;line-height:0}
-    .brand img{height:56px;width:auto;display:block}
-    /* invert white logo in light mode */
-    :root[data-theme="light"] .brand img{ filter: invert(1) grayscale(1) brightness(0); }
+    .brand img{height:62px;width:auto;display:block}      /* bigger logo */
+    :root[data-theme="light"] .brand img{filter: invert(1) grayscale(1) brightness(0);} /* quick invert in light mode */
     .brand .wordmark{font-weight:800;letter-spacing:.03em;white-space:nowrap}
 
-    .navlinks{display:flex;gap:14px;align-items:center;flex-wrap:wrap;margin-left:auto}
-    .pill{padding:.6rem .95rem;border:1px solid var(--line);border-radius:999px;font-size:15px}
+    .navlinks{display:flex;gap:8px;align-items:center;flex-wrap:wrap} /* tighter gap between pills */
+    .pill{padding:.42rem .75rem;border:1px solid var(--line);border-radius:999px;font-size:13.5px} /* more compact */
     .pill--solid{background:var(--brand);color:var(--bg);border-color:var(--brand);font-weight:700}
     .pill--ghost{background:transparent}
-    .iconbtn{display:inline-flex;align-items:center;justify-content:center;width:42px;height:42px;border:1px solid var(--line);border-radius:999px}
+    .iconbtn{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border:1px solid var(--line);border-radius:999px}
     .iconbtn svg{width:18px;height:18px;fill:currentColor}
-    .toggle{padding:.6rem .9rem;border:1px solid var(--line);border-radius:999px;background:transparent}
+    .toggle{padding:.42rem .7rem;border:1px solid var(--line);border-radius:999px;background:transparent}
 
-    @media (max-width:600px){
+    @media (max-width:640px){
       .nav{padding:10px 0}
-      .brand img{height:44px}
-      .pill{font-size:13px;padding:.5rem .8rem}
+      .brand img{height:48px}
+      .pill{font-size:13px;padding:.4rem .65rem}
       .iconbtn{width:38px;height:38px}
+      .brand{margin-right:16px}
     }
 
     /* Hero */
     .hero{display:grid;grid-template-columns:1fr;background:#0c0c0c;border-bottom:1px solid var(--line)}
     :root[data-theme="light"] .hero{background:#ffffff}
     .hero__media{position:relative;aspect-ratio:16/9;max-height:70vh;overflow:hidden}
-    .hero__media img{width:100%;height:100%;object-fit:cover;opacity:.95;}
+    .hero__media img{width:100%;height:100%;object-fit:cover;opacity:.95}
     .hero__copy{padding:3rem 0}
     h1{margin:0 0 .6rem;font-size:clamp(32px,5.2vw,56px);line-height:1.05;letter-spacing:-.01em}
     h2{margin:0 0 .6rem;font-size:clamp(22px,2.2vw,28px)}
@@ -92,50 +91,15 @@
     @media (min-width:900px){.grid--3{grid-template-columns:repeat(3,1fr)}}
     @media (min-width:960px){.grid--4{grid-template-columns:repeat(4,1fr)}}
 
-    /* Combined Why + System */
-    .ws{display:grid;gap:var(--gap)}
-    @media (min-width:960px){.ws{grid-template-columns:1.1fr .9fr}}
-    .ws .tile{border:1px solid var(--line);border-radius:var(--r);padding:1.2rem;background:var(--panel)}
-    .steps{display:grid;gap:var(--gap)}
-    @media (min-width:900px){.steps{grid-template-columns:repeat(5,1fr)}}
+    /* Combined System + Why */
+    .system{margin:2rem auto}
+    .sys-cols{display:grid;gap:var(--gap)}
+    @media (min-width:900px){.sys-cols{grid-template-columns:1.2fr .8fr}}
     .step{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:1rem}
-    .step h3{margin:.1rem 0 .35rem;font-size:1.05rem}
-
-    /* FAQ (minimal style) */
-    .faq{margin:3rem auto}
-    .faq details{border:none;background:transparent;padding:0}
-    .faq details+details{margin-top:10px}
-    .faq summary{cursor:pointer;list-style:none;font-weight:700;padding:.35rem 0}
-    .faq summary::-webkit-details-marker{display:none}
-    .faq .a{color:var(--muted);margin:.3rem 0 0}
-
-    /* CTA band */
-    .band{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;padding:1.2rem;border:1px solid var(--line);border-radius:var(--r);background:var(--panel)}
-
-    /* Pre-footer */
-    .prefooter{margin:3rem auto 1.5rem;display:flex;gap:22px;align-items:center;justify-content:space-between;flex-wrap:wrap}
-    .prefooter .stampwrap{display:flex;align-items:center;gap:14px}
-    .prefooter img{width:128px;height:auto;opacity:.95;filter:invert(1) brightness(1.6);background:transparent}
-    .prefooter .menu{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
-    @media (max-width:720px){
-      .prefooter{justify-content:center;text-align:center}
-      .prefooter .menu{justify-content:center}
-    }
-
-    /* Footer */
-    footer{border-top:1px solid var(--line);margin-top:2rem}
-    .foot{display:grid;gap:18px;align-items:center;padding:1.2rem 0;grid-template-columns:1fr}
-    small{color:var(--muted)}
-
-    /* Contact strip */
-    .contactbar{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:#0e0e10}
-    :root[data-theme="light"] .contactbar{background:#f0f2f6}
-    .contactbar .row{display:flex;gap:16px;align-items:center;justify-content:flex-start;flex-wrap:wrap;margin:0;padding:14px 0}
-    .contactbar a{display:inline-flex;align-items:center;gap:8px;color:#d9d9db;font-size:15px}
-    :root[data-theme="light"] .contactbar a{color:#1b1f28}
-    .contactbar a:hover{color:#fff}
-    :root[data-theme="light"] .contactbar a:hover{color:#000}
-    .contactbar svg{width:20px;height:20px;fill:currentColor}
+    .step b{display:block;margin-bottom:.35rem}
+    .reasons{display:grid;gap:12px}
+    .reason{border:1px solid var(--line);border-radius:var(--r);padding:1rem;background:var(--panel)}
+    .muted{color:var(--muted)}
 
     /* Before/After slider */
     .ba{position:relative;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:#0e0e10}
@@ -144,6 +108,32 @@
     .ba .after img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;clip-path:inset(0 0 0 50%)}
     .ba input[type=range]{position:absolute;inset:0;opacity:0}
     .ba .handle{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:44px;height:44px;border-radius:50%;display:grid;place-items:center;background:var(--panel);border:1px solid var(--line)}
+
+    /* Service areas + helper */
+    .area-chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:.5rem}
+    .chip{border:1px solid var(--line);border-radius:999px;padding:.45rem .75rem;background:transparent;font-size:.95rem}
+
+    .helper{display:grid;gap:var(--gap)}
+    @media (min-width:900px){.helper{grid-template-columns:repeat(3,1fr)}}
+    .helper .card p{color:var(--muted)}
+
+    /* Footer & contact bar */
+    .prefooter{margin:3rem auto 1.5rem;display:flex;gap:22px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+    .prefooter .stampwrap{display:flex;align-items:center;gap:14px}
+    .prefooter img{width:128px;height:auto;opacity:.95;filter:invert(1) brightness(1.6);background:transparent}
+    .prefooter .menu{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+    @media (max-width:720px){.prefooter{justify-content:center;text-align:center}.prefooter .menu{justify-content:center}}
+    footer{border-top:1px solid var(--line);margin-top:2rem}
+    .foot{display:grid;gap:18px;align-items:center;padding:1.2rem 0;grid-template-columns:1fr}
+    small{color:var(--muted)}
+    .contactbar{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:#0e0e10}
+    :root[data-theme="light"] .contactbar{background:#f0f2f6}
+    .contactbar .row{display:flex;gap:16px;align-items:center;justify-content:flex-start;flex-wrap:wrap;margin:0;padding:14px 0}
+    .contactbar a{display:inline-flex;align-items:center;gap:8px;color:#d9d9db;font-size:15px}
+    :root[data-theme="light"] .contactbar a{color:#1b1f28}
+    .contactbar a:hover{color:#fff}
+    :root[data-theme="light"] .contactbar a:hover{color:#000}
+    .contactbar svg{width:20px;height:20px;fill:currentColor}
   </style>
 </head>
 <body>
@@ -199,7 +189,7 @@
       <div>
         <h2>Protecting What’s Built. <br>Enhancing What’s Seen.</h2>
         <p class="lead">
-          At DuraHaus that is our mission. We supply customers with specialized skills and knowledge in Interior/Exterior Painting, Cabinetry Finishes, Staining & Wood Finishes, Surface-Protecting Coatings, Concrete Coatings, Drywall Repair, Interior/Exterior Sealing and more.
+          At DuraHaus our mission is simple: durable protection and a finish that looks great up close. We combine solid prep, proven coatings, and tidy jobsites to deliver results that last — indoors and out.
         </p>
         <div class="stack" style="margin-top:1rem">
           <a class="pill pill--solid" href="/about.html">About</a>
@@ -208,56 +198,28 @@
       </div>
     </section>
 
-    <!-- COMBINED: Why DuraHaus + Our System -->
-    <section class="container" style="margin-top:2rem">
-      <div class="ws">
-        <!-- Left: Why choose us (benefits) -->
-        <div>
-          <h2>Why homeowners choose DuraHaus</h2>
-          <div class="tile" style="margin-top:12px">
-            <h3 style="margin:.1rem 0 .35rem">Durability & protection, first.</h3>
-            <p class="muted">We specify systems that defend against moisture, UV, and wear—so finishes look better and last longer.</p>
-          </div>
-          <div class="tile" style="margin-top:12px">
-            <h3 style="margin:.1rem 0 .35rem">On-time, clear communication.</h3>
-            <p class="muted">Defined start dates, daily updates, and tidy sites. You always know what’s next.</p>
-          </div>
-          <div class="tile" style="margin-top:12px">
-            <h3 style="margin:.1rem 0 .35rem">Skilled craftsmanship.</h3>
-            <p class="muted">Repairs done right, clean lines, consistent film builds, and manufacturer-matched products.</p>
-          </div>
-          <div class="tile" style="margin-top:12px">
-            <h3 style="margin:.1rem 0 .35rem">Workmanship warranty.</h3>
-            <p class="muted">A written workmanship warranty comes with every project. Details are listed on your quote.</p>
-          </div>
+    <!-- Combined: DuraHaus Method + Why Choose -->
+    <section class="container system" aria-labelledby="method">
+      <h2 id="method">The DuraHaus Method</h2>
+      <div class="sys-cols">
+        <!-- Method -->
+        <div class="grid">
+          <div class="step"><b>1) DuraSpec — Assess & specify</b>
+            <span class="muted">We evaluate each substrate (wood, drywall, masonry, metal) and match primers/topcoats for adhesion, protection, and longevity.</span></div>
+          <div class="step"><b>2) DuraPrep — Protect & prepare</b>
+            <span class="muted">Masking and site protection, repairs, sanding, caulking, patching, and surface cleaning for a stable base.</span></div>
+          <div class="step"><b>3) DuraCoat — Apply the system</b>
+            <span class="muted">Pro-grade primers, enamels, stains, sealants, and specialty coatings applied to spec for a consistent, durable finish.</span></div>
+          <div class="step"><b>4) DuraCheck — Walkthrough & warranty</b>
+            <span class="muted">Joint walkthrough, touch-ups, care guidance, and a written workmanship warranty with every project.</span></div>
         </div>
 
-        <!-- Right: The DuraHaus System (simple, detailed) -->
-        <div>
-          <h2>The DuraHaus System</h2>
-          <p class="muted" style="margin:.2rem 0 1rem">One framework for paint, sealants, drywall, and coatings.</p>
-          <div class="steps">
-            <div class="step">
-              <h3>DuraSpec</h3>
-              <p class="muted">We inspect surfaces, exposure, and your goals to choose the right products and system.</p>
-            </div>
-            <div class="step">
-              <h3>DuraPrep</h3>
-              <p class="muted">Repair, sand, clean, mask, and control dust so coatings bond and stay.</p>
-            </div>
-            <div class="step">
-              <h3>DuraSeal</h3>
-              <p class="muted">Seal joints and penetrations with the correct sealant or membrane.</p>
-            </div>
-            <div class="step">
-              <h3>DuraCoat</h3>
-              <p class="muted">Prime and finish with paints, enamels, stains, or concrete systems matched to the surface.</p>
-            </div>
-            <div class="step">
-              <h3>DuraCare</h3>
-              <p class="muted">Final walkthrough, documentation, and care tips + workmanship warranty.</p>
-            </div>
-          </div>
+        <!-- Why choose -->
+        <div class="reasons">
+          <div class="reason"><b>Durability-first approach.</b><br><span class="muted">The right system for the surface and the environment — not just the color.</span></div>
+          <div class="reason"><b>On-time & tidy.</b><br><span class="muted">Clear dates, daily updates, floor & fixture protection, and end-of-day cleanup.</span></div>
+          <div class="reason"><b>Clear, itemized pricing.</b><br><span class="muted">Transparent scopes and options so you can prioritize what matters.</span></div>
+          <div class="reason"><b>Written workmanship warranty.</b><br><span class="muted">Included on every job. Details are on your quote.</span></div>
         </div>
       </div>
     </section>
@@ -270,15 +232,15 @@
         <article class="card"><img src="/assets/stock-exterior.webp" alt="Exterior painting"><div class="pad"><h3 style="margin:0 0 .25rem">Exterior Painting</h3><p>Siding, brick, trim.</p></div></article>
         <article class="card"><img src="/assets/stock-cabinets.webp" alt="Cabinet refinishing"><div class="pad"><h3 style="margin:0 0 .25rem">Cabinet Refinishing</h3><p>Factory-smooth enamels.</p></div></article>
         <article class="card"><img src="/assets/stock-concrete.webp" alt="Concrete coatings"><div class="pad"><h3 style="margin:0 0 .25rem">Concrete Coatings</h3><p>Garages, patios, basements.</p></div></article>
-        <article class="card"><img src="/assets/stock-drywall.webp" alt="Drywall repair"><div class="pad"><h3 style="margin:0 0 .25rem">Drywall & Repair</h3><p>Patching & resurfacing.</p></div></article>
-        <article class="card"><img src="/assets/stock-stain.webp" alt="Staining & wood care"><div class="pad"><h3 style="margin:0 0 .25rem">Stain & Wood Care</h3><p>Decks, doors, rails.</p></div></article>
+        <article class="card"><img src="/assets/stock-drywall.webp" alt="Drywall & repair"><div class="pad"><h3 style="margin:0 0 .25rem">Drywall & Repair</h3><p>Patching & resurfacing.</p></div></article>
+        <article class="card"><img src="/assets/stock-stain.webp" alt="Stain & wood care"><div class="pad"><h3 style="margin:0 0 .25rem">Stain & Wood Care</h3><p>Decks, doors, rails.</p></div></article>
         <article class="card"><img src="/assets/stock-caulking.webp" alt="Caulking & sealants"><div class="pad"><h3 style="margin:0 0 .25rem">Caulking & Sealants</h3><p>Weatherproof, clean lines.</p></div></article>
         <article class="card"><img src="/assets/stock-metal.webp" alt="Metal painting"><div class="pad"><h3 style="margin:0 0 .25rem">Metal Painting</h3><p>Rails, doors, equipment.</p></div></article>
         <article class="card"><img src="/assets/stock-waterproof.webp" alt="Waterproof coatings"><div class="pad"><h3 style="margin:0 0 .25rem">Waterproof Coatings</h3><p>Protective membranes & sealers.</p></div></article>
       </div>
     </section>
 
-    <!-- OUR WORK SPEAKS FOR ITSELF (Before/After) -->
+    <!-- Our work (Before/After) -->
     <section class="container" style="margin-top:2rem">
       <h2>Our work speaks for itself</h2>
       <div class="ba" id="ba1">
@@ -293,31 +255,55 @@
     <section class="container" style="margin-top:2rem">
       <h2>Service areas</h2>
       <p class="lead">Based in Cincinnati — serving surrounding communities.</p>
-      <div class="grid grid--3">
-        <div class="card"><div class="pad">Cincinnati • West Chester • Mason</div></div>
-        <div class="card"><div class="pad">Blue Ash • Montgomery • Loveland</div></div>
-        <div class="card"><div class="pad">Madeira • Anderson Twp. • Colerain Twp.</div></div>
-        <div class="card"><div class="pad">Monroe • Maineville • Sharonville</div></div>
-        <div class="card"><div class="pad">Liberty Twp. • Fairfield • Hamilton</div></div>
-        <div class="card"><div class="pad">Norwood • Milford • Wyoming</div></div>
+      <div class="area-chips">
+        <a class="chip" href="/projects.html#cincinnati">Cincinnati</a>
+        <a class="chip" href="/projects.html#west-chester">West Chester</a>
+        <a class="chip" href="/projects.html#mason">Mason</a>
+        <a class="chip" href="/projects.html#blue-ash">Blue Ash</a>
+        <a class="chip" href="/projects.html#montgomery">Montgomery</a>
+        <a class="chip" href="/projects.html#loveland">Loveland</a>
+        <a class="chip" href="/projects.html#madeira">Madeira</a>
+        <a class="chip" href="/projects.html#anderson">Anderson Twp.</a>
+        <a class="chip" href="/projects.html#colerain">Colerain Twp.</a>
+        <a class="chip" href="/projects.html#monroe">Monroe</a>
+        <a class="chip" href="/projects.html#maineville">Maineville</a>
       </div>
     </section>
 
-    <!-- FAQ (minimal) -->
-    <section class="container faq">
+    <!-- FAQ (simple details style you preferred) -->
+    <section class="container" style="margin-top:2rem">
       <h2 style="margin-bottom:.6rem">FAQs</h2>
       <details><summary>Do you offer free estimates?</summary>
-        <div class="a">Yes. We can visit on-site within 48 hours in most cases and provide a written, itemized quote.</div>
+        <p class="muted">Yes. We can visit on-site within 48 hours in most cases and provide a written, itemized quote.</p>
       </details>
       <details><summary>How soon can you start?</summary>
-        <div class="a">Scheduling depends on scope and season. Smaller interior projects can often begin within 1–2 weeks.</div>
+        <p class="muted">Scheduling depends on scope and season. Smaller interior projects can often begin within 1–2 weeks.</p>
       </details>
       <details><summary>What materials do you use?</summary>
-        <div class="a">We spec pro-grade primers, enamels, and exterior coatings matched to each substrate for durability and finish quality.</div>
+        <p class="muted">We spec pro-grade primers, enamels, and exterior coatings matched to each substrate for durability and finish quality.</p>
       </details>
       <details><summary>Are you insured and do you provide a warranty?</summary>
-        <div class="a">Yes—fully insured. We include a written workmanship warranty with every project. Full details are listed on your quote.</div>
+        <p class="muted">Yes—fully insured. Every project includes a written workmanship warranty. Details are on your quote.</p>
       </details>
+    </section>
+
+    <!-- Bottom helper cards to route -->
+    <section class="container" style="margin-top:2rem">
+      <h2>What would you like to do next?</h2>
+      <div class="helper">
+        <a class="card" href="/services.html">
+          <img src="/assets/stock-interior.webp" alt="">
+          <div class="pad"><b>Browse services</b><p>Interior, exterior, cabinets, coatings, drywall, and more.</p></div>
+        </a>
+        <a class="card" href="/projects.html">
+          <img src="/assets/stock-exterior.webp" alt="">
+          <div class="pad"><b>See recent projects</b><p>Real results from homes and businesses near you.</p></div>
+        </a>
+        <a class="card" href="/quote.html">
+          <img src="/assets/stock-concrete.webp" alt="">
+          <div class="pad"><b>Get a fast estimate</b><p>Send photos or book a walkthrough — we’ll take it from there.</p></div>
+        </a>
+      </div>
     </section>
 
     <!-- CTA band -->
@@ -325,7 +311,7 @@
       <div class="band">
         <div>
           <h2 style="margin:.2rem 0">Ready to start?</h2>
-          <p class="muted" style="margin:.2rem 0">Fast estimates, professional sites, and results that hold up.</p>
+          <p style="margin:.2rem 0;color:var(--muted)">Fast estimates, professional sites, and results that hold up.</p>
         </div>
         <div class="stack">
           <a class="pill pill--solid" href="/quote.html">Request a Quote</a>
@@ -336,7 +322,7 @@
       </div>
     </section>
 
-    <!-- Pre-footer: stamp + mini nav -->
+    <!-- Pre-footer mini nav -->
     <div class="container prefooter">
       <div class="stampwrap">
         <img src="/assets/seal-white.PNG" alt="DuraHaus stamp (white)">
