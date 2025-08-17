@@ -47,11 +47,9 @@
 
     .brand{display:flex;align-items:center;gap:14px;min-width:0;flex-shrink:0}
     .brand picture{display:block;line-height:0}
-    /* Bigger logo (desktop) */
     .brand img{height:88px;width:auto;display:block}
     @media (max-width:900px){ .brand img{height:72px} }
     @media (max-width:600px){ .brand img{height:60px} }
-    /* Invert white logo on light mode if needed */
     :root[data-theme="light"] .brand img{ filter: invert(1) grayscale(1) brightness(0); }
     .brand .wordmark{font-weight:800;letter-spacing:.03em;white-space:nowrap}
 
@@ -94,6 +92,9 @@
     @media (min-width:900px){.grid--3{grid-template-columns:repeat(3,1fr)}}
     @media (min-width:960px){.grid--4{grid-template-columns:repeat(4,1fr)}}
     .card h3{margin:0 0 .25rem}
+    .mini{color:var(--muted);font-size:.95rem;margin-top:.5rem}
+    .mini li{margin:.25rem 0}
+    .mini ul{margin:.25rem 0 0 .9rem;padding:0}
 
     /* Method + Why combined */
     .method{display:grid;gap:var(--gap)}
@@ -237,19 +238,57 @@
       </div>
     </section>
 
-    <!-- What we do -->
+    <!-- What we do (expanded with examples) -->
     <section class="container" style="margin-top:2rem" id="services">
       <h2>What we do</h2>
-      <div class="grid grid--4">
-        <article class="card"><img src="/assets/stock-interior.webp" alt="Interior painting"><div class="pad"><h3>Interior Painting</h3><p>Walls, ceilings, trim, doors; low-odor, dust-controlled.</p></div></article>
-        <article class="card"><img src="/assets/stock-exterior.webp" alt="Exterior painting"><div class="pad"><h3>Exterior Painting</h3><p>Siding, brick, and trim systems that handle Midwest weather.</p></div></article>
-        <article class="card"><img src="/assets/stock-cabinets.webp" alt="Cabinet refinishing"><div class="pad"><h3>Cabinet Refinishing</h3><p>Factory-smooth primers and hard-wearing enamels.</p></div></article>
-        <article class="card"><img src="/assets/stock-concrete.webp" alt="Concrete coatings"><div class="pad"><h3>Concrete Coatings</h3><p>Garages, patios, basements—durable and easy to clean.</p></div></article>
-        <article class="card"><img src="/assets/stock-drywall.webp" alt="Drywall repair"><div class="pad"><h3>Drywall & Repair</h3><p>Repairs, resurfacing, paint-ready finishes.</p></div></article>
-        <article class="card"><img src="/assets/stock-stain.webp" alt="Staining & wood care"><div class="pad"><h3>Stain & Wood Care</h3><p>Decks, doors, rails—prepped and finished right.</p></div></article>
-        <article class="card"><img src="/assets/stock-caulking.webp" alt="Caulking & sealants "><div class="pad"><h3>Caulking & Sealants</h3><p>Weatherproof lines, water entry prevention.</p></div></article>
-        <article class="card"><img src="/assets/stock-waterproof.webp" alt="Waterproof coatings"><div class="pad"><h3>Waterproof Coatings</h3><p>Protective membranes & sealers for problem areas.</p></div></article>
-        <article class="card"><img src="/assets/stock-metal.webp" alt="Metal painting"><div class="pad"><h3>Metal Painting</h3><p>Rails, doors, equipment—proper prep and primers.</p></div></article>
+      <div class="grid grid--3">
+        <!-- Interior -->
+        <article class="card">
+          <img src="/assets/stock-interior.webp" alt="Interior painting">
+          <div class="pad">
+            <h3>Interior Painting</h3>
+            <p>Low-odor, dust-controlled, paint-ready results.</p>
+            <ul class="mini">
+              <li>Walls & ceilings</li>
+              <li>Trim, doors & crown</li>
+              <li>Accent walls & feature colors</li>
+              <li>Cabinet refinishing & enameling</li>
+              <li>Drywall repair & texture matching</li>
+            </ul>
+          </div>
+        </article>
+
+        <!-- Exterior -->
+        <article class="card">
+          <img src="/assets/stock-exterior.webp" alt="Exterior painting">
+          <div class="pad">
+            <h3>Exterior Painting</h3>
+            <p>Systems designed for Midwest weather.</p>
+            <ul class="mini">
+              <li>Siding: wood, vinyl, fiber cement</li>
+              <li>Soffits, fascia, gables, shutters & doors</li>
+              <li><b>Masonry coatings & elastomerics</b></li>
+              <li>Decks, fences & pergolas</li>
+              <li>Spot-priming & full prime as needed</li>
+            </ul>
+          </div>
+        </article>
+
+        <!-- Specialty -->
+        <article class="card">
+          <img src="/assets/stock-concrete.webp" alt="Specialty coatings and sealants">
+          <div class="pad">
+            <h3>Specialty & Protective</h3>
+            <p>Durable finishes built to perform.</p>
+            <ul class="mini">
+              <li>Concrete & garage floor coatings</li>
+              <li>Waterproofing & joint sealants</li>
+              <li>Rust-blocking metal coatings</li>
+              <li>Power washing & surface prep</li>
+              <li>Wood restoration (fill/repair/replace)</li>
+            </ul>
+          </div>
+        </article>
       </div>
     </section>
 
@@ -264,31 +303,62 @@
       </div>
     </section>
 
-    <!-- Service areas -->
+    <!-- Service areas (grouped by county) -->
     <section class="container" style="margin-top:2rem" id="areas">
       <h2>Service areas</h2>
-      <p class="lead">Based in Cincinnati—serving surrounding communities.</p>
-      <div class="grid grid--4">
-        <div class="card"><div class="pad">Cincinnati</div></div>
-        <div class="card"><div class="pad">West Chester</div></div>
-        <div class="card"><div class="pad">Mason</div></div>
-        <div class="card"><div class="pad">Blue Ash</div></div>
-        <div class="card"><div class="pad">Montgomery</div></div>
-        <div class="card"><div class="pad">Loveland</div></div>
-        <div class="card"><div class="pad">Madeira</div></div>
-        <div class="card"><div class="pad">Wyoming</div></div>
-        <div class="card"><div class="pad">Milford</div></div>
-        <div class="card"><div class="pad">Liberty Twp.</div></div>
-        <div class="card"><div class="pad">Fairfield</div></div>
-        <div class="card"><div class="pad">Lebanon</div></div>
-        <div class="card"><div class="pad">Monroe</div></div>
-        <div class="card"><div class="pad">Maineville</div></div>
-        <div class="card"><div class="pad">Sharonville</div></div>
-        <div class="card"><div class="pad">Anderson Twp.</div></div>
+      <p class="lead">Local crews. Faster scheduling. Familiar with regional materials and weather.</p>
+
+      <div class="grid grid--3">
+        <div class="card">
+          <div class="pad">
+            <h3>Butler County</h3>
+            <div class="stack" style="margin-top:.5rem">
+              <span class="chip">West Chester</span>
+              <span class="chip">Hamilton</span>
+              <span class="chip">Fairfield</span>
+              <span class="chip">Middletown</span>
+              <span class="chip">Monroe</span>
+              <span class="chip">Liberty Twp.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="pad">
+            <h3>Hamilton County</h3>
+            <div class="stack" style="margin-top:.5rem">
+              <span class="chip">Cincinnati</span>
+              <span class="chip">Blue Ash</span>
+              <span class="chip">Sharonville</span>
+              <span class="chip">Montgomery</span>
+              <span class="chip">Madeira</span>
+              <span class="chip">Anderson Twp.</span>
+              <span class="chip">Wyoming</span>
+              <span class="chip">Milford</span>
+              <span class="chip">Sharonville</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="pad">
+            <h3>Warren County</h3>
+            <div class="stack" style="margin-top:.5rem">
+              <span class="chip">Mason</span>
+              <span class="chip">Lebanon</span>
+              <span class="chip">Maineville</span>
+              <span class="chip">Loveland</span>
+              <span class="chip">Springboro</span>
+              <span class="chip">Monroe</span>
+            </div>
+          </div>
+        </div>
       </div>
+
+      <p class="lead" style="margin-top:1rem">Not sure if we cover your neighborhood? <a href="/quote.html" class="pill pill--ghost">Ask us — we likely do.</a></p>
     </section>
 
-    <!-- FAQs (simple style) -->
+    <!-- FAQs -->
     <section class="container faq" id="faqs">
       <h2 style="margin-bottom:.6rem">FAQs</h2>
       <details><summary>Do you offer free estimates?</summary>
