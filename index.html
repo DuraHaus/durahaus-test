@@ -1,237 +1,111 @@
 <!doctype html>
-<html lang="en" data-theme="dark">
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>DuraHaus — Professional Painting & Protective Coatings</title>
-  <meta name="description" content="Premium interior & exterior painting, cabinet refinishing, concrete coatings, staining and drywall. Clean, on-time work with materials built to perform.">
-  <link rel="preload" as="image" href="/assets/stock-hero.webp">
-  <link rel="stylesheet" href="styles.css">
-  <script defer src="script.js"></script>
-  <!-- Open Graph -->
-  <meta property="og:title" content="DuraHaus — Professional Painting & Protective Coatings">
-  <meta property="og:description" content="Clean, on-time, built to perform. Cincinnati & surrounding areas.">
-  <meta property="og:type" content="website">
-  <meta property="og:image" content="/assets/stock-hero.webp">
-  <meta name="theme-color" content="#0b0c0d">
-  <!-- Schema.org -->
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@type":"LocalBusiness",
-    "name":"DuraHaus Painting & Construction",
-    "image":"/assets/durahaus-logo-dark.svg",
-    "telephone":"+1-513-668-4382",
-    "email":"durahaus.solutions@gmail.com",
-    "url":"https://durahauspainting.com",
-    "areaServed":[
-      {"@type":"City","name":"Cincinnati"},
-      {"@type":"City","name":"Hamilton"},
-      {"@type":"City","name":"Mason"},
-      {"@type":"City","name":"Middletown"},
-      {"@type":"City","name":"West Chester"}
-    ],
-    "address": {"@type":"PostalAddress", "addressRegion":"OH", "addressCountry":"US"},
-    "sameAs":["https://www.facebook.com/durahaus"]
-  }
-  </script>
+  <title>DuraHaus — Built to Perform</title>
+  <link rel="stylesheet" href="styles_v2.css">
+  <script defer src="script_v2.js"></script>
 </head>
 <body>
-  <!-- Header -->
-  <header class="hdr">
-    <div class="wrap nav">
-      <a class="brand" href="/" aria-label="DuraHaus home">
-        <img id="logo" src="/assets/durahaus-logo-dark.svg"
-             data-src-dark="/assets/durahaus-logo-dark.svg"
-             data-src-light="/assets/durahaus-logo-light.svg"
-             alt="DuraHaus">
-      </a>
-      <div class="spacer"></div>
-      <a class="iconbtn" href="tel:15136684382" aria-label="Call DuraHaus">
-        <svg viewBox="0 0 24 24"><path d="M6.6 10.2c1.2 2.4 3.1 4.3 5.5 5.5l1.8-1.8c.3-.3.7-.4 1.1-.3 1 .3 2 .5 3 .5.6 0 1 .4 1 1v3.1c0 .6-.4 1-1 1C10.3 19.2 4.8 13.7 4.8 6.1c0-.6.4-1 1-1H9c.6 0 1 .4 1 1 0 1 .2 2 .5 3 .1.4 0 .8-.3 1.1l-1.6 2z"/></svg>
-      </a>
-      <button class="iconbtn" id="themeToggle" aria-label="Toggle theme">
-        <svg viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-      </button>
-      <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="drawer">
-        <svg viewBox="0 0 24 24" width="18" height="18"><path fill="currentColor" d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
-        Menu
-      </button>
+  <!-- Sidebar for desktop -->
+  <aside class="sidebar">
+    <div class="brand">
+      <img src="assets/durahaus-logo-light.svg" alt="DuraHaus Logo" class="logo">
+    </div>
+    <nav>
+      <a href="#">Home</a>
+      <a href="#">Services</a>
+      <a href="#">Projects</a>
+      <a href="#">About</a>
+      <a href="#" class="quote-btn">Get a Quote</a>
+    </nav>
+    <button id="theme-toggle">☾</button>
+  </aside>
+
+  <!-- Top bar for mobile -->
+  <header class="mobile-header">
+    <img src="assets/durahaus-logo-light.svg" alt="DuraHaus Logo" class="logo">
+    <div class="mobile-actions">
+      <button id="theme-toggle-mobile">☾</button>
+      <button id="menu-toggle">☰</button>
     </div>
   </header>
 
-  <!-- Drawer -->
-  <aside id="drawer" class="drawer" aria-hidden="true">
-    <div class="shade" data-close></div>
-    <div class="panel" role="menu">
-      <button class="pill" data-close aria-label="Close menu">Close</button>
-      <a href="/services.html" class="pill">Services</a>
-      <a href="/projects.html" class="pill">Projects</a>
-      <a href="/about.html" class="pill">About</a>
-      <a class="pill pill--solid" href="/quote.html">Get a Quote</a>
-      <a href="tel:15136684382" class="pill">Call: 513-668-4382</a>
-    </div>
-  </aside>
-
   <main>
     <!-- Hero -->
-    <section class="hero">
-      <div class="hero-media">
-        <img src="/assets/stock-hero.webp" alt="High-end home exterior in Cincinnati" fetchpriority="high">
-      </div>
-      <div class="wrap hero-copy">
-        <h1>Professional Painting. Clean, On-Time.<br>Protecting What’s Built.</h1>
-        <p class="lede">From interiors to exteriors, cabinets to concrete — we approach every job with care, craftsmanship, and materials built to perform.</p>
-        <div class="cta-row">
-          <a class="btn" href="/quote.html">Get a Quote</a>
-          <a class="btn-ghost" href="/services.html">Explore Services</a>
+    <section class="hero split">
+      <div class="hero-text">
+        <h1>Professional Painting.<br> Clean. On-Time.<br><span class="accent">Built to Perform.</span></h1>
+        <p>From interiors to exteriors, cabinets to concrete — we approach every job with care, craftsmanship, and materials designed for durability. All to make your home more beautiful, more resilient, and better protected against time and weather.</p>
+        <div class="hero-actions">
+          <a href="#" class="btn">Explore Services</a>
+          <a href="#" class="btn dark">Get a Quote</a>
         </div>
       </div>
-    </section>
-
-    <!-- Mission -->
-    <section class="band">
-      <div class="wrap grid band-grid">
-        <img src="/assets/stock-exterior.webp" alt="Exterior detail" loading="lazy">
-        <div>
-          <h2>Protecting What’s Built. <br>Enhancing What’s Seen.</h2>
-          <p class="lede">At DuraHaus that is our mission. We supply customers with specialized skills and knowledge in Interior/Exterior Painting, Cabinetry Finishes, Staining &amp; Wood Finishes, Surface-Protecting Coatings, Concrete Coatings, Drywall Repair, Interior/Exterior Sealing and more.</p>
-          <div class="cta-row" style="margin-top:10px">
-            <a class="btn" href="/about.html">About</a>
-            <a class="btn-ghost" href="tel:15136684382">Call Us</a>
-          </div>
-        </div>
+      <div class="hero-img">
+        <img src="assets/placeholder-hero.webp" alt="Freshly painted home">
       </div>
     </section>
 
-    <!-- Services -->
-    <section class="section">
-      <div class="wrap">
-        <h2 class="section-title">Services</h2>
-        <div class="grid3">
-          <a class="card svc" href="/services.html#interior">
-            <div class="pad">
-              <span class="ico"><svg viewBox="0 0 24 24"><path d="M3 3h18v2H3zm2 4h14v12a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V7zm4 4h8v2H9z"/></svg></span>
-              <h3>Interior Painting</h3>
-              <p>Walls, ceilings, trim, cabinetry — dust-controlled and precise.</p>
-            </div>
-          </a>
-          <a class="card svc" href="/services.html#exterior">
-            <div class="pad">
-              <span class="ico"><svg viewBox="0 0 24 24"><path d="M4 10l8-6 8 6v10a2 2 0 0 1-2 2h-4v-6H10v6H6a2 2 0 0 1-2-2z"/></svg></span>
-              <h3>Exterior Painting</h3>
-              <p>Premium prep and coatings that handle Midwest weather.</p>
-            </div>
-          </a>
-          <a class="card svc" href="/services.html#concrete">
-            <div class="pad">
-              <span class="ico"><svg viewBox="0 0 24 24"><path d="M3 17h18v2H3zM3 5h18v8H3z"/></svg></span>
-              <h3>Concrete Coatings</h3>
-              <p>Garage, patios, basements — durable and easy to clean.</p>
-            </div>
-          </a>
-        </div>
+    <!-- Service marquee -->
+    <div class="marquee">
+      <span>Interior Painting • Exterior Painting • Cabinet Refinishing • Concrete Coatings • Staining • Drywall • Waterproofing</span>
+    </div>
+
+    <!-- Service matrix -->
+    <section class="services">
+      <h2>Our Services</h2>
+      <div class="grid">
+        <div class="card">🎨 Interior Painting</div>
+        <div class="card">🏠 Exterior Painting</div>
+        <div class="card">🪵 Stain & Finishes</div>
+        <div class="card">🗄 Cabinets</div>
+        <div class="card">🧱 Concrete & Masonry</div>
+        <div class="card">🛠 Drywall & Repair</div>
       </div>
     </section>
 
-    <!-- Showcase -->
-    <section class="section" style="padding-top:0">
-      <div class="wrap">
-        <h2 class="section-title">Recent Work</h2>
-        <div class="showcase">
-          <img src="/assets/stock-interior.webp" alt="Interior finish" loading="lazy">
-          <img src="/assets/stock-exterior.webp" alt="Exterior finish" loading="lazy">
-          <img src="/assets/stock-cabinets.webp" alt="Cabinet finish" loading="lazy">
-          <img src="/assets/stock-concrete.webp" alt="Concrete coating" loading="lazy">
-        </div>
+    <!-- Before / After -->
+    <section class="before-after">
+      <h2>See the Difference</h2>
+      <div class="slider">
+        <img src="assets/placeholder-before.webp" alt="Before" class="before">
+        <img src="assets/placeholder-after.webp" alt="After" class="after">
+        <input type="range" min="0" max="100" value="50">
       </div>
     </section>
 
-    <!-- Process -->
-    <section class="section">
-      <div class="wrap">
-        <h2 class="section-title">How We Work</h2>
-        <div class="steps">
-          <div class="step"><p><b>1</b><strong>Walkthrough & Quote.</strong> Scope, surfaces, and schedule dialed in.</p></div>
-          <div class="step"><p><b>2</b><strong>Prep & Protection.</strong> Clean containment, substrate-specific primers.</p></div>
-          <div class="step"><p><b>3</b><strong>Finish & Follow-Up.</strong> Tidy site, final inspection, workmanship warranty.</p></div>
-        </div>
+    <!-- Why DuraHaus -->
+    <section class="why">
+      <h2>Why Choose DuraHaus</h2>
+      <div class="grid">
+        <div class="card"><h3>Durability</h3><p>We use coatings and finishes that last against time and weather.</p></div>
+        <div class="card"><h3>Clean Jobsites</h3><p>Every project is tidy, efficient, and respectful of your home.</p></div>
+        <div class="card"><h3>On-Time</h3><p>We keep to our word with clear timelines and reliable crews.</p></div>
       </div>
     </section>
 
-    <!-- Testimonials -->
-    <section class="section">
-      <div class="wrap">
-        <h2 class="section-title">What Clients Say</h2>
-        <div class="quotes">
-          <blockquote>“Showed up on time, protected every surface, and the finish was flawless.” <cite>— S. Martin</cite></blockquote>
-          <blockquote>“The garage coating looks brand new months later. Worth every penny.” <cite>— T. Alvarez</cite></blockquote>
-          <blockquote>“Clear quote, clean jobsite, and they finished ahead of schedule.” <cite>— J. Rohe</cite></blockquote>
-        </div>
-      </div>
-    </section>
-
-    <!-- Service Area / Trust -->
-    <section class="section" style="padding-top:0">
-      <div class="wrap trust">
-        <p>Serving Butler, Hamilton &amp; Warren Counties • Fully insured • Workmanship warranty</p>
-        <div class="cta-row">
-          <a class="btn" href="/quote.html">Request a Quote</a>
-          <a class="btn-ghost" href="tel:15136684382">Call 513-668-4382</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- FAQs -->
-    <section class="section faqs">
-      <div class="wrap">
-        <h2 class="section-title">FAQs</h2>
-        <details><summary>Do you offer free estimates?</summary>
-          <div class="a">Yes. We can visit on-site within 48 hours in most cases and provide a written, itemized quote.</div>
-        </details>
-        <details><summary>How soon can you start?</summary>
-          <div class="a">Scheduling depends on scope and season. Smaller interior projects can often begin within 1–2 weeks.</div>
-        </details>
-        <details><summary>What materials do you use?</summary>
-          <div class="a">We spec pro-grade primers, enamels, and exterior coatings matched to each substrate for durability and finish quality.</div>
-        </details>
-        <details><summary>Are you insured and do you provide a warranty?</summary>
-          <div class="a">Yes—fully insured. We include a workmanship warranty with every project. Details are listed on your written quote.</div>
-        </details>
-      </div>
-    </section>
-
-    <!-- Contact strip -->
-    <section class="contactbar">
-      <div class="wrap row">
-        <a href="tel:+15136684382" aria-label="Call">
-          <svg viewBox="0 0 24 24" width="20" height="20"><path d="M6.6 10.2c1.2 2.4 3.1 4.3 5.5 5.5l1.8-1.8c.3-.3.7-.4 1.1-.3 1 .3 2 .5 3 .5.6 0 1 .4 1 1v3.1c0 .6-.4 1-1 1C10.3 19.2 4.8 13.7 4.8 6.1c0-.6.4-1 1-1H9c.6 0 1 .4 1 1 0 1 .2 2 .5 3 .1.4 0 .8-.3 1.1l-1.6 2z"/></svg>
-          513-668-4382
-        </a>
-        <a href="mailto:durahaus.solutions@gmail.com" aria-label="Email">
-          <svg viewBox="0 0 24 24" width="20" height="20"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 4-8 5L4 8V6l8 5 8-5v2z"/></svg>
-          durahaus.solutions@gmail.com
-        </a>
-        <a href="https://www.facebook.com/durahaus" target="_blank" rel="noopener" aria-label="Facebook">
-          <svg viewBox="0 0 24 24" width="20" height="20"><path d="M22 12a10 10 0 1 0-11.5 9.9v-7h-2v-3h2V9.6c0-2 1.2-3.1 3-3.1.9 0 1.8.1 1.8.1v2h-1c-1 0-1.3.6-1.3 1.2V12h2.2l-.4 3h-1.8v7A10 10 0 0 0 22 12z"/></svg>
-          Facebook
-        </a>
-        <a href="https://share.google/EBNrz9YGxu5CfbmpO" target="_blank" rel="noopener" aria-label="Google Business Profile">
-          <svg viewBox="0 0 24 24" width="20" height="20"><path d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6a2.5 2.5 0 0 1 0 5z"/></svg>
-          Google
-        </a>
-      </div>
+    <!-- Call to action -->
+    <section class="cta">
+      <h2>Ready to Protect What’s Built?</h2>
+      <a href="#" class="btn big">Request a Quote</a>
     </section>
   </main>
 
-  <!-- Footer -->
-  <footer>
-    <div class="wrap foot">
-      <small>© <span id="y"></span> DuraHaus Painting & Construction. All rights reserved.</small>
+  <!-- Quote modal -->
+  <div id="quote-modal" class="modal hidden">
+    <div class="modal-content">
+      <button class="close">&times;</button>
+      <h2>Request a Quote</h2>
+      <form>
+        <input type="text" placeholder="Name" required>
+        <input type="email" placeholder="Email" required>
+        <input type="tel" placeholder="Phone">
+        <textarea placeholder="Project Details"></textarea>
+        <button type="submit" class="btn dark">Send</button>
+      </form>
     </div>
-  </footer>
-
-  <!-- Floating Quote -->
-  <a class="float-quote" href="/quote.html">Get a Quote</a>
+  </div>
 </body>
 </html>
