@@ -1,128 +1,129 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>DuraHaus — Painting and Construction</title>
-<meta name="description" content="Interior & exterior painting, cabinets, stain, concrete coatings, drywall and sealing. Clean, on-time, built to perform.">
-<link rel="preload" as="image" href="/assets/stock-hero.webp">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>DuraHaus — Painting and Construction</title>
+  <meta name="description" content="Interior & exterior painting, cabinets, stain, concrete coatings, drywall and sealing. Clean, on-time, built to perform.">
+  <link rel="preload" as="image" href="/assets/stock-hero.webp">
 
-<style>
-  :root{
-    --bg:#0a0a0a; --panel:#101010; --ink:#ffffff; --muted:#bdbdbd;
-    --line:#1a1a1a; --max:1120px; --r:14px; --gap:28px;
-    --brand:#ffffff; --accent:#111823;
-  }
-  /* Light theme */
-  :root[data-theme="light"]{
-    --bg:#f7f7f9; --panel:#ffffff; --ink:#0b0d10; --muted:#606772;
-    --line:#e7eaf0; --brand:#111823; --accent:#ffffff;
-  }
+  <style>
+    :root{
+      --bg:#0a0a0a; --panel:#101010; --ink:#ffffff; --muted:#bdbdbd;
+      --line:#1a1a1a; --max:1120px; --r:14px; --gap:28px;
+      --brand:#ffffff; --cta:#0b0d10; --accent:#ffffff;
+    }
+    :root[data-theme="light"]{
+      --bg:#f7f8fa; --panel:#ffffff; --ink:#0b0f14; --muted:#5f6772;
+      --line:#e7ebf0; --brand:#111823; --cta:#111823; --accent:#111823;
+    }
 
-  *{box-sizing:border-box}
-  html,body{height:100%}
-  body{margin:0;background:var(--bg);color:var(--ink);
-    font:16px/1.55 ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;
-    -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;}
-  a{color:inherit;text-decoration:none}
-  img{display:block;width:100%;height:auto;background:#0d0d0d}
-  .container{max-width:var(--max);margin:0 auto;padding:0 20px}
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;background:var(--bg);color:var(--ink);
+      font:16px/1.55 ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;
+      -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
+      display:flex;flex-direction:column;min-height:100dvh;
+    }
+    a{color:inherit;text-decoration:none}
+    img{display:block;width:100%;height:auto;background:#0d0d0d}
+    .container{max-width:var(--max);margin:0 auto;padding:0 20px}
+    :focus-visible{outline:2px dotted #8bb6ff;outline-offset:3px;border-radius:10px}
 
-  /* Header */
-  header{position:sticky;top:0;z-index:1000;background:rgba(10,10,10,.92);
-    backdrop-filter:saturate(140%) blur(8px);border-bottom:1px solid var(--line)}
-  :root[data-theme="light"] header{background:rgba(250,250,252,.9)}
-  .nav{display:flex;align-items:center;gap:14px;padding:10px 0}
-  .brand{display:flex;align-items:center;gap:14px;margin-right:auto}
-  .brand img{height:64px;width:auto}
-  /* In dark mode make dark logo appear light; in light mode show as-is */
-  :root:not([data-theme="light"]) .brand img{filter:invert(1) brightness(1.5)}
-  .header-actions{display:flex;align-items:center;gap:10px}
-  .pill{padding:.55rem .9rem;border:1px solid var(--line);border-radius:999px;font-weight:600}
-  .pill--solid{background:var(--brand);color:var(--bg);border-color:var(--brand)}
-  .pill--ghost{background:transparent}
-  .iconbtn{display:inline-flex;align-items:center;gap:8px;padding:.55rem .9rem;border:1px solid var(--line);border-radius:999px}
-  .iconbtn svg{width:18px;height:18px;fill:currentColor}
-  .toggle{padding:.55rem .85rem;border:1px solid var(--line);border-radius:999px;background:transparent}
+    /* ===== Sticky Header ===== */
+    header{position:sticky;top:0;z-index:1000;background:rgba(10,10,10,.92);backdrop-filter:saturate(140%) blur(8px);border-bottom:1px solid var(--line)}
+    :root[data-theme="light"] header{background:rgba(255,255,255,.88)}
+    .nav{display:flex;align-items:center;justify-content:space-between;padding:10px 0;gap:14px}
+    .brand{display:flex;align-items:center;gap:12px;min-width:0}
+    .brand img{height:64px;width:auto;background:transparent}
+    /* If your light-theme logo is already dark, leave it as-is: */
+    :root[data-theme="light"] .brand img{filter:none}
+    .right{display:flex;align-items:center;gap:10px}
+    .iconbtn{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border:1px solid var(--line);border-radius:999px;background:transparent}
+    .iconbtn svg{width:18px;height:18px;fill:currentColor}
+    .pill{padding:.55rem .9rem;border:1px solid var(--line);border-radius:999px;font-weight:700}
+    .pill--solid{background:var(--accent);color:#fff;border-color:var(--accent)}
+    .menu-pill{display:inline-flex;align-items:center;gap:8px}
+    .menu-pill svg{width:18px;height:18px;fill:currentColor}
 
-  /* Menu dropdown */
-  .menuwrap{position:relative}
-  #menubtn{display:inline-flex;align-items:center;gap:8px}
-  .dropdown{position:absolute;right:0;top:calc(100% + 10px);min-width:260px;background:var(--panel);
-    border:1px solid var(--line);border-radius:14px;box-shadow:0 20px 40px rgba(0,0,0,.25);
-    display:none;padding:10px;z-index:1001}
-  .dropdown.open{display:block}
-  .dropdown a{display:flex;align-items:center;gap:8px;padding:.65rem .7rem;border-radius:10px;border:1px solid var(--line);margin:6px 0}
-  .dropdown .muted{color:var(--muted);font-size:14px;padding:6px 2px 2px}
-  .backdrop{position:fixed;inset:0;background:transparent;display:none;z-index:1000}
-  .backdrop.show{display:block}
+    /* ----- Menu panel ----- */
+    .menu-panel{
+      position:fixed;inset:64px 0 auto 0; /* below header */
+      background:rgba(10,10,10,.98);border-bottom:1px solid var(--line);
+      transform:translateY(-16px);opacity:0;pointer-events:none;
+      transition:opacity .2s ease, transform .2s ease;z-index:1200;
+    }
+    :root[data-theme="light"] .menu-panel{background:rgba(255,255,255,.98)}
+    .menu-open .menu-panel{opacity:1;transform:translateY(0);pointer-events:auto}
+    .menu-grid{display:grid;gap:12px;padding:14px 20px;grid-template-columns:1fr}
+    .menu-grid a{display:flex;align-items:center;justify-content:space-between;border:1px solid var(--line);border-radius:12px;padding:.9rem 1rem;background:var(--panel)}
+    .menu-cta{background:var(--accent)!important;color:#fff!important;border-color:var(--accent)!important}
+    @media (min-width:760px){.menu-grid{grid-template-columns:repeat(2,1fr)}}
 
-  /* Hero */
-  .hero{display:grid;grid-template-columns:1fr;background:#0c0c0c;border-bottom:1px solid var(--line)}
-  :root[data-theme="light"] .hero{background:#ffffff}
-  .hero__media{position:relative;aspect-ratio:16/9;max-height:70vh;overflow:hidden}
-  .hero__media img{width:100%;height:100%;object-fit:cover;opacity:.95;}
-  .hero__copy{padding:3rem 0}
-  h1{margin:0 0 .6rem;font-size:clamp(32px,5.2vw,56px);line-height:1.05;letter-spacing:-.01em}
-  h2{margin:0 0 .4rem;font-size:clamp(22px,2.2vw,28px)}
-  .lead{color:var(--muted);font-size:clamp(16px,1.8vw,19px)}
-  .row{display:grid;grid-template-columns:1fr;gap:var(--gap);margin:3rem 0}
-  @media (min-width:860px){
-    .hero{grid-template-columns:1.05fr .95fr}
-    .hero__copy{padding:4.2rem 0 4rem 2rem}
-    .row{grid-template-columns:1.05fr .95fr;align-items:center}
-  }
+    /* ===== Hero ===== */
+    .hero{display:grid;grid-template-columns:1fr;background:#0c0c0c;border-bottom:1px solid var(--line)}
+    :root[data-theme="light"] .hero{background:#ffffff}
+    .hero__media{position:relative;aspect-ratio:16/9;max-height:70vh;overflow:hidden}
+    .hero__media img{width:100%;height:100%;object-fit:cover;opacity:.96}
+    .hero__copy{padding:2.6rem 0}
+    h1{margin:0 0 .6rem;font-size:clamp(32px,5.2vw,56px);line-height:1.05;letter-spacing:-.01em}
+    h2{margin:0 0 .6rem;font-size:clamp(22px,2.2vw,28px)}
+    .lead{color:var(--muted);font-size:clamp(16px,1.8vw,19px)}
+    @media (min-width:860px){.hero{grid-template-columns:1.05fr .95fr}.hero__copy{padding:4rem 0 4rem 2rem}}
 
-  /* Why it lasts */
-  .why{margin:3rem auto 0}
-  .why .grid{display:grid;gap:12px}
-  @media (min-width:900px){.why .grid{grid-template-columns:repeat(2,1fr)}}
-  .why .point{border:1px solid var(--line);border-radius:12px;background:var(--panel);padding:1rem}
+    /* ===== Combined: How we work + Why it lasts ===== */
+    .why{margin:3rem auto 0}
+    .pillrow{display:grid;gap:12px}
+    @media (min-width:900px){.pillrow{grid-template-columns:repeat(2,1fr)}}
+    .point{border:1px solid var(--line);border-radius:12px;background:var(--panel);padding:1rem}
+    .point b{display:block;margin-bottom:.25rem}
+    .muted{color:var(--muted)}
 
-  /* What we do (text only) */
-  .services{margin:3rem auto 0}
-  .svc-grid{display:grid;gap:12px}
-  @media (min-width:920px){.svc-grid{grid-template-columns:repeat(2,1fr)}}
-  .svc{border:1px solid var(--line);border-radius:12px;background:var(--panel);padding:1rem}
-  .svc h3{margin:.1rem 0 .4rem}
-  .svc ul{margin:.35rem 0 0;padding-left:18px;color:var(--muted)}
-  .svc a{display:inline-block;margin-top:.6rem}
+    /* ===== What we do (text-only cards) ===== */
+    .grid{display:grid;gap:var(--gap);grid-template-columns:1fr}
+    @media (min-width:980px){.grid--3{grid-template-columns:repeat(3,1fr)}}
+    .card{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:1rem}
+    .card h3{margin:.1rem 0 .4rem}
+    .chips{display:flex;flex-wrap:wrap;gap:8px}
+    .chip{border:1px solid var(--line);border-radius:999px;padding:.3rem .6rem;font-size:.95rem}
+    .more{display:inline-block;margin-top:.6rem;text-decoration:underline}
 
-  /* Tips */
-  .tips{display:grid;gap:var(--gap)}
-  @media (min-width:980px){.tips{grid-template-columns:repeat(3,1fr)}}
-  .tip{border:1px solid var(--line);border-radius:var(--r);background:var(--panel);overflow:hidden;display:flex;flex-direction:column}
-  .tip img{aspect-ratio:16/10;object-fit:cover}
-  .tip .pad{padding:1rem}
+    /* ===== Trusted locally ===== */
+    .trust{margin:2.2rem 0;border:1px solid var(--line);border-radius:var(--r);background:var(--panel);padding:1rem;display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+    .trust svg{width:18px;height:18px;fill:currentColor;opacity:.85}
 
-  /* CTA */
-  .band{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;padding:1.2rem;border:1px solid var(--line);border-radius:var(--r);background:var(--panel)}
+    /* ===== Tips ===== */
+    .tips{display:grid;gap:var(--gap)}
+    @media (min-width:980px){.tips{grid-template-columns:repeat(3,1fr)}}
+    .tip{border:1px solid var(--line);border-radius:var(--r);background:var(--panel);padding:1rem}
+    .tip b{display:block;margin-bottom:.25rem}
 
-  /* Pre-footer / contact */
-  .prefooter{margin:3rem auto 1.5rem;display:flex;gap:22px;align-items:center;justify-content:space-between;flex-wrap:wrap}
-  .prefooter img{width:128px;height:auto;opacity:.95;filter:invert(1) brightness(1.6)}
-  .prefooter .menu{display:flex;gap:12px;flex-wrap:wrap}
-  footer{border-top:1px solid var(--line);margin-top:2rem}
-  .foot{display:grid;gap:18px;align-items:center;padding:1.2rem 0}
-  small{color:var(--muted)}
+    /* ===== CTA band ===== */
+    .band{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;padding:1.2rem;border:1px solid var(--line);border-radius:var(--r);background:var(--panel);gap:12px}
+    .pill--ghost{background:transparent}
 
-  /* Contact strip */
-  .contactbar{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:#0e0e10}
-  :root[data-theme="light"] .contactbar{background:#f0f2f6}
-  .contactbar .row{display:flex;gap:16px;align-items:center;flex-wrap:wrap;margin:0;padding:14px 0}
-  .contactbar a{display:inline-flex;align-items:center;gap:8px;color:#d9d9db;font-size:15px}
-  :root[data-theme="light"] .contactbar a{color:#1b1f28}
-  .contactbar a:hover{color:#fff}
-  :root[data-theme="light"] .contactbar a:hover{color:#000}
-  .contactbar svg{width:20px;height:20px;fill:currentColor}
+    /* ===== Pre-footer & footer ===== */
+    .prefooter{margin:3rem auto 1.5rem;display:flex;gap:22px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+    .prefooter img{width:128px;height:auto;opacity:.95;filter:invert(1) brightness(1.6);background:transparent}
+    footer{border-top:1px solid var(--line);margin-top:2rem}
+    .foot{display:grid;gap:18px;align-items:center;padding:1.2rem 0}
 
-  html, body { height:100% } body { min-height:100dvh; display:flex; flex-direction:column } main { flex:1 0 auto }
-</style>
+    /* ===== Contact strip ===== */
+    .contactbar{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:#0e0e10}
+    :root[data-theme="light"] .contactbar{background:#f0f2f6}
+    .contactbar .row{display:flex;gap:16px;align-items:center;flex-wrap:wrap;margin:0;padding:14px 0}
+    .contactbar a{display:inline-flex;align-items:center;gap:8px;color:#d9d9db;font-size:15px}
+    :root[data-theme="light"] .contactbar a{color:#1b1f28}
+    .contactbar a:hover{color:#fff}
+    :root[data-theme="light"] .contactbar a:hover{color:#000}
+    .contactbar svg{width:20px;height:20px;fill:currentColor}
+  </style>
 </head>
 <body>
 
-  <!-- Header -->
-  <header>
+  <!-- ===== Header ===== -->
+  <header id="siteHeader">
     <div class="container nav">
       <a class="brand" href="/" aria-label="DuraHaus home">
         <picture>
@@ -132,223 +133,199 @@
         </picture>
       </a>
 
-      <div class="header-actions">
-        <a class="iconbtn" href="tel:15136684382" aria-label="Call DuraHaus">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.2c1.2 2.4 3.1 4.3 5.5 5.5l1.8-1.8c.3-.3.7-.4 1.1-.3 1 .3 2 .5 3 .5.6 0 1 .4 1 1v3.1c0 .6-.4 1-1 1C10.3 19.2 4.8 13.7 4.8 6.1c0-.6.4-1 1-1H9c.6 0 1 .4 1 1 0 1 .2 2 .5 3 .1.4 0 .8-.3 1.1l-1.6 2z"/></svg>
-          513-668-4382
+      <div class="right">
+        <a class="iconbtn" href="tel:+15136684382" aria-label="Call DuraHaus">
+          <svg viewBox="0 0 24 24"><path d="M6.6 10.2c1.2 2.4 3.1 4.3 5.5 5.5l1.8-1.8c.3-.3.7-.4 1.1-.3 1 .3 2 .5 3 .5.6 0 1 .4 1 1v3.1c0 .6-.4 1-1 1C10.3 19.2 4.8 13.7 4.8 6.1c0-.6.4-1 1-1H9c.6 0 1 .4 1 1 0 1 .2 2 .5 3 .1.4 0 .8-.3 1.1l-1.6 2z"/></svg>
         </a>
-        <button id="themeBtn" class="toggle" type="button" aria-label="Toggle theme">🌙</button>
-
-        <div class="menuwrap">
-          <button id="menubtn" class="pill pill--ghost" type="button" aria-haspopup="true" aria-expanded="false">Menu ▾</button>
-          <div id="menu" class="dropdown" role="menu" aria-label="Site menu">
-            <div class="muted">Browse</div>
-            <a href="/services.html">Services</a>
-            <a href="/projects.html">Projects</a>
-            <a href="/about.html">About</a>
-            <a href="#tips">Tips &amp; insights</a>
-            <a href="#faqs">FAQs</a>
-            <div class="muted">Quick actions</div>
-            <a href="/quote.html" class="pill pill--solid" style="justify-content:center">Get a Quote</a>
-            <a href="tel:15136684382" style="justify-content:center">Call Us</a>
-          </div>
-        </div>
+        <button id="themeBtn" class="iconbtn" type="button" aria-label="Toggle theme">🌙</button>
+        <button id="menuBtn" class="pill menu-pill" type="button" aria-expanded="false" aria-controls="menuPanel">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+          Menu
+        </button>
       </div>
     </div>
-    <div id="menu-backdrop" class="backdrop" hidden></div>
+
+    <!-- Slide-down Menu -->
+    <div id="menuPanel" class="menu-panel" hidden>
+      <nav class="container menu-grid" aria-label="Site">
+        <a href="/services.html">Services<span>→</span></a>
+        <a href="/projects.html">Projects<span>→</span></a>
+        <a href="/about.html">About<span>→</span></a>
+        <a href="#tips">Tips &amp; insights<span>→</span></a>
+        <a href="#faqs">FAQs<span>→</span></a>
+        <a href="/quote.html" class="menu-cta">Get a Quote<span>→</span></a>
+        <a href="tel:+15136684382">Call 513-668-4382<span>→</span></a>
+      </nav>
+    </div>
   </header>
 
   <main>
-    <!-- Hero -->
+
+    <!-- ===== Hero ===== -->
     <section class="hero">
       <div class="hero__media">
         <img src="/assets/stock-hero.webp" alt="Cincinnati high-end home exterior">
       </div>
       <div class="hero__copy container">
         <h1>Professional Painting. Clean, On-Time.<br>Protecting What’s Built.</h1>
-        <p class="lead">
-          From interiors to exteriors, cabinets to concrete — we approach every job with care, craftsmanship, and materials built to perform. All to make your home more beautiful, more durable, and better protected against time and weather.
-        </p>
-        <div class="stack" style="margin-top:1.1rem">
+        <p class="lead">From interiors to exteriors, cabinets to concrete — we approach every job with care, craftsmanship, and materials built to perform. All to make your home more beautiful, more durable, and better protected against time and weather.</p>
+        <div style="margin-top:1.1rem">
           <a class="pill pill--solid" href="/services.html">Explore Services</a>
         </div>
       </div>
     </section>
 
-    <!-- Mission -->
-    <section class="container row">
-      <div class="card">
-        <img src="/assets/stock-exterior.webp" alt="Exterior detail">
-      </div>
-      <div>
-        <h2>Protecting What’s Built. <br>Enhancing What’s Seen.</h2>
-        <p class="lead">
-          At DuraHaus, durability meets design. Interior & exterior paint, cabinet finishes, sealants, drywall, concrete coatings, wood care, and more — specified and applied the right way.
-        </p>
-        <div class="stack" style="margin-top:1rem">
-          <a class="pill pill--solid" href="/about.html">About</a>
-          <a class="pill pill--ghost" href="tel:15136684382">Call Us</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- How we work — and why it lasts -->
+    <!-- ===== How we work + Why it lasts ===== -->
     <section class="container why" aria-labelledby="why">
       <h2 id="why">How we work — and why it lasts</h2>
-      <div class="grid">
-        <div class="point"><b>Right spec, right result.</b><br><span class="muted">We match primers, topcoats, and sealants to wood, masonry, metal, and drywall for adhesion and durability.</span></div>
-        <div class="point"><b>Prep that actually holds.</b><br><span class="muted">Repairs, sanding, cleaning, masking, and adhesion testing — the unglamorous steps that make finishes last.</span></div>
-        <div class="point"><b>Clean, organized sites.</b><br><span class="muted">Protection for floors and fixtures, dust control, and tidy daily wrap-ups.</span></div>
-        <div class="point"><b>On-time scheduling.</b><br><span class="muted">Clear start dates, daily updates, and a predictable finish.</span></div>
-        <div class="point"><b>Quality you can see.</b><br><span class="muted">Straight lines, smooth substrates, even sheen and coverage — the pro difference.</span></div>
-        <div class="point"><b>Walkthrough & warranty.</b><br><span class="muted">Final inspection together plus a written workmanship warranty on every project.</span></div>
+      <div class="pillrow">
+        <div class="point"><b>Right spec, right result.</b><span class="muted"><br>We evaluate each surface (wood, masonry, metal, drywall) and specify primers, topcoats, sealants and systems matched to substrate and conditions.</span></div>
+        <div class="point"><b>Prep that actually holds.</b><span class="muted"><br>Repairs, sanding, cleaning, masking and adhesion testing — the unglamorous steps that make finishes last.</span></div>
+        <div class="point"><b>Clean, organized sites.</b><span class="muted"><br>Protection for floors and fixtures, dust control, and daily tidy wrap-ups.</span></div>
+        <div class="point"><b>On-time scheduling.</b><span class="muted"><br>Clear start dates, daily updates, predictable finish.</span></div>
+        <div class="point"><b>Quality you can see.</b><span class="muted"><br>Straight lines, smooth substrates, even sheen — details that separate pro work from patchwork.</span></div>
+        <div class="point"><b>Walkthrough & warranty.</b><span class="muted"><br>Final inspection together plus a written workmanship warranty on every project.</span></div>
       </div>
     </section>
 
-    <!-- What we do (text only, deeper but concise) -->
-    <section class="container services" aria-labelledby="what">
-      <h2 id="what">What we do</h2>
-      <div class="svc-grid">
-        <div class="svc">
-          <h3>Interior Painting</h3>
-          <ul>
-            <li>Walls & ceilings (matte → flat) • stain sealing • accent walls</li>
-            <li>Trim & doors (enamels) • stair rails • paneling & wainscot</li>
-            <li>Low-dust prep • caulk & patch • color/finish guidance</li>
-          </ul>
-          <a href="/services.html#interior" class="pill pill--ghost">See details →</a>
-        </div>
-        <div class="svc">
-          <h3>Exterior Painting</h3>
-          <ul>
-            <li>Siding systems • brick/metal/wood trim • shutters & entry doors</li>
-            <li>Soffits & fascia • elastomeric joints • masonry coatings</li>
-            <li>Weather-rated primers & UV-stable topcoats</li>
-          </ul>
-          <a href="/services.html#exterior" class="pill pill--ghost">See details →</a>
-        </div>
-        <div class="svc">
-          <h3>Cabinet Refinishing</h3>
-          <ul>
-            <li>Degloss & clean • bonding primer • sprayed enamel finishes</li>
-            <li>Kitchens, islands, vanities, built-ins • hardware fill & adjust</li>
-            <li>Factory-smooth results, durable and washable</li>
-          </ul>
-          <a href="/services.html#cabinets" class="pill pill--ghost">See details →</a>
-        </div>
-        <div class="svc">
-          <h3>Concrete Coatings</h3>
-          <ul>
-            <li>Garages, patios, basements • crack fill • moisture testing</li>
-            <li>High-build/flake systems • abrasion & chemical resistance</li>
-            <li>Non-slip & easy-clean options</li>
-          </ul>
-          <a href="/services.html#concrete" class="pill pill--ghost">See details →</a>
-        </div>
-        <div class="svc">
-          <h3>Drywall & Surface Repair</h3>
-          <ul>
-            <li>Patching • texture match • resurfacing & skims</li>
-            <li>Water-damage repair • blend-outs for invisible fixes</li>
-          </ul>
-          <a href="/services.html#drywall" class="pill pill--ghost">See details →</a>
-        </div>
-        <div class="svc">
-          <h3>Sealants & Waterproofing</h3>
-          <ul>
-            <li>Windows/doors • expansion joints • wet areas</li>
-            <li>Backer rod, joint design, movement-rated sealants</li>
-          </ul>
-          <a href="/services.html#sealants" class="pill pill--ghost">See details →</a>
-        </div>
-        <div class="svc">
-          <h3>Wood Care & Stain</h3>
-          <ul>
-            <li>Decks, doors, rails • clear coats • semi-transparent/solid stain</li>
-            <li>UV protection • prep that preserves grain and color</li>
-          </ul>
-          <a href="/services.html#stain" class="pill pill--ghost">See details →</a>
-        </div>
-        <div class="svc">
-          <h3>Metal Painting</h3>
-          <ul>
-            <li>Rails, doors, equipment • rust treatment</li>
-            <li>DTM & epoxy systems for adhesion and longevity</li>
-          </ul>
-          <a href="/services.html#metal" class="pill pill--ghost">See details →</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- Trusted locally (truthful version) -->
+    <!-- ===== What we do (text only) ===== -->
     <section class="container" style="margin-top:2rem">
-      <div class="card">
-        <div class="pad">
-          <h2 style="margin:0 0 .4rem">Trusted locally.</h2>
-          <p class="muted" style="margin:0">
-            Homeowners refer us to friends and neighbors for careful prep, clean sites, and finishes that last. References available on request.
-          </p>
-        </div>
+      <h2>What we do</h2>
+      <div class="grid grid--3">
+        <article class="card">
+          <h3>Interior Painting</h3>
+          <div class="chips">
+            <span class="chip">Walls (matte/eggshell)</span>
+            <span class="chip">Ceilings (flat)</span>
+            <span class="chip">Trim & doors (enamel)</span>
+            <span class="chip">Accent walls</span>
+            <span class="chip">Stair rails & banisters</span>
+          </div>
+          <a class="more" href="/services.html#interior" aria-label="Interior painting details">View details →</a>
+        </article>
+
+        <article class="card">
+          <h3>Exterior Painting</h3>
+          <div class="chips">
+            <span class="chip">Siding systems</span>
+            <span class="chip">Trim & shutters</span>
+            <span class="chip">Soffits & fascia</span>
+            <span class="chip">Front doors</span>
+            <span class="chip">Masonry coatings</span>
+          </div>
+          <a class="more" href="/services.html#exterior">View details →</a>
+        </article>
+
+        <article class="card">
+          <h3>Cabinet Refinishing</h3>
+          <div class="chips">
+            <span class="chip">Degloss & clean</span>
+            <span class="chip">Bonding primers</span>
+            <span class="chip">Sprayed enamels</span>
+            <span class="chip">Islands & built-ins</span>
+          </div>
+          <a class="more" href="/services.html#cabinets">View details →</a>
+        </article>
+
+        <article class="card">
+          <h3>Concrete Coatings</h3>
+          <div class="chips">
+            <span class="chip">Garages</span>
+            <span class="chip">Patios & basements</span>
+            <span class="chip">Crack fill & repair</span>
+            <span class="chip">Moisture testing</span>
+            <span class="chip">Abrasion-resistant systems</span>
+          </div>
+          <a class="more" href="/services.html#concrete">View details →</a>
+        </article>
+
+        <article class="card">
+          <h3>Sealants & Waterproofing</h3>
+          <div class="chips">
+            <span class="chip">Window/door joints</span>
+            <span class="chip">Expansion joints</span>
+            <span class="chip">Wet areas</span>
+            <span class="chip">Movement-rated sealants</span>
+          </div>
+          <a class="more" href="/services.html#sealants">View details →</a>
+        </article>
+
+        <article class="card">
+          <h3>Drywall & Surface Repair</h3>
+          <div class="chips">
+            <span class="chip">Patching</span>
+            <span class="chip">Resurfacing</span>
+            <span class="chip">Texture match</span>
+            <span class="chip">Water-damage repair</span>
+          </div>
+          <a class="more" href="/services.html#drywall">View details →</a>
+        </article>
+      </div>
+
+      <!-- Trusted locally (neutral confidence) -->
+      <div class="trust">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+        <div><b>Trusted locally.</b> Referred by homeowners and builders across Cincinnati for clean work and durable results.</div>
       </div>
     </section>
 
-    <!-- Tips & Insights -->
+    <!-- ===== Tips & insights ===== -->
     <section id="tips" class="container" style="margin-top:2rem">
       <h2>Tips & insights</h2>
       <div class="tips">
-        <a class="tip" href="/resources.html#prep-matters">
-          <img src="/assets/stock-drywall.webp" alt="">
-          <div class="pad"><b>Why prep matters more than paint</b><p class="muted">Good finishes start long before the first coat.</p></div>
-        </a>
-        <a class="tip" href="/resources.html#sealants">
-          <img src="/assets/stock-caulking.webp" alt="">
-          <div class="pad"><b>Sealants vs. caulk: when & where</b><p class="muted">Get longer life by choosing the right joint system.</p></div>
-        </a>
-        <a class="tip" href="/resources.html#extend-life">
-          <img src="/assets/stock-exterior.webp" alt="">
-          <div class="pad"><b>3 ways to extend exterior life</b><p class="muted">Maintenance moves that actually pay off.</p></div>
-        </a>
+        <article class="tip">
+          <b>Why prep matters more than paint</b>
+          <p class="muted">Great finishes start long before the first coat — adhesion, repairs, and dust control make the difference.</p>
+        </article>
+        <article class="tip">
+          <b>Sealants vs. caulk: when & where</b>
+          <p class="muted">Use movement-rated sealants at exterior joints to extend life and prevent early cracking.</p>
+        </article>
+        <article class="tip">
+          <b>3 ways to extend exterior life</b>
+          <p class="muted">Right sheen, yearly wash, and small touch-ups beat full repaints.</p>
+        </article>
       </div>
     </section>
 
-    <!-- FAQ -->
+    <!-- ===== FAQs ===== -->
     <section id="faqs" class="container" style="margin-top:2rem">
-      <h2 style="margin-bottom:.6rem">FAQs</h2>
-      <details class="card"><summary class="pad" style="font-weight:700">Do you offer free estimates?</summary>
-        <div class="pad" style="border-top:1px solid var(--line);color:var(--muted)">Yes. We can visit on-site within 48 hours in most cases and provide a written, itemized quote.</div>
+      <h2>FAQs</h2>
+      <details class="card"><summary><b>Do you offer free estimates?</b></summary>
+        <p class="muted" style="margin-top:.6rem">Yes. We can visit on-site within 48 hours in most cases and provide a written, itemized quote.</p>
       </details>
-      <details class="card" style="margin-top:12px"><summary class="pad" style="font-weight:700">How soon can you start?</summary>
-        <div class="pad" style="border-top:1px solid var(--line);color:var(--muted)">Scheduling depends on scope and season. Smaller interior projects can often begin within 1–2 weeks.</div>
+      <details class="card" style="margin-top:12px"><summary><b>How soon can you start?</b></summary>
+        <p class="muted" style="margin-top:.6rem">Scheduling depends on scope and season. Smaller interior projects can often begin within 1–2 weeks.</p>
       </details>
-      <details class="card" style="margin-top:12px"><summary class="pad" style="font-weight:700">What materials do you use?</summary>
-        <div class="pad" style="border-top:1px solid var(--line);color:var(--muted)">We spec pro-grade primers, enamels, and exterior coatings matched to each substrate for durability and finish quality.</div>
+      <details class="card" style="margin-top:12px"><summary><b>What materials do you use?</b></summary>
+        <p class="muted" style="margin-top:.6rem">Pro-grade primers, enamels, and exterior coatings matched to each substrate for durability and finish quality.</p>
       </details>
-      <details class="card" style="margin-top:12px"><summary class="pad" style="font-weight:700">Are you insured and do you provide a warranty?</summary>
-        <div class="pad" style="border-top:1px solid var(--line);color:var(--muted)">Yes—fully insured. We include a written workmanship warranty with every project.</div>
+      <details class="card" style="margin-top:12px"><summary><b>Are you insured and do you provide a warranty?</b></summary>
+        <p class="muted" style="margin-top:.6rem">Yes — fully insured. We include a written workmanship warranty with every project.</p>
       </details>
     </section>
 
-    <!-- CTA band -->
-    <section class="container" style="margin:3rem auto 2rem">
+    <!-- ===== CTA ===== -->
+    <section class="container" style="margin:2.6rem auto">
       <div class="band">
         <div>
           <h2 style="margin:.2rem 0">Ready to start?</h2>
-          <p style="margin:.2rem 0;color:var(--muted)">Fast estimates, professional sites, and results that hold up.</p>
+          <p class="muted" style="margin:.2rem 0">Fast estimates, tidy jobsites, and results that hold up.</p>
         </div>
-        <div class="header-actions">
+        <div style="display:flex;gap:10px;align-items:center">
           <a class="pill pill--solid" href="/quote.html">Request a Quote</a>
-          <a class="pill pill--ghost" href="tel:15136684382">Call 513-668-4382</a>
+          <a class="pill pill--ghost" href="tel:+15136684382">Call 513-668-4382</a>
         </div>
       </div>
     </section>
 
-    <!-- Pre-footer -->
+    <!-- ===== Pre-footer quick nav ===== -->
     <div class="container prefooter">
-      <img src="/assets/seal-white.PNG" alt="DuraHaus stamp (white)">
-      <nav class="menu" aria-label="Footer quick links">
-        <a href="/services.html" class="pill pill--ghost">Services</a>
-        <a href="/projects.html" class="pill pill--ghost">Projects</a>
-        <a href="/about.html" class="pill pill--ghost">About</a>
+      <img src="/assets/seal-white.PNG" alt="DuraHaus stamp">
+      <nav class="menu" aria-label="Footer quick links" style="display:flex;gap:12px;flex-wrap:wrap">
+        <a class="pill" href="/services.html">Services</a>
+        <a class="pill" href="/projects.html">Projects</a>
+        <a class="pill" href="/about.html">About</a>
         <a class="pill pill--solid" href="/quote.html">Get a Quote</a>
       </nav>
     </div>
@@ -357,19 +334,19 @@
     <section class="contactbar">
       <div class="container row">
         <a href="tel:+15136684382" aria-label="Call">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.2c1.2 2.4 3.1 4.3 5.5 5.5l1.8-1.8c.3-.3.7-.4 1.1-.3 1 .3 2 .5 3 .5.6 0 1 .4 1 1v3.1c0 .6-.4 1-1 1C10.3 19.2 4.8 13.7 4.8 6.1c0-.6.4-1 1-1H9c.6 0 1 .4 1 1 0 1 .2 2 .5 3 .1.4 0 .8-.3 1.1l-1.6 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M6.6 10.2c1.2 2.4 3.1 4.3 5.5 5.5l1.8-1.8c.3-.3.7-.4 1.1-.3 1 .3 2 .5 3 .5.6 0 1 .4 1 1v3.1c0 .6-.4 1-1 1C10.3 19.2 4.8 13.7 4.8 6.1c0-.6.4-1 1-1H9c.6 0 1 .4 1 1 0 1 .2 2 .5 3 .1.4 0 .8-.3 1.1l-1.6 2z"/></svg>
           513-668-4382
         </a>
         <a href="mailto:durahaus.solutions@gmail.com" aria-label="Email">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5L4 8V6l8 5 8-5v2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5L4 8V6l8 5 8-5v2z"/></svg>
           durahaus.solutions@gmail.com
         </a>
         <a href="https://www.facebook.com/durahaus" target="_blank" rel="noopener" aria-label="Facebook">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 12a10 10 0 1 0-11.5 9.9v-7h-2v-3h2v-2.3c0-2 1.2-3.1 3-3.1.9 0 1.8.1 1.8.1v2h-1c-1 0-1.3.6-1.3 1.2V12h2.2l-.4 3h-1.8v7A10 10 0 0 0 22 12z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M22 12a10 10 0 1 0-11.5 9.9v-7h-2v-3h2v-2.3c0-2 1.2-3.1 3-3.1.9 0 1.8.1 1.8.1v2h-1c-1 0-1.3.6-1.3 1.2V12h2.2l-.4 3h-1.8v7A10 10 0 0 0 22 12z"/></svg>
           Facebook
         </a>
         <a href="https://share.google/EBNrz9YGxu5CfbmpO" target="_blank" rel="noopener" aria-label="Google Business Profile">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6a2.5 2.5 0 0 1 0 5z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6a2.5 2.5 0 0 1 0 5z"/></svg>
           Google
         </a>
       </div>
@@ -378,51 +355,61 @@
 
   <footer>
     <div class="container foot">
-      <small>© <span id="y"></span> DuraHaus Painting & Construction. All rights reserved.</small>
+      <small>© <span id="y"></span> DuraHaus Painting &amp; Construction. All rights reserved.</small>
     </div>
   </footer>
 
-<script>
-  // Year
-  document.getElementById('y').textContent = new Date().getFullYear();
+  <script>
+    // Year
+    document.getElementById('y').textContent = new Date().getFullYear();
 
-  // Light/Dark toggle (persists)
-  (function(){
-    const root=document.documentElement;
-    const btn=document.getElementById('themeBtn');
-    const saved=localStorage.getItem('dh-theme');
-    if(saved) root.setAttribute('data-theme', saved);
-    btn.textContent = (root.getAttribute('data-theme')==='light') ? '🌙' : '☀️';
-    btn.addEventListener('click', ()=>{
-      const cur=root.getAttribute('data-theme')||'dark';
-      const next=cur==='dark'?'light':'dark';
-      root.setAttribute('data-theme', next);
-      localStorage.setItem('dh-theme', next);
-      btn.textContent = next==='light' ? '🌙' : '☀️';
-    });
-  })();
+    // Theme toggle (remember choice)
+    (function(){
+      const root=document.documentElement, btn=document.getElementById('themeBtn');
+      const saved=localStorage.getItem('dh-theme');
+      if(saved) root.setAttribute('data-theme', saved);
+      btn.textContent = (root.getAttribute('data-theme')==='light') ? '🌙' : '☀️';
+      btn.addEventListener('click', ()=>{
+        const cur=root.getAttribute('data-theme')||'dark';
+        const next=cur==='dark'?'light':'dark';
+        root.setAttribute('data-theme', next);
+        localStorage.setItem('dh-theme', next);
+        btn.textContent = next==='light' ? '🌙' : '☀️';
+      });
+    })();
 
-  // Menu dropdown
-  (function(){
-    const btn=document.getElementById('menubtn');
-    const menu=document.getElementById('menu');
-    const bd=document.getElementById('menu-backdrop');
-
-    function open(){
-      menu.classList.add('open'); btn.setAttribute('aria-expanded','true');
-      bd.hidden=false; bd.classList.add('show');
-    }
-    function close(){
-      menu.classList.remove('open'); btn.setAttribute('aria-expanded','false');
-      bd.classList.remove('show'); bd.hidden=true;
-    }
-    btn.addEventListener('click', (e)=> {
-      e.stopPropagation();
-      menu.classList.contains('open') ? close() : open();
-    });
-    bd.addEventListener('click', close);
-    document.addEventListener('keydown', (e)=>{ if(e.key==='Escape') close(); });
-  })();
-</script>
+    // Menu toggle (slide-down panel under header)
+    (function(){
+      const btn = document.getElementById('menuBtn');
+      const panel = document.getElementById('menuPanel');
+      const header = document.getElementById('siteHeader');
+      function open(){
+        document.body.classList.add('menu-open');
+        panel.hidden = false;
+        btn.setAttribute('aria-expanded','true');
+      }
+      function close(){
+        document.body.classList.remove('menu-open');
+        btn.setAttribute('aria-expanded','false');
+        // delay hiding so CSS transition can finish
+        setTimeout(()=>{ if(!document.body.classList.contains('menu-open')) panel.hidden = true; }, 200);
+      }
+      btn.addEventListener('click', ()=> {
+        if(document.body.classList.contains('menu-open')) close(); else open();
+      });
+      // Close when clicking outside panel (but not header)
+      document.addEventListener('click', (e)=>{
+        if(!document.body.classList.contains('menu-open')) return;
+        if(e.target.closest('#menuPanel') || e.target.closest('#menuBtn')) return;
+        close();
+      });
+      // Keep panel always below header even if header height changes
+      const ro = new ResizeObserver(()=>{
+        const h = header.getBoundingClientRect().height;
+        panel.style.top = h + 'px';
+      });
+      ro.observe(header);
+    })();
+  </script>
 </body>
 </html>
