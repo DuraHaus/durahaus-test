@@ -1,111 +1,270 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>DuraHaus — Built to Perform</title>
+  <meta name="description" content="Premium interior/exterior painting, cabinetry, concrete coatings, and more. Clean, on-time, and built to perform.">
   <link rel="stylesheet" href="styles_v2.css">
   <script defer src="script_v2.js"></script>
 </head>
 <body>
-  <!-- Sidebar for desktop -->
-  <aside class="sidebar">
-    <div class="brand">
-      <img src="assets/durahaus-logo-light.svg" alt="DuraHaus Logo" class="logo">
-    </div>
-    <nav>
-      <a href="#">Home</a>
-      <a href="#">Services</a>
-      <a href="#">Projects</a>
-      <a href="#">About</a>
-      <a href="#" class="quote-btn">Get a Quote</a>
+  <!-- ===== Fixed Rail (desktop) / Compact Header (mobile) ===== -->
+  <aside class="rail">
+    <a class="brand" href="/" aria-label="DuraHaus home">
+      <!-- Single logo asset; JS will invert for light theme as needed -->
+      <img id="logo" src="assets/durahaus-logo.svg"
+           data-src-dark="assets/durahaus-logo.svg"
+           data-src-light="assets/durahaus-logo.svg"
+           alt="DuraHaus">
+    </a>
+    <nav class="railnav" aria-label="Primary">
+      <a href="#work">Work</a>
+      <a href="#services">Services</a>
+      <a href="#why">Why DuraHaus</a>
+      <a href="#process">Process</a>
+      <a href="#faq">FAQ</a>
+      <a href="#contact">Contact</a>
     </nav>
-    <button id="theme-toggle">☾</button>
+    <div class="rail-ctas">
+      <a class="pill pill--solid" href="#" data-open-quote>Get a Quote</a>
+      <a class="pill" href="tel:15136684382">Call</a>
+      <button class="iconbtn" id="themeToggle" aria-label="Toggle theme" title="Toggle theme">
+        <svg viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+    </div>
   </aside>
 
-  <!-- Top bar for mobile -->
-  <header class="mobile-header">
-    <img src="assets/durahaus-logo-light.svg" alt="DuraHaus Logo" class="logo">
-    <div class="mobile-actions">
-      <button id="theme-toggle-mobile">☾</button>
-      <button id="menu-toggle">☰</button>
+  <header class="mbar">
+    <button id="menuBtn" aria-expanded="false" aria-controls="drawer" class="iconbtn">
+      <svg viewBox="0 0 24 24"><path fill="currentColor" d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </button>
+    <a class="brand" href="/"><img id="logoMobile" src="assets/durahaus-logo.svg" alt="DuraHaus"></a>
+    <div class="mbar-ctas">
+      <a class="pill" href="tel:15136684382" aria-label="Call">Call</a>
+      <a class="pill pill--solid" href="#" data-open-quote>Quote</a>
+      <button class="iconbtn" id="themeToggleMobile" aria-label="Toggle theme">
+        <svg viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
     </div>
   </header>
 
-  <main>
-    <!-- Hero -->
-    <section class="hero split">
-      <div class="hero-text">
-        <h1>Professional Painting.<br> Clean. On-Time.<br><span class="accent">Built to Perform.</span></h1>
-        <p>From interiors to exteriors, cabinets to concrete — we approach every job with care, craftsmanship, and materials designed for durability. All to make your home more beautiful, more resilient, and better protected against time and weather.</p>
-        <div class="hero-actions">
-          <a href="#" class="btn">Explore Services</a>
-          <a href="#" class="btn dark">Get a Quote</a>
+  <!-- Drawer for mobile -->
+  <aside id="drawer" class="drawer" aria-hidden="true">
+    <div class="shade" data-close></div>
+    <nav class="panel" role="menu" aria-label="Mobile">
+      <button class="pill" data-close aria-label="Close menu">Close</button>
+      <a href="#work" data-close>Work</a>
+      <a href="#services" data-close>Services</a>
+      <a href="#why" data-close>Why DuraHaus</a>
+      <a href="#process" data-close>Process</a>
+      <a href="#faq" data-close>FAQ</a>
+      <a href="#contact" data-close>Contact</a>
+    </nav>
+  </aside>
+
+  <main class="canvas">
+    <!-- ===== Split Hero ===== -->
+    <section class="hero">
+      <div class="slab">
+        <h1>Professional Painting<br><span class="stroke">Built to Perform.</span></h1>
+        <p class="lede">Clean, on-time work with primers, enamels, and coatings chosen for the surface. From interiors to exteriors, cabinets to concrete.</p>
+        <div class="cta-row">
+          <a class="pill pill--solid" href="#" data-open-quote>Get a Quote</a>
+          <a class="pill" href="#services">Explore Services</a>
+        </div>
+        <ul class="badges">
+          <li>Fully Insured</li>
+          <li>Workmanship Warranty</li>
+          <li>Itemized Quotes</li>
+        </ul>
+      </div>
+      <figure class="heroimg">
+        <img src="assets/stock-hero.webp" alt="High-end home exterior freshly painted" />
+      </figure>
+    </section>
+
+    <!-- ===== Stat Marquee ===== -->
+    <section class="marquee" aria-label="Highlights">
+      <div class="track">
+        <span>Interior Painting</span>
+        <span>Exterior Painting</span>
+        <span>Cabinet Refinishing</span>
+        <span>Concrete Coatings</span>
+        <span>Staining & Wood Care</span>
+        <span>Drywall & Repair</span>
+        <span>Metal Coatings</span>
+        <span>Waterproofing</span>
+        <span>Caulking & Sealant</span>
+      </div>
+    </section>
+
+    <!-- ===== Work (Showcase) ===== -->
+    <section id="work" class="section">
+      <div class="wrap">
+        <div class="headline">
+          <h2>Recent Work</h2><a href="/projects.html" class="viewall">View Projects →</a>
+        </div>
+        <div class="showcase">
+          <img src="assets/stock-interior.webp"  alt="Interior finish">
+          <img src="assets/stock-exterior.webp"  alt="Exterior finish">
+          <img src="assets/stock-cabinets.webp"  alt="Cabinet finish">
+          <img src="assets/stock-concrete.webp"  alt="Concrete coating">
+          <img src="assets/stock-stain.webp"     alt="Staining & wood care">
+          <img src="assets/stock-drywall.webp"   alt="Drywall repair">
+          <img src="assets/stock-metal.webp"     alt="Metal coating">
+          <img src="assets/stock-waterproof.webp"alt="Waterproofing">
         </div>
       </div>
-      <div class="hero-img">
-        <img src="assets/placeholder-hero.webp" alt="Freshly painted home">
+    </section>
+
+    <!-- ===== Before/After Slider ===== -->
+    <section class="section ba">
+      <div class="wrap">
+        <h2>Prep makes the finish.</h2>
+        <div class="ba-wrap" data-ba>
+          <!-- swap these two with real before/after when ready -->
+          <img src="assets/stock-exterior.webp" alt="Before" class="ba-img ba-before">
+          <img src="assets/stock-exterior.webp" alt="After"  class="ba-img ba-after">
+          <input type="range" min="0" max="100" value="50" class="ba-range" aria-label="Before and after slider">
+        </div>
       </div>
     </section>
 
-    <!-- Service marquee -->
-    <div class="marquee">
-      <span>Interior Painting • Exterior Painting • Cabinet Refinishing • Concrete Coatings • Staining • Drywall • Waterproofing</span>
-    </div>
-
-    <!-- Service matrix -->
-    <section class="services">
-      <h2>Our Services</h2>
-      <div class="grid">
-        <div class="card">🎨 Interior Painting</div>
-        <div class="card">🏠 Exterior Painting</div>
-        <div class="card">🪵 Stain & Finishes</div>
-        <div class="card">🗄 Cabinets</div>
-        <div class="card">🧱 Concrete & Masonry</div>
-        <div class="card">🛠 Drywall & Repair</div>
+    <!-- ===== Services Matrix ===== -->
+    <section id="services" class="section services">
+      <div class="wrap">
+        <h2>Services</h2>
+        <div class="matrix">
+          <a href="/services.html#interior" class="tile">
+            <div class="ico"><svg viewBox="0 0 24 24"><path d="M3 3h18v2H3zm2 4h14v12a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V7zm4 4h8v2H9z"/></svg></div>
+            <div class="t"><h3>Interior Painting</h3><p>Walls, ceilings, trim, cabinetry.</p></div>
+          </a>
+          <a href="/services.html#exterior" class="tile">
+            <div class="ico"><svg viewBox="0 0 24 24"><path d="M4 10l8-6 8 6v10a2 2 0 0 1-2 2h-4v-6H10v6H6a2 2 0 0 1-2-2z"/></svg></div>
+            <div class="t"><h3>Exterior Painting</h3><p>Prep + coatings for Midwest weather.</p></div>
+          </a>
+          <a href="/services.html#cabinets" class="tile">
+            <div class="ico"><svg viewBox="0 0 24 24"><path d="M3 4h18v8H3zM3 14h18v6H3z"/></svg></div>
+            <div class="t"><h3>Cabinet Refinishing</h3><p>Factory-smooth, durable finishes.</p></div>
+          </a>
+          <a href="/services.html#concrete" class="tile">
+            <div class="ico"><svg viewBox="0 0 24 24"><path d="M3 17h18v2H3zM3 5h18v8H3z"/></svg></div>
+            <div class="t"><h3>Concrete Coatings</h3><p>Garages, patios, basements.</p></div>
+          </a>
+          <a href="/services.html#stain" class="tile">
+            <div class="ico"><svg viewBox="0 0 24 24"><path d="M5 3h14v4H5zM3 9h18v12H3z"/></svg></div>
+            <div class="t"><h3>Staining & Wood Care</h3><p>Decks, doors, rails.</p></div>
+          </a>
+          <a href="/services.html#drywall" class="tile">
+            <div class="ico"><svg viewBox="0 0 24 24"><path d="M4 4h16v16H4z"/></svg></div>
+            <div class="t"><h3>Drywall & Repair</h3><p>Flat, paint-ready surfaces.</p></div>
+          </a>
+          <a href="/services.html#metal" class="tile">
+            <div class="ico"><svg viewBox="0 0 24 24"><path d="M2 12h20v2H2zM2 6h20v2H2zM2 18h20v2H2z"/></svg></div>
+            <div class="t"><h3>Metal Coatings</h3><p>Rust-inhibiting prep & finishes.</p></div>
+          </a>
+          <a href="/services.html#waterproof" class="tile">
+            <div class="ico"><svg viewBox="0 0 24 24"><path d="M12 2s7 7.8 7 13a7 7 0 0 1-14 0c0-5.2 7-13 7-13z"/></svg></div>
+            <div class="t"><h3>Waterproofing</h3><p>Sealants & weather barriers.</p></div>
+          </a>
+          <a href="/services.html#caulking" class="tile">
+            <div class="ico"><svg viewBox="0 0 24 24"><path d="M3 12h18v2H3zM3 16h12v2H3z"/></svg></div>
+            <div class="t"><h3>Caulking & Sealant</h3><p>Gaps sealed for longevity.</p></div>
+          </a>
+        </div>
       </div>
     </section>
 
-    <!-- Before / After -->
-    <section class="before-after">
-      <h2>See the Difference</h2>
-      <div class="slider">
-        <img src="assets/placeholder-before.webp" alt="Before" class="before">
-        <img src="assets/placeholder-after.webp" alt="After" class="after">
-        <input type="range" min="0" max="100" value="50">
+    <!-- ===== Why DuraHaus ===== -->
+    <section id="why" class="section why">
+      <div class="wrap">
+        <h2>Why DuraHaus</h2>
+        <div class="whygrid">
+          <div class="whycard"><h3>Built to Perform</h3><p>Surface-specific primers and pro-grade coatings for longevity.</p></div>
+          <div class="whycard"><h3>Clean & On-Time</h3><p>Tidy jobsites, tight schedules, clear check-ins.</p></div>
+          <div class="whycard"><h3>No Guessing</h3><p>Written, itemized quotes and a workmanship warranty.</p></div>
+        </div>
       </div>
     </section>
 
-    <!-- Why DuraHaus -->
-    <section class="why">
-      <h2>Why Choose DuraHaus</h2>
-      <div class="grid">
-        <div class="card"><h3>Durability</h3><p>We use coatings and finishes that last against time and weather.</p></div>
-        <div class="card"><h3>Clean Jobsites</h3><p>Every project is tidy, efficient, and respectful of your home.</p></div>
-        <div class="card"><h3>On-Time</h3><p>We keep to our word with clear timelines and reliable crews.</p></div>
+    <!-- ===== Process ===== -->
+    <section id="process" class="section process">
+      <div class="wrap">
+        <h2>Our Process</h2>
+        <ol class="steps">
+          <li><b>1</b> Walkthrough & Quote</li>
+          <li><b>2</b> Prep & Protection</li>
+          <li><b>3</b> Finish & Follow-Up</li>
+        </ol>
       </div>
     </section>
 
-    <!-- Call to action -->
-    <section class="cta">
-      <h2>Ready to Protect What’s Built?</h2>
-      <a href="#" class="btn big">Request a Quote</a>
+    <!-- ===== FAQ ===== -->
+    <section id="faq" class="section faqs">
+      <div class="wrap">
+        <h2>FAQs</h2>
+        <details><summary>Do you offer free estimates?</summary><div class="a">Yes—on-site within 48 hours in most cases with a written, itemized quote.</div></details>
+        <details><summary>How soon can you start?</summary><div class="a">Depends on scope/season; small interiors often begin within 1–2 weeks.</div></details>
+        <details><summary>What materials do you use?</summary><div class="a">Pro-grade primers, enamels, and exterior coatings matched to each substrate.</div></details>
+        <details><summary>Are you insured and do you provide a warranty?</summary><div class="a">Yes—fully insured with a workmanship warranty on every project.</div></details>
+      </div>
+    </section>
+
+    <!-- ===== Contact / CTA ===== -->
+    <section id="contact" class="section contact">
+      <div class="wrap contactgrid">
+        <div>
+          <h2>Ready to start?</h2>
+          <p class="muted">Serving Butler, Hamilton & Warren Counties</p>
+          <div class="cta-row">
+            <a class="pill pill--solid" href="#" data-open-quote>Request a Quote</a>
+            <a class="pill" href="tel:15136684382">Call 513-668-4382</a>
+          </div>
+        </div>
+        <div class="card">
+          <div class="pad">
+            <h3>Direct Contact</h3>
+            <p><a href="mailto:durahaus.solutions@gmail.com">durahaus.solutions@gmail.com</a></p>
+            <p><a href="https://www.facebook.com/durahaus" target="_blank" rel="noopener">Facebook</a></p>
+            <p><a href="https://share.google/EBNrz9YGxu5CfbmpO" target="_blank" rel="noopener">Google Business Profile</a></p>
+          </div>
+        </div>
+      </div>
     </section>
   </main>
 
-  <!-- Quote modal -->
-  <div id="quote-modal" class="modal hidden">
-    <div class="modal-content">
-      <button class="close">&times;</button>
-      <h2>Request a Quote</h2>
-      <form>
-        <input type="text" placeholder="Name" required>
-        <input type="email" placeholder="Email" required>
-        <input type="tel" placeholder="Phone">
-        <textarea placeholder="Project Details"></textarea>
-        <button type="submit" class="btn dark">Send</button>
-      </form>
+  <footer class="foot">
+    <div class="wrap" style="display:flex;align-items:center;gap:12px;justify-content:space-between;flex-wrap:wrap">
+      <small>© <span id="y"></span> DuraHaus Painting & Construction. All rights reserved.</small>
+      <img src="assets/seal-white.webp" alt="DuraHaus seal" style="width:84px;height:auto;opacity:.9">
     </div>
-  </div>
+  </footer>
+
+  <!-- ===== Quote Modal ===== -->
+  <dialog id="quoteModal">
+    <form method="dialog" class="qform">
+      <h3>Request a Quote</h3>
+      <p class="muted">Fast estimates, tidy jobsites, results that last.</p>
+      <label>Full Name<input required placeholder="Your name"></label>
+      <label>Email<input type="email" required placeholder="you@example.com"></label>
+      <label>Phone<input inputmode="tel" placeholder="(513) 555-1234"></label>
+      <label>Project Type<select>
+        <option>Interior Painting</option><option>Exterior Painting</option>
+        <option>Cabinet Refinishing</option><option>Concrete Coatings</option>
+        <option>Staining & Wood Care</option><option>Drywall & Repair</option>
+        <option>Metal Coatings</option><option>Waterproofing</option>
+        <option>Caulking & Sealant</option>
+      </select></label>
+      <label>Message<textarea rows="4" placeholder="Tell us about your project"></textarea></label>
+      <menu>
+        <button value="cancel" class="pill">Cancel</button>
+        <a class="pill pill--solid" href="/quote.html">Go to Full Form</a>
+      </menu>
+    </form>
+  </dialog>
+
+  <!-- Floating Quote button -->
+  <a class="float-quote" href="#" data-open-quote>Get a Quote</a>
 </body>
 </html>
