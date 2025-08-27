@@ -5,13 +5,10 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>DuraHaus — Painting and Construction</title>
   <meta name="description" content="Interior & exterior painting, cabinets, stain, concrete coatings, drywall and sealing. Clean, on-time, built to perform.">
-  <!-- cache-busted hero preload -->
-  <link rel="preload" as="image" href="/assets/stock-hero.webp?v=3">
+  <link rel="preload" as="image" href="/assets/stock-hero.webp?v=5">
   <style>
-    :root{
-      --bg:#0a0a0a; --panel:#101010; --ink:#ffffff; --muted:#bdbdbd;
-      --line:#1a1a1a; --max:1120px; --r:14px; --gap:28px;
-    }
+    :root{ --bg:#0a0a0a; --panel:#101010; --ink:#ffffff; --muted:#bdbdbd;
+      --line:#1a1a1a; --max:1120px; --r:14px; --gap:28px; }
     *{box-sizing:border-box} html,body{height:100%}
     body{margin:0;background:var(--bg);color:var(--ink);
       font:16px/1.55 ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;
@@ -29,12 +26,10 @@
     .brand picture{display:block;line-height:0}
     .brand img{height:56px;width:auto;display:block}
     .brand .wordmark{font-weight:800;letter-spacing:.03em;white-space:nowrap}
-
     .navlinks{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-left:20px}
     .pill{padding:.5rem .8rem;border:1px solid var(--line);border-radius:999px;font-size:14px}
     .pill--solid{background:#fff;color:#000;border-color:#fff;font-weight:700}
     .pill--ghost{background:transparent}
-    .cta{background:#fff;color:#000;border-color:#fff;font-weight:700}
     .iconbtn{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border:1px solid var(--line);border-radius:999px}
     .iconbtn svg{width:18px;height:18px;fill:#fff}
     @media (max-width:600px){
@@ -84,7 +79,7 @@
     /* CTA band */
     .band{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;padding:1.2rem;border:1px solid var(--line);border-radius:var(--r);background:var(--panel)}
 
-    /* Pre-footer (stamp + mini nav) */
+    /* Pre-footer */
     .prefooter{margin:3rem auto 1.5rem;display:flex;gap:22px;align-items:center;justify-content:space-between;flex-wrap:wrap}
     .prefooter .stampwrap{display:flex;align-items:center;gap:14px}
     .prefooter img{width:128px;height:auto;opacity:.95;filter:invert(1) brightness(1.6);background:transparent}
@@ -99,14 +94,14 @@
     .foot{display:grid;gap:18px;align-items:center;padding:1.2rem 0;grid-template-columns:1fr}
     small{color:var(--muted)}
 
-    /* Contact strip (above footer) */
+    /* Contact strip */
     .contactbar{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:#0e0e10}
     .contactbar .row{display:flex;gap:16px;align-items:center;justify-content:flex-start;flex-wrap:wrap;margin:0;padding:14px 0}
     .contactbar a{display:inline-flex;align-items:center;gap:8px;color:#d9d9db;font-size:15px}
     .contactbar a:hover{color:#fff}
     .contactbar svg{width:20px;height:20px;fill:currentColor}
 
-    /* Sticky tidy footer for short pages (optional) */
+    /* Sticky tidy footer */
     html, body { height: 100%; }
     body { min-height: 100dvh; display: flex; flex-direction: column; }
     main { flex: 1 0 auto; }
@@ -116,7 +111,7 @@
     .carousel-track{
       display:flex;
       transition:transform 280ms ease;
-      touch-action: pan-y; /* allows horizontal swipe without blocking vertical scroll */
+      touch-action: pan-y; /* allow vertical page scroll */
       user-select:none; -webkit-user-drag:none;
     }
     .carousel img{width:100%;height:340px;object-fit:cover;flex:0 0 100%}
@@ -129,16 +124,13 @@
     .carousel-btn.prev{left:10px}
     .carousel-btn.next{right:10px}
     .carousel-btn:hover{background:rgba(0,0,0,.7)}
-    .carousel-dots{display:none !important;} /* keep in DOM, hidden */
+    .carousel-dots{display:none !important;} /* kept for a11y/state */
 
-    /* Make the text block the only clickable area under the image */
-    .card .pad.service-link { display:block; border-top:1px solid var(--line); }
-
-    /* === Before/After compare slider === */
+    /* Before/After compare */
     .compare{position:relative;max-width:var(--max);margin:2.5rem auto;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;background:var(--panel)}
     .compare__wrap{position:relative;aspect-ratio:16/9;overflow:hidden}
     .compare img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-    .compare__after{clip-path:inset(0 50% 0 0)} /* start at 50/50 */
+    .compare__after{clip-path:inset(0 50% 0 0)}
     .compare__handle{position:absolute;left:50%;top:0;bottom:0;width:2px;background:#fff;opacity:.9;z-index:3}
     .compare__knob{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:34px;height:34px;border-radius:50%;background:#fff;color:#000;display:grid;place-items:center;font-weight:700;z-index:4;border:1px solid #0008}
     .compare input[type="range"]{position:absolute;inset:0;z-index:5;appearance:none;background:transparent}
@@ -154,10 +146,8 @@
     <div class="container nav">
       <a class="brand" href="/" aria-label="DuraHaus home">
         <picture>
-          <source srcset="/assets/durahaus-logo.svg?v=3" type="image/svg+xml">
-          <source srcset="/assets/durahaus-logo.png?v=3" type="image/png">
-          <img src="/assets/durahaus-logo.jpg?v=3" alt="DuraHaus logo"
-               onerror="this.closest('.brand').querySelector('.wordmark').style.display='block'">
+          <source srcset="/assets/durahaus-logo.svg?v=5" type="image/svg+xml">
+          <img src="/assets/durahaus-logo.svg?v=5" alt="DuraHaus logo">
         </picture>
         <span class="wordmark" style="display:none">DURAHAUS</span>
       </a>
@@ -178,7 +168,7 @@
     <!-- Hero -->
     <section class="hero">
       <div class="hero__media">
-        <img src="/assets/stock-hero.webp?v=3" alt="Cincinnati high-end home exterior" loading="eager" decoding="async">
+        <img src="/assets/stock-hero.webp?v=5" alt="Cincinnati high-end home exterior" loading="eager" decoding="async">
       </div>
       <div class="hero__copy container">
         <h1>Pro Services. Pro Results.<br>The DuraHaus Standard </h1>
@@ -194,7 +184,7 @@
     <!-- Mission -->
     <section class="container row">
       <div class="card">
-        <img src="/assets/interior4.webp?v=3" alt="Interior detail" loading="lazy" decoding="async">
+        <img src="/assets/interior4.webp?v=5" alt="Interior detail" loading="lazy" decoding="async">
       </div>
       <div>
         <h2>Protecting What’s Built. <br>Enhancing What’s Seen.</h2>
@@ -208,18 +198,14 @@
       </div>
     </section>
 
-    <!-- Before/After Slider -->
+    <!-- Before/After Slider (Brick cleanup) -->
     <section class="container">
       <div class="compare">
         <div class="compare__wrap" data-compare>
-          <!-- BEFORE -->
-          <img src="/assets/before-exterior.webp?v=3" alt="Before exterior">
-          <!-- AFTER -->
-          <img class="compare__after" src="/assets/after-exterior.webp?v=3" alt="After exterior" data-after>
-          <!-- Handle/knob -->
+          <img src="/assets/brickbefore.webp?v=5" alt="Before brick/surface">
+          <img class="compare__after" src="/assets/brickafter.webp?v=5" alt="After brick/surface" data-after>
           <div class="compare__handle" data-handle></div>
           <div class="compare__knob" aria-hidden="true">↔</div>
-          <!-- Range slider on top -->
           <input type="range" min="0" max="100" value="50" aria-label="Slide to compare before and after" data-range>
         </div>
         <div class="pad">
@@ -238,9 +224,9 @@
           <div class="carousel" data-carousel>
             <button class="carousel-btn prev" aria-label="Previous image" data-prev>‹</button>
             <div class="carousel-track" data-track>
-              <img src="/assets/interior8.webp?v=3" alt="Interior painting 1" loading="lazy" decoding="async">
-              <img src="/assets/interior11.webp?v=3" alt="Interior painting 2" loading="lazy" decoding="async">
-              <img src="/assets/interior1.webp?v=3" alt="Interior painting 3" loading="lazy" decoding="async">
+              <img src="/assets/interior8.webp?v=5" alt="Interior painting 1" loading="lazy" decoding="async">
+              <img src="/assets/interior11.webp?v=5" alt="Interior painting 2" loading="lazy" decoding="async">
+              <img src="/assets/interior1.webp?v=5" alt="Interior painting 3" loading="lazy" decoding="async">
             </div>
             <button class="carousel-btn next" aria-label="Next image" data-next>›</button>
             <div class="carousel-dots" data-dots></div>
@@ -256,9 +242,9 @@
           <div class="carousel" data-carousel>
             <button class="carousel-btn prev" aria-label="Previous image" data-prev>‹</button>
             <div class="carousel-track" data-track>
-              <img src="/assets/exterior7.webp?v=3" alt="Exterior painting 1" loading="lazy" decoding="async">
-              <img src="/assets/exterior4.webp?v=3" alt="Exterior painting 2" loading="lazy" decoding="async">
-              <img src="/assets/exterior3.webp?v=3" alt="Exterior painting 3" loading="lazy" decoding="async">
+              <img src="/assets/exterior7.webp?v=5" alt="Exterior painting 1" loading="lazy" decoding="async">
+              <img src="/assets/exterior4.webp?v=5" alt="Exterior painting 2" loading="lazy" decoding="async">
+              <img src="/assets/exterior3.webp?v=5" alt="Exterior painting 3" loading="lazy" decoding="async">
             </div>
             <button class="carousel-btn next" aria-label="Next image" data-next>›</button>
             <div class="carousel-dots" data-dots></div>
@@ -274,9 +260,9 @@
           <div class="carousel" data-carousel>
             <button class="carousel-btn prev" aria-label="Previous image" data-prev>‹</button>
             <div class="carousel-track" data-track>
-              <img src="/assets/stock-concrete.webp?v=3" alt="Concrete coatings 1" loading="lazy" decoding="async">
-              <img src="/assets/concrete1.webp?v=3" alt="Concrete coatings 2" loading="lazy" decoding="async">
-              <img src="/assets/concrete3.webp?v=3" alt="Concrete coatings 3" loading="lazy" decoding="async">
+              <img src="/assets/stock-concrete.webp?v=5" alt="Concrete coatings 1" loading="lazy" decoding="async">
+              <img src="/assets/concrete1.webp?v=5" alt="Concrete coatings 2" loading="lazy" decoding="async">
+              <img src="/assets/concrete3.webp?v=5" alt="Concrete coatings 3" loading="lazy" decoding="async">
             </div>
             <button class="carousel-btn next" aria-label="Next image" data-next>›</button>
             <div class="carousel-dots" data-dots></div>
@@ -299,9 +285,9 @@
           <div class="carousel" data-carousel>
             <button class="carousel-btn prev" aria-label="Previous image" data-prev>‹</button>
             <div class="carousel-track" data-track>
-              <img src="/assets/cabinets1.webp?v=3" alt="Cabinet refinishing 1" loading="lazy" decoding="async">
-              <img src="/assets/cabinets2.webp?v=3" alt="Cabinet refinishing 2" loading="lazy" decoding="async">
-              <img src="/assets/stock-cabinets.webp?v=3" alt="Cabinet refinishing 3" loading="lazy" decoding="async">
+              <img src="/assets/cabinets1.webp?v=5" alt="Cabinet refinishing 1" loading="lazy" decoding="async">
+              <img src="/assets/cabinets2.webp?v=5" alt="Cabinet refinishing 2" loading="lazy" decoding="async">
+              <img src="/assets/stock-cabinets.webp?v=5" alt="Cabinet refinishing 3" loading="lazy" decoding="async">
             </div>
             <button class="carousel-btn next" aria-label="Next image" data-next>›</button>
             <div class="carousel-dots" data-dots></div>
@@ -317,9 +303,9 @@
           <div class="carousel" data-carousel>
             <button class="carousel-btn prev" aria-label="Previous image" data-prev>‹</button>
             <div class="carousel-track" data-track>
-              <img src="/assets/stock-stain.webp?v=3" alt="Staining and wood care 1" loading="lazy" decoding="async">
-              <img src="/assets/stain1.webp?v=3" alt="Staining and wood care 2" loading="lazy" decoding="async">
-              <img src="/assets/stain2.webp?v=3" alt="Staining and wood care 3" loading="lazy" decoding="async">
+              <img src="/assets/stock-stain.webp?v=5" alt="Staining and wood care 1" loading="lazy" decoding="async">
+              <img src="/assets/stain1.webp?v=5" alt="Staining and wood care 2" loading="lazy" decoding="async">
+              <img src="/assets/stain2.webp?v=5" alt="Staining and wood care 3" loading="lazy" decoding="async">
             </div>
             <button class="carousel-btn next" aria-label="Next image" data-next>›</button>
             <div class="carousel-dots" data-dots></div>
@@ -335,9 +321,9 @@
           <div class="carousel" data-carousel>
             <button class="carousel-btn prev" aria-label="Previous image" data-prev>‹</button>
             <div class="carousel-track" data-track>
-              <img src="/assets/stock-drywall.webp?v=3" alt="Drywall repair 1" loading="lazy" decoding="async">
-              <img src="/assets/drywall2.webp?v=3" alt="Drywall repair 2" loading="lazy" decoding="async">
-              <img src="/assets/drywall1.webp?v=3" alt="Drywall repair 3" loading="lazy" decoding="async">
+              <img src="/assets/stock-drywall.webp?v=5" alt="Drywall repair 1" loading="lazy" decoding="async">
+              <img src="/assets/drywall2.webp?v=5" alt="Drywall repair 2" loading="lazy" decoding="async">
+              <img src="/assets/drywall1.webp?v=5" alt="Drywall repair 3" loading="lazy" decoding="async">
             </div>
             <button class="carousel-btn next" aria-label="Next image" data-next>›</button>
             <div class="carousel-dots" data-dots></div>
@@ -351,7 +337,7 @@
       </div>
     </section>
 
-    <!-- Even more services -->
+    <!-- Even more services (new + swapped images) -->
     <section class="container" style="margin-top:2rem">
       <div class="grid">
 
@@ -360,9 +346,9 @@
           <div class="carousel" data-carousel>
             <button class="carousel-btn prev" aria-label="Previous image" data-prev>‹</button>
             <div class="carousel-track" data-track>
-              <img src="/assets/caulk1.webp?v=3" alt="Professional caulking bead close-up" loading="lazy" decoding="async">
-              <img src="/assets/caulk2.webp?v=3" alt="Window trim sealed cleanly" loading="lazy" decoding="async">
-              <img src="/assets/caulk3.webp?v=3" alt="Expansion joint sealed" loading="lazy" decoding="async">
+              <img src="/assets/stock-caulking.webp?v=5" alt="Clean caulk line close-up" loading="lazy" decoding="async">
+              <img src="/assets/caulking1.webp?v=5" alt="Window perimeter sealed" loading="lazy" decoding="async">
+              <img src="/assets/caulking2.webp?v=5" alt="Door trim sealed neatly" loading="lazy" decoding="async">
             </div>
             <button class="carousel-btn next" aria-label="Next image" data-next>›</button>
             <div class="carousel-dots" data-dots></div>
@@ -378,9 +364,9 @@
           <div class="carousel" data-carousel>
             <button class="carousel-btn prev" aria-label="Previous image" data-prev>‹</button>
             <div class="carousel-track" data-track>
-              <img src="/assets/woodrepair1.webp?v=3" alt="Trim rot repair in progress" loading="lazy" decoding="async">
-              <img src="/assets/woodrepair2.webp?v=3" alt="New fascia/soffit installation" loading="lazy" decoding="async">
-              <img src="/assets/woodrepair3.webp?v=3" alt="Finished wood replacement painted" loading="lazy" decoding="async">
+              <img src="/assets/woodrepair1.webp?v=5" alt="Trim rot repair in progress" loading="lazy" decoding="async">
+              <img src="/assets/woodrepair2.webp?v=5" alt="New fascia/soffit installation" loading="lazy" decoding="async">
+              <img src="/assets/woodrepair3.webp?v=5" alt="Finished wood replacement painted" loading="lazy" decoding="async">
             </div>
             <button class="carousel-btn next" aria-label="Next image" data-next>›</button>
             <div class="carousel-dots" data-dots></div>
@@ -396,9 +382,9 @@
           <div class="carousel" data-carousel>
             <button class="carousel-btn prev" aria-label="Previous image" data-prev>‹</button>
             <div class="carousel-track" data-track>
-              <img src="/assets/pressure1.webp?v=3" alt="Driveway pressure wash" loading="lazy" decoding="async">
-              <img src="/assets/pressure2.webp?v=3" alt="House wash siding clean" loading="lazy" decoding="async">
-              <img src="/assets/pressure3.webp?v=3" alt="Deck wash before staining" loading="lazy" decoding="async">
+              <img src="/assets/pressurewashing1.webp?v=5" alt="Driveway pressure wash in action" loading="lazy" decoding="async">
+              <img src="/assets/pressurewashing2.webp?v=5" alt="House wash siding cleaned" loading="lazy" decoding="async">
+              <img src="/assets/pressurewashing3.webp?v=5" alt="Deck washed before staining" loading="lazy" decoding="async">
             </div>
             <button class="carousel-btn next" aria-label="Next image" data-next>›</button>
             <div class="carousel-dots" data-dots></div>
@@ -409,7 +395,27 @@
           </a>
         </div>
 
+        <!-- Metal Coatings (new) -->
+        <div class="card">
+          <div class="carousel" data-carousel>
+            <button class="carousel-btn prev" aria-label="Previous image" data-prev>‹</button>
+            <div class="carousel-track" data-track>
+              <img src="/assets/stock-metal.webp?v=5" alt="Metal siding prepped" loading="lazy" decoding="async">
+              <img src="/assets/metal1.webp?v=5" alt="Bonding primer on metal" loading="lazy" decoding="async">
+            </div>
+            <button class="carousel-btn next" aria-label="Next image" data-next>›</button>
+            <div class="carousel-dots" data-dots></div>
+          </div>
+          <a class="pad service-link" href="/services.html#metal">
+            <h3 style="margin:0 0 .25rem">Metal Coatings</h3>
+            <p>Chalky/oxidized metal restored with bonding primer + acrylic topcoats.</p>
+          </a>
+        </div>
+
       </div>
+
+      <!-- …and more -->
+      <p style="text-align:center;color:var(--muted);margin-top:.6rem">…and more.</p>
     </section>
 
     <!-- FAQ -->
@@ -448,8 +454,7 @@
     <!-- Pre-footer: stamp + mini nav -->
     <div class="container prefooter">
       <div class="stampwrap">
-        <!-- If your file is lowercase, change to .png -->
-        <img src="/assets/seal-white.PNG?v=3" alt="DuraHaus stamp (white)">
+        <img src="/assets/seal-white.webp?v=5" alt="DuraHaus stamp (white)">
       </div>
       <nav class="menu" aria-label="Footer quick links">
         <a href="/services.html" class="pill">Services</a>
@@ -462,7 +467,7 @@
       </nav>
     </div>
 
-    <!-- Contact strip (phone, email, socials) -->
+    <!-- Contact strip -->
     <section class="contactbar">
       <div class="container row">
         <a href="tel:+15136684382" aria-label="Call">
@@ -503,7 +508,6 @@
       const after = wrap.querySelector('[data-after]');
       const handle = wrap.querySelector('[data-handle]');
       const knob = wrap.querySelector('.compare__knob');
-
       function setSplit(v){
         const pct = Math.max(0, Math.min(100, v));
         after.style.clipPath = `inset(0 ${100-pct}% 0 0)`;
@@ -514,130 +518,122 @@
       setSplit(range.value);
     })();
 
-    // === Carousel with fixed swipe thresholds (uses viewport width) ===
+    // === Robust Carousel Swipe (fixes "stuck after first swipe") ===
     (function(){
       const carousels = document.querySelectorAll('[data-carousel]');
+      carousels.forEach(c => attach(c));
 
-      function attachPointer(c){
+      function attach(c){
         const track = c.querySelector('[data-track]');
-        const slides = [...track.children];
+        const slides = Array.from(track.children);
         const prev = c.querySelector('[data-prev]');
         const next = c.querySelector('[data-next]');
         const dotsWrap = c.querySelector('[data-dots]');
+        const vw = () => c.getBoundingClientRect().width;
 
-        // dots (kept hidden for now)
+        // dots (hidden but keeps state)
         dotsWrap.innerHTML = '';
         slides.forEach((_, idx)=>{
-          const b = document.createElement('button');
-          b.type = 'button';
-          b.setAttribute('aria-label', 'Go to slide '+(idx+1));
-          b.addEventListener('click', (e)=>{ e.stopPropagation(); go(idx); });
+          const b=document.createElement('button'); b.type='button';
+          b.setAttribute('aria-label','Go to slide '+(idx+1));
+          b.addEventListener('click', e=>{ e.stopPropagation(); go(idx); });
           dotsWrap.appendChild(b);
         });
 
-        let i = 0;
-        let startX = 0, dragX = 0;
-        let dragging = false;
-
-        const viewWidth = () => c.getBoundingClientRect().width;
+        let i=0, startX=0, deltaX=0, dragging=false;
 
         function update(){
           track.style.transform = `translateX(${i * -100}%)`;
-          [...dotsWrap.children].forEach((d, di)=> d.setAttribute('aria-current', di===i));
-          prev.style.visibility = (i===0)?'hidden':'visible';
-          next.style.visibility = (i===slides.length-1)?'hidden':'visible';
+          [...dotsWrap.children].forEach((d,di)=>d.setAttribute('aria-current', di===i));
+          prev.style.visibility = i===0 ? 'hidden' : 'visible';
+          next.style.visibility = i===slides.length-1 ? 'hidden' : 'visible';
         }
         function clamp(n){ return Math.max(0, Math.min(slides.length-1, n)); }
-        function go(n){ i = clamp(n); update(); }
+        function go(n){ i = clamp(n); track.style.transition=''; update(); }
         function nextSlide(){ go(i+1); }
         function prevSlide(){ go(i-1); }
 
-        [prev, next, dotsWrap, track].forEach(el=>{
-          el && el.addEventListener('click', ev=>ev.stopPropagation());
-        });
+        // prevent link activation while dragging
+        [prev,next,dotsWrap,track].forEach(el=> el && el.addEventListener('click',ev=>ev.stopPropagation()));
 
-        prev.addEventListener('click', (e)=>{ e.preventDefault(); e.stopPropagation(); prevSlide(); }, {passive:false});
-        next.addEventListener('click', (e)=>{ e.preventDefault(); e.stopPropagation(); nextSlide(); }, {passive:false});
+        prev.addEventListener('click', e=>{ e.preventDefault(); prevSlide(); }, {passive:false});
+        next.addEventListener('click', e=>{ e.preventDefault(); nextSlide(); }, {passive:false});
 
-        const usePointer = 'PointerEvent' in window;
-
-        if (usePointer) {
+        // Pointer events preferred
+        if('PointerEvent' in window){
           track.addEventListener('pointerdown', onPointerDown, {passive:true});
-          track.querySelectorAll('img').forEach(img=> img.draggable = false);
-        } else {
+          track.querySelectorAll('img').forEach(img=> img.draggable=false);
+        }else{
           track.addEventListener('touchstart', onStart, {passive:true});
           track.addEventListener('mousedown', onStart);
         }
 
         function onPointerDown(e){
-          if (e.pointerType === 'mouse' && e.button !== 0) return;
-          dragging = true;
-          startX = e.clientX;
-          dragX = 0;
+          if(e.pointerType==='mouse' && e.button!==0) return;
+          dragging=true; startX=e.clientX; deltaX=0;
+          track.style.transition='none';
           track.setPointerCapture?.(e.pointerId);
-          document.addEventListener('pointermove', onPointerMove, {passive:false});
-          document.addEventListener('pointerup', onPointerUp);
+          window.addEventListener('pointermove', onPointerMove, {passive:false});
+          window.addEventListener('pointerup', onPointerUp, {passive:true});
+          window.addEventListener('pointercancel', onPointerUp, {passive:true});
         }
         function onPointerMove(e){
           if(!dragging) return;
-          dragX = e.clientX - startX;
-          track.style.transition = 'none';
-          const pct = (dragX / viewWidth()) * 100;
+          deltaX = e.clientX - startX;
+          const pct = (deltaX / vw()) * 100;
           track.style.transform = `translateX(calc(${i * -100}% + ${pct}%))`;
           e.preventDefault(); // keep swipe horizontal
         }
         function onPointerUp(){
           if(!dragging) return;
-          track.style.transition = '';
-          const threshold = viewWidth() * 0.15;
-          if (Math.abs(dragX) > threshold){
-            if (dragX < 0) nextSlide(); else prevSlide();
-          } else {
-            update();
+          track.style.transition='';
+          const threshold = Math.min(120, vw()*0.15); // px or 15% of card
+          if(Math.abs(deltaX) > threshold){
+            if(deltaX < 0) i = clamp(i+1); else i = clamp(i-1);
           }
-          dragging = false;
-          document.removeEventListener('pointermove', onPointerMove);
-          document.removeEventListener('pointerup', onPointerUp);
+          update();
+          dragging=false;
+          window.removeEventListener('pointermove', onPointerMove);
+          window.removeEventListener('pointerup', onPointerUp);
+          window.removeEventListener('pointercancel', onPointerUp);
         }
 
-        // Touch/mouse fallback
+        // Fallback for touch/mouse (older browsers)
         function onStart(e){
-          dragging = true;
-          startX = getX(e);
-          dragX = 0;
-          document.addEventListener('touchmove', onMove, {passive:false});
-          document.addEventListener('mousemove', onMove);
-          document.addEventListener('touchend', onEnd);
-          document.addEventListener('mouseup', onEnd);
+          dragging=true; startX=getX(e); deltaX=0;
+          track.style.transition='none';
+          window.addEventListener('touchmove', onMove, {passive:false});
+          window.addEventListener('mousemove', onMove);
+          window.addEventListener('touchend', onEnd);
+          window.addEventListener('mouseup', onEnd);
+          window.addEventListener('mouseleave', onEnd);
         }
         function onMove(e){
           if(!dragging) return;
-          dragX = getX(e) - startX;
-          track.style.transition = 'none';
-          const pct = (dragX / viewWidth()) * 100;
+          deltaX = getX(e) - startX;
+          const pct = (deltaX / vw()) * 100;
           track.style.transform = `translateX(calc(${i * -100}% + ${pct}%))`;
           e.preventDefault?.();
         }
         function onEnd(){
-          track.style.transition = '';
-          const threshold = viewWidth() * 0.15;
-          if (Math.abs(dragX) > threshold){
-            if (dragX < 0) nextSlide(); else prevSlide();
-          } else {
-            update();
+          if(!dragging) return;
+          track.style.transition='';
+          const threshold = Math.min(120, vw()*0.15);
+          if(Math.abs(deltaX) > threshold){
+            if(deltaX < 0) i = clamp(i+1); else i = clamp(i-1);
           }
-          dragging = false;
-          document.removeEventListener('touchmove', onMove);
-          document.removeEventListener('mousemove', onMove);
-          document.removeEventListener('touchend', onEnd);
-          document.removeEventListener('mouseup', onEnd);
+          update();
+          dragging=false;
+          window.removeEventListener('touchmove', onMove);
+          window.removeEventListener('mousemove', onMove);
+          window.removeEventListener('touchend', onEnd);
+          window.removeEventListener('mouseup', onEnd);
+          window.removeEventListener('mouseleave', onEnd);
         }
         function getX(e){ return (e.touches && e.touches[0]?.clientX) ?? e.clientX; }
 
         update();
       }
-
-      carousels.forEach(attachPointer);
     })();
   </script>
 </body>
