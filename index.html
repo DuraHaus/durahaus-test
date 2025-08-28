@@ -1,101 +1,114 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>DuraHaus — Painting and Construction</title>
-<meta name="description" content="Interior & exterior painting, cabinets, stain, concrete coatings, drywall, caulking, wood repair, pressure washing, and metal coatings. Clean, on-time, built to perform.">
-<link rel="preload" as="image" href="/assets/stock-hero.webp?v=restart1">
-<style>
-  :root{--bg:#0a0a0a;--panel:#101010;--ink:#fff;--muted:#bdbdbd;--line:#1a1a1a;--max:1120px;--r:14px;--gap:28px}
-  *{box-sizing:border-box} html,body{height:100%}
-  body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
-  a{color:inherit;text-decoration:none}
-  img{display:block;width:100%;height:auto;background:#0d0d0d}
-  .container{max-width:var(--max);margin:0 auto;padding:0 20px}
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>DuraHaus — Painting and Construction</title>
+  <meta name="description" content="Interior & exterior painting, cabinets, stain, concrete coatings, drywall and sealing. Clean, on-time, built to perform.">
+  <link rel="preload" as="image" href="/assets/stock-hero.webp?v=r2">
+  <style>
+    :root{--bg:#0a0a0a;--panel:#101010;--ink:#fff;--muted:#bdbdbd;--line:#1a1a1a;--max:1120px;--r:14px;--gap:28px}
+    *{box-sizing:border-box}html,body{height:100%}
+    body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+    a{color:inherit;text-decoration:none}
+    img{display:block;width:100%;height:auto;background:#0d0d0d}
+    .container{max-width:var(--max);margin:0 auto;padding:0 20px}
 
-  /* Header */
-  header{position:sticky;top:0;z-index:50;background:rgba(10,10,10,.92);backdrop-filter:saturate(140%) blur(8px);border-bottom:1px solid var(--line)}
-  .nav{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:12px 0}
-  .brand img{height:56px;width:auto;background:transparent!important}
-  .navlinks{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-left:20px}
-  .pill{padding:.5rem .8rem;border:1px solid var(--line);border-radius:999px;font-size:14px}
-  .pill--solid{background:#fff;color:#000;border-color:#fff;font-weight:700}
-  .iconbtn{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border:1px solid var(--line);border-radius:999px}
-  .iconbtn svg{width:18px;height:18px;fill:#fff}
-  @media (max-width:600px){.brand img{height:44px}.pill{font-size:13px;padding:.45rem .7rem}.iconbtn{width:38px;height:38px}}
+    /* Header */
+    header{position:sticky;top:0;z-index:50;background:rgba(10,10,10,.92);backdrop-filter:saturate(140%) blur(8px);border-bottom:1px solid var(--line)}
+    .nav{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:12px 0}
+    .brand{display:flex;align-items:center;gap:14px}
+    .brand img{height:56px;width:auto;background:transparent}
+    .navlinks{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-left:20px}
+    .pill{padding:.5rem .8rem;border:1px solid var(--line);border-radius:999px;font-size:14px}
+    .pill--solid{background:#fff;color:#000;border-color:#fff;font-weight:700}
+    .pill--ghost{background:transparent}
+    .iconbtn{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border:1px solid var(--line);border-radius:999px}
+    .iconbtn svg{width:18px;height:18px;fill:#fff}
+    @media (max-width:600px){.brand img{height:44px}.pill{font-size:13px;padding:.45rem .7rem}.iconbtn{width:38px;height:38px}}
 
-  /* Hero */
-  .hero{display:grid;grid-template-columns:1fr;border-bottom:1px solid var(--line);background:#0c0c0c}
-  .hero__media{position:relative;aspect-ratio:16/9;max-height:70vh;overflow:hidden}
-  .hero__media img{width:100%;height:100%;object-fit:cover;opacity:.95}
-  .hero__copy{padding:3rem 0}
-  h1{margin:0 0 .6rem;font-size:clamp(32px,5.2vw,56px);line-height:1.05;letter-spacing:-.01em}
-  .lead{color:var(--muted);font-size:clamp(16px,1.8vw,19px)}
-  .row{display:grid;grid-template-columns:1fr;gap:var(--gap);margin:3rem 0}
-  @media (min-width:860px){.hero{grid-template-columns:1.05fr .95fr}.hero__copy{padding:4.2rem 0 4rem 2rem}.row{grid-template-columns:1.05fr .95fr;align-items:center}}
+    /* Hero & layout */
+    .hero{display:grid;grid-template-columns:1fr;background:#0c0c0c;border-bottom:1px solid var(--line)}
+    .hero__media{position:relative;aspect-ratio:16/9;max-height:70vh;overflow:hidden}
+    .hero__media img{width:100%;height:100%;object-fit:cover;opacity:.95}
+    .hero__copy{padding:3rem 0}
+    h1{margin:0 0 .6rem;font-size:clamp(32px,5.2vw,56px);line-height:1.05;letter-spacing:-.01em}
+    .lead{color:var(--muted);font-size:clamp(16px,1.8vw,19px)}
+    .row{display:grid;grid-template-columns:1fr;gap:var(--gap);margin:3rem 0}
+    @media (min-width:860px){.hero{grid-template-columns:1.05fr .95fr}.hero__copy{padding:4.2rem 0 4rem 2rem}.row{grid-template-columns:1.05fr .95fr;align-items:center}}
 
-  /* Cards / grids */
-  .card{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
-  .card .pad{padding:1.1rem}
-  h2{margin:0 0 .4rem;font-size:clamp(22px,2.2vw,28px)}
-  p{margin:.25rem 0 0}
-  .grid{display:grid;gap:var(--gap);grid-template-columns:1fr}
-  @media (min-width:900px){.grid{grid-template-columns:repeat(3,1fr)}}
-  .card .pad.service-link{display:block;border-top:1px solid var(--line)}
+    /* Cards / grids */
+    .card{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
+    .card .pad{padding:1.1rem}
+    h2{margin:0 0 .4rem;font-size:clamp(22px,2.2vw,28px)}
+    p{margin:.25rem 0 0}
+    .grid{display:grid;gap:var(--gap);grid-template-columns:1fr}
+    @media (min-width:900px){.grid{grid-template-columns:repeat(3,1fr)}}
+    .card .pad.service-link{display:block;border-top:1px solid var(--line)}
 
-  /* FAQ */
-  .faq{margin:3rem auto}
-  .faq details{border:1px solid var(--line);border-radius:12px;padding:.9rem 1.1rem;background:var(--panel)}
-  .faq details+details{margin-top:12px}
-  .faq summary{cursor:pointer;list-style:none;font-weight:700}
-  .faq summary::-webkit-details-marker{display:none}
-  .faq .a{color:var(--muted);margin:.6rem 0 0}
+    /* Why / FAQ etc */
+    .why{margin:3rem auto 0}
+    .why .cols{display:grid;gap:var(--gap)}
+    @media (min-width:900px){.why .cols{grid-template-columns:repeat(3,1fr)}}
+    .why .tile{border:1px solid var(--line);border-radius:var(--r);padding:1.2rem;background:var(--panel)}
+    .why h3{margin:.1rem 0 .4rem;font-size:1.1rem}
+    .faq{margin:3rem auto}
+    .faq details{border:1px solid var(--line);border-radius:12px;padding:.9rem 1.1rem;background:var(--panel)}
+    .faq details+details{margin-top:12px}
+    .faq summary{cursor:pointer;list-style:none;font-weight:700}
+    .faq summary::-webkit-details-marker{display:none}
+    .faq .a{color:var(--muted);margin:.6rem 0 0}
 
-  /* CTA band */
-  .band{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;padding:1.2rem;border:1px solid var(--line);border-radius:var(--r);background:var(--panel)}
+    /* CTA band */
+    .band{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;padding:1.2rem;border:1px solid var(--line);border-radius:var(--r);background:var(--panel)}
 
-  /* Pre-footer */
-  .prefooter{margin:3rem auto 1.5rem;display:flex;gap:22px;align-items:center;justify-content:space-between;flex-wrap:wrap}
-  .prefooter img{width:128px;height:auto;opacity:.95;filter:invert(1) brightness(1.6);background:transparent}
-  .prefooter .menu{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
-  @media (max-width:720px){.prefooter{justify-content:center;text-align:center}.prefooter .menu{justify-content:center}}
-  footer{border-top:1px solid var(--line);margin-top:2rem}
-  .foot{display:grid;gap:18px;align-items:center;padding:1.2rem 0;grid-template-columns:1fr}
-  small{color:var(--muted)}
-  .contactbar{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:#0e0e10}
-  .contactbar .row{display:flex;gap:16px;align-items:center;flex-wrap:wrap;margin:0;padding:14px 0}
-  .contactbar a{display:inline-flex;align-items:center;gap:8px;color:#d9d9db;font-size:15px}
-  .contactbar a:hover{color:#fff}
-  .contactbar svg{width:20px;height:20px;fill:currentColor}
+    /* Pre-footer */
+    .prefooter{margin:3rem auto 1.5rem;display:flex;gap:22px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+    .prefooter img{width:128px;height:auto;opacity:.95;filter:invert(1) brightness(1.6);background:transparent}
 
-  /* Compare slider */
-  .compare{position:relative;max-width:var(--max);margin:2.5rem auto;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;background:var(--panel)}
-  .compare__wrap{position:relative;aspect-ratio:16/9;overflow:hidden}
-  .compare__base,.compare__after{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-  /* AFTER revealed from right: clip its LEFT by X% */
-  .compare__after{clip-path:inset(0 0 0 50%)}
-  .compare__bar{position:absolute;top:0;bottom:0;left:50%;width:2px;background:#fff;opacity:.9;z-index:3}
-  .compare__knob{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:34px;height:34px;border-radius:50%;background:#fff;color:#000;display:grid;place-items:center;font-weight:700;border:1px solid #0008;z-index:3}
-  .compare input[type="range"]{position:absolute;inset:0;opacity:0;z-index:4;appearance:none;background:transparent}
+    /* Contact strip */
+    .contactbar{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:#0e0e10}
+    .contactbar .row{display:flex;gap:16px;align-items:center;flex-wrap:wrap;margin:0;padding:14px 0}
+    .contactbar a{display:inline-flex;align-items:center;gap:8px;color:#d9d9db;font-size:15px}
+    .contactbar a:hover{color:#fff}
+    .contactbar svg{width:20px;height:20px;fill:currentColor}
 
-  /* Carousel */
-  .carousel{position:relative}
-  .carousel-viewport{position:relative;overflow:hidden}
-  .carousel-track{display:flex;transition:transform 280ms ease;user-select:none;touch-action:pan-y;will-change:transform}
-  .carousel img{width:100%;height:340px;object-fit:cover;flex:0 0 100%;touch-action:pan-y}
-  .carousel-btn{position:absolute;top:50%;transform:translateY(-50%);border:none;background:rgba(0,0,0,.55);color:#fff;padding:10px 14px;border-radius:12px;cursor:pointer;z-index:5;touch-action:manipulation}
-  .carousel-btn.prev{left:10px}.carousel-btn.next{right:10px}
-  .carousel-btn:hover{background:rgba(0,0,0,.7)}
-  .carousel-dots{display:none!important}
-</style>
+    /* Sticky tidy footer */
+    html,body{height:100%} body{min-height:100dvh;display:flex;flex-direction:column} main{flex:1 0 auto}
+
+    /* ===== Scroll-snap Carousel (bulletproof swipe) ===== */
+    .carousel{position:relative}
+    .carousel-track{
+      display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;
+      -webkit-overflow-scrolling:touch;gap:0;scrollbar-width:none
+    }
+    .carousel-track::-webkit-scrollbar{display:none}
+    .carousel-track > img{flex:0 0 100%;height:340px;object-fit:cover;scroll-snap-align:start}
+    .carousel-btn{
+      position:absolute;top:50%;transform:translateY(-50%);
+      border:none;background:rgba(0,0,0,.55);color:#fff;padding:10px 14px;border-radius:12px;cursor:pointer;z-index:5
+    }
+    .carousel-btn.prev{left:10px} .carousel-btn.next{right:10px}
+    .carousel-dots{display:none !important}
+
+    /* ===== Before/After slider ===== */
+    .compare{position:relative;max-width:var(--max);margin:2.5rem auto;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;background:var(--panel)}
+    .compare__wrap{position:relative;aspect-ratio:16/9;overflow:hidden}
+    .compare img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+    .compare__after{clip-path:inset(0 50% 0 0)}
+    .compare__handle{position:absolute;left:50%;top:0;bottom:0;width:2px;background:#fff;opacity:.9;z-index:3}
+    .compare__knob{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:34px;height:34px;border-radius:50%;background:#fff;color:#000;display:grid;place-items:center;font-weight:700;z-index:4;border:1px solid #0008}
+    .compare input[type="range"]{position:absolute;inset:0;z-index:5;appearance:none;background:transparent}
+    .compare input[type="range"]::-webkit-slider-thumb{appearance:none;width:0;height:0}
+    .compare input[type="range"]::-moz-range-thumb{width:0;height:0;border:0}
+    .compare .pad{padding:1rem}
+  </style>
 </head>
 <body>
-
 <header>
   <div class="container nav">
     <a class="brand" href="/" aria-label="DuraHaus home">
-      <img src="/assets/durahaus-logo.svg?v=restart1" alt="DuraHaus logo">
+      <img src="/assets/durahaus-logo.svg" alt="DuraHaus logo">
     </a>
     <nav class="navlinks" aria-label="Primary">
       <a href="/services.html" class="pill">Services</a>
@@ -113,11 +126,11 @@
   <!-- Hero -->
   <section class="hero">
     <div class="hero__media">
-      <img src="/assets/stock-hero.webp?v=restart1" alt="Cincinnati high-end home exterior" loading="eager" decoding="async">
+      <img src="/assets/stock-hero.webp?v=r2" alt="Cincinnati high-end home exterior" loading="eager" decoding="async">
     </div>
     <div class="hero__copy container">
       <h1>Pro Services. Pro Results.<br>The DuraHaus Standard</h1>
-      <p class="lead">From interiors to exteriors, cabinets to concrete — craftsmanship and materials built to perform.</p>
+      <p class="lead">From interiors to exteriors, cabinets to concrete — we approach every job with care, craftsmanship, and materials built to perform.</p>
       <div class="stack" style="margin-top:1.1rem">
         <a class="pill pill--solid" href="/services.html">Explore Services</a>
       </div>
@@ -127,217 +140,210 @@
   <!-- Mission -->
   <section class="container row">
     <div class="card">
-      <img src="/assets/interior4.webp?v=restart1" alt="Interior detail" loading="lazy" decoding="async">
+      <img src="/assets/interior4.webp" alt="Interior detail" loading="lazy">
     </div>
     <div>
       <h2>Protecting What’s Built. <br>Enhancing What’s Seen.</h2>
-      <p class="lead">Interior/Exterior Painting, Cabinetry Finishes, Staining & Wood Finishes, Concrete Coatings, Drywall Repair, Caulking/Sealants, Wood Repair, Pressure Washing, and Metal Coatings.</p>
+      <p class="lead">Interior/Exterior Painting, Cabinetry Finishes, Staining & Wood Finishes, Surface-Protecting Coatings, Concrete Coatings, Drywall Repair, Interior/Exterior Sealing and more.</p>
       <div class="stack" style="margin-top:1rem">
         <a class="pill pill--solid" href="/about.html">About</a>
-        <a class="pill" href="tel:15136684382">Call Us</a>
+        <a class="pill pill--ghost" href="tel:15136684382">Call Us</a>
       </div>
     </div>
   </section>
 
-  <!-- Before/After -->
+  <!-- Before/After Slider (brick) -->
   <section class="container">
     <div class="compare">
-      <div class="compare__wrap">
-        <img class="compare__base" src="/assets/brickbefore.webp?v=restart1" alt="Before">
-        <img class="compare__after" src="/assets/brickafter.webp?v=restart1" alt="After" id="afterImg">
-        <div class="compare__bar" id="bar"></div>
-        <div class="compare__knob" id="knob">↔</div>
-        <input type="range" min="0" max="100" value="50" aria-label="Slide to compare" id="compareRange">
+      <div class="compare__wrap" data-compare>
+        <!-- LEFT = BEFORE -->
+        <img src="/assets/brickbefore.webp" alt="Before">
+        <!-- RIGHT = AFTER -->
+        <img class="compare__after" src="/assets/brickafter.webp" alt="After" data-after>
+        <div class="compare__handle" data-handle></div>
+        <div class="compare__knob" aria-hidden="true">↔</div>
+        <input type="range" min="0" max="100" value="50" aria-label="Slide to compare" data-range>
       </div>
       <div class="pad">
         <h3 style="margin:.2rem 0">Before ↔ After</h3>
-        <p class="lead">Slide to see the difference.</p>
+        <p class="lead">Slide to see the difference a DuraHaus finish makes.</p>
       </div>
     </div>
   </section>
 
-  <!-- Services A -->
+  <!-- Services (first grid) -->
   <section class="container" style="margin-top:2rem">
     <div class="grid">
-
+      <!-- Interior -->
       <div class="card">
         <div class="carousel" data-carousel>
           <button class="carousel-btn prev" aria-label="Previous" data-prev>‹</button>
-          <div class="carousel-viewport">
-            <div class="carousel-track" data-track>
-              <img src="/assets/interior8.webp?v=restart1" alt="Interior 1" loading="lazy">
-              <img src="/assets/interior11.webp?v=restart1" alt="Interior 2" loading="lazy">
-              <img src="/assets/interior1.webp?v=restart1" alt="Interior 3" loading="lazy">
-            </div>
+          <div class="carousel-track" data-track>
+            <img src="/assets/interior8.webp" alt="">
+            <img src="/assets/interior11.webp" alt="">
+            <img src="/assets/interior1.webp" alt="">
           </div>
           <button class="carousel-btn next" aria-label="Next" data-next>›</button>
           <div class="carousel-dots" data-dots></div>
         </div>
-        <a class="pad service-link" href="/services.html#interior"><h3 style="margin:0 0 .25rem">Interior Painting</h3><p>Walls, ceilings, trim, cabinetry.</p></a>
+        <a class="pad service-link" href="/services.html#interior">
+          <h3 style="margin:0 0 .25rem">Interior Painting</h3>
+          <p>Walls, ceilings, trim, cabinetry, accent walls, etc.</p>
+        </a>
       </div>
 
+      <!-- Exterior -->
       <div class="card">
         <div class="carousel" data-carousel>
           <button class="carousel-btn prev" aria-label="Previous" data-prev>‹</button>
-          <div class="carousel-viewport">
-            <div class="carousel-track" data-track>
-              <img src="/assets/exterior7.webp?v=restart1" alt="Exterior 1" loading="lazy">
-              <img src="/assets/exterior4.webp?v=restart1" alt="Exterior 2" loading="lazy">
-              <img src="/assets/exterior3.webp?v=restart1" alt="Exterior 3" loading="lazy">
-            </div>
+          <div class="carousel-track" data-track>
+            <img src="/assets/exterior7.webp" alt="">
+            <img src="/assets/exterior4.webp" alt="">
+            <img src="/assets/exterior3.webp" alt="">
           </div>
           <button class="carousel-btn next" aria-label="Next" data-next>›</button>
           <div class="carousel-dots" data-dots></div>
         </div>
-        <a class="pad service-link" href="/services.html#exterior"><h3 style="margin:0 0 .25rem">Exterior Painting</h3><p>Premium prep and coatings.</p></a>
+        <a class="pad service-link" href="/services.html#exterior">
+          <h3 style="margin:0 0 .25rem">Exterior Painting</h3>
+          <p>Premium prep and coatings that handle Midwest weather.</p>
+        </a>
       </div>
 
+      <!-- Concrete -->
       <div class="card">
         <div class="carousel" data-carousel>
           <button class="carousel-btn prev" aria-label="Previous" data-prev>‹</button>
-          <div class="carousel-viewport">
-            <div class="carousel-track" data-track>
-              <img src="/assets/stock-concrete.webp?v=restart1" alt="Concrete 1" loading="lazy">
-              <img src="/assets/concrete1.webp?v=restart1" alt="Concrete 2" loading="lazy">
-              <img src="/assets/concrete3.webp?v=restart1" alt="Concrete 3" loading="lazy">
-            </div>
+          <div class="carousel-track" data-track>
+            <img src="/assets/stock-concrete.webp" alt="">
+            <img src="/assets/concrete1.webp" alt="">
+            <img src="/assets/concrete3.webp" alt="">
           </div>
           <button class="carousel-btn next" aria-label="Next" data-next>›</button>
           <div class="carousel-dots" data-dots></div>
         </div>
-        <a class="pad service-link" href="/services.html#concrete"><h3 style="margin:0 0 .25rem">Concrete Coatings</h3><p>Durable, easy to clean.</p></a>
+        <a class="pad service-link" href="/services.html#concrete">
+          <h3 style="margin:0 0 .25rem">Concrete Coatings</h3>
+          <p>Garage, patios, and basements — durable and easy to clean.</p>
+        </a>
       </div>
-
     </div>
   </section>
 
-  <!-- Services B -->
+  <!-- More services -->
   <section class="container" style="margin-top:2rem">
     <div class="grid">
-
+      <!-- Cabinets -->
       <div class="card">
         <div class="carousel" data-carousel>
           <button class="carousel-btn prev" aria-label="Previous" data-prev>‹</button>
-          <div class="carousel-viewport">
-            <div class="carousel-track" data-track>
-              <img src="/assets/stock-caulking.webp?v=restart1" alt="Caulking stock" loading="lazy">
-              <img src="/assets/caulking1.webp?v=restart1" alt="Caulking 1" loading="lazy">
-              <img src="/assets/caulking2.webp?v=restart1" alt="Caulking 2" loading="lazy">
-            </div>
+          <div class="carousel-track" data-track>
+            <img src="/assets/cabinets1.webp" alt="">
+            <img src="/assets/cabinets2.webp" alt="">
+            <img src="/assets/stock-cabinets.webp" alt="">
           </div>
           <button class="carousel-btn next" aria-label="Next" data-next>›</button>
           <div class="carousel-dots" data-dots></div>
         </div>
-        <a class="pad service-link" href="/services.html#caulking"><h3 style="margin:0 0 .25rem">Caulking & Sealant</h3><p>Clean, watertight lines.</p></a>
+        <a class="pad service-link" href="/services.html#cabinets">
+          <h3 style="margin:0 0 .25rem">Cabinet Refinishing</h3>
+          <p>Factory-smooth primers and hard-wearing topcoats.</p>
+        </a>
       </div>
 
+      <!-- Stain/Wood care -->
       <div class="card">
         <div class="carousel" data-carousel>
           <button class="carousel-btn prev" aria-label="Previous" data-prev>‹</button>
-          <div class="carousel-viewport">
-            <div class="carousel-track" data-track>
-              <img src="/assets/woodrepair1.webp?v=restart1" alt="Wood repair 1" loading="lazy">
-              <img src="/assets/woodrepair2.webp?v=restart1" alt="Wood repair 2" loading="lazy">
-              <img src="/assets/woodrepair3.webp?v=restart1" alt="Wood repair 3" loading="lazy">
-            </div>
+          <div class="carousel-track" data-track>
+            <img src="/assets/stock-stain.webp" alt="">
+            <img src="/assets/stain1.webp" alt="">
+            <img src="/assets/stain2.webp" alt="">
           </div>
           <button class="carousel-btn next" aria-label="Next" data-next>›</button>
           <div class="carousel-dots" data-dots></div>
         </div>
-        <a class="pad service-link" href="/services.html#wood-repair"><h3 style="margin:0 0 .25rem">Wood Repair & Replacement</h3><p>Rot fixes and trim swaps.</p></a>
+        <a class="pad service-link" href="/services.html#stain">
+          <h3 style="margin:0 0 .25rem">Staining & Wood Care</h3>
+          <p>Decks, doors, and rails prepped and finished right.</p>
+        </a>
       </div>
 
+      <!-- Drywall -->
       <div class="card">
         <div class="carousel" data-carousel>
           <button class="carousel-btn prev" aria-label="Previous" data-prev>‹</button>
-          <div class="carousel-viewport">
-            <div class="carousel-track" data-track>
-              <img src="/assets/pressurewashing1.webp?v=restart1" alt="Pressure washing 1" loading="lazy">
-              <img src="/assets/pressurewashing2.webp?v=restart1" alt="Pressure washing 2" loading="lazy">
-              <img src="/assets/pressurewashing3.webp?v=restart1" alt="Pressure washing 3" loading="lazy">
-            </div>
+          <div class="carousel-track" data-track>
+            <img src="/assets/stock-drywall.webp" alt="">
+            <img src="/assets/drywall2.webp" alt="">
+            <img src="/assets/drywall1.webp" alt="">
           </div>
           <button class="carousel-btn next" aria-label="Next" data-next>›</button>
           <div class="carousel-dots" data-dots></div>
         </div>
-        <a class="pad service-link" href="/services.html#pressure-washing"><h3 style="margin:0 0 .25rem">Pressure Washing</h3><p>Clean, prep, protect.</p></a>
+        <a class="pad service-link" href="/services.html#drywall">
+          <h3 style="margin:0 0 .25rem">Drywall & Repair</h3>
+          <p>Repairs and resurfacing for flat, paint-ready surfaces.</p>
+        </a>
       </div>
-
     </div>
   </section>
 
-  <!-- Services C -->
+  <!-- Even more services -->
   <section class="container" style="margin-top:2rem">
     <div class="grid">
-
+      <!-- Caulking & Sealant -->
       <div class="card">
         <div class="carousel" data-carousel>
           <button class="carousel-btn prev" aria-label="Previous" data-prev>‹</button>
-          <div class="carousel-viewport">
-            <div class="carousel-track" data-track>
-              <img src="/assets/stock-stain.webp?v=restart1" alt="Stain 1" loading="lazy">
-              <img src="/assets/stain1.webp?v=restart1" alt="Stain 2" loading="lazy">
-              <img src="/assets/stain2.webp?v=restart1" alt="Stain 3" loading="lazy">
-            </div>
+          <div class="carousel-track" data-track>
+            <img src="/assets/stock-caulking.webp" alt="">
+            <img src="/assets/caulking1.webp" alt="">
+            <img src="/assets/caulking2.webp" alt="">
           </div>
           <button class="carousel-btn next" aria-label="Next" data-next>›</button>
           <div class="carousel-dots" data-dots></div>
         </div>
-        <a class="pad service-link" href="/services.html#stain"><h3 style="margin:0 0 .25rem">Staining & Wood Care</h3><p>Decks, doors, rails.</p></a>
+        <a class="pad service-link" href="/services.html#caulking">
+          <h3 style="margin:0 0 .25rem">Caulking & Sealant</h3>
+          <p>Clean, watertight lines inside & out.</p>
+        </a>
       </div>
 
+      <!-- Wood Repair & Replacement -->
       <div class="card">
         <div class="carousel" data-carousel>
           <button class="carousel-btn prev" aria-label="Previous" data-prev>‹</button>
-          <div class="carousel-viewport">
-            <div class="carousel-track" data-track>
-              <img src="/assets/cabinets1.webp?v=restart1" alt="Cabinets 1" loading="lazy">
-              <img src="/assets/cabinets2.webp?v=restart1" alt="Cabinets 2" loading="lazy">
-              <img src="/assets/stock-cabinets.webp?v=restart1" alt="Cabinets 3" loading="lazy">
-            </div>
+          <div class="carousel-track" data-track>
+            <img src="/assets/woodrepair1.webp" alt="">
+            <img src="/assets/woodrepair2.webp" alt="">
+            <img src="/assets/woodrepair3.webp" alt="">
           </div>
           <button class="carousel-btn next" aria-label="Next" data-next>›</button>
           <div class="carousel-dots" data-dots></div>
         </div>
-        <a class="pad service-link" href="/services.html#cabinets"><h3 style="margin:0 0 .25rem">Cabinet Refinishing</h3><p>Factory-smooth finishes.</p></a>
+        <a class="pad service-link" href="/services.html#wood-repair">
+          <h3 style="margin:0 0 .25rem">Wood Repair & Replacement</h3>
+          <p>Rot repairs, trim swaps, long-lasting substrates.</p>
+        </a>
       </div>
 
+      <!-- Pressure Washing -->
       <div class="card">
         <div class="carousel" data-carousel>
           <button class="carousel-btn prev" aria-label="Previous" data-prev>‹</button>
-          <div class="carousel-viewport">
-            <div class="carousel-track" data-track>
-              <img src="/assets/stock-drywall.webp?v=restart1" alt="Drywall 1" loading="lazy">
-              <img src="/assets/drywall2.webp?v=restart1" alt="Drywall 2" loading="lazy">
-              <img src="/assets/drywall1.webp?v=restart1" alt="Drywall 3" loading="lazy">
-            </div>
+          <div class="carousel-track" data-track>
+            <img src="/assets/pressurewashing1.webp" alt="">
+            <img src="/assets/pressurewashing2.webp" alt="">
+            <img src="/assets/pressurewashing3.webp" alt="">
           </div>
           <button class="carousel-btn next" aria-label="Next" data-next>›</button>
           <div class="carousel-dots" data-dots></div>
         </div>
-        <a class="pad service-link" href="/services.html#drywall"><h3 style="margin:0 0 .25rem">Drywall & Repair</h3><p>Flat, paint-ready surfaces.</p></a>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- Metal Coatings -->
-  <section class="container" style="margin-top:2rem">
-    <div class="grid">
-      <div class="card">
-        <div class="carousel" data-carousel>
-          <button class="carousel-btn prev" aria-label="Previous" data-prev>‹</button>
-          <div class="carousel-viewport">
-            <div class="carousel-track" data-track>
-              <img src="/assets/stock-metal.webp?v=restart1" alt="Metal 1" loading="lazy">
-              <img src="/assets/metal1.webp?v=restart1" alt="Metal 2" loading="lazy">
-              <img src="/assets/exterior3.webp?v=restart1" alt="Metal 3" loading="lazy">
-            </div>
-          </div>
-          <button class="carousel-btn next" aria-label="Next" data-next>›</button>
-          <div class="carousel-dots" data-dots></div>
-        </div>
-        <a class="pad service-link" href="/services.html#metal"><h3 style="margin:0 0 .25rem">Metal Coatings</h3><p>Rust-resistant, long-wearing systems.</p></a>
+        <a class="pad service-link" href="/services.html#pressure-washing">
+          <h3 style="margin:0 0 .25rem">Pressure Washing</h3>
+          <p>Prep that makes coatings last longer and look better.</p>
+        </a>
       </div>
     </div>
   </section>
@@ -345,10 +351,18 @@
   <!-- FAQ -->
   <section class="container faq">
     <h2 style="margin-bottom:.6rem">FAQs</h2>
-    <details><summary>Do you offer free estimates?</summary><div class="a">Yes. We can visit on-site within 48 hours in most cases and provide a written, itemized quote.</div></details>
-    <details><summary>How soon can you start?</summary><div class="a">Scheduling depends on scope and season. Smaller interior projects can often begin within 1–2 weeks.</div></details>
-    <details><summary>What materials do you use?</summary><div class="a">Pro-grade primers, enamels, and exterior coatings matched to each substrate for durability and finish quality.</div></details>
-    <details><summary>Are you insured and do you provide a warranty?</summary><div class="a">Yes—fully insured. We include a workmanship warranty with every project.</div></details>
+    <details><summary>Do you offer free estimates?</summary>
+      <div class="a">Yes. We can visit on-site within 48 hours in most cases and provide a written, itemized quote.</div>
+    </details>
+    <details><summary>How soon can you start?</summary>
+      <div class="a">Scheduling depends on scope and season. Smaller interior projects can often begin within 1–2 weeks.</div>
+    </details>
+    <details><summary>What materials do you use?</summary>
+      <div class="a">We spec pro-grade primers, enamels, and exterior coatings matched to each substrate for durability and finish quality.</div>
+    </details>
+    <details><summary>Are you insured and do you provide a warranty?</summary>
+      <div class="a">Yes—fully insured. We include a workmanship warranty with every project. Details are listed on your written quote.</div>
+    </details>
   </section>
 
   <!-- CTA -->
@@ -367,47 +381,20 @@
     </div>
   </section>
 
-  <!-- Pre-footer -->
+  <!-- Pre-footer & Footer -->
   <div class="container prefooter">
-    <div class="stampwrap">
-      <img src="/assets/seal-white.webp?v=restart1" alt="DuraHaus stamp (white)">
-    </div>
-    <nav class="menu" aria-label="Footer quick links">
+    <img src="/assets/seal-white.webp" alt="DuraHaus stamp">
+    <nav class="menu" aria-label="Footer quick links" style="display:flex;gap:12px;flex-wrap:wrap">
       <a href="/services.html" class="pill">Services</a>
       <a href="/projects.html" class="pill">Projects</a>
       <a href="/about.html" class="pill">About</a>
-      <a class="iconbtn" href="tel:15136684382" aria-label="Call DuraHaus">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.2c1.2 2.4 3.1 4.3 5.5 5.5l1.8-1.8c.3-.3.7-.4 1.1-.3 1 .3 2 .5 3 .5.6 0 1 .4 1 1v3.1c0 .6-.4 1-1 1C10.3 19.2 4.8 13.7 4.8 6.1c0-.6.4-1 1-1H9c.6 0 1 .4 1 1 0 1 .2 2 .5 3 .1.4 0 .8-.3 1.1l-1.6 2z"/></svg>
-      </a>
       <a class="pill pill--solid" href="/quote.html">Get a Quote</a>
     </nav>
   </div>
-
-  <!-- Contact strip -->
-  <section class="contactbar">
-    <div class="container row">
-      <a href="tel:+15136684382" aria-label="Call">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.2c1.2 2.4 3.1 4.3 5.5 5.5l1.8-1.8c.3-.3.7-.4 1.1-.3 1 .3 2 .5 3 .5.6 0 1 .4 1 1v3.1c0 .6-.4 1-1 1C10.3 19.2 4.8 13.7 4.8 6.1c0-.6.4-1 1-1H9c.6 0 1 .4 1 1 0 1 .2 2 .5 3 .1.4 0 .8-.3 1.1l-1.6 2z"/></svg>
-        513-668-4382
-      </a>
-      <a href="mailto:durahaus.solutions@gmail.com" aria-label="Email">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5L4 8V6l8 5 8-5v2z"/></svg>
-        durahaus.solutions@gmail.com
-      </a>
-      <a href="https://www.facebook.com/durahaus" target="_blank" rel="noopener" aria-label="Facebook">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 12a10 10 0 1 0-11.5 9.9v-7h-2v-3h2v-2.3c0-2 1.2-3.1 3-3.1.9 0 1.8.1 1.8.1v2h-1c-1 0-1.3.6-1.3 1.2V12h2.2l-.4 3h-1.8v7A10 10 0 0 0 22 12z"/></svg>
-        Facebook
-      </a>
-      <a href="https://share.google/EBNrz9YGxu5CfbmpO" target="_blank" rel="noopener" aria-label="Google Business Profile">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6a2.5 2.5 0 0 1 0 5z"/></svg>
-        Google
-      </a>
-    </div>
-  </section>
 </main>
 
 <footer>
-  <div class="container foot">
+  <div class="container" style="border-top:1px solid var(--line);padding:1.2rem 0">
     <small>© <span id="y"></span> DuraHaus Painting & Construction. All rights reserved.</small>
   </div>
 </footer>
@@ -415,90 +402,36 @@
 <script>
   document.getElementById('y').textContent = new Date().getFullYear();
 
-  /* Compare: Before left (base), After right (clip-left by %). */
+  // ===== Compare slider =====
   (function(){
-    const range=document.getElementById('compareRange');
-    const after=document.getElementById('afterImg');
-    const bar=document.getElementById('bar');
-    const knob=document.getElementById('knob');
-    if(!range||!after) return;
-
-    // fallback tries if a stray space/case happened
-    after.addEventListener('error', function onErr(){
-      const guesses=['/assets/brickafter%20.webp?v=restart1','/assets/brickAfter.webp?v=restart1'];
-      let i=0; function tryNext(){ if(i<guesses.length){ after.src=guesses[i++]; } else { after.removeEventListener('error', onErr); } }
-      tryNext();
-    });
-
+    const wrap = document.querySelector('[data-compare]');
+    if(!wrap) return;
+    const range = wrap.querySelector('[data-range]');
+    const after = wrap.querySelector('[data-after]');
+    const handle = wrap.querySelector('[data-handle]');
+    const knob = wrap.querySelector('.compare__knob');
     function setSplit(v){
-      const pct=Math.max(0,Math.min(100,Number(v)||50));
-      after.style.clipPath='inset(0 0 0 '+pct+'%)';
-      bar.style.left=pct+'%';
-      knob.style.left=pct+'%';
+      const pct = Math.max(0, Math.min(100, v|0));
+      after.style.clipPath = `inset(0 ${100-pct}% 0 0)`;
+      handle.style.left = pct + '%';
+      knob.style.left = pct + '%';
     }
-    range.addEventListener('input', e=>setSplit(e.target.value));
-    setSplit(range.value||50);
+    range.addEventListener('input', e=> setSplit(e.target.value));
+    setSplit(range.value);
   })();
 
-  /* Carousel v3: pointer-only to avoid double-binding bugs */
+  // ===== Scroll-snap carousel buttons =====
   (function(){
-    const carousels=document.querySelectorAll('[data-carousel]');
-    const HAS_POINTER='PointerEvent' in window;
-    carousels.forEach(c=>{
-      const track=c.querySelector('[data-track]'); if(!track) return;
-      const prev=c.querySelector('[data-prev]'); const next=c.querySelector('[data-next]');
-      const viewport=c.querySelector('.carousel-viewport')||c;
-      const slides=[...track.children];
-      let i=0,startX=0,dx=0,drag=false,pid=null;
-
-      const vw=()=>viewport.getBoundingClientRect().width||1;
-      const clamp=n=>Math.max(0,Math.min(slides.length-1,n));
-      const update=()=>{ if(prev) prev.style.visibility=i===0?'hidden':'visible'; if(next) next.style.visibility=i===slides.length-1?'hidden':'visible'; };
-      const go=n=>{ i=clamp(n); track.style.transition='transform 280ms ease'; track.style.transform=`translateX(${-100*i}%)`; update(); };
-
-      update(); go(0);
-      prev&&prev.addEventListener('click',e=>{e.preventDefault();go(i-1);});
-      next&&next.addEventListener('click',e=>{e.preventDefault();go(i+1);});
-      track.addEventListener('click',e=>e.preventDefault()); // stop ghost clicks while swiping
-
-      function start(x,pointerId){ drag=true; startX=x; dx=0; track.style.transition='none'; if(pointerId!=null&&track.setPointerCapture) track.setPointerCapture(pointerId); pid=pointerId??null; }
-      function move(x){ if(!drag) return; dx=x-startX; const pct=(dx/vw())*100; track.style.transform=`translateX(calc(${-100*i}% + ${pct}%))`; }
-      function end(){ if(!drag) return; const threshold=vw()*0.14; if(Math.abs(dx)>threshold){ i+= (dx<0?1:-1); } drag=false; dx=0; if(pid!=null&&track.releasePointerCapture) track.releasePointerCapture(pid); pid=null; go(i); }
-
-      if(HAS_POINTER){
-        track.addEventListener('pointerdown',e=>{ if(e.pointerType==='mouse'&&e.button!==0) return; start(e.clientX,e.pointerId); },{passive:true});
-        track.addEventListener('pointermove',e=>{ if(drag){ e.preventDefault(); move(e.clientX); }});
-        track.addEventListener('pointerup',end);
-        track.addEventListener('pointercancel',end);
-      }else{
-        const onStart=e=>{ const x=e.touches?e.touches[0].clientX:e.clientX; start(x,null);
-          document.addEventListener('touchmove',onMove,{passive:false}); document.addEventListener('mousemove',onMove);
-          document.addEventListener('touchend',onEnd); document.addEventListener('mouseup',onEnd); };
-        const onMove=e=>{ if(!drag) return; const x=e.touches?e.touches[0].clientX:e.clientX; e.preventDefault(); move(x); };
-        const onEnd=()=>{ document.removeEventListener('touchmove',onMove); document.removeEventListener('mousemove',onMove);
-          document.removeEventListener('touchend',onEnd); document.removeEventListener('mouseup',onEnd); end(); };
-        track.addEventListener('touchstart',onStart,{passive:true});
-        track.addEventListener('mousedown',onStart);
-      }
-
-      track.querySelectorAll('img').forEach(img=>{ img.draggable=false; img.addEventListener('dragstart',e=>e.preventDefault()); img.style.touchAction='pan-y'; });
+    document.querySelectorAll('[data-carousel]').forEach(c=>{
+      const track = c.querySelector('[data-track]');
+      const prev = c.querySelector('[data-prev]');
+      const next = c.querySelector('[data-next]');
+      const slideWidth = () => track.getBoundingClientRect().width;
+      function page(dir){ track.scrollBy({left: dir*slideWidth(), behavior:'smooth'}); }
+      prev.addEventListener('click', e=>{ e.preventDefault(); page(-1); });
+      next.addEventListener('click', e=>{ e.preventDefault(); page(1); });
     });
-  })();
-
-  /* Tiny image 404 panel so you can fix paths fast */
-  (function(){
-    const imgs=Array.from(document.images); if(!imgs.length) return;
-    Promise.all(imgs.map(el=>new Promise(r=>{const p=new Image();const src=el.currentSrc||el.src;p.onload=()=>r({ok:true,src});p.onerror=()=>r({ok:false,src});p.src=src;})))
-      .then(list=>{
-        const miss=list.filter(x=>!x.ok); if(!miss.length) return;
-        const box=document.createElement('div');
-        box.style.cssText='position:fixed;bottom:10px;left:10px;max-width:90vw;max-height:40vh;overflow:auto;background:#111;border:1px solid #d33;color:#fff;padding:10px;z-index:99999;font:12px/1.4 monospace;border-radius:8px';
-        box.innerHTML='<b style="color:#ff6;">Missing images (404)</b><br>'+miss.map(m=>m.src).join('<br>')+'<br><br><small>Fix path/case/spaces, then hard refresh.</small>';
-        document.body.appendChild(box);
-        console.warn('Missing images:', miss);
-      });
   })();
 </script>
-
 </body>
 </html>
