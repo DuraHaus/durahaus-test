@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>DuraHaus — Painting & Coatings | Cincinnati & NKY</title>
-<meta name="description" content="Interior & exterior painting, cabinet enamels, stains, concrete/masonry & metal coatings, drywall, caulking, wood repair, pressure washing. Clean, on-time, built to perform.">
+<title>DuraHaus — Painting & Coatings | Cincinnati, Butler & Warren County</title>
+<meta name="description" content="Interior & exterior painting, cabinet enamels, stains, concrete/masonry & metal coatings, drywall repair, caulking, wood repair, and pressure washing. Clean, on-time, built to perform.">
 
-<!-- Open Graph (ok on test) -->
+<!-- Open Graph (fine on test) -->
 <meta property="og:title" content="DuraHaus — Painting & Coatings">
 <meta property="og:description" content="Clean, on-time, built to perform. Interior & exterior systems, cabinets, stains, concrete & metal coatings.">
 <meta property="og:type" content="website">
@@ -16,36 +16,29 @@
 <!-- JSON-LD commented for test -->
 <!--
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"PaintingContractor","name":"DuraHaus Painting & Construction","url":"https://durahauspainting.com/","telephone":"+1-513-668-4382","areaServed":["Hamilton OH","Cincinnati OH","Northern Kentucky"]}
+{"@context":"https://schema.org","@type":"PaintingContractor","name":"DuraHaus Painting & Construction","url":"https://durahauspainting.com/","telephone":"+1-513-668-4382","areaServed":["Hamilton OH","Butler County","Warren County","Cincinnati OH"]}
 </script>
 -->
 
-<!-- Premium font -->
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
 
 <style>
-  /* ===== Design System (Pro v4.3) ===== */
   :root{
     --bg:#0a0a0b; --panel:#0f0f11; --panel-2:#101114; --ink:#f6f7f8; --muted:#c6c7ca;
     --line:#1b1b1f; --r:16px; --r-lg:20px; --gap:28px; --max:1240px;
-    --h1:clamp(40px,6.4vw,68px); --h2:clamp(24px,3.2vw,36px); --h3:1.12rem;
-    --pad:22px; --pad-lg:28px;
-    --shadow:0 24px 60px rgba(0,0,0,.35);
+    --h1:clamp(40px,6.2vw,64px); --h2:clamp(24px,3.2vw,36px); --h3:1.12rem;
+    --pad:22px; --pad-lg:28px; --shadow:0 24px 60px rgba(0,0,0,.35);
     --btn-solid-bg:#fff; --btn-solid-ink:#000; --btn-line:var(--line);
-    --img-bg:#0c0c0e;
-    --hero-grad:radial-gradient(1200px 420px at 60% -8%,#17181b 0%,#0d0e10 60%,#0a0a0b 100%);
+    --img-bg:#0c0c0e; --hero-grad:radial-gradient(1200px 420px at 60% -8%,#17181b 0%,#0d0e10 60%,#0a0a0b 100%);
     --compare-bar:#fff; --compare-knob-bg:#fff; --compare-knob-ink:#000; --compare-knob-border:#0008;
   }
-  /* Light theme */
   [data-theme="light"]{
     --bg:#f8f9fb; --panel:#ffffff; --panel-2:#ffffff; --ink:#0d0e12; --muted:#535862;
     --line:#e6e7ea; --shadow:0 24px 60px rgba(0,0,0,.08);
     --btn-solid-bg:#111; --btn-solid-ink:#fff; --btn-line:#dfe1e6;
-    --img-bg:#f3f4f6;
-    --hero-grad:radial-gradient(1200px 420px at 60% -8%,#eef1f6 0%,#fafbfc 60%,#ffffff 100%);
+    --img-bg:#f3f4f6; --hero-grad:radial-gradient(1200px 420px at 60% -8%,#eef1f6 0%,#fafbfc 60%,#ffffff 100%);
     --compare-bar:#111; --compare-knob-bg:#111; --compare-knob-ink:#fff; --compare-knob-border:#0002;
   }
-
   *{box-sizing:border-box}
   html,body{height:100%}
   body{
@@ -69,8 +62,6 @@
   [data-theme="light"] .card{box-shadow:var(--shadow)}
   .pad{padding:var(--pad)}
   .pad-lg{padding:var(--pad-lg)}
-
-  /* Buttons */
   .btn{display:inline-flex;align-items:center;gap:10px;padding:.7rem 1rem;border-radius:999px;border:1px solid var(--btn-line);font-weight:800}
   .btn-solid{background:var(--btn-solid-bg);color:var(--btn-solid-ink);border-color:var(--btn-solid-bg)}
   .btn-ghost{background:transparent}
@@ -83,13 +74,16 @@
   [data-theme="light"] header{background:rgba(255,255,255,.86)}
   .nav{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:12px 0}
   .brand{display:flex;align-items:center;gap:12px}
-  .brand img{height:56px;width:auto;background:transparent}
+  .brand img{height:56px;width:auto;background:transparent;transition:filter .2s ease}
+  /* If no dark logo file exists, lightly tint the white mark in light mode so it’s visible */
+  [data-theme="light"] .brand img[data-fallback="1"]{filter:invert(0) brightness(0) saturate(0);}
+
   .navlinks{display:flex;gap:14px;flex-wrap:wrap}
   .navlinks a{position:relative;padding:.4rem .2rem}
   .navlinks a:after{content:"";position:absolute;left:0;right:0;bottom:-2px;height:2px;background:currentColor;transform:scaleX(0);transform-origin:left;transition:transform .22s ease}
   .navlinks a:hover:after{transform:scaleX(1)}
 
-  /* Floating theme toggle (bottom-right) */
+  /* Floating theme toggle */
   .theme-fab{position:fixed;right:16px;bottom:16px;z-index:95;display:grid;place-items:center;
     width:56px;height:56px;border-radius:999px;border:1px solid var(--line);
     background:var(--panel);box-shadow:0 10px 30px rgba(0,0,0,.25);cursor:pointer}
@@ -108,14 +102,6 @@
   .badge{padding:.45rem .7rem;border-radius:999px;border:1px solid var(--line);background:#121317;color:#e9e9ed;font-size:13px}
   [data-theme="light"] .badge{background:#f2f3f7;color:#1a1b1e}
 
-  /* Counters */
-  .counters{display:flex;gap:14px;flex-wrap:wrap;margin-top:12px}
-  .counter{border:1px solid var(--line);border-radius:12px;padding:.6rem .8rem;background:#111216}
-  [data-theme="light"] .counter{background:#fff}
-
-  /* Sections */
-  section{scroll-margin-top:80px}
-
   /* Services */
   .services .grid{grid-template-columns:1fr}
   @media(min-width:980px){ .services .grid{grid-template-columns:repeat(3,1fr)} }
@@ -123,7 +109,7 @@
   .service small{color:#a9abb2}
   [data-theme="light"] .service small{color:#6b7280}
 
-  /* Carousel (no side fades) */
+  /* Carousel */
   .carousel{position:relative;overflow:hidden}
   .carousel-track{display:flex;transition:transform 280ms ease;touch-action:pan-y;user-select:none}
   .carousel img{width:100%;height:300px;object-fit:cover;flex:0 0 100%}
@@ -144,42 +130,30 @@
   .compare input[type=range]{position:absolute;inset:0;z-index:5;appearance:none;background:transparent}
   .compare input[type=range]::-webkit-slider-thumb{appearance:none;width:0;height:0}
 
-  /* Process */
-  .process{display:grid;gap:14px;grid-template-columns:1fr}
-  @media(min-width:980px){ .process{grid-template-columns:repeat(5,1fr)} }
-  .step{border:1px solid var(--line);border-radius:14px;padding:16px;background:linear-gradient(180deg,#101116,#0f1014)}
-  [data-theme="light"] .step{background:linear-gradient(180deg,#ffffff,#fbfbfd)}
-
-  /* Testimonials */
-  .testimonials .grid{grid-template-columns:1fr}
-  @media(min-width:980px){ .testimonials .grid{grid-template-columns:repeat(3,1fr)} }
-  .quote{border:1px solid var(--line);border-radius:16px;background:linear-gradient(180deg,#0f1013,#0f0f11);padding:18px;box-shadow:0 12px 30px rgba(0,0,0,.22)}
-  .quote:before{content:"“";font-size:42px;line-height:0;margin-right:6px;opacity:.3}
-  .quote .who{margin-top:10px;color:#d0d1d4;font-size:14px}
-  [data-theme="light"] .quote{background:#fff}
-
-  /* FAQ */
+  /* Process/FAQ/CTA/Footer */
   .faq details{border:1px solid var(--line);border-radius:12px;padding:.9rem 1.1rem;background:var(--panel)}
   .faq details+details{margin-top:12px}
   .faq summary{cursor:pointer;list-style:none;font-weight:700}
   .faq summary::-webkit-details-marker{display:none}
   .faq .a{color:var(--muted);margin:.6rem 0 0}
-
-  /* CTA band */
   .band{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;border:1px solid var(--line);
     border-radius:var(--r);background:var(--panel);padding:1.2rem}
-
-  /* Footer */
   footer{border-top:1px solid var(--line);margin-top:2rem}
   .foot{padding:1.2rem 0;color:var(--muted)}
 </style>
 </head>
 <body>
 
-<!-- Header -->
 <header>
   <div class="container nav">
-    <a class="brand" href="/"><img data-src="durahaus-logo.svg" alt="DuraHaus logo"></a>
+    <a class="brand" href="/" aria-label="DuraHaus home">
+      <!-- Theme-aware logo -->
+      <img id="brandLogo"
+           alt="DuraHaus logo"
+           data-dark="durahaus-logo.svg"
+           data-light="durahaus-logo-dark.svg"
+           data-fallback="0">
+    </a>
     <nav class="navlinks" aria-label="Primary">
       <a href="/services.html">Services</a>
       <a href="/projects.html">Projects</a>
@@ -189,29 +163,24 @@
   </div>
 </header>
 
-<!-- Floating Theme Toggle (bottom-right) -->
+<!-- Floating Theme Toggle -->
 <button class="theme-fab" id="themeToggle" type="button" aria-pressed="false" aria-label="Toggle theme">
   <span>Light</span>
 </button>
 
 <main>
-  <!-- HERO -->
+  <!-- HERO (simplified/cleaned) -->
   <section class="hero">
     <div class="container" style="padding:36px 0">
       <div class="hero-wrap">
         <div>
           <h1>Built Like It Matters.</h1>
-          <p class="lead">Interior & exterior systems, cabinet enamels, stains, concrete & metal coatings—specified to the surface, prepped to a standard, and finished to last.</p>
+          <p class="lead">Interior & exterior painting, cabinet enamels, stains, concrete & metal coatings—specified to each surface, prepped to a standard, and finished to last.</p>
           <div class="badges">
             <span class="badge">Licensed & Insured</span>
             <span class="badge">On-Time Scheduling</span>
             <span class="badge">Clean, Dust-Controlled</span>
-            <span class="badge">45+ years combined experience</span>
-          </div>
-          <div class="counters">
-            <div class="counter"><b data-count="100">0</b>+ projects</div>
-            <div class="counter"><b data-count="15">0</b> yrs owner</div>
-            <div class="counter"><b data-count="30">0</b> yrs mentor</div>
+            <span class="badge">15 yrs owner · 30 yrs mentor</span>
           </div>
           <div style="margin-top:14px;display:flex;gap:10px;flex-wrap:wrap">
             <a class="btn btn-solid" href="/quote.html">Get My Price</a>
@@ -230,8 +199,8 @@
 
   <!-- SERVICES -->
   <section class="container services" style="margin:34px auto">
-    <h2>Painting & Coatings</h2>
-    <p class="lead">Interior & exterior painting, cabinet enamels, stains, concrete/masonry & metal coatings, drywall repair, caulking, wood repair, pressure washing.</p>
+    <h2>What We Do</h2>
+    <p class="lead">Premium prep + matched coating systems for homes across Butler, Hamilton, and Warren County.</p>
     <div class="grid">
       <!-- Interior -->
       <article class="card service">
@@ -245,7 +214,10 @@
           <button class="carousel-btn next" data-next aria-label="Next">›</button>
           <div class="carousel-dots" data-dots></div>
         </div>
-        <div class="pad"><h3>Interior Painting</h3><small>Walls, ceilings, trim, cabinetry.</small></div>
+        <div class="pad">
+          <h3>Interior Painting</h3>
+          <p class="lead">Walls, ceilings, trim, doors, and built-ins finished with low-odor, washable coatings. We protect floors and furniture, repair dings, sand between coats, and leave crisp lines and a clean site.</p>
+        </div>
       </article>
 
       <!-- Exterior -->
@@ -260,7 +232,10 @@
           <button class="carousel-btn next" data-next>›</button>
           <div class="carousel-dots" data-dots></div>
         </div>
-        <div class="pad"><h3>Exterior Painting</h3><small>Weather-tough prep & coatings.</small></div>
+        <div class="pad">
+          <h3>Exterior Painting</h3>
+          <p class="lead">Power-wash, scrape, sand, spot-prime, and caulk—then apply weather-tough topcoats. We match products to siding (wood, fiber-cement, aluminum) and handle fascia/soffit repairs as needed.</p>
+        </div>
       </article>
 
       <!-- Concrete / Masonry -->
@@ -275,7 +250,10 @@
           <button class="carousel-btn next" data-next>›</button>
           <div class="carousel-dots" data-dots></div>
         </div>
-        <div class="pad"><h3>Concrete / Masonry</h3><small>Garages, patios, basements.</small></div>
+        <div class="pad">
+          <h3>Concrete / Masonry Coatings</h3>
+          <p class="lead">Garages, basements, and patios prepped and coated with moisture-tolerant primers and abrasion-resistant finishes. Options for anti-slip texture and chemical resistance where you need it.</p>
+        </div>
       </article>
     </div>
   </section>
@@ -295,7 +273,10 @@
           <button class="carousel-btn next" data-next>›</button>
           <div class="carousel-dots" data-dots></div>
         </div>
-        <div class="pad"><h3>Cabinet Painting</h3></div>
+        <div class="pad">
+          <h3>Cabinet Painting / Refinishing</h3>
+          <p class="lead">Factory-smooth results using degrease → sand → adhesion-prime → tinted enamel/urethane. Doors and drawers sprayed for a uniform sheen; boxes masked and finished dust-free.</p>
+        </div>
       </article>
 
       <!-- Stain -->
@@ -310,7 +291,10 @@
           <button class="carousel-btn next" data-next>›</button>
           <div class="carousel-dots" data-dots></div>
         </div>
-        <div class="pad"><h3>Staining & Wood Finishes</h3></div>
+        <div class="pad">
+          <h3>Staining & Wood Finishes</h3>
+          <p class="lead">Decks, doors, and rails cleaned, neutralized, and finished with transparent, semi-transparent, or solid stains. We advise on color and UV protection to keep the grain looking great longer.</p>
+        </div>
       </article>
 
       <!-- Drywall -->
@@ -325,7 +309,10 @@
           <button class="carousel-btn next" data-next>›</button>
           <div class="carousel-dots" data-dots></div>
         </div>
-        <div class="pad"><h3>Drywall Repair</h3></div>
+        <div class="pad">
+          <h3>Drywall Repair</h3>
+          <p class="lead">Cracks, nail pops, water spots, and full patch-ins blended to invisible. We prime repairs to lock down texture and ensure a seamless sheen after paint.</p>
+        </div>
       </article>
 
       <!-- Caulking -->
@@ -340,7 +327,10 @@
           <button class="carousel-btn next" data-next>›</button>
           <div class="carousel-dots" data-dots></div>
         </div>
-        <div class="pad"><h3>Caulking / Sealants</h3></div>
+        <div class="pad">
+          <h3>Caulking / Sealant Application</h3>
+          <p class="lead">Interior gaps and exterior joints sealed with paintable elastomeric sealants for air/water control and a cleaner finished line around trim, windows, and doors.</p>
+        </div>
       </article>
 
       <!-- Wood repair -->
@@ -355,7 +345,10 @@
           <button class="carousel-btn next" data-next>›</button>
           <div class="carousel-dots" data-dots></div>
         </div>
-        <div class="pad"><h3>Wood Repair / Replacement</h3></div>
+        <div class="pad">
+          <h3>Wood Repair / Replacement</h3>
+          <p class="lead">Rot removal, trim/fascia replacement, and epoxy rebuilds where appropriate—primed and painted as part of a complete system so repairs disappear into the finish.</p>
+        </div>
       </article>
 
       <!-- Pressure washing -->
@@ -370,7 +363,10 @@
           <button class="carousel-btn next" data-next>›</button>
           <div class="carousel-dots" data-dots></div>
         </div>
-        <div class="pad"><h3>Pressure Washing</h3></div>
+        <div class="pad">
+          <h3>Pressure Washing</h3>
+          <p class="lead">Surface prep for paint and stain as well as stand-alone cleaning. We use the right tips, detergents, and pressure to lift dirt without damaging siding or concrete.</p>
+        </div>
       </article>
 
       <!-- Metal coatings -->
@@ -385,12 +381,15 @@
           <button class="carousel-btn next" data-next>›</button>
           <div class="carousel-dots" data-dots></div>
         </div>
-        <div class="pad"><h3>Metal Coatings</h3></div>
+        <div class="pad">
+          <h3>Metal Coatings</h3>
+          <p class="lead">Rust treatment, etch/prime, and industrial topcoats for rails, doors, and siding panels. We specify rust-inhibitive systems to keep steel looking sharp and protected.</p>
+        </div>
       </article>
     </div>
   </section>
 
-  <!-- BEFORE/AFTER (2) -->
+  <!-- BEFORE/AFTER -->
   <section class="container" style="margin:34px auto">
     <h2>See the Difference</h2>
     <div class="grid" style="grid-template-columns:1fr;gap:22px">
@@ -417,18 +416,6 @@
     </div>
   </section>
 
-  <!-- PROCESS -->
-  <section class="container" style="margin:34px auto">
-    <h2>How We Work</h2>
-    <div class="process">
-      <div class="step"><b>1) Consult</b> Walk-through, scope, and written quote.</div>
-      <div class="step"><b>2) Prep Standard</b> Masking, sanding, repairs, caulking, prime.</div>
-      <div class="step"><b>3) Pro Coatings</b> Enamels, elastomerics, rust-inhibitives—matched to surface.</div>
-      <div class="step"><b>4) Tidy Walkthrough</b> Clean site, punch-list, your sign-off.</div>
-      <div class="step"><b>5) Warranty</b> Workmanship covered—and we answer the phone.</div>
-    </div>
-  </section>
-
   <!-- SERVICE AREAS -->
   <section class="container" style="margin:34px auto">
     <h2>Service Areas</h2>
@@ -437,15 +424,11 @@
         <div class="grid" style="grid-template-columns:1fr;gap:16px">
           <div>
             <h3 style="margin:0 0 .4rem">Core Cities</h3>
-            <p class="lead">Hamilton, Fairfield, West Chester, Liberty Township, Mason, Sharonville, Monroe, Trenton, Oxford, Middletown, Forest Park, Blue Ash, Hyde Park, Anderson.</p>
+            <p class="lead">Hamilton, Fairfield, West Chester, Liberty Township, Mason, Sharonville, Monroe, Trenton, Oxford, Middletown, Blue Ash, Hyde Park, Anderson.</p>
           </div>
           <div>
             <h3 style="margin:0 0 .4rem">Counties</h3>
-            <p class="lead">Butler, Hamilton, Warren, Clermont (OH) • Boone, Kenton, Campbell (Northern Kentucky).</p>
-          </div>
-          <div>
-            <h3 style="margin:0 0 .4rem">Don’t see your area?</h3>
-            <p class="lead">We travel for the right projects. <a class="btn btn-solid" href="/quote.html" style="margin-left:8px">Request a Quote</a></p>
+            <p class="lead">Butler, Hamilton, Warren (Ohio).</p>
           </div>
         </div>
       </div>
@@ -453,12 +436,12 @@
   </section>
 
   <!-- TESTIMONIALS -->
-  <section class="container testimonials" style="margin:34px auto">
+  <section class="container" style="margin:34px auto">
     <h2>What Homeowners Say</h2>
-    <div class="grid">
-      <div class="quote">“DuraHaus Painting and Construction is a trusting, reliable company that will provide quality work.”<div class="who">— Rosita L.</div></div>
-      <div class="quote">“Always our go-to for home projects! Clean, caring when working inside the home, and excellent quality work!”<div class="who">— Jacqueline M.</div></div>
-      <div class="quote">“Highly recommend DuraHaus! Multiple houses—always 10/10. High caliber workmanship, excellent communication, fair pricing.”<div class="who">— Christian M.</div></div>
+    <div class="grid" style="grid-template-columns:1fr;gap:18px">
+      <div class="card"><div class="pad">“DuraHaus Painting and Construction is a trusting, reliable company that will provide quality work.”<div style="margin-top:8px;color:var(--muted);font-size:14px">— Rosita L.</div></div></div>
+      <div class="card"><div class="pad">“Always our go-to for home projects! Clean, caring when working inside the home, and excellent quality work!”<div style="margin-top:8px;color:var(--muted);font-size:14px">— Jacqueline M.</div></div></div>
+      <div class="card"><div class="pad">“Highly recommend DuraHaus! Multiple houses—always 10/10. High caliber workmanship, excellent communication, fair pricing.”<div style="margin-top:8px;color:var(--muted);font-size:14px">— Christian M.</div></div></div>
     </div>
   </section>
 
@@ -466,12 +449,11 @@
   <section class="container faq" style="margin:34px auto">
     <h2>FAQs</h2>
     <details><summary>How fast can you quote?</summary><div class="a">Most quotes are turned around within 24–48 hours after a quick walkthrough.</div></details>
-    <details><summary>What’s included in prep?</summary><div class="a">Masking, protection, sanding/scuffing, gap/void caulking, patch/repair, spot/bonding primer, and substrate-specific primers as needed.</div></details>
+    <details><summary>What’s included in prep?</summary><div class="a">Masking/protection, sanding or de-glossing, gap/void caulking, patch/repair, spot/bonding primer, and substrate-specific primers as needed.</div></details>
     <details><summary>How long do projects take?</summary><div class="a">Small interiors: 1–3 days. Full exteriors vary by size + repairs. Cabinets are typically 4–7 days depending on scope and drying windows.</div></details>
-    <details><summary>Do you help choose colors and finishes?</summary><div class="a">Yes. We can suggest sheens and product families based on the surface and traffic, and we can coordinate with your designer if you have one.</div></details>
+    <details><summary>Do you help choose colors and finishes?</summary><div class="a">Yes. We suggest sheens and product families based on the surface and traffic, and we can coordinate with your designer if you have one.</div></details>
     <details><summary>What products do you use?</summary><div class="a">We match the system to the surface: cabinet enamels/urethanes, elastomeric exteriors, bonding/adhesion primers, stain blockers, rust-inhibitives for metal, and moisture-tolerant masonry coatings.</div></details>
-    <details><summary>Payment & scheduling?</summary><div class="a">We schedule a start window at approval. A deposit may be due at scheduling; balance on completion after walkthrough.</div></details>
-    <details><summary>Are you insured? Do you warranty?</summary><div class="a">Yes—fully insured. Every project includes a written workmanship warranty.</div></details>
+    <details><summary>Are you insured? Do you warranty?</summary><div class="a">Yes—fully insured, with a written workmanship warranty.</div></details>
   </section>
 
   <!-- CTA -->
@@ -505,26 +487,38 @@
 </footer>
 
 <script>
-  // === Asset base for root and /durahaus-test/
+  // Asset base for root and /durahaus-test/
   const ASSET_BASE = location.pathname.includes('/durahaus-test/') ? '/durahaus-test/assets/' : '/assets/';
 
   // Year
   document.getElementById('y').textContent = new Date().getFullYear();
 
-  // === Theme: init + toggle + persist
+  // Theme init/toggle + brand logo swap
   (function(){
     const btn = document.getElementById('themeToggle');
     const saved = localStorage.getItem('theme');
-    const setLabel = (mode) => { btn.querySelector('span').textContent = mode==='light' ? 'Dark' : 'Light'; };
-    const apply = (mode) => { document.documentElement.setAttribute('data-theme', mode); localStorage.setItem('theme', mode); setLabel(mode); btn.setAttribute('aria-pressed', mode==='light'); };
+    const root = document.documentElement;
+    const logo = document.getElementById('brandLogo');
+    const setLabel = (m)=> btn.querySelector('span').textContent = m==='light' ? 'Dark' : 'Light';
+    function apply(mode){
+      root.setAttribute('data-theme', mode);
+      localStorage.setItem('theme', mode);
+      setLabel(mode);
+      // theme-aware logo
+      const dark = logo.getAttribute('data-dark');
+      const light = logo.getAttribute('data-light');
+      // try to use explicit light/dark assets; fallback to dark + filter flag
+      const src = mode==='light' ? (light ? light : dark) : dark;
+      logo.src = ASSET_BASE + src;
+      logo.setAttribute('data-fallback', (mode==='light' && !light) ? '1' : '0');
+    }
     apply(saved || 'dark');
     btn.addEventListener('click', ()=>{
-      const current = document.documentElement.getAttribute('data-theme') || 'dark';
-      apply(current === 'dark' ? 'light' : 'dark');
+      apply((root.getAttribute('data-theme')||'dark') === 'dark' ? 'light' : 'dark');
     });
   })();
 
-  // === Lazy load [data-src]
+  // Lazy load [data-src]
   (function(){
     const imgs=[...document.querySelectorAll('[data-src]')];
     const load = el => { el.src = ASSET_BASE + el.getAttribute('data-src'); };
@@ -533,22 +527,7 @@
     imgs.forEach(el=> io.observe(el));
   })();
 
-  // === Counters
-  (function(){
-    const els=[...document.querySelectorAll('[data-count]')];
-    if(!els.length) return;
-    const io=new IntersectionObserver((es,o)=>{
-      es.forEach(e=>{
-        if(!e.isIntersecting) return;
-        o.unobserve(e.target);
-        const el=e.target, end=+el.getAttribute('data-count'), dur=900, t0=performance.now();
-        (function tick(t){ const p=Math.min(1,(t-t0)/dur); el.textContent=Math.floor(p*end); if(p<1) requestAnimationFrame(tick); })(t0);
-      });
-    },{threshold:.3});
-    els.forEach(el=> io.observe(el));
-  })();
-
-  // === Before/After sliders
+  // Before/After sliders
   (function(){
     document.querySelectorAll('[data-compare]').forEach(wrap=>{
       const before=wrap.querySelector('[data-role="before"]');
@@ -568,7 +547,7 @@
     });
   })();
 
-  // === Carousel (robust swipe)
+  // Carousel (robust swipe)
   (function(){
     const carousels=document.querySelectorAll('[data-carousel]');
     carousels.forEach(c=>{
@@ -597,21 +576,6 @@
       window.addEventListener('touchend',onEnd);
       go(0);
     });
-  })();
-
-  // Dev 404 checker (?dev=1)
-  (function(){
-    if(new URLSearchParams(location.search).get('dev')!=='1') return;
-    const urls=[...document.images].map(i=>i.currentSrc||i.src);
-    Promise.all(urls.map(u=>fetch(u,{method:'HEAD'}).then(r=>({u,ok:r.ok})).catch(()=>({u,ok:false}))))
-      .then(list=>{
-        const miss=list.filter(x=>!x.ok);
-        if(!miss.length) return;
-        const box=document.createElement('pre');
-        box.textContent='Missing assets:\\n'+miss.map(m=>m.u).join('\\n');
-        box.style.cssText='position:fixed;left:12px;right:12px;bottom:90px;z-index:95;background:#1a0000;color:#ffdcdc;border:2px solid #a33;border-radius:12px;padding:14px';
-        document.body.appendChild(box);
-      });
   })();
 </script>
 </body>
