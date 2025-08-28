@@ -1,582 +1,669 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>DuraHaus — Painting & Coatings | Cincinnati, Butler & Warren County</title>
-<meta name="description" content="Interior & exterior painting, cabinet enamels, stains, concrete/masonry & metal coatings, drywall repair, caulking, wood repair, and pressure washing. Clean, on-time, built to perform.">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>DuraHaus — Painting and Construction</title>
+  <meta name="description" content="Interior & exterior painting, cabinets, stain, concrete coatings, drywall and sealing. Clean, on-time, built to perform.">
+  <!-- hero preload (rewritten below for /durahaus-test/) -->
+  <link id="preHero" rel="preload" as="image" href="/assets/stock-hero.webp">
+  <style>
+    :root{
+      --bg:#0a0a0a; --panel:#101010; --ink:#ffffff; --muted:#bdbdbd;
+      --line:#1a1a1a; --max:1120px; --r:14px; --gap:28px;
+    }
+    /* Light mode (toggled via html[data-theme="light"]) */
+    html[data-theme="light"]{
+      --bg:#ffffff; --panel:#f6f6f7; --ink:#111; --muted:#6b7280; --line:#e5e7eb;
+    }
 
-<!-- Open Graph (fine on test) -->
-<meta property="og:title" content="DuraHaus — Painting & Coatings">
-<meta property="og:description" content="Clean, on-time, built to perform. Interior & exterior systems, cabinets, stains, concrete & metal coatings.">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://durahauspainting.com/durahaus-test/">
-<meta property="og:image" content="https://durahauspainting.com/durahaus-test/assets/stock-hero.webp">
+    *{box-sizing:border-box} html,body{height:100%}
+    body{margin:0;background:var(--bg);color:var(--ink);
+      font:16px/1.55 ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;
+      -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;}
+    a{color:inherit;text-decoration:none}
+    img{display:block;width:100%;height:auto;background:#0d0d0d}
+    .brand img{background:transparent!important}
+    .container{max-width:var(--max);margin:0 auto;padding:0 20px}
 
-<!-- JSON-LD commented for test -->
-<!--
-<script type="application/ld+json">
-{"@context":"https://schema.org","@type":"PaintingContractor","name":"DuraHaus Painting & Construction","url":"https://durahauspainting.com/","telephone":"+1-513-668-4382","areaServed":["Hamilton OH","Butler County","Warren County","Cincinnati OH"]}
-</script>
--->
+    /* Header */
+    header{position:sticky;top:0;z-index:50;background:rgba(10,10,10,.92);
+      backdrop-filter:saturate(140%) blur(8px);border-bottom:1px solid var(--line)}
+    html[data-theme="light"] header{background:rgba(255,255,255,.88)}
+    .nav{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:12px 0}
+    .brand{display:flex;align-items:center;gap:14px;min-width:0}
+    .brand picture{display:block;line-height:0}
+    .brand img{height:56px;width:auto;display:block}
+    .brand .wordmark{font-weight:800;letter-spacing:.03em;white-space:nowrap}
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    .navlinks{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-left:20px}
+    .pill{padding:.5rem .8rem;border:1px solid var(--line);border-radius:999px;font-size:14px}
+    .pill--solid{background:#fff;color:#000;border-color:#fff;font-weight:700}
+    .pill--ghost{background:transparent}
+    .iconbtn{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border:1px solid var(--line);border-radius:999px}
+    .iconbtn svg{width:18px;height:18px;fill:currentColor}
+    @media (max-width:600px){
+      .nav{padding:10px 0}
+      .brand img{height:44px}
+      .pill{font-size:13px;padding:.45rem .7rem}
+      .iconbtn{width:38px;height:38px}
+    }
 
-<style>
-  :root{
-    --bg:#0a0a0b; --panel:#0f0f11; --panel-2:#101114; --ink:#f6f7f8; --muted:#c6c7ca;
-    --line:#1b1b1f; --r:16px; --r-lg:20px; --gap:28px; --max:1240px;
-    --h1:clamp(40px,6.2vw,64px); --h2:clamp(24px,3.2vw,36px); --h3:1.12rem;
-    --pad:22px; --pad-lg:28px; --shadow:0 24px 60px rgba(0,0,0,.35);
-    --btn-solid-bg:#fff; --btn-solid-ink:#000; --btn-line:var(--line);
-    --img-bg:#0c0c0e; --hero-grad:radial-gradient(1200px 420px at 60% -8%,#17181b 0%,#0d0e10 60%,#0a0a0b 100%);
-    --compare-bar:#fff; --compare-knob-bg:#fff; --compare-knob-ink:#000; --compare-knob-border:#0008;
-  }
-  [data-theme="light"]{
-    --bg:#f8f9fb; --panel:#ffffff; --panel-2:#ffffff; --ink:#0d0e12; --muted:#535862;
-    --line:#e6e7ea; --shadow:0 24px 60px rgba(0,0,0,.08);
-    --btn-solid-bg:#111; --btn-solid-ink:#fff; --btn-line:#dfe1e6;
-    --img-bg:#f3f4f6; --hero-grad:radial-gradient(1200px 420px at 60% -8%,#eef1f6 0%,#fafbfc 60%,#ffffff 100%);
-    --compare-bar:#111; --compare-knob-bg:#111; --compare-knob-ink:#fff; --compare-knob-border:#0002;
-  }
-  *{box-sizing:border-box}
-  html,body{height:100%}
-  body{
-    margin:0;background:var(--bg);color:var(--ink);
-    font:16px/1.6 Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;
-    -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;display:flex;flex-direction:column;
-    transition:background .25s ease,color .25s ease;
-  }
-  main{flex:1 0 auto}
-  .container{max-width:var(--max);margin:0 auto;padding:0 22px}
-  img{display:block;width:100%;height:auto;background:var(--img-bg)}
-  a{color:inherit;text-decoration:none}
-  h1{font-size:var(--h1);letter-spacing:-.01em;line-height:1.05;margin:0 0 .7rem}
-  h2{font-size:var(--h2);margin:0 0 .7rem}
-  h3{font-size:var(--h3);margin:.1rem 0 .4rem}
-  p{margin:.3rem 0 0}
-  .lead{color:var(--muted)}
-  .grid{display:grid;gap:var(--gap)}
-  .card{background:linear-gradient(180deg,var(--panel),var(--panel-2));border:1px solid var(--line);
-        border-radius:var(--r);overflow:hidden;box-shadow:0 10px 24px rgba(0,0,0,.18)}
-  [data-theme="light"] .card{box-shadow:var(--shadow)}
-  .pad{padding:var(--pad)}
-  .pad-lg{padding:var(--pad-lg)}
-  .btn{display:inline-flex;align-items:center;gap:10px;padding:.7rem 1rem;border-radius:999px;border:1px solid var(--btn-line);font-weight:800}
-  .btn-solid{background:var(--btn-solid-bg);color:var(--btn-solid-ink);border-color:var(--btn-solid-bg)}
-  .btn-ghost{background:transparent}
-  .btn:focus-visible{outline:2px solid #7773;outline-offset:2px}
+    /* Hero */
+    .hero{display:grid;grid-template-columns:1fr;background:#0c0c0c;border-bottom:1px solid var(--line)}
+    html[data-theme="light"] .hero{background:#fafafa}
+    .hero__media{position:relative;aspect-ratio:16/9;max-height:70vh;overflow:hidden}
+    .hero__media img{width:100%;height:100%;object-fit:cover;opacity:.95;}
+    .hero__copy{padding:3rem 0}
+    h1{margin:0 0 .6rem;font-size:clamp(32px,5.2vw,56px);line-height:1.05;letter-spacing:-.01em}
+    .lead{color:var(--muted);font-size:clamp(16px,1.8vw,19px)}
+    .row{display:grid;grid-template-columns:1fr;gap:var(--gap);margin:3rem 0}
+    @media (min-width:860px){
+      .hero{grid-template-columns:1.05fr .95fr}
+      .hero__copy{padding:4.2rem 0 4rem 2rem}
+      .row{grid-template-columns:1.05fr .95fr;align-items:center}
+    }
 
-  /* Header */
-  header{position:sticky;top:0;z-index:80;background:rgba(12,12,14,.92);
-    -webkit-backdrop-filter:saturate(140%) blur(8px);backdrop-filter:saturate(140%) blur(8px);
-    border-bottom:1px solid var(--line)}
-  [data-theme="light"] header{background:rgba(255,255,255,.86)}
-  .nav{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:12px 0}
-  .brand{display:flex;align-items:center;gap:12px}
-  .brand img{height:56px;width:auto;background:transparent;transition:filter .2s ease}
-  /* If no dark logo file exists, lightly tint the white mark in light mode so it’s visible */
-  [data-theme="light"] .brand img[data-fallback="1"]{filter:invert(0) brightness(0) saturate(0);}
+    /* Cards / grids */
+    .card{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
+    .card .pad{padding:1.1rem}
+    h2{margin:0 0 .4rem;font-size:clamp(22px,2.2vw,28px)}
+    p{margin:.25rem 0 0}
+    .grid{display:grid;gap:var(--gap);grid-template-columns:1fr}
+    @media (min-width:900px){.grid{grid-template-columns:repeat(3,1fr)}}
 
-  .navlinks{display:flex;gap:14px;flex-wrap:wrap}
-  .navlinks a{position:relative;padding:.4rem .2rem}
-  .navlinks a:after{content:"";position:absolute;left:0;right:0;bottom:-2px;height:2px;background:currentColor;transform:scaleX(0);transform-origin:left;transition:transform .22s ease}
-  .navlinks a:hover:after{transform:scaleX(1)}
+    /* Why */
+    .faq, .why{margin:3rem auto}
+    .why .cols{display:grid;gap:var(--gap)}
+    @media (min-width:900px){.why .cols{grid-template-columns:repeat(3,1fr)}}
+    .why .tile{border:1px solid var(--line);border-radius:var(--r);padding:1.2rem;background:var(--panel)}
+    .why h3{margin:.1rem 0 .4rem;font-size:1.1rem}
 
-  /* Floating theme toggle */
-  .theme-fab{position:fixed;right:16px;bottom:16px;z-index:95;display:grid;place-items:center;
-    width:56px;height:56px;border-radius:999px;border:1px solid var(--line);
-    background:var(--panel);box-shadow:0 10px 30px rgba(0,0,0,.25);cursor:pointer}
-  .theme-fab span{font-weight:800;font-size:12px;opacity:.85}
-  .theme-fab:focus-visible{outline:3px solid #8884;outline-offset:3px}
+    /* FAQ */
+    .faq details{border:1px solid var(--line);border-radius:12px;padding:.9rem 1.1rem;background:var(--panel)}
+    .faq details+details{margin-top:12px}
+    .faq summary{cursor:pointer;list-style:none;font-weight:700}
+    .faq summary::-webkit-details-marker{display:none}
+    .faq .a{color:var(--muted);margin:.6rem 0 0}
 
-  /* Hero */
-  .hero{border-bottom:1px solid var(--line);background:var(--hero-grad)}
-  .hero-wrap{display:grid;gap:28px;grid-template-columns:1fr}
-  .hero .media{position:relative;border-radius:var(--r-lg);overflow:hidden;border:1px solid var(--line)}
-  .hero .media .imgwrap{position:relative;aspect-ratio:16/9;overflow:hidden}
-  .hero .media img{width:100%;height:100%;object-fit:cover;transform:scale(1.02)}
-  .img-overlay{position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,rgba(0,0,0,.18) 100%)}
-  [data-theme="light"] .img-overlay{background:linear-gradient(180deg,transparent 40%,rgba(255,255,255,.14) 100%)}
-  .badges{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
-  .badge{padding:.45rem .7rem;border-radius:999px;border:1px solid var(--line);background:#121317;color:#e9e9ed;font-size:13px}
-  [data-theme="light"] .badge{background:#f2f3f7;color:#1a1b1e}
+    /* CTA band */
+    .band{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;padding:1.2rem;border:1px solid var(--line);border-radius:var(--r);background:var(--panel)}
 
-  /* Services */
-  .services .grid{grid-template-columns:1fr}
-  @media(min-width:980px){ .services .grid{grid-template-columns:repeat(3,1fr)} }
-  .service .pad{border-top:1px solid var(--line)}
-  .service small{color:#a9abb2}
-  [data-theme="light"] .service small{color:#6b7280}
+    /* Pre-footer (stamp + mini nav) */
+    .prefooter{margin:3rem auto 1.5rem;display:flex;gap:22px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+    .prefooter .stampwrap{display:flex;align-items:center;gap:14px}
+    .prefooter img{width:128px;height:auto;opacity:.95;filter:invert(1) brightness(1.6);background:transparent}
+    .prefooter .menu{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+    @media (max-width:720px){
+      .prefooter{justify-content:center;text-align:center}
+      .prefooter .menu{justify-content:center}
+    }
 
-  /* Carousel */
-  .carousel{position:relative;overflow:hidden}
-  .carousel-track{display:flex;transition:transform 280ms ease;touch-action:pan-y;user-select:none}
-  .carousel img{width:100%;height:300px;object-fit:cover;flex:0 0 100%}
-  .carousel-btn{position:absolute;top:50%;transform:translateY(-50%);z-index:3;border:0;background:rgba(0,0,0,.55);color:#fff;
-    padding:10px 14px;border-radius:12px;cursor:pointer}
-  .carousel-btn:hover{background:rgba(0,0,0,.72)}
-  .carousel-btn.prev{left:10px}.carousel-btn.next{right:10px}
-  .carousel-dots{display:none!important}
+    /* Footer */
+    footer{border-top:1px solid var(--line);margin-top:2rem}
+    .foot{display:grid;gap:18px;align-items:center;padding:1.2rem 0;grid-template-columns:1fr}
+    small{color:var(--muted)}
 
-  /* Before/After */
-  .compare{border:1px solid var(--line);border-radius:var(--r);overflow:hidden;background:var(--panel);box-shadow:var(--shadow)}
-  .compare__wrap{position:relative;aspect-ratio:16/9}
-  .compare__wrap img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-  .compare__after{clip-path:inset(0 50% 0 0)}
-  .compare__bar{position:absolute;left:50%;top:0;bottom:0;width:3px;background:var(--compare-bar);opacity:.95;z-index:3}
-  .compare__knob{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:40px;height:40px;border-radius:50%;
-    background:var(--compare-knob-bg);color:var(--compare-knob-ink);display:grid;place-items:center;font-weight:800;z-index:4;border:1px solid var(--compare-knob-border);box-shadow:0 6px 18px rgba(0,0,0,.35)}
-  .compare input[type=range]{position:absolute;inset:0;z-index:5;appearance:none;background:transparent}
-  .compare input[type=range]::-webkit-slider-thumb{appearance:none;width:0;height:0}
+    /* Contact strip (above footer) */
+    .contactbar{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:#0e0e10}
+    html[data-theme="light"] .contactbar{background:#f3f4f6}
+    .contactbar .row{display:flex;gap:16px;align-items:center;justify-content:flex-start;flex-wrap:wrap;margin:0;padding:14px 0}
+    .contactbar a{display:inline-flex;align-items:center;gap:8px;color:var(--ink);opacity:.9;font-size:15px}
+    .contactbar a:hover{opacity:1}
+    .contactbar svg{width:20px;height:20px;fill:currentColor}
 
-  /* Process/FAQ/CTA/Footer */
-  .faq details{border:1px solid var(--line);border-radius:12px;padding:.9rem 1.1rem;background:var(--panel)}
-  .faq details+details{margin-top:12px}
-  .faq summary{cursor:pointer;list-style:none;font-weight:700}
-  .faq summary::-webkit-details-marker{display:none}
-  .faq .a{color:var(--muted);margin:.6rem 0 0}
-  .band{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;border:1px solid var(--line);
-    border-radius:var(--r);background:var(--panel);padding:1.2rem}
-  footer{border-top:1px solid var(--line);margin-top:2rem}
-  .foot{padding:1.2rem 0;color:var(--muted)}
-</style>
+    /* Sticky tidy footer for short pages */
+    html, body { height: 100%; }
+    body { min-height: 100dvh; display: flex; flex-direction: column; }
+    main { flex: 1 0 auto; }
+
+    /* === Carousel === */
+    .carousel{position:relative;overflow:hidden}
+    .carousel-track{
+      display:flex;
+      transition:transform 280ms ease;
+      touch-action: pan-y;
+      user-select:none; -webkit-user-drag:none;
+    }
+    .carousel img{width:100%;height:340px;object-fit:cover;flex:0 0 100%}
+    .carousel-btn{position:absolute;top:50%;transform:translateY(-50%);border:none;background:rgba(0,0,0,.45);color:#fff;padding:6px 10px;border-radius:10px;cursor:pointer;z-index:2}
+    .carousel-btn.prev{left:8px}.carousel-btn.next{right:8px}
+    .carousel-btn:hover{background:rgba(0,0,0,.65)}
+    .carousel-dots{display:none !important;}
+
+    /* Make the text block the only clickable area under the image */
+    .card .pad.service-link { display:block; border-top:1px solid var(--line); }
+
+    /* === Before/After compare === */
+    .compare{border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--panel);margin:2.2rem 0}
+    .compare__wrap{position:relative;aspect-ratio:16/9}
+    .compare__wrap img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+    .compare__after{clip-path:inset(0 50% 0 0)}
+    .compare__bar{position:absolute;top:0;bottom:0;width:2px;background:#fff;left:50%;z-index:3}
+    .compare__knob{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:36px;height:36px;border-radius:50%;background:#fff;color:#000;display:grid;place-items:center;font-weight:700;z-index:4;border:1px solid #0006}
+    .compare input[type="range"]{position:absolute;inset:0;appearance:none;background:transparent;z-index:5}
+    .compare input[type="range"]::-webkit-slider-thumb{appearance:none;width:0;height:0}
+    .compare input[type="range"]::-moz-range-thumb{width:0;height:0;border:0}
+    .compare .pad{padding:1rem}
+
+    /* === Reviews === */
+    .reviews{display:grid;gap:16px;grid-template-columns:1fr}
+    @media (min-width:900px){.reviews{grid-template-columns:repeat(3,1fr)}}
+    .review{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:14px}
+    .review .who{font-weight:700}
+    .review .tag{font-size:.85rem;opacity:.8}
+
+    /* === Areas Served === */
+    .areas{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(160px,1fr))}
+    .areas .city{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:.7rem 1rem}
+
+    /* === Theme toggle (bottom-right) === */
+    .theme-toggle{
+      position:fixed;right:14px;bottom:14px;z-index:90;
+      display:inline-flex;align-items:center;gap:10px;
+      background:var(--panel);color:var(--ink);
+      border:1px solid var(--line);border-radius:999px;
+      padding:.55rem .8rem; box-shadow:0 8px 24px rgba(0,0,0,.18);
+    }
+    .theme-toggle button{border:0;background:#000;color:#fff;border-radius:999px;padding:.5rem .8rem;font-weight:700;cursor:pointer}
+    html[data-theme="light"] .theme-toggle button{background:#111;color:#fff}
+  </style>
 </head>
 <body>
 
-<header>
-  <div class="container nav">
-    <a class="brand" href="/" aria-label="DuraHaus home">
-      <!-- Theme-aware logo -->
-      <img id="brandLogo"
-           alt="DuraHaus logo"
-           data-dark="durahaus-logo.svg"
-           data-light="durahaus-logo-dark.svg"
-           data-fallback="0">
-    </a>
-    <nav class="navlinks" aria-label="Primary">
-      <a href="/services.html">Services</a>
-      <a href="/projects.html">Projects</a>
-      <a href="/about.html">About</a>
-      <a class="btn btn-solid" href="/quote.html">Get a Quote</a>
-    </nav>
-  </div>
-</header>
+  <!-- Header -->
+  <header>
+    <div class="container nav">
+      <a class="brand" href="/" aria-label="DuraHaus home">
+        <picture>
+          <source srcset="/assets/durahaus-logo.svg" type="image/svg+xml">
+          <source srcset="/assets/durahaus-logo.png" type="image/png">
+          <img src="/assets/durahaus-logo.jpg" alt="DuraHaus logo"
+               onerror="this.closest('.brand').querySelector('.wordmark').style.display='block'">
+        </picture>
+        <span class="wordmark" style="display:none">DURAHAUS</span>
+      </a>
 
-<!-- Floating Theme Toggle -->
-<button class="theme-fab" id="themeToggle" type="button" aria-pressed="false" aria-label="Toggle theme">
-  <span>Light</span>
-</button>
+      <nav class="navlinks" aria-label="Primary">
+        <a href="/services.html" class="pill">Services</a>
+        <a href="/projects.html" class="pill">Projects</a>
+        <a href="/about.html" class="pill">About</a>
+        <a class="iconbtn" href="tel:15136684382" aria-label="Call DuraHaus">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.2c1.2 2.4 3.1 4.3 5.5 5.5l1.8-1.8c.3-.3.7-.4 1.1-.3 1 .3 2 .5 3 .5.6 0 1 .4 1 1v3.1c0 .6-.4 1-1 1C10.3 19.2 4.8 13.7 4.8 6.1c0-.6.4-1 1-1H9c.6 0 1 .4 1 1 0 1 .2 2 .5 3 .1.4 0 .8-.3 1.1l-1.6 2z"/></svg>
+        </a>
+        <a class="pill pill--solid" href="/quote.html">Get a Quote</a>
+      </nav>
+    </div>
+  </header>
 
-<main>
-  <!-- HERO (simplified/cleaned) -->
-  <section class="hero">
-    <div class="container" style="padding:36px 0">
-      <div class="hero-wrap">
-        <div>
-          <h1>Built Like It Matters.</h1>
-          <p class="lead">Interior & exterior painting, cabinet enamels, stains, concrete & metal coatings—specified to each surface, prepped to a standard, and finished to last.</p>
-          <div class="badges">
-            <span class="badge">Licensed & Insured</span>
-            <span class="badge">On-Time Scheduling</span>
-            <span class="badge">Clean, Dust-Controlled</span>
-            <span class="badge">15 yrs owner · 30 yrs mentor</span>
-          </div>
-          <div style="margin-top:14px;display:flex;gap:10px;flex-wrap:wrap">
-            <a class="btn btn-solid" href="/quote.html">Get My Price</a>
-            <a class="btn btn-ghost" href="tel:+15136684382">Call 513-668-4382</a>
-          </div>
-        </div>
-        <div class="media">
-          <div class="imgwrap">
-            <img data-src="stock-hero.webp" alt="DuraHaus project collage">
-            <div class="img-overlay"></div>
-          </div>
+  <main>
+    <!-- Hero -->
+    <section class="hero">
+      <div class="hero__media">
+        <img id="heroImg" src="/assets/stock-hero.webp" alt="Cincinnati high-end home exterior" loading="eager" decoding="async">
+      </div>
+      <div class="hero__copy container">
+        <h1>Pro Services. Pro Results.<br>The DuraHaus Standard </h1>
+        <p class="lead">
+          From interiors to exteriors, cabinets to concrete — we approach every job with care, craftsmanship, and materials built to perform. All to make your home more beautiful, more durable, and better protected against time and weather.
+        </p>
+        <div class="stack" style="margin-top:1.1rem">
+          <a class="pill pill--solid" href="/services.html">Explore Services</a>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- SERVICES -->
-  <section class="container services" style="margin:34px auto">
-    <h2>What We Do</h2>
-    <p class="lead">Premium prep + matched coating systems for homes across Butler, Hamilton, and Warren County.</p>
-    <div class="grid">
-      <!-- Interior -->
-      <article class="card service">
-        <div class="carousel" data-carousel>
-          <button class="carousel-btn prev" data-prev aria-label="Previous">‹</button>
-          <div class="carousel-track" data-track>
-            <img data-src="interior8.webp" alt="">
-            <img data-src="interior11.webp" alt="">
-            <img data-src="interior1.webp" alt="">
-          </div>
-          <button class="carousel-btn next" data-next aria-label="Next">›</button>
-          <div class="carousel-dots" data-dots></div>
+    <!-- Mission -->
+    <section class="container row">
+      <div class="card">
+        <img src="/assets/interior4.webp" alt="Interior detail" data-auto>
+      </div>
+      <div>
+        <h2>Protecting What’s Built. <br>Enhancing What’s Seen.</h2>
+        <p class="lead">
+          At DuraHaus that is our mission. We supply customers with specialized skills and knowledge in Interior/Exterior Painting, Cabinetry Finishes, Staining & Wood Finishes, Surface-Protecting Coatings, Concrete Coatings, Drywall Repair, Interior/Exterior Sealing and more.
+        </p>
+        <div class="stack" style="margin-top:1rem">
+          <a class="pill pill--solid" href="/about.html">About</a>
+          <a class="pill pill--ghost" href="tel:15136684382">Call Us</a>
         </div>
-        <div class="pad">
-          <h3>Interior Painting</h3>
-          <p class="lead">Walls, ceilings, trim, doors, and built-ins finished with low-odor, washable coatings. We protect floors and furniture, repair dings, sand between coats, and leave crisp lines and a clean site.</p>
-        </div>
-      </article>
+      </div>
+    </section>
 
-      <!-- Exterior -->
-      <article class="card service">
-        <div class="carousel" data-carousel>
-          <button class="carousel-btn prev" data-prev>‹</button>
-          <div class="carousel-track" data-track>
-            <img data-src="exterior7.webp" alt="">
-            <img data-src="exterior4.webp" alt="">
-            <img data-src="exterior3.webp" alt="">
-          </div>
-          <button class="carousel-btn next" data-next>›</button>
-          <div class="carousel-dots" data-dots></div>
-        </div>
-        <div class="pad">
-          <h3>Exterior Painting</h3>
-          <p class="lead">Power-wash, scrape, sand, spot-prime, and caulk—then apply weather-tough topcoats. We match products to siding (wood, fiber-cement, aluminum) and handle fascia/soffit repairs as needed.</p>
-        </div>
-      </article>
-
-      <!-- Concrete / Masonry -->
-      <article class="card service">
-        <div class="carousel" data-carousel>
-          <button class="carousel-btn prev" data-prev>‹</button>
-          <div class="carousel-track" data-track>
-            <img data-src="stock-concrete.webp" alt="">
-            <img data-src="concrete1.webp" alt="">
-            <img data-src="concrete3.webp" alt="">
-          </div>
-          <button class="carousel-btn next" data-next>›</button>
-          <div class="carousel-dots" data-dots></div>
-        </div>
-        <div class="pad">
-          <h3>Concrete / Masonry Coatings</h3>
-          <p class="lead">Garages, basements, and patios prepped and coated with moisture-tolerant primers and abrasion-resistant finishes. Options for anti-slip texture and chemical resistance where you need it.</p>
-        </div>
-      </article>
-    </div>
-  </section>
-
-  <!-- MORE SERVICES -->
-  <section class="container" style="margin:10px auto 34px">
-    <div class="grid">
-      <!-- Cabinets -->
-      <article class="card service">
-        <div class="carousel" data-carousel>
-          <button class="carousel-btn prev" data-prev>‹</button>
-          <div class="carousel-track" data-track>
-            <img data-src="cabinets1.webp" alt="">
-            <img data-src="cabinets2.webp" alt="">
-            <img data-src="stock-cabinets.webp" alt="">
-          </div>
-          <button class="carousel-btn next" data-next>›</button>
-          <div class="carousel-dots" data-dots></div>
-        </div>
-        <div class="pad">
-          <h3>Cabinet Painting / Refinishing</h3>
-          <p class="lead">Factory-smooth results using degrease → sand → adhesion-prime → tinted enamel/urethane. Doors and drawers sprayed for a uniform sheen; boxes masked and finished dust-free.</p>
-        </div>
-      </article>
-
-      <!-- Stain -->
-      <article class="card service">
-        <div class="carousel" data-carousel>
-          <button class="carousel-btn prev" data-prev>‹</button>
-          <div class="carousel-track" data-track>
-            <img data-src="stock-stain.webp" alt="">
-            <img data-src="stain1.webp" alt="">
-            <img data-src="stain2.webp" alt="">
-          </div>
-          <button class="carousel-btn next" data-next>›</button>
-          <div class="carousel-dots" data-dots></div>
-        </div>
-        <div class="pad">
-          <h3>Staining & Wood Finishes</h3>
-          <p class="lead">Decks, doors, and rails cleaned, neutralized, and finished with transparent, semi-transparent, or solid stains. We advise on color and UV protection to keep the grain looking great longer.</p>
-        </div>
-      </article>
-
-      <!-- Drywall -->
-      <article class="card service">
-        <div class="carousel" data-carousel>
-          <button class="carousel-btn prev" data-prev>‹</button>
-          <div class="carousel-track" data-track>
-            <img data-src="stock-drywall.webp" alt="">
-            <img data-src="drywall2.webp" alt="">
-            <img data-src="drywall1.webp" alt="">
-          </div>
-          <button class="carousel-btn next" data-next>›</button>
-          <div class="carousel-dots" data-dots></div>
-        </div>
-        <div class="pad">
-          <h3>Drywall Repair</h3>
-          <p class="lead">Cracks, nail pops, water spots, and full patch-ins blended to invisible. We prime repairs to lock down texture and ensure a seamless sheen after paint.</p>
-        </div>
-      </article>
-
-      <!-- Caulking -->
-      <article class="card service">
-        <div class="carousel" data-carousel>
-          <button class="carousel-btn prev" data-prev>‹</button>
-          <div class="carousel-track" data-track>
-            <img data-src="stock-caulking.webp" alt="">
-            <img data-src="caulking1.webp" alt="">
-            <img data-src="caulking2.webp" alt="">
-          </div>
-          <button class="carousel-btn next" data-next>›</button>
-          <div class="carousel-dots" data-dots></div>
-        </div>
-        <div class="pad">
-          <h3>Caulking / Sealant Application</h3>
-          <p class="lead">Interior gaps and exterior joints sealed with paintable elastomeric sealants for air/water control and a cleaner finished line around trim, windows, and doors.</p>
-        </div>
-      </article>
-
-      <!-- Wood repair -->
-      <article class="card service">
-        <div class="carousel" data-carousel>
-          <button class="carousel-btn prev" data-prev>‹</button>
-          <div class="carousel-track" data-track>
-            <img data-src="woodrepair1.webp" alt="">
-            <img data-src="woodrepair2.webp" alt="">
-            <img data-src="woodrepair3.webp" alt="">
-          </div>
-          <button class="carousel-btn next" data-next>›</button>
-          <div class="carousel-dots" data-dots></div>
-        </div>
-        <div class="pad">
-          <h3>Wood Repair / Replacement</h3>
-          <p class="lead">Rot removal, trim/fascia replacement, and epoxy rebuilds where appropriate—primed and painted as part of a complete system so repairs disappear into the finish.</p>
-        </div>
-      </article>
-
-      <!-- Pressure washing -->
-      <article class="card service">
-        <div class="carousel" data-carousel>
-          <button class="carousel-btn prev" data-prev>‹</button>
-          <div class="carousel-track" data-track>
-            <img data-src="pressurewashing1.webp" alt="">
-            <img data-src="pressurewashing2.webp" alt="">
-            <img data-src="pressurewashing3.webp" alt="">
-          </div>
-          <button class="carousel-btn next" data-next>›</button>
-          <div class="carousel-dots" data-dots></div>
-        </div>
-        <div class="pad">
-          <h3>Pressure Washing</h3>
-          <p class="lead">Surface prep for paint and stain as well as stand-alone cleaning. We use the right tips, detergents, and pressure to lift dirt without damaging siding or concrete.</p>
-        </div>
-      </article>
-
-      <!-- Metal coatings -->
-      <article class="card service">
-        <div class="carousel" data-carousel>
-          <button class="carousel-btn prev" data-prev>‹</button>
-          <div class="carousel-track" data-track>
-            <img data-src="stock-metal.webp" alt="">
-            <img data-src="metal1.webp" alt="">
-            <img data-src="exterior10.webp" alt="">
-          </div>
-          <button class="carousel-btn next" data-next>›</button>
-          <div class="carousel-dots" data-dots></div>
-        </div>
-        <div class="pad">
-          <h3>Metal Coatings</h3>
-          <p class="lead">Rust treatment, etch/prime, and industrial topcoats for rails, doors, and siding panels. We specify rust-inhibitive systems to keep steel looking sharp and protected.</p>
-        </div>
-      </article>
-    </div>
-  </section>
-
-  <!-- BEFORE/AFTER -->
-  <section class="container" style="margin:34px auto">
-    <h2>See the Difference</h2>
-    <div class="grid" style="grid-template-columns:1fr;gap:22px">
+    <!-- Before/After -->
+    <section class="container">
       <div class="compare">
         <div class="compare__wrap" data-compare data-before="brickbefore.webp" data-after="brickafter.webp">
-          <img data-role="before" alt="Before — brick">
-          <img class="compare__after" data-role="after" alt="After — brick">
+          <img data-role="before" alt="Before"><img class="compare__after" data-role="after" alt="After">
           <div class="compare__bar" data-bar></div>
           <div class="compare__knob" aria-hidden="true">↔</div>
           <input type="range" min="0" max="100" value="50" aria-label="Slide to compare">
         </div>
-        <div class="pad"><p class="lead">Brick whitewash transformation.</p></div>
-      </div>
-      <div class="compare">
-        <div class="compare__wrap" data-compare data-before="pressurewashing1.webp" data-after="pressurewashing2.webp">
-          <img data-role="before" alt="Before — concrete">
-          <img class="compare__after" data-role="after" alt="After — concrete">
-          <div class="compare__bar" data-bar></div>
-          <div class="compare__knob" aria-hidden="true">↔</div>
-          <input type="range" min="0" max="100" value="50" aria-label="Slide to compare">
-        </div>
-        <div class="pad"><p class="lead">Prep that makes coatings last longer.</p></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- SERVICE AREAS -->
-  <section class="container" style="margin:34px auto">
-    <h2>Service Areas</h2>
-    <div class="card">
-      <div class="pad-lg">
-        <div class="grid" style="grid-template-columns:1fr;gap:16px">
-          <div>
-            <h3 style="margin:0 0 .4rem">Core Cities</h3>
-            <p class="lead">Hamilton, Fairfield, West Chester, Liberty Township, Mason, Sharonville, Monroe, Trenton, Oxford, Middletown, Blue Ash, Hyde Park, Anderson.</p>
-          </div>
-          <div>
-            <h3 style="margin:0 0 .4rem">Counties</h3>
-            <p class="lead">Butler, Hamilton, Warren (Ohio).</p>
-          </div>
+        <div class="pad">
+          <h3 style="margin:.2rem 0">Before ↔ After</h3>
+          <p class="lead">Slide to see the difference our prep and finish systems make.</p>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- TESTIMONIALS -->
-  <section class="container" style="margin:34px auto">
-    <h2>What Homeowners Say</h2>
-    <div class="grid" style="grid-template-columns:1fr;gap:18px">
-      <div class="card"><div class="pad">“DuraHaus Painting and Construction is a trusting, reliable company that will provide quality work.”<div style="margin-top:8px;color:var(--muted);font-size:14px">— Rosita L.</div></div></div>
-      <div class="card"><div class="pad">“Always our go-to for home projects! Clean, caring when working inside the home, and excellent quality work!”<div style="margin-top:8px;color:var(--muted);font-size:14px">— Jacqueline M.</div></div></div>
-      <div class="card"><div class="pad">“Highly recommend DuraHaus! Multiple houses—always 10/10. High caliber workmanship, excellent communication, fair pricing.”<div style="margin-top:8px;color:var(--muted);font-size:14px">— Christian M.</div></div></div>
-    </div>
-  </section>
+    <!-- Services grid -->
+    <section class="container" style="margin-top:2rem">
+      <div class="grid">
 
-  <!-- FAQ -->
-  <section class="container faq" style="margin:34px auto">
-    <h2>FAQs</h2>
-    <details><summary>How fast can you quote?</summary><div class="a">Most quotes are turned around within 24–48 hours after a quick walkthrough.</div></details>
-    <details><summary>What’s included in prep?</summary><div class="a">Masking/protection, sanding or de-glossing, gap/void caulking, patch/repair, spot/bonding primer, and substrate-specific primers as needed.</div></details>
-    <details><summary>How long do projects take?</summary><div class="a">Small interiors: 1–3 days. Full exteriors vary by size + repairs. Cabinets are typically 4–7 days depending on scope and drying windows.</div></details>
-    <details><summary>Do you help choose colors and finishes?</summary><div class="a">Yes. We suggest sheens and product families based on the surface and traffic, and we can coordinate with your designer if you have one.</div></details>
-    <details><summary>What products do you use?</summary><div class="a">We match the system to the surface: cabinet enamels/urethanes, elastomeric exteriors, bonding/adhesion primers, stain blockers, rust-inhibitives for metal, and moisture-tolerant masonry coatings.</div></details>
-    <details><summary>Are you insured? Do you warranty?</summary><div class="a">Yes—fully insured, with a written workmanship warranty.</div></details>
-  </section>
+        <!-- Interior Painting -->
+        <div class="card">
+          <div class="carousel" data-carousel>
+            <button class="carousel-btn prev" aria-label="Previous image" data-prev>‹</button>
+            <div class="carousel-track" data-track>
+              <img src="/assets/interior8.webp" alt="Interior painting 1" data-auto>
+              <img src="/assets/interior11.webp" alt="Interior painting 2" data-auto>
+              <img src="/assets/interior1.webp" alt="Interior painting 3" data-auto>
+            </div>
+            <button class="carousel-btn next" aria-label="Next image" data-next>›</button>
+            <div class="carousel-dots" data-dots></div>
+          </div>
+          <a class="pad service-link" href="/services.html#interior">
+            <h3 style="margin:0 0 .25rem">Interior Painting</h3>
+            <p>Rooms, ceilings, trim, and doors. We protect floors, fix pops and seams, sand and caulk joints, then prime and finish with pro enamels for a tight, uniform result.</p>
+          </a>
+        </div>
 
-  <!-- CTA -->
-  <section class="container" style="margin:34px auto 28px">
-    <div class="band">
-      <div>
-        <h2 style="margin:.2rem 0">Ready to start?</h2>
-        <p class="lead" style="margin:.2rem 0">Fast estimates, tidy jobsites, and results that hold up.</p>
+        <!-- Exterior Painting -->
+        <div class="card">
+          <div class="carousel" data-carousel>
+            <button class="carousel-btn prev" aria-label="Previous image" data-prev>‹</button>
+            <div class="carousel-track" data-track>
+              <img src="/assets/exterior7.webp" alt="Exterior painting 1" data-auto>
+              <img src="/assets/exterior4.webp" alt="Exterior painting 2" data-auto>
+              <img src="/assets/exterior3.webp" alt="Exterior painting 3" data-auto>
+            </div>
+            <button class="carousel-btn next" aria-label="Next image" data-next>›</button>
+            <div class="carousel-dots" data-dots></div>
+          </div>
+          <a class="pad service-link" href="/services.html#exterior">
+            <h3 style="margin:0 0 .25rem">Exterior Painting</h3>
+            <p>Wash, scrape/sand, spot-prime, and re-caulk where needed; then brush/roll/spray high-build coatings matched to your siding (wood, fiber-cement, aluminum, or vinyl).</p>
+          </a>
+        </div>
+
+        <!-- Concrete Coatings -->
+        <div class="card">
+          <div class="carousel" data-carousel>
+            <button class="carousel-btn prev" aria-label="Previous image" data-prev>‹</button>
+            <div class="carousel-track" data-track>
+              <img src="/assets/stock-concrete.webp" alt="Concrete coatings 1" data-auto>
+              <img src="/assets/concrete1.webp" alt="Concrete coatings 2" data-auto>
+              <img src="/assets/concrete3.webp" alt="Concrete coatings 3" data-auto>
+            </div>
+            <button class="carousel-btn next" aria-label="Next image" data-next>›</button>
+            <div class="carousel-dots" data-dots></div>
+          </div>
+          <a class="pad service-link" href="/services.html#concrete">
+            <h3 style="margin:0 0 .25rem">Concrete Coatings</h3>
+            <p>Garages, basements, patios. We profile the slab, repair cracks, then install epoxy/urethane or polyaspartic systems for abrasion and chemical resistance.</p>
+          </a>
+        </div>
+
       </div>
-      <div style="display:flex;gap:10px;flex-wrap:wrap">
-        <a class="btn btn-solid" href="/quote.html">Request a Quote</a>
-        <a class="btn" href="tel:+15136684382">Call 513-668-4382</a>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Pre-footer -->
-  <div class="container" style="display:flex;gap:18px;align-items:center;justify-content:space-between;flex-wrap:wrap;margin:2rem auto 1rem">
-    <img data-src="seal-white.webp" alt="DuraHaus seal" style="width:120px;height:auto;opacity:.95;filter:invert(1) brightness(1.6)">
-    <nav style="display:flex;gap:10px;flex-wrap:wrap">
-      <a href="/services.html" class="btn">Services</a>
-      <a href="/projects.html" class="btn">Projects</a>
-      <a href="/about.html" class="btn">About</a>
-      <a href="/quote.html" class="btn btn-solid">Get a Quote</a>
-    </nav>
+    <!-- More services -->
+    <section class="container" style="margin-top:2rem">
+      <div class="grid">
+
+        <!-- Cabinet Refinishing -->
+        <div class="card">
+          <div class="carousel" data-carousel>
+            <button class="carousel-btn prev" aria-label="Previous image" data-prev>‹</button>
+            <div class="carousel-track" data-track>
+              <img src="/assets/cabinets1.webp" alt="Cabinet refinishing 1" data-auto>
+              <img src="/assets/cabinets2.webp" alt="Cabinet refinishing 2" data-auto>
+              <img src="/assets/stock-cabinets.webp" alt="Cabinet refinishing 3" data-auto>
+            </div>
+            <button class="carousel-btn next" aria-label="Next image" data-next>›</button>
+            <div class="carousel-dots" data-dots></div>
+          </div>
+          <a class="pad service-link" href="/services.html#cabinets">
+            <h3 style="margin:0 0 .25rem">Cabinet Painting / Refinishing</h3>
+            <p>Doors/drawers removed, degreased, sanded & deglossed, bonded with pro primer, then sprayed enamel topcoats in a clean zone for factory-smooth durability.</p>
+          </a>
+        </div>
+
+        <!-- Staining & Wood Care -->
+        <div class="card">
+          <div class="carousel" data-carousel>
+            <button class="carousel-btn prev" aria-label="Previous image" data-prev>‹</button>
+            <div class="carousel-track" data-track>
+              <img src="/assets/stock-stain.webp" alt="Staining and wood care 1" data-auto>
+              <img src="/assets/stain1.webp" alt="Staining and wood care 2" data-auto>
+              <img src="/assets/stain2.webp" alt="Staining and wood care 3" data-auto>
+            </div>
+            <button class="carousel-btn next" aria-label="Next image" data-next>›</button>
+            <div class="carousel-dots" data-dots></div>
+          </div>
+          <a class="pad service-link" href="/services.html#stain">
+            <h3 style="margin:0 0 .25rem">Staining & Wood Finishes</h3>
+            <p>Decks, rails, doors, beams. Full clean/neutralize, moisture check, sand to open grain, then penetrating stain or film-build finish based on use and UV.</p>
+          </a>
+        </div>
+
+        <!-- Drywall & Repair -->
+        <div class="card">
+          <div class="carousel" data-carousel>
+            <button class="carousel-btn prev" aria-label="Previous image" data-prev>‹</button>
+            <div class="carousel-track" data-track>
+              <img src="/assets/stock-drywall.webp" alt="Drywall repair 1" data-auto>
+              <img src="/assets/drywall2.webp" alt="Drywall repair 2" data-auto>
+              <img src="/assets/drywall1.webp" alt="Drywall repair 3" data-auto>
+            </div>
+            <button class="carousel-btn next" aria-label="Next image" data-next>›</button>
+            <div class="carousel-dots" data-dots></div>
+          </div>
+          <a class="pad service-link" href="/services.html#drywall">
+            <h3 style="margin:0 0 .25rem">Drywall Repair</h3>
+            <p>From small holes to skim-coating rooms. Tape, mud, sand, and prime for a uniform surface that won’t telegraph through the finish coat.</p>
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Areas Served -->
+    <section class="container" id="service-areas" style="margin:2.5rem auto">
+      <h2 style="margin:0 0 .6rem">Areas Served</h2>
+      <p class="lead">We serve Hamilton and nearby communities in Butler &amp; Warren Counties.</p>
+      <div class="areas" aria-label="Service areas">
+        <div class="city">Hamilton</div>
+        <div class="city">Fairfield</div>
+        <div class="city">West Chester</div>
+        <div class="city">Liberty Township</div>
+        <div class="city">Monroe</div>
+        <div class="city">Middletown</div>
+        <div class="city">Oxford</div>
+        <div class="city">Trenton</div>
+        <div class="city">Lebanon</div>
+        <div class="city">Mason</div>
+        <div class="city">South Lebanon</div>
+        <div class="city">Blue Ash</div>
+        <div class="city">Sharonville</div>
+        <div class="city">Colerain Township</div>
+        <div class="city">Cincinnati</div>
+      </div>
+    </section>
+
+    <!-- Reviews -->
+    <section class="container" style="margin:2.5rem auto">
+      <h2 style="margin:0 0 .6rem">What Homeowners Say</h2>
+      <div class="reviews">
+        <div class="review">
+          <div class="who">Rosita L. <span class="tag">via Facebook</span></div>
+          <p>“DuraHaus Painting and Construction is a trusting, reliable company that will provide quality work.”</p>
+        </div>
+        <div class="review">
+          <div class="who">Jacqueline M. <span class="tag">via Facebook</span></div>
+          <p>“Always our go-to for home projects! Clean, caring when working inside the home, and excellent quality work!”</p>
+        </div>
+        <div class="review">
+          <div class="who">Christian M. <span class="tag">via Facebook</span></div>
+          <p>“Highly recommend DuraHaus! High caliber, professional workmanship, excellent communication, and fair pricing.”</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="container faq">
+      <h2 style="margin-bottom:.6rem">FAQs</h2>
+      <details><summary>Do you offer free estimates?</summary>
+        <div class="a">Yes. We can visit on-site within 48 hours in most cases and provide a written, itemized quote.</div>
+      </details>
+      <details><summary>How soon can you start?</summary>
+        <div class="a">Scheduling depends on scope and season. Smaller interior projects can often begin within 1–2 weeks.</div>
+      </details>
+      <details><summary>What materials do you use?</summary>
+        <div class="a">We spec pro-grade primers, enamels, and exterior coatings matched to each substrate for durability and finish quality.</div>
+      </details>
+      <details><summary>Are you insured and do you provide a warranty?</summary>
+        <div class="a">Yes—fully insured. We include a workmanship warranty with every project. Details are listed on your written quote.</div>
+      </details>
+      <details><summary>Can you help with colors and product selection?</summary>
+        <div class="a">Yes—we advise on sheen, product lines, and color placement to balance durability and design. We can arrange professional color consults if desired.</div>
+      </details>
+      <details><summary>How do you keep interiors clean while working?</summary>
+        <div class="a">We isolate work zones, lay floor protection, mask with plastic and tape, run dust control where needed, and clean daily.</div>
+      </details>
+    </section>
+
+    <!-- CTA band -->
+    <section class="container" style="margin:3rem auto 2rem">
+      <div class="band">
+        <div>
+          <h2 style="margin:.2rem 0">Ready to start?</h2>
+          <p style="margin:.2rem 0;color:var(--muted)">Fast estimates, tidy jobsites, and results that hold up.</p>
+        </div>
+        <div class="stack">
+          <a class="pill pill--solid" href="/quote.html">Request a Quote</a>
+          <a class="iconbtn" href="tel:15136684382" aria-label="Call DuraHaus">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.2c1.2 2.4 3.1 4.3 5.5 5.5l1.8-1.8c.3-.3.7-.4 1.1-.3 1 .3 2 .5 3 .5.6 0 1 .4 1 1v3.1c0 .6-.4 1-1 1C10.3 19.2 4.8 13.7 4.8 6.1c0-.6.4-1 1-1H9c.6 0 1 .4 1 1 0 1 .2 2 .5 3 .1.4 0 .8-.3 1.1l-1.6 2z"/></svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pre-footer: stamp + mini nav -->
+    <div class="container prefooter">
+      <div class="stampwrap">
+        <img src="/assets/seal-white.PNG" alt="DuraHaus stamp (white)" data-auto>
+      </div>
+      <nav class="menu" aria-label="Footer quick links">
+        <a href="/services.html" class="pill">Services</a>
+        <a href="/projects.html" class="pill">Projects</a>
+        <a href="/about.html" class="pill">About</a>
+        <a class="iconbtn" href="tel:15136684382" aria-label="Call DuraHaus">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.2c1.2 2.4 3.1 4.3 5.5 5.5l1.8-1.8c.3-.3.7-.4 1.1-.3 1 .3 2 .5 3 .5.6 0 1 .4 1 1v3.1c0 .6-.4 1-1 1C10.3 19.2 4.8 13.7 4.8 6.1c0-.6.4-1 1-1H9c.6 0 1 .4 1 1 0 1 .2 2 .5 3 .1.4 0 .8-.3 1.1l-1.6 2z"/></svg>
+        </a>
+        <a class="pill pill--solid" href="/quote.html">Get a Quote</a>
+      </nav>
+    </div>
+
+    <!-- Contact strip (phone, email, socials) -->
+    <section class="contactbar">
+      <div class="container row">
+        <a href="tel:+15136684382" aria-label="Call">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.2c1.2 2.4 3.1 4.3 5.5 5.5l1.8-1.8c.3-.3.7-.4 1.1-.3 1 .3 2 .5 3 .5.6 0 1 .4 1 1v3.1c0 .6-.4 1-1 1C10.3 19.2 4.8 13.7 4.8 6.1c0-.6.4-1 1-1H9c.6 0 1 .4 1 1 0 1 .2 2 .5 3 .1.4 0 .8-.3 1.1l-1.6 2z"/></svg>
+          513-668-4382
+        </a>
+        <a href="mailto:durahaus.solutions@gmail.com" aria-label="Email">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5L4 8V6l8 5 8-5v2z"/></svg>
+          durahaus.solutions@gmail.com
+        </a>
+        <a href="https://www.facebook.com/durahaus" target="_blank" rel="noopener" aria-label="Facebook">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 12a10 10 0 1 0-11.5 9.9v-7h-2v-3h2v-2.3c0-2 1.2-3.1 3-3.1.9 0 1.8.1 1.8.1v2h-1c-1 0-1.3.6-1.3 1.2V12h2.2l-.4 3h-1.8v7A10 10 0 0 0 22 12z"/></svg>
+          Facebook
+        </a>
+        <a href="https://share.google/EBNrz9YGxu5CfbmpO" target="_blank" rel="noopener" aria-label="Google Business Profile">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6a2.5 2.5 0 0 1 0 5z"/></svg>
+          Google
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container foot">
+      <small>© <span id="y"></span> DuraHaus Painting & Construction. All rights reserved.</small>
+    </div>
+  </footer>
+
+  <!-- bottom-right theme toggle -->
+  <div class="theme-toggle" aria-live="polite">
+    <span id="themeLabel">Light</span>
+    <button id="themeToggle" type="button">Toggle</button>
   </div>
-</main>
 
-<footer>
-  <div class="container foot">© <span id="y"></span> DuraHaus Painting & Construction. All rights reserved.</div>
-</footer>
+  <script>
+    // Year
+    document.getElementById('y').textContent = new Date().getFullYear();
 
-<script>
-  // Asset base for root and /durahaus-test/
-  const ASSET_BASE = location.pathname.includes('/durahaus-test/') ? '/durahaus-test/assets/' : '/assets/';
-
-  // Year
-  document.getElementById('y').textContent = new Date().getFullYear();
-
-  // Theme init/toggle + brand logo swap
-  (function(){
-    const btn = document.getElementById('themeToggle');
-    const saved = localStorage.getItem('theme');
-    const root = document.documentElement;
-    const logo = document.getElementById('brandLogo');
-    const setLabel = (m)=> btn.querySelector('span').textContent = m==='light' ? 'Dark' : 'Light';
-    function apply(mode){
-      root.setAttribute('data-theme', mode);
-      localStorage.setItem('theme', mode);
-      setLabel(mode);
-      // theme-aware logo
-      const dark = logo.getAttribute('data-dark');
-      const light = logo.getAttribute('data-light');
-      // try to use explicit light/dark assets; fallback to dark + filter flag
-      const src = mode==='light' ? (light ? light : dark) : dark;
-      logo.src = ASSET_BASE + src;
-      logo.setAttribute('data-fallback', (mode==='light' && !light) ? '1' : '0');
-    }
-    apply(saved || 'dark');
-    btn.addEventListener('click', ()=>{
-      apply((root.getAttribute('data-theme')||'dark') === 'dark' ? 'light' : 'dark');
+    // ===== Path helper so /durahaus-test/ works =====
+    const IS_TEST = location.pathname.includes('/durahaus-test/');
+    const ASSET_BASE = IS_TEST ? '/durahaus-test/assets/' : '/assets/';
+    // fix preload + hero
+    document.getElementById('preHero').href = ASSET_BASE + 'stock-hero.webp';
+    document.getElementById('heroImg').src = ASSET_BASE + 'stock-hero.webp';
+    // rewrite any <img data-auto src="/assets/...">
+    document.querySelectorAll('img[data-auto]').forEach(img=>{
+      const name = img.getAttribute('src').split('/').pop();
+      img.src = ASSET_BASE + name;
     });
-  })();
 
-  // Lazy load [data-src]
-  (function(){
-    const imgs=[...document.querySelectorAll('[data-src]')];
-    const load = el => { el.src = ASSET_BASE + el.getAttribute('data-src'); };
-    if(!('IntersectionObserver' in window)){ imgs.forEach(load); return; }
-    const io = new IntersectionObserver((es,o)=>{ es.forEach(e=>{ if(!e.isIntersecting) return; load(e.target); o.unobserve(e.target); }); }, {rootMargin:'200px 0px 200px 0px'});
-    imgs.forEach(el=> io.observe(el));
-  })();
+    // === Compare slider ===
+    (function(){
+      document.querySelectorAll('[data-compare]').forEach(wrap=>{
+        const before = wrap.querySelector('[data-role="before"]');
+        const after  = wrap.querySelector('[data-role="after"]');
+        const bar    = wrap.querySelector('[data-bar]');
+        const range  = wrap.querySelector('input[type="range"]');
+        before.src = ASSET_BASE + wrap.dataset.before;
+        after.src  = ASSET_BASE + wrap.dataset.after;
+        const set = v => {
+          v=Math.max(0,Math.min(100,v));
+          after.style.clipPath=`inset(0 ${100-v}% 0 0)`;
+          bar.style.left=v+'%'; range.value=v;
+        };
+        const pct = x=>{
+          const r=wrap.getBoundingClientRect();
+          return ((x-r.left)/r.width)*100;
+        };
+        wrap.addEventListener('pointerdown',e=>set(pct(e.clientX)));
+        wrap.addEventListener('pointermove',e=>{ if(e.buttons) set(pct(e.clientX)); });
+        wrap.addEventListener('touchstart',e=>set(pct(e.touches[0].clientX)),{passive:true});
+        wrap.addEventListener('touchmove', e=>set(pct(e.touches[0].clientX)),{passive:true});
+        range.addEventListener('input',e=>set(+e.target.value));
+        set(50);
+      });
+    })();
 
-  // Before/After sliders
-  (function(){
-    document.querySelectorAll('[data-compare]').forEach(wrap=>{
-      const before=wrap.querySelector('[data-role="before"]');
-      const after=wrap.querySelector('[data-role="after"]');
-      before.src = ASSET_BASE + wrap.getAttribute('data-before');
-      after.src  = ASSET_BASE + wrap.getAttribute('data-after');
-      const bar=wrap.querySelector('[data-bar]');
-      const range=wrap.querySelector('input[type="range"]');
-      function set(v){ v=Math.max(0,Math.min(100,v)); after.style.clipPath=`inset(0 ${100-v}% 0 0)`; bar.style.left=v+'%'; range.value=v; }
-      const pos=x=>{ const r=wrap.getBoundingClientRect(); return ((x-r.left)/r.width)*100; };
-      range.addEventListener('input', e=> set(+e.target.value));
-      wrap.addEventListener('pointerdown', e=> set(pos(e.clientX)));
-      wrap.addEventListener('pointermove', e=> { if(e.buttons) set(pos(e.clientX)); });
-      wrap.addEventListener('touchstart', e=> set(pos(e.touches[0].clientX)), {passive:true});
-      wrap.addEventListener('touchmove', e=> set(pos(e.touches[0].clientX)), {passive:true});
-      set(50);
-    });
-  })();
+    // === Carousel (Pointer Events with touch/mouse fallback) ===
+    (function(){
+      const carousels = document.querySelectorAll('[data-carousel]');
 
-  // Carousel (robust swipe)
-  (function(){
-    const carousels=document.querySelectorAll('[data-carousel]');
-    carousels.forEach(c=>{
-      const track=c.querySelector('[data-track]');
-      const slides=[...track.children];
-      const prev=c.querySelector('[data-prev]');
-      const next=c.querySelector('[data-next]');
-      const dots=c.querySelector('[data-dots]'); dots.innerHTML='';
-      slides.forEach((_,i)=>{const b=document.createElement('button');b.type='button';b.setAttribute('aria-label','Go to slide '+(i+1));b.addEventListener('click',e=>{e.stopPropagation();go(i)});dots.appendChild(b);});
-      let i=0, startX=0, dragX=0, dragging=false;
-      const W=()=>c.getBoundingClientRect().width;
-      const clamp=n=>Math.max(0,Math.min(slides.length-1,n));
-      function update(){ track.style.transform=`translateX(${i*-100}%)`; [...dots.children].forEach((d,di)=>d.setAttribute('aria-current',di===i)); prev.style.visibility=(i===0)?'hidden':'visible'; next.style.visibility=(i===slides.length-1)?'hidden':'visible'; }
-      function go(n){ i=clamp(n); track.style.transition=''; update(); }
-      function onStart(x){ dragging=true; startX=x; dragX=0; track.style.transition='none'; }
-      function onMove(x){ if(!dragging) return; dragX=x-startX; const pct=(dragX/W())*100; track.style.transform=`translateX(calc(${i*-100}% + ${pct}%))`; }
-      function onEnd(){ if(!dragging) return; track.style.transition=''; const threshold=W()*0.15; if(Math.abs(dragX)>threshold){ if(dragX<0) i++; else i--; } go(i); dragging=false; }
-      prev.addEventListener('click',e=>{e.preventDefault();e.stopPropagation();go(i-1);});
-      next.addEventListener('click',e=>{e.preventDefault();e.stopPropagation();go(i+1);});
-      track.querySelectorAll('img').forEach(img=>img.draggable=false);
-      track.addEventListener('pointerdown',e=>{ if(e.pointerType==='mouse'&&e.button!==0) return; onStart(e.clientX); },{passive:true});
-      window.addEventListener('pointermove',e=>{ if(!dragging) return; e.preventDefault(); onMove(e.clientX); },{passive:false});
-      window.addEventListener('pointerup',onEnd); window.addEventListener('pointercancel',onEnd);
-      track.addEventListener('touchstart',e=>onStart(e.touches[0].clientX),{passive:true});
-      window.addEventListener('touchmove',e=>{ if(!dragging) return; onMove(e.touches[0].clientX); },{passive:false});
-      window.addEventListener('touchend',onEnd);
-      go(0);
-    });
-  })();
-</script>
+      function attachPointer(c){
+        const track = c.querySelector('[data-track]');
+        const slides = [...track.children];
+        const prev = c.querySelector('[data-prev]');
+        const next = c.querySelector('[data-next]');
+        const dotsWrap = c.querySelector('[data-dots]');
+        slides.forEach((_, idx)=>{
+          const b = document.createElement('button');
+          b.type = 'button';
+          b.setAttribute('aria-label', 'Go to slide '+(idx+1));
+          b.addEventListener('click', (e)=>{ e.stopPropagation(); go(idx); });
+          dotsWrap.appendChild(b);
+        });
+
+        let i = 0, startX = 0, dragX = 0, dragging = false;
+
+        function update(){
+          track.style.transform = `translateX(${i * -100}%)`;
+          [...dotsWrap.children].forEach((d, di)=> d.setAttribute('aria-current', di===i));
+          prev.style.visibility = (i===0)?'hidden':'visible';
+          next.style.visibility = (i===slides.length-1)?'hidden':'visible';
+        }
+        const clamp=n=>Math.max(0,Math.min(slides.length-1,n));
+        const go=n=>{ i = clamp(n); update(); };
+        const nextSlide=()=>go(i+1);
+        const prevSlide=()=>go(i-1);
+
+        [prev, next, dotsWrap, track].forEach(el=>{
+          el && el.addEventListener('click', ev=>ev.stopPropagation());
+        });
+        prev.addEventListener('click', prevSlide);
+        next.addEventListener('click', nextSlide);
+
+        const usePointer = 'PointerEvent' in window;
+        if (usePointer) {
+          track.addEventListener('pointerdown', onPointerDown);
+          track.querySelectorAll('img').forEach(img=> img.draggable = false);
+        } else {
+          track.addEventListener('touchstart', onStart, {passive:true});
+          track.addEventListener('mousedown', onStart);
+        }
+
+        function onPointerDown(e){
+          if (e.pointerType === 'mouse' && e.button !== 0) return;
+          dragging = true; startX = e.clientX; dragX = 0;
+          track.setPointerCapture?.(e.pointerId);
+          document.addEventListener('pointermove', onPointerMove);
+          document.addEventListener('pointerup', onPointerUp);
+        }
+        function onPointerMove(e){
+          if(!dragging) return;
+          dragX = e.clientX - startX;
+          track.style.transition = 'none';
+          const pct = (dragX / track.clientWidth) * 100;
+          track.style.transform = `translateX(calc(${i * -100}% + ${pct}%))`;
+        }
+        function onPointerUp(){
+          if(!dragging) return;
+          track.style.transition = '';
+          const threshold = track.clientWidth * 0.15;
+          if (Math.abs(dragX) > threshold){ dragX < 0 ? nextSlide() : prevSlide(); }
+          else update();
+          dragging = false;
+          document.removeEventListener('pointermove', onPointerMove);
+          document.removeEventListener('pointerup', onPointerUp);
+        }
+
+        function onStart(e){
+          dragging = true; startX = getX(e); dragX = 0;
+          document.addEventListener('touchmove', onMove, {passive:false});
+          document.addEventListener('mousemove', onMove);
+          document.addEventListener('touchend', onEnd);
+          document.addEventListener('mouseup', onEnd);
+        }
+        function onMove(e){
+          if(!dragging) return;
+          dragX = getX(e) - startX;
+          track.style.transition = 'none';
+          const pct = (dragX / track.clientWidth) * 100;
+          track.style.transform = `translateX(calc(${i * -100}% + ${pct}%))`;
+          e.preventDefault?.();
+        }
+        function onEnd(){
+          track.style.transition = '';
+          const threshold = track.clientWidth * 0.15;
+          if (Math.abs(dragX) > threshold){ dragX < 0 ? nextSlide() : prevSlide(); }
+          else update();
+          dragging = false;
+          document.removeEventListener('touchmove', onMove);
+          document.removeEventListener('mousemove', onMove);
+          document.removeEventListener('touchend', onEnd);
+          document.removeEventListener('mouseup', onEnd);
+        }
+        const getX=e=>(e.touches && e.touches[0]?.clientX) ?? e.clientX;
+
+        update();
+      }
+
+      carousels.forEach(attachPointer);
+    })();
+
+    // === Theme toggle ===
+    (function(){
+      const root = document.documentElement;
+      const saved = localStorage.getItem('dh-theme');
+      if(saved) root.dataset.theme = saved;
+      const label = document.getElementById('themeLabel');
+      const setLabel = ()=> label.textContent = (root.dataset.theme==='dark')?'Dark':'Light';
+      setLabel();
+      document.getElementById('themeToggle').addEventListener('click', ()=>{
+        const next = (root.dataset.theme === 'dark') ? 'light' : 'dark';
+        root.dataset.theme = next;
+        localStorage.setItem('dh-theme', next);
+        setLabel();
+      });
+    })();
+  </script>
 </body>
 </html>
