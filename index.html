@@ -24,20 +24,26 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
 
 <style>
-  /* ===== Design System (Pro v4.2 with Theme Toggle) ===== */
+  /* ===== Design System (Pro v4.3) ===== */
   :root{
     --bg:#0a0a0b; --panel:#0f0f11; --panel-2:#101114; --ink:#f6f7f8; --muted:#c6c7ca;
     --line:#1b1b1f; --r:16px; --r-lg:20px; --gap:28px; --max:1240px;
-    --brand:#ffffff; --brand-ink:#000;
     --h1:clamp(40px,6.4vw,68px); --h2:clamp(24px,3.2vw,36px); --h3:1.12rem;
     --pad:22px; --pad-lg:28px;
     --shadow:0 24px 60px rgba(0,0,0,.35);
+    --btn-solid-bg:#fff; --btn-solid-ink:#000; --btn-line:var(--line);
+    --img-bg:#0c0c0e;
+    --hero-grad:radial-gradient(1200px 420px at 60% -8%,#17181b 0%,#0d0e10 60%,#0a0a0b 100%);
+    --compare-bar:#fff; --compare-knob-bg:#fff; --compare-knob-ink:#000; --compare-knob-border:#0008;
   }
   /* Light theme */
   [data-theme="light"]{
     --bg:#f8f9fb; --panel:#ffffff; --panel-2:#ffffff; --ink:#0d0e12; --muted:#535862;
-    --line:#e6e7ea; --brand:#111; --brand-ink:#fff;
-    --shadow:0 24px 60px rgba(0,0,0,.06);
+    --line:#e6e7ea; --shadow:0 24px 60px rgba(0,0,0,.08);
+    --btn-solid-bg:#111; --btn-solid-ink:#fff; --btn-line:#dfe1e6;
+    --img-bg:#f3f4f6;
+    --hero-grad:radial-gradient(1200px 420px at 60% -8%,#eef1f6 0%,#fafbfc 60%,#ffffff 100%);
+    --compare-bar:#111; --compare-knob-bg:#111; --compare-knob-ink:#fff; --compare-knob-border:#0002;
   }
 
   *{box-sizing:border-box}
@@ -50,8 +56,7 @@
   }
   main{flex:1 0 auto}
   .container{max-width:var(--max);margin:0 auto;padding:0 22px}
-  img{display:block;width:100%;height:auto;background:#0c0c0e}
-  [data-theme="light"] img{background:#f3f4f6}
+  img{display:block;width:100%;height:auto;background:var(--img-bg)}
   a{color:inherit;text-decoration:none}
   h1{font-size:var(--h1);letter-spacing:-.01em;line-height:1.05;margin:0 0 .7rem}
   h2{font-size:var(--h2);margin:0 0 .7rem}
@@ -66,11 +71,10 @@
   .pad-lg{padding:var(--pad-lg)}
 
   /* Buttons */
-  .btn{display:inline-flex;align-items:center;gap:10px;padding:.7rem 1rem;border-radius:999px;border:1px solid var(--line);font-weight:800}
-  .btn-solid{background:#fff;color:#000;border-color:#fff}
+  .btn{display:inline-flex;align-items:center;gap:10px;padding:.7rem 1rem;border-radius:999px;border:1px solid var(--btn-line);font-weight:800}
+  .btn-solid{background:var(--btn-solid-bg);color:var(--btn-solid-ink);border-color:var(--btn-solid-bg)}
   .btn-ghost{background:transparent}
-  .btn:focus-visible{outline:2px solid #fff3;outline-offset:2px}
-  [data-theme="light"] .btn-solid{background:#111;color:#fff;border-color:#111}
+  .btn:focus-visible{outline:2px solid #7773;outline-offset:2px}
 
   /* Header */
   header{position:sticky;top:0;z-index:80;background:rgba(12,12,14,.92);
@@ -80,24 +84,20 @@
   .nav{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:12px 0}
   .brand{display:flex;align-items:center;gap:12px}
   .brand img{height:56px;width:auto;background:transparent}
-  .navtools{display:flex;align-items:center;gap:14px}
   .navlinks{display:flex;gap:14px;flex-wrap:wrap}
   .navlinks a{position:relative;padding:.4rem .2rem}
   .navlinks a:after{content:"";position:absolute;left:0;right:0;bottom:-2px;height:2px;background:currentColor;transform:scaleX(0);transform-origin:left;transition:transform .22s ease}
   .navlinks a:hover:after{transform:scaleX(1)}
 
-  /* Theme toggle */
-  .toggle{display:inline-flex;align-items:center;gap:8px}
-  .switch{position:relative;width:48px;height:28px;border-radius:999px;border:1px solid var(--line);background:#1a1b20;cursor:pointer;display:inline-block}
-  .knob{position:absolute;top:2px;left:2px;width:24px;height:24px;border-radius:50%;background:#fff;transition:left .2s ease}
-  [data-theme="light"] .switch{background:#e9eaf0}
-  [aria-pressed="true"] .knob{left:22px}
-  .switch-label{font-size:13px;color:var(--muted)}
+  /* Floating theme toggle (bottom-right) */
+  .theme-fab{position:fixed;right:16px;bottom:16px;z-index:95;display:grid;place-items:center;
+    width:56px;height:56px;border-radius:999px;border:1px solid var(--line);
+    background:var(--panel);box-shadow:0 10px 30px rgba(0,0,0,.25);cursor:pointer}
+  .theme-fab span{font-weight:800;font-size:12px;opacity:.85}
+  .theme-fab:focus-visible{outline:3px solid #8884;outline-offset:3px}
 
   /* Hero */
-  .hero{border-bottom:1px solid var(--line);background:
-    radial-gradient(1200px 420px at 60% -8%,#17181b 0%,#0d0e10 60%,#0a0a0b 100%)}
-  [data-theme="light"] .hero{background:radial-gradient(1200px 420px at 60% -8%,#eef1f6 0%,#fafbfc 60%,#ffffff 100%)}
+  .hero{border-bottom:1px solid var(--line);background:var(--hero-grad)}
   .hero-wrap{display:grid;gap:28px;grid-template-columns:1fr}
   .hero .media{position:relative;border-radius:var(--r-lg);overflow:hidden;border:1px solid var(--line)}
   .hero .media .imgwrap{position:relative;aspect-ratio:16/9;overflow:hidden}
@@ -123,14 +123,8 @@
   .service small{color:#a9abb2}
   [data-theme="light"] .service small{color:#6b7280}
 
-  /* Carousel */
+  /* Carousel (no side fades) */
   .carousel{position:relative;overflow:hidden}
-  .carousel::before,.carousel::after{
-    content:"";position:absolute;top:0;bottom:0;width:60px;z-index:2;pointer-events:none}
-  .carousel::before{left:0;background:linear-gradient(90deg,rgba(10,10,11,.75),transparent)}
-  .carousel::after{right:0;background:linear-gradient(-90deg,rgba(10,10,11,.75),transparent)}
-  [data-theme="light"] .carousel::before{background:linear-gradient(90deg,rgba(255,255,255,.75),transparent)}
-  [data-theme="light"] .carousel::after{background:linear-gradient(-90deg,rgba(255,255,255,.75),transparent)}
   .carousel-track{display:flex;transition:transform 280ms ease;touch-action:pan-y;user-select:none}
   .carousel img{width:100%;height:300px;object-fit:cover;flex:0 0 100%}
   .carousel-btn{position:absolute;top:50%;transform:translateY(-50%);z-index:3;border:0;background:rgba(0,0,0,.55);color:#fff;
@@ -140,16 +134,15 @@
   .carousel-dots{display:none!important}
 
   /* Before/After */
-  .compare{border:1px solid var(--line);border-radius:var(--r);overflow:hidden;background:#0d0e12;box-shadow:var(--shadow)}
-  [data-theme="light"] .compare{background:#fff}
+  .compare{border:1px solid var(--line);border-radius:var(--r);overflow:hidden;background:var(--panel);box-shadow:var(--shadow)}
   .compare__wrap{position:relative;aspect-ratio:16/9}
   .compare__wrap img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
   .compare__after{clip-path:inset(0 50% 0 0)}
-  .compare__bar{position:absolute;left:50%;top:0;bottom:0;width:3px;background:#fff;opacity:.95;z-index:3}
-  [data-theme="light"] .compare__bar{background:#111}
+  .compare__bar{position:absolute;left:50%;top:0;bottom:0;width:3px;background:var(--compare-bar);opacity:.95;z-index:3}
   .compare__knob{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:40px;height:40px;border-radius:50%;
-    background:#fff;color:#000;display:grid;place-items:center;font-weight:800;z-index:4;border:1px solid #0008;box-shadow:0 6px 18px rgba(0,0,0,.35)}
-  [data-theme="light"] .compare__knob{background:#111;color:#fff;border-color:#0002}
+    background:var(--compare-knob-bg);color:var(--compare-knob-ink);display:grid;place-items:center;font-weight:800;z-index:4;border:1px solid var(--compare-knob-border);box-shadow:0 6px 18px rgba(0,0,0,.35)}
+  .compare input[type=range]{position:absolute;inset:0;z-index:5;appearance:none;background:transparent}
+  .compare input[type=range]::-webkit-slider-thumb{appearance:none;width:0;height:0}
 
   /* Process */
   .process{display:grid;gap:14px;grid-template-columns:1fr}
@@ -166,17 +159,15 @@
   [data-theme="light"] .quote{background:#fff}
 
   /* FAQ */
-  .faq details{border:1px solid var(--line);border-radius:12px;padding:.9rem 1.1rem;background:#0f1013}
+  .faq details{border:1px solid var(--line);border-radius:12px;padding:.9rem 1.1rem;background:var(--panel)}
   .faq details+details{margin-top:12px}
   .faq summary{cursor:pointer;list-style:none;font-weight:700}
   .faq summary::-webkit-details-marker{display:none}
   .faq .a{color:var(--muted);margin:.6rem 0 0}
-  [data-theme="light"] .faq details{background:#fff}
 
   /* CTA band */
   .band{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;border:1px solid var(--line);
-    border-radius:var(--r);background:linear-gradient(180deg,#0f1013,#0f0f11);padding:1.2rem}
-  [data-theme="light"] .band{background:#fff}
+    border-radius:var(--r);background:var(--panel);padding:1.2rem}
 
   /* Footer */
   footer{border-top:1px solid var(--line);margin-top:2rem}
@@ -185,27 +176,23 @@
 </head>
 <body>
 
-<!-- Header (now includes Theme Toggle, no sticky CTA dock) -->
+<!-- Header -->
 <header>
   <div class="container nav">
     <a class="brand" href="/"><img data-src="durahaus-logo.svg" alt="DuraHaus logo"></a>
-
-    <div class="navtools">
-      <nav class="navlinks" aria-label="Primary">
-        <a href="/services.html">Services</a>
-        <a href="/projects.html">Projects</a>
-        <a href="/about.html">About</a>
-        <a class="btn btn-solid" href="/quote.html">Get a Quote</a>
-      </nav>
-
-      <!-- Theme toggle -->
-      <button class="toggle" id="themeToggle" type="button" aria-pressed="false" aria-label="Toggle light/dark">
-        <span class="switch" aria-hidden="true"><span class="knob"></span></span>
-        <span class="switch-label">Light</span>
-      </button>
-    </div>
+    <nav class="navlinks" aria-label="Primary">
+      <a href="/services.html">Services</a>
+      <a href="/projects.html">Projects</a>
+      <a href="/about.html">About</a>
+      <a class="btn btn-solid" href="/quote.html">Get a Quote</a>
+    </nav>
   </div>
 </header>
+
+<!-- Floating Theme Toggle (bottom-right) -->
+<button class="theme-fab" id="themeToggle" type="button" aria-pressed="false" aria-label="Toggle theme">
+  <span>Light</span>
+</button>
 
 <main>
   <!-- HERO -->
@@ -475,7 +462,7 @@
     </div>
   </section>
 
-  <!-- FAQ (expanded) -->
+  <!-- FAQ -->
   <section class="container faq" style="margin:34px auto">
     <h2>FAQs</h2>
     <details><summary>How fast can you quote?</summary><div class="a">Most quotes are turned around within 24–48 hours after a quick walkthrough.</div></details>
@@ -527,16 +514,13 @@
   // === Theme: init + toggle + persist
   (function(){
     const btn = document.getElementById('themeToggle');
-    const label = btn.querySelector('.switch-label');
     const saved = localStorage.getItem('theme');
-    if(saved){ document.documentElement.setAttribute('data-theme', saved); btn.setAttribute('aria-pressed', saved==='light'); label.textContent = saved==='light' ? 'Dark' : 'Light'; }
+    const setLabel = (mode) => { btn.querySelector('span').textContent = mode==='light' ? 'Dark' : 'Light'; };
+    const apply = (mode) => { document.documentElement.setAttribute('data-theme', mode); localStorage.setItem('theme', mode); setLabel(mode); btn.setAttribute('aria-pressed', mode==='light'); };
+    apply(saved || 'dark');
     btn.addEventListener('click', ()=>{
-      const isOn = btn.getAttribute('aria-pressed') === 'true';
-      const next = isOn ? 'dark' : 'light';
-      document.documentElement.setAttribute('data-theme', next);
-      localStorage.setItem('theme', next);
-      btn.setAttribute('aria-pressed', !isOn);
-      label.textContent = next==='light' ? 'Dark' : 'Light';
+      const current = document.documentElement.getAttribute('data-theme') || 'dark';
+      apply(current === 'dark' ? 'light' : 'dark');
     });
   })();
 
