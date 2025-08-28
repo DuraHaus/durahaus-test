@@ -4,11 +4,11 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>DuraHaus — Painting & Coatings | Cincinnati & NKY</title>
-<meta name="description" content="Performance paint & coating systems for real homes. Interior, exterior, cabinets, stains, concrete/masonry, metal, drywall, caulking, wood repair, pressure washing. Clean, on-time, built to perform.">
+<meta name="description" content="Interior & exterior painting, cabinet enamels, stains, concrete/masonry & metal coatings, drywall, caulking, wood repair, pressure washing. Clean, on-time, built to perform.">
 
-<!-- Open Graph (ok to keep on test) -->
+<!-- Open Graph (ok on test) -->
 <meta property="og:title" content="DuraHaus — Painting & Coatings">
-<meta property="og:description" content="Clean, on-time, built to perform. Interior & exterior paint systems, cabinets, stains, concrete & metal coatings.">
+<meta property="og:description" content="Clean, on-time, built to perform. Interior & exterior systems, cabinets, stains, concrete & metal coatings.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://durahauspainting.com/durahaus-test/">
 <meta property="og:image" content="https://durahauspainting.com/durahaus-test/assets/stock-hero.webp">
@@ -16,7 +16,7 @@
 <!-- JSON-LD commented for test -->
 <!--
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"PaintingContractor","name":"DuraHaus Painting & Construction","url":"https://durahauspainting.com/","telephone":"+1-513-668-4382","areaServed":["Cincinnati OH","Northern Kentucky"]}
+{"@context":"https://schema.org","@type":"PaintingContractor","name":"DuraHaus Painting & Construction","url":"https://durahauspainting.com/","telephone":"+1-513-668-4382","areaServed":["Hamilton OH","Cincinnati OH","Northern Kentucky"]}
 </script>
 -->
 
@@ -24,25 +24,34 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
 
 <style>
-  /* ===== Design System (Pro v4) ===== */
+  /* ===== Design System (Pro v4.2 with Theme Toggle) ===== */
   :root{
     --bg:#0a0a0b; --panel:#0f0f11; --panel-2:#101114; --ink:#f6f7f8; --muted:#c6c7ca;
     --line:#1b1b1f; --r:16px; --r-lg:20px; --gap:28px; --max:1240px;
     --brand:#ffffff; --brand-ink:#000;
-    --h1:clamp(40px,6.4vw,68px); --h2:clamp(24px,3.2vw,36px); --h3:1.125rem;
+    --h1:clamp(40px,6.4vw,68px); --h2:clamp(24px,3.2vw,36px); --h3:1.12rem;
     --pad:22px; --pad-lg:28px;
     --shadow:0 24px 60px rgba(0,0,0,.35);
   }
+  /* Light theme */
+  [data-theme="light"]{
+    --bg:#f8f9fb; --panel:#ffffff; --panel-2:#ffffff; --ink:#0d0e12; --muted:#535862;
+    --line:#e6e7ea; --brand:#111; --brand-ink:#fff;
+    --shadow:0 24px 60px rgba(0,0,0,.06);
+  }
+
   *{box-sizing:border-box}
   html,body{height:100%}
   body{
     margin:0;background:var(--bg);color:var(--ink);
     font:16px/1.6 Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;
-    -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;display:flex;flex-direction:column
+    -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;display:flex;flex-direction:column;
+    transition:background .25s ease,color .25s ease;
   }
   main{flex:1 0 auto}
   .container{max-width:var(--max);margin:0 auto;padding:0 22px}
   img{display:block;width:100%;height:auto;background:#0c0c0e}
+  [data-theme="light"] img{background:#f3f4f6}
   a{color:inherit;text-decoration:none}
   h1{font-size:var(--h1);letter-spacing:-.01em;line-height:1.05;margin:0 0 .7rem}
   h2{font-size:var(--h2);margin:0 0 .7rem}
@@ -52,6 +61,7 @@
   .grid{display:grid;gap:var(--gap)}
   .card{background:linear-gradient(180deg,var(--panel),var(--panel-2));border:1px solid var(--line);
         border-radius:var(--r);overflow:hidden;box-shadow:0 10px 24px rgba(0,0,0,.18)}
+  [data-theme="light"] .card{box-shadow:var(--shadow)}
   .pad{padding:var(--pad)}
   .pad-lg{padding:var(--pad-lg)}
 
@@ -60,34 +70,48 @@
   .btn-solid{background:#fff;color:#000;border-color:#fff}
   .btn-ghost{background:transparent}
   .btn:focus-visible{outline:2px solid #fff3;outline-offset:2px}
+  [data-theme="light"] .btn-solid{background:#111;color:#fff;border-color:#111}
 
   /* Header */
   header{position:sticky;top:0;z-index:80;background:rgba(12,12,14,.92);
     -webkit-backdrop-filter:saturate(140%) blur(8px);backdrop-filter:saturate(140%) blur(8px);
     border-bottom:1px solid var(--line)}
+  [data-theme="light"] header{background:rgba(255,255,255,.86)}
   .nav{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:12px 0}
   .brand{display:flex;align-items:center;gap:12px}
   .brand img{height:56px;width:auto;background:transparent}
+  .navtools{display:flex;align-items:center;gap:14px}
   .navlinks{display:flex;gap:14px;flex-wrap:wrap}
   .navlinks a{position:relative;padding:.4rem .2rem}
-  .navlinks a:after{content:"";position:absolute;left:0;right:0;bottom:-2px;height:2px;background:#fff;transform:scaleX(0);transform-origin:left;transition:transform .22s ease}
+  .navlinks a:after{content:"";position:absolute;left:0;right:0;bottom:-2px;height:2px;background:currentColor;transform:scaleX(0);transform-origin:left;transition:transform .22s ease}
   .navlinks a:hover:after{transform:scaleX(1)}
+
+  /* Theme toggle */
+  .toggle{display:inline-flex;align-items:center;gap:8px}
+  .switch{position:relative;width:48px;height:28px;border-radius:999px;border:1px solid var(--line);background:#1a1b20;cursor:pointer;display:inline-block}
+  .knob{position:absolute;top:2px;left:2px;width:24px;height:24px;border-radius:50%;background:#fff;transition:left .2s ease}
+  [data-theme="light"] .switch{background:#e9eaf0}
+  [aria-pressed="true"] .knob{left:22px}
+  .switch-label{font-size:13px;color:var(--muted)}
 
   /* Hero */
   .hero{border-bottom:1px solid var(--line);background:
     radial-gradient(1200px 420px at 60% -8%,#17181b 0%,#0d0e10 60%,#0a0a0b 100%)}
+  [data-theme="light"] .hero{background:radial-gradient(1200px 420px at 60% -8%,#eef1f6 0%,#fafbfc 60%,#ffffff 100%)}
   .hero-wrap{display:grid;gap:28px;grid-template-columns:1fr}
   .hero .media{position:relative;border-radius:var(--r-lg);overflow:hidden;border:1px solid var(--line)}
   .hero .media .imgwrap{position:relative;aspect-ratio:16/9;overflow:hidden}
   .hero .media img{width:100%;height:100%;object-fit:cover;transform:scale(1.02)}
   .img-overlay{position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,rgba(0,0,0,.18) 100%)}
+  [data-theme="light"] .img-overlay{background:linear-gradient(180deg,transparent 40%,rgba(255,255,255,.14) 100%)}
   .badges{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
   .badge{padding:.45rem .7rem;border-radius:999px;border:1px solid var(--line);background:#121317;color:#e9e9ed;font-size:13px}
+  [data-theme="light"] .badge{background:#f2f3f7;color:#1a1b1e}
 
   /* Counters */
   .counters{display:flex;gap:14px;flex-wrap:wrap;margin-top:12px}
   .counter{border:1px solid var(--line);border-radius:12px;padding:.6rem .8rem;background:#111216}
-  .counter b{font-size:1.25rem}
+  [data-theme="light"] .counter{background:#fff}
 
   /* Sections */
   section{scroll-margin-top:80px}
@@ -96,7 +120,8 @@
   .services .grid{grid-template-columns:1fr}
   @media(min-width:980px){ .services .grid{grid-template-columns:repeat(3,1fr)} }
   .service .pad{border-top:1px solid var(--line)}
-  .service small{color:#d0d0d2}
+  .service small{color:#a9abb2}
+  [data-theme="light"] .service small{color:#6b7280}
 
   /* Carousel */
   .carousel{position:relative;overflow:hidden}
@@ -104,6 +129,8 @@
     content:"";position:absolute;top:0;bottom:0;width:60px;z-index:2;pointer-events:none}
   .carousel::before{left:0;background:linear-gradient(90deg,rgba(10,10,11,.75),transparent)}
   .carousel::after{right:0;background:linear-gradient(-90deg,rgba(10,10,11,.75),transparent)}
+  [data-theme="light"] .carousel::before{background:linear-gradient(90deg,rgba(255,255,255,.75),transparent)}
+  [data-theme="light"] .carousel::after{background:linear-gradient(-90deg,rgba(255,255,255,.75),transparent)}
   .carousel-track{display:flex;transition:transform 280ms ease;touch-action:pan-y;user-select:none}
   .carousel img{width:100%;height:300px;object-fit:cover;flex:0 0 100%}
   .carousel-btn{position:absolute;top:50%;transform:translateY(-50%);z-index:3;border:0;background:rgba(0,0,0,.55);color:#fff;
@@ -112,26 +139,23 @@
   .carousel-btn.prev{left:10px}.carousel-btn.next{right:10px}
   .carousel-dots{display:none!important}
 
-  /* Systems / Pricing */
-  .list{margin:.6rem 0 0;padding-left:1rem;color:var(--muted)}
-  .list li{margin:.25rem 0}
-  .tag{margin-top:.7rem;display:inline-block;background:#121317;border:1px solid var(--line);padding:.3rem .6rem;border-radius:999px;color:#eaeaea;font-size:.9rem}
-
   /* Before/After */
   .compare{border:1px solid var(--line);border-radius:var(--r);overflow:hidden;background:#0d0e12;box-shadow:var(--shadow)}
+  [data-theme="light"] .compare{background:#fff}
   .compare__wrap{position:relative;aspect-ratio:16/9}
   .compare__wrap img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
   .compare__after{clip-path:inset(0 50% 0 0)}
   .compare__bar{position:absolute;left:50%;top:0;bottom:0;width:3px;background:#fff;opacity:.95;z-index:3}
+  [data-theme="light"] .compare__bar{background:#111}
   .compare__knob{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:40px;height:40px;border-radius:50%;
     background:#fff;color:#000;display:grid;place-items:center;font-weight:800;z-index:4;border:1px solid #0008;box-shadow:0 6px 18px rgba(0,0,0,.35)}
-  .compare input[type=range]{position:absolute;inset:0;z-index:5;appearance:none;background:transparent}
-  .compare input[type=range]::-webkit-slider-thumb{appearance:none;width:0;height:0}
+  [data-theme="light"] .compare__knob{background:#111;color:#fff;border-color:#0002}
 
   /* Process */
   .process{display:grid;gap:14px;grid-template-columns:1fr}
   @media(min-width:980px){ .process{grid-template-columns:repeat(5,1fr)} }
   .step{border:1px solid var(--line);border-radius:14px;padding:16px;background:linear-gradient(180deg,#101116,#0f1014)}
+  [data-theme="light"] .step{background:linear-gradient(180deg,#ffffff,#fbfbfd)}
 
   /* Testimonials */
   .testimonials .grid{grid-template-columns:1fr}
@@ -139,6 +163,7 @@
   .quote{border:1px solid var(--line);border-radius:16px;background:linear-gradient(180deg,#0f1013,#0f0f11);padding:18px;box-shadow:0 12px 30px rgba(0,0,0,.22)}
   .quote:before{content:"“";font-size:42px;line-height:0;margin-right:6px;opacity:.3}
   .quote .who{margin-top:10px;color:#d0d1d4;font-size:14px}
+  [data-theme="light"] .quote{background:#fff}
 
   /* FAQ */
   .faq details{border:1px solid var(--line);border-radius:12px;padding:.9rem 1.1rem;background:#0f1013}
@@ -146,15 +171,12 @@
   .faq summary{cursor:pointer;list-style:none;font-weight:700}
   .faq summary::-webkit-details-marker{display:none}
   .faq .a{color:var(--muted);margin:.6rem 0 0}
+  [data-theme="light"] .faq details{background:#fff}
 
   /* CTA band */
   .band{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;border:1px solid var(--line);
     border-radius:var(--r);background:linear-gradient(180deg,#0f1013,#0f0f11);padding:1.2rem}
-
-  /* Sticky CTA (mobile) */
-  .dock{position:fixed;left:0;right:0;bottom:10px;z-index:90;display:none;justify-content:center}
-  .dock .wrap{display:flex;gap:10px;padding:8px;border:1px solid var(--line);border-radius:999px;background:rgba(12,12,14,.94);backdrop-filter:saturate(140%) blur(8px)}
-  @media(max-width:900px){ .dock{display:flex} }
+  [data-theme="light"] .band{background:#fff}
 
   /* Footer */
   footer{border-top:1px solid var(--line);margin-top:2rem}
@@ -163,24 +185,25 @@
 </head>
 <body>
 
-<!-- Sticky CTA (mobile) -->
-<div class="dock" role="region" aria-label="Quick actions">
-  <div class="wrap">
-    <a class="btn btn-solid" href="/quote.html">Get My Price</a>
-    <a class="btn" href="tel:+15136684382">Call</a>
-  </div>
-</div>
-
-<!-- Header -->
+<!-- Header (now includes Theme Toggle, no sticky CTA dock) -->
 <header>
   <div class="container nav">
     <a class="brand" href="/"><img data-src="durahaus-logo.svg" alt="DuraHaus logo"></a>
-    <nav class="navlinks">
-      <a href="/services.html">Services</a>
-      <a href="/projects.html">Projects</a>
-      <a href="/about.html">About</a>
-      <a class="btn btn-solid" href="/quote.html">Get a Quote</a>
-    </nav>
+
+    <div class="navtools">
+      <nav class="navlinks" aria-label="Primary">
+        <a href="/services.html">Services</a>
+        <a href="/projects.html">Projects</a>
+        <a href="/about.html">About</a>
+        <a class="btn btn-solid" href="/quote.html">Get a Quote</a>
+      </nav>
+
+      <!-- Theme toggle -->
+      <button class="toggle" id="themeToggle" type="button" aria-pressed="false" aria-label="Toggle light/dark">
+        <span class="switch" aria-hidden="true"><span class="knob"></span></span>
+        <span class="switch-label">Light</span>
+      </button>
+    </div>
   </div>
 </header>
 
@@ -253,7 +276,7 @@
         <div class="pad"><h3>Exterior Painting</h3><small>Weather-tough prep & coatings.</small></div>
       </article>
 
-      <!-- Concrete -->
+      <!-- Concrete / Masonry -->
       <article class="card service">
         <div class="carousel" data-carousel>
           <button class="carousel-btn prev" data-prev>‹</button>
@@ -380,42 +403,6 @@
     </div>
   </section>
 
-  <!-- SYSTEMS -->
-  <section class="container" style="margin:34px auto">
-    <h2>Coating Systems That Perform</h2>
-    <div class="grid" style="grid-template-columns:1fr;gap:var(--gap)">
-      <div class="grid" style="grid-template-columns:1fr;gap:var(--gap)">
-        <div class="card"><div class="pad-lg">
-          <h3>Refresh</h3>
-          <ul class="list">
-            <li>Clean & mask, minor patch/caulk</li>
-            <li>Spot/bonding prime where needed</li>
-            <li>1 finish coat</li>
-          </ul>
-          <div class="tag">$ • Budget-friendly</div>
-        </div></div>
-        <div class="card"><div class="pad-lg">
-          <h3>Standard</h3>
-          <ul class="list">
-            <li>Full prep, gaps sealed</li>
-            <li>Bonding primer matched to substrate</li>
-            <li>2 finish coats to spec</li>
-          </ul>
-          <div class="tag">$$ • Most popular</div>
-        </div></div>
-        <div class="card"><div class="pad-lg">
-          <h3>Premium Shield</h3>
-          <ul class="list">
-            <li>Repair + sand + fill to smoothness target</li>
-            <li>Pro enamel/urethane or elastomeric topcoat</li>
-            <li>Moisture/rust block where applicable</li>
-          </ul>
-          <div class="tag">$$$ • Longest life</div>
-        </div></div>
-      </div>
-    </div>
-  </section>
-
   <!-- BEFORE/AFTER (2) -->
   <section class="container" style="margin:34px auto">
     <h2>See the Difference</h2>
@@ -455,6 +442,29 @@
     </div>
   </section>
 
+  <!-- SERVICE AREAS -->
+  <section class="container" style="margin:34px auto">
+    <h2>Service Areas</h2>
+    <div class="card">
+      <div class="pad-lg">
+        <div class="grid" style="grid-template-columns:1fr;gap:16px">
+          <div>
+            <h3 style="margin:0 0 .4rem">Core Cities</h3>
+            <p class="lead">Hamilton, Fairfield, West Chester, Liberty Township, Mason, Sharonville, Monroe, Trenton, Oxford, Middletown, Forest Park, Blue Ash, Hyde Park, Anderson.</p>
+          </div>
+          <div>
+            <h3 style="margin:0 0 .4rem">Counties</h3>
+            <p class="lead">Butler, Hamilton, Warren, Clermont (OH) • Boone, Kenton, Campbell (Northern Kentucky).</p>
+          </div>
+          <div>
+            <h3 style="margin:0 0 .4rem">Don’t see your area?</h3>
+            <p class="lead">We travel for the right projects. <a class="btn btn-solid" href="/quote.html" style="margin-left:8px">Request a Quote</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- TESTIMONIALS -->
   <section class="container testimonials" style="margin:34px auto">
     <h2>What Homeowners Say</h2>
@@ -465,11 +475,15 @@
     </div>
   </section>
 
-  <!-- FAQ -->
+  <!-- FAQ (expanded) -->
   <section class="container faq" style="margin:34px auto">
     <h2>FAQs</h2>
     <details><summary>How fast can you quote?</summary><div class="a">Most quotes are turned around within 24–48 hours after a quick walkthrough.</div></details>
-    <details><summary>What coatings do you use?</summary><div class="a">We match products to the surface: bonding primers for glossy trim, cabinet enamels for durability, elastomerics for hairline exterior cracks, and rust-inhibitives for metal.</div></details>
+    <details><summary>What’s included in prep?</summary><div class="a">Masking, protection, sanding/scuffing, gap/void caulking, patch/repair, spot/bonding primer, and substrate-specific primers as needed.</div></details>
+    <details><summary>How long do projects take?</summary><div class="a">Small interiors: 1–3 days. Full exteriors vary by size + repairs. Cabinets are typically 4–7 days depending on scope and drying windows.</div></details>
+    <details><summary>Do you help choose colors and finishes?</summary><div class="a">Yes. We can suggest sheens and product families based on the surface and traffic, and we can coordinate with your designer if you have one.</div></details>
+    <details><summary>What products do you use?</summary><div class="a">We match the system to the surface: cabinet enamels/urethanes, elastomeric exteriors, bonding/adhesion primers, stain blockers, rust-inhibitives for metal, and moisture-tolerant masonry coatings.</div></details>
+    <details><summary>Payment & scheduling?</summary><div class="a">We schedule a start window at approval. A deposit may be due at scheduling; balance on completion after walkthrough.</div></details>
     <details><summary>Are you insured? Do you warranty?</summary><div class="a">Yes—fully insured. Every project includes a written workmanship warranty.</div></details>
   </section>
 
@@ -504,13 +518,29 @@
 </footer>
 
 <script>
-  // Asset base for root and /durahaus-test/
+  // === Asset base for root and /durahaus-test/
   const ASSET_BASE = location.pathname.includes('/durahaus-test/') ? '/durahaus-test/assets/' : '/assets/';
 
   // Year
   document.getElementById('y').textContent = new Date().getFullYear();
 
-  // Lazy load [data-src]
+  // === Theme: init + toggle + persist
+  (function(){
+    const btn = document.getElementById('themeToggle');
+    const label = btn.querySelector('.switch-label');
+    const saved = localStorage.getItem('theme');
+    if(saved){ document.documentElement.setAttribute('data-theme', saved); btn.setAttribute('aria-pressed', saved==='light'); label.textContent = saved==='light' ? 'Dark' : 'Light'; }
+    btn.addEventListener('click', ()=>{
+      const isOn = btn.getAttribute('aria-pressed') === 'true';
+      const next = isOn ? 'dark' : 'light';
+      document.documentElement.setAttribute('data-theme', next);
+      localStorage.setItem('theme', next);
+      btn.setAttribute('aria-pressed', !isOn);
+      label.textContent = next==='light' ? 'Dark' : 'Light';
+    });
+  })();
+
+  // === Lazy load [data-src]
   (function(){
     const imgs=[...document.querySelectorAll('[data-src]')];
     const load = el => { el.src = ASSET_BASE + el.getAttribute('data-src'); };
@@ -519,7 +549,7 @@
     imgs.forEach(el=> io.observe(el));
   })();
 
-  // Counters
+  // === Counters
   (function(){
     const els=[...document.querySelectorAll('[data-count]')];
     if(!els.length) return;
@@ -534,7 +564,7 @@
     els.forEach(el=> io.observe(el));
   })();
 
-  // Before/After sliders
+  // === Before/After sliders
   (function(){
     document.querySelectorAll('[data-compare]').forEach(wrap=>{
       const before=wrap.querySelector('[data-role="before"]');
@@ -554,7 +584,7 @@
     });
   })();
 
-  // Carousel (robust swipe)
+  // === Carousel (robust swipe)
   (function(){
     const carousels=document.querySelectorAll('[data-carousel]');
     carousels.forEach(c=>{
