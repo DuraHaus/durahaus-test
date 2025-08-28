@@ -4,117 +4,138 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>DuraHaus — Painting & Coatings | Cincinnati & NKY</title>
-  <meta name="description" content="Interior & exterior painting, cabinet enamels, stains, concrete & metal coatings, drywall, caulking, wood repair, and pressure washing. Clean, on-time, built to perform.">
+  <meta name="description" content="Performance paint & coating systems for real homes. Interior, exterior, cabinets, stains, concrete/masonry, metal, drywall, caulking, wood repair, pressure washing. Clean, on-time, built to perform.">
 
-  <!-- (TEST SITE) Open Graph + JSON-LD are commented out. Un-comment for production. -->
-  <!--
+  <!-- Open Graph (ok to keep on test) -->
   <meta property="og:title" content="DuraHaus — Painting & Coatings">
-  <meta property="og:description" content="Interior & exterior paint systems, cabinets, stains, concrete & metal coatings. Clean, on-time, built to perform.">
-  <meta property="og:image" content="https://durahauspainting.com/assets/stock-hero.webp">
+  <meta property="og:description" content="Clean, on-time, built to perform. Interior & exterior paint systems, cabinets, stains, concrete & metal coatings.">
   <meta property="og:type" content="website">
+  <meta property="og:url" content="https://durahauspainting.com/durahaus-test/">
+  <meta property="og:image" content="https://durahauspainting.com/durahaus-test/assets/stock-hero.webp">
+
+  <!-- JSON-LD (commented out for test site) -->
+  <!--
   <script type="application/ld+json">
   {
     "@context":"https://schema.org",
     "@type":"PaintingContractor",
     "name":"DuraHaus Painting & Construction",
-    "areaServed":"Cincinnati & Northern Kentucky",
+    "url":"https://durahauspainting.com/",
     "telephone":"+1-513-668-4382",
-    "url":"https://durahauspainting.com/"
+    "areaServed":["Cincinnati OH","Northern Kentucky","Mason OH","West Chester OH","Hyde Park OH","Anderson OH","Ft. Thomas KY"]
   }
   </script>
   -->
 
   <style>
     :root{
-      --bg:#0a0a0a; --panel:#0f0f10; --ink:#fff; --muted:#bdbdbd; --line:#1a1a1a;
-      --brand:#ffffff; --accent:#ffffff;
-      --max:1120px; --r:16px; --gap:28px;
-      --h1:clamp(36px,6vw,64px); --h2:clamp(22px,3.4vw,32px);
+      --bg:#0a0a0a; --panel:#0f0f10; --ink:#fff; --muted:#c2c2c2; --line:#1a1a1a;
+      --brand:#ffffff; --r:16px; --gap:28px; --max:1200px;
+      --h1:clamp(36px,6vw,66px); --h2:clamp(22px,3.2vw,34px); --h3:1.15rem;
     }
     *{box-sizing:border-box}
     html,body{height:100%}
-    body{margin:0;background:var(--bg);color:var(--ink);
+    body{
+      margin:0;background:var(--bg);color:var(--ink);
       font:16px/1.55 ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;
-      -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
-      display:flex;flex-direction:column}
+      -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;display:flex;flex-direction:column
+    }
     main{flex:1 0 auto}
     a{color:inherit;text-decoration:none}
-    img{display:block;width:100%;height:auto;background:#0d0d0d}
+    img{display:block;width:100%;height:auto;background:#0d0d0f}
     .container{max-width:var(--max);margin:0 auto;padding:0 20px}
+
     h1{font-size:var(--h1);letter-spacing:-.01em;margin:0 0 .6rem}
-    h2{font-size:var(--h2);margin:0 0 .5rem}
+    h2{font-size:var(--h2);margin:0 0 .6rem}
+    h3{font-size:var(--h3);margin:.1rem 0 .35rem}
+    p{margin:.25rem 0 0}
     .lead{color:var(--muted)}
-    .pill{display:inline-flex;align-items:center;gap:8px;padding:.6rem .9rem;border-radius:999px;border:1px solid var(--line);background:#121214}
-    .pill--solid{background:#fff;color:#000;border-color:#fff;font-weight:700}
+    .pill{display:inline-flex;align-items:center;gap:8px;padding:.6rem .95rem;border-radius:999px;border:1px solid var(--line)}
+    .pill--solid{background:#fff;color:#000;border-color:#fff;font-weight:800}
     .pill--ghost{background:transparent}
     .grid{display:grid;gap:var(--gap)}
-    .card{border:1px solid var(--line);border-radius:var(--r);background:var(--panel);overflow:hidden}
+    .card{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
     .pad{padding:1.1rem}
 
     /* Header */
-    header{position:sticky;top:0;z-index:50;background:rgba(10,10,10,.92);
-      backdrop-filter:saturate(140%) blur(8px);border-bottom:1px solid var(--line)}
+    header{position:sticky;top:0;z-index:60;background:rgba(10,10,10,.92);backdrop-filter:saturate(140%) blur(8px);border-bottom:1px solid var(--line)}
     .nav{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:12px 0}
-    .brand{display:flex;align-items:center;gap:14px}
+    .brand{display:flex;align-items:center;gap:12px}
     .brand img{height:56px;width:auto;background:transparent}
-    .navlinks{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+    .navlinks{display:flex;gap:12px;flex-wrap:wrap}
 
     /* Hero */
-    .hero{border-bottom:1px solid var(--line);background:conic-gradient(from 180deg at 50% 0%,#0b0b0c,#0f0f10);}
-    .hero-wrap{display:grid;grid-template-columns:1.05fr .95fr;gap:20px}
-    .hero .media{position:relative;aspect-ratio:16/10;border-radius:18px;overflow:hidden;border:1px solid var(--line)}
+    .hero{border-bottom:1px solid var(--line);background:radial-gradient(1200px 400px at 60% -10%,#151517 0%,#0b0b0c 60%,#0a0a0a 100%)}
+    .hero-wrap{display:grid;gap:28px;grid-template-columns:1fr}
+    .hero .media{position:relative;aspect-ratio:16/9;border-radius:18px;overflow:hidden;border:1px solid var(--line)}
+    .hero .media img{object-fit:cover;height:100%}
     .badges{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
-    .badge{padding:.45rem .65rem;border-radius:999px;border:1px solid var(--line);background:#111114;color:#d9d9db;font-size:13px}
+    .badge{padding:.45rem .65rem;border-radius:999px;border:1px solid var(--line);background:#121214;color:#eaeaea;font-size:13px}
+    .trust{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
+    .t{display:inline-flex;gap:8px;align-items:center;padding:.4rem .65rem;border:1px solid var(--line);border-radius:10px;background:#101012;font-size:14px}
+    @media(min-width:960px){ .hero-wrap{grid-template-columns:1.05fr .95fr} }
 
-    /* Trust strip */
-    .trust{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-top:12px}
-    .trust .t{display:inline-flex;gap:8px;align-items:center;padding:.4rem .6rem;border:1px solid var(--line);border-radius:10px;background:#0e0e10;font-size:14px}
+    /* Counters */
+    .counters{display:flex;gap:16px;flex-wrap:wrap;margin-top:14px}
+    .counter{border:1px solid var(--line);border-radius:12px;padding:.65rem .8rem;background:#0f0f10}
+    .counter b{font-size:1.25rem}
 
-    /* Services */
-    .services .grid{grid-template-columns:1fr;gap:var(--gap)}
-    @media (min-width:900px){ .services .grid{grid-template-columns:repeat(3,1fr)} }
-    .service .media{height:240px;object-fit:cover}
+    /* Services grid */
+    .services .grid{grid-template-columns:1fr}
+    @media(min-width:960px){ .services .grid{grid-template-columns:repeat(3,1fr)} }
     .service .pad{border-top:1px solid var(--line)}
+    .service small{color:#d0d0d0}
 
-    /* Carousels */
+    /* Carousel */
     .carousel{position:relative;overflow:hidden}
     .carousel-track{display:flex;transition:transform 280ms ease;touch-action:pan-y;user-select:none}
     .carousel img{width:100%;height:300px;object-fit:cover;flex:0 0 100%}
-    .carousel-btn{position:absolute;top:50%;transform:translateY(-50%);z-index:3;border:none;cursor:pointer;padding:10px 14px;border-radius:12px;background:rgba(0,0,0,.55);color:#fff}
+    .carousel-btn{position:absolute;top:50%;transform:translateY(-50%);z-index:3;border:0;background:rgba(0,0,0,.55);color:#fff;padding:10px 14px;border-radius:12px;cursor:pointer}
     .carousel-btn:hover{background:rgba(0,0,0,.7)}
     .carousel-btn.prev{left:10px}.carousel-btn.next{right:10px}
     .carousel-dots{display:none!important}
 
+    /* Systems / Pricing */
+    .list{margin:.6rem 0 0;padding-left:1rem;color:var(--muted)}
+    .list li{margin:.25rem 0}
+    .tag{margin-top:.7rem;display:inline-block;background:#121213;border:1px solid var(--line);padding:.3rem .6rem;border-radius:999px;color:#eaeaea;font-size:.9rem}
+
     /* Before/After */
-    .compare{border:1px solid var(--line);border-radius:var(--r);overflow:hidden;background:#0d0d0f}
-    .compare__wrap{position:relative;aspect-ratio:16/9;overflow:hidden}
+    .compare{border:1px solid var(--line);border-radius:var(--r);overflow:hidden;background:#0d0d10}
+    .compare__wrap{position:relative;aspect-ratio:16/9}
     .compare__wrap img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
     .compare__after{clip-path:inset(0 50% 0 0)}
-    .compare__handle{position:absolute;left:50%;top:0;bottom:0;width:2px;background:#fff;opacity:.9;z-index:3}
-    .compare__knob{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:36px;height:36px;border-radius:50%;background:#fff;color:#000;display:grid;place-items:center;font-weight:700;z-index:4;border:1px solid #0008}
-    .compare input[type="range"]{position:absolute;inset:0;z-index:5;appearance:none;background:transparent}
-    .compare input[type="range"]::-webkit-slider-thumb{appearance:none;width:0;height:0}
-    .compare input[type="range"]::-moz-range-thumb{width:0;height:0;border:0}
+    .compare__bar{position:absolute;left:50%;top:0;bottom:0;width:2px;background:#fff;opacity:.9;z-index:3}
+    .compare__knob{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:36px;height:36px;border-radius:50%;background:#fff;color:#000;display:grid;place-items:center;font-weight:800;z-index:4;border:1px solid #0008}
+    .compare input[type=range]{position:absolute;inset:0;z-index:5;appearance:none;background:transparent}
+    .compare input[type=range]::-webkit-slider-thumb{appearance:none;width:0;height:0}
 
     /* Process */
     .process{display:grid;gap:14px;grid-template-columns:1fr}
-    @media (min-width:900px){.process{grid-template-columns:repeat(5,1fr)}}
+    @media(min-width:960px){ .process{grid-template-columns:repeat(5,1fr)} }
     .step{border:1px solid var(--line);border-radius:12px;padding:14px;background:#0f0f10}
     .step b{display:block;margin-bottom:6px}
 
     /* Testimonials */
     .testimonials .grid{grid-template-columns:1fr}
-    @media (min-width:900px){ .testimonials .grid{grid-template-columns:repeat(3,1fr)} }
+    @media(min-width:960px){ .testimonials .grid{grid-template-columns:repeat(3,1fr)} }
     .quote{border:1px solid var(--line);border-radius:14px;background:#0f0f10;padding:16px}
     .quote .who{margin-top:10px;color:#d0d0d0;font-size:14px}
 
-    /* Guarantee + CTA */
+    /* FAQ */
+    .faq details{border:1px solid var(--line);border-radius:12px;padding:.9rem 1.1rem;background:#0f0f10}
+    .faq details+details{margin-top:12px}
+    .faq summary{cursor:pointer;list-style:none;font-weight:700}
+    .faq summary::-webkit-details-marker{display:none}
+    .faq .a{color:var(--muted);margin:.6rem 0 0}
+
+    /* CTA band */
     .band{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;border:1px solid var(--line);border-radius:var(--r);background:var(--panel);padding:1.2rem}
 
     /* Sticky CTA (mobile) */
-    .dock{position:fixed;left:0;right:0;bottom:10px;z-index:60;display:none;justify-content:center}
-    .dock .wrap{display:flex;gap:10px;padding:8px;border:1px solid var(--line);border-radius:999px;background:rgba(15,15,16,.9);backdrop-filter:saturate(140%) blur(8px)}
-    @media (max-width:860px){ .dock{display:flex} }
+    .dock{position:fixed;left:0;right:0;bottom:10px;z-index:80;display:none;justify-content:center}
+    .dock .wrap{display:flex;gap:10px;padding:8px;border:1px solid var(--line);border-radius:999px;background:rgba(12,12,14,.94);backdrop-filter:saturate(140%) blur(8px)}
+    @media(max-width:900px){ .dock{display:flex} }
 
     /* Footer */
     footer{border-top:1px solid var(--line);margin-top:2rem}
@@ -124,7 +145,7 @@
 <body>
 
   <!-- Sticky CTA (mobile) -->
-  <div class="dock">
+  <div class="dock" role="region" aria-label="Quick actions">
     <div class="wrap">
       <a class="pill pill--solid" href="/quote.html">Get My Price</a>
       <a class="pill" href="tel:+15136684382">Call</a>
@@ -135,7 +156,7 @@
   <header>
     <div class="container nav">
       <a class="brand" href="/">
-        <img data-src="durahaus-logo.svg" alt="DuraHaus logo" style="height:56px;width:auto">
+        <img data-src="durahaus-logo.svg" alt="DuraHaus logo">
       </a>
       <nav class="navlinks" aria-label="Primary">
         <a href="/services.html" class="pill">Services</a>
@@ -152,197 +173,163 @@
       <div class="container" style="padding:36px 20px">
         <div class="hero-wrap">
           <div>
-            <h1>Built Like It Matters.</h1>
-            <p class="lead">Interior & exterior paint systems, cabinet enamels, stains, concrete & metal coatings—specified to the surface, prepped to a standard, and finished to last.</p>
+            <h1>Performance Finishes for Real Homes.</h1>
+            <p class="lead">We don’t just “paint it.” We specify a system for the surface, prep to a standard, and deliver a finish that holds up.</p>
             <div class="badges">
               <span class="badge">Licensed & Insured</span>
               <span class="badge">On-Time Scheduling</span>
               <span class="badge">Clean, Dust-Controlled</span>
               <span class="badge">45+ years combined experience</span>
             </div>
+
+            <div class="counters">
+              <div class="counter"><b data-count="100">0</b>+ projects completed</div>
+              <div class="counter"><b data-count="15">0</b> yrs owner in trade</div>
+              <div class="counter"><b data-count="30">0</b> yrs mentor in trade</div>
+            </div>
+
             <div class="trust">
-              <span class="t">★ ★ ★ ★ ★ 5.0 (Facebook)</span>
+              <span class="t">★★★★★ 5.0 on Facebook</span>
               <span class="t">Cincinnati & Northern Kentucky</span>
               <span class="t">Workmanship Warranty</span>
             </div>
+
             <div style="margin-top:14px;display:flex;gap:10px;flex-wrap:wrap">
               <a class="pill pill--solid" href="/quote.html">Get My Price</a>
               <a class="pill" href="tel:+15136684382">Call 513-668-4382</a>
             </div>
           </div>
+
           <div class="media">
-            <img data-src="stock-hero.webp" alt="Project collage">
+            <img data-src="stock-hero.webp" alt="DuraHaus project collage">
           </div>
         </div>
       </div>
     </section>
 
-    <!-- BEFORE/AFTER SLIDERS -->
+    <!-- FINISH FINDER -->
     <section class="container" style="margin:28px auto">
-      <div class="grid" style="grid-template-columns:1fr;gap:22px">
-        <!-- Brick -->
-        <div class="compare">
-          <div class="compare__wrap" data-compare data-before="brickbefore.webp" data-after="brickafter.webp">
-            <img alt="Before brick" data-role="before">
-            <img class="compare__after" alt="After brick" data-role="after">
-            <div class="compare__handle" data-handle></div>
-            <div class="compare__knob" aria-hidden="true">↔</div>
-            <input type="range" min="0" max="100" value="50" aria-label="Slide to compare">
+      <div class="card">
+        <div class="pad">
+          <h2 style="margin-bottom:.2rem">Finish Finder</h2>
+          <p class="lead">Tell us about your project—we’ll recommend a system.</p>
+          <div style="display:grid;gap:12px;grid-template-columns:1fr;max-width:860px">
+            <div style="display:grid;gap:10px;grid-template-columns:repeat(3,1fr)">
+              <label><input type="radio" name="ff-scope" value="interior" checked> Interior</label>
+              <label><input type="radio" name="ff-scope" value="exterior"> Exterior</label>
+              <label><input type="radio" name="ff-scope" value="cabinets"> Cabinets</label>
+            </div>
+            <div style="display:grid;gap:10px;grid-template-columns:repeat(3,1fr)">
+              <label><input type="radio" name="ff-condition" value="light" checked> Light wear</label>
+              <label><input type="radio" name="ff-condition" value="avg"> Average</label>
+              <label><input type="radio" name="ff-condition" value="tough"> Needs repair</label>
+            </div>
+            <div style="display:grid;gap:10px;grid-template-columns:repeat(3,1fr)">
+              <label><input type="radio" name="ff-speed" value="fast"> 1–2 days</label>
+              <label><input type="radio" name="ff-speed" value="standard" checked> Standard</label>
+              <label><input type="radio" name="ff-speed" value="max"> Longest life</label>
+            </div>
+            <div id="ff-result" class="card" style="border-style:dashed">
+              <div class="pad">
+                <b>Recommended:</b> <span data-ff-out>Standard • Full prep, bonding prime, two finish coats.</span>
+                <div style="margin-top:10px"><a class="pill pill--solid" href="/quote.html">Start My Quote</a></div>
+              </div>
+            </div>
           </div>
-          <div class="pad"><h3 style="margin:.2rem 0">Before ↔ After (Brick Whitewash)</h3><p class="lead">Slide to see the difference.</p></div>
-        </div>
-        <!-- Pressure-wash / concrete (use 1 as before, 2 as after; swap if needed) -->
-        <div class="compare">
-          <div class="compare__wrap" data-compare data-before="pressurewashing1.webp" data-after="pressurewashing2.webp">
-            <img alt="Before pressure washing" data-role="before">
-            <img class="compare__after" alt="After pressure washing" data-role="after">
-            <div class="compare__handle" data-handle></div>
-            <div class="compare__knob" aria-hidden="true">↔</div>
-            <input type="range" min="0" max="100" value="50" aria-label="Slide to compare">
-          </div>
-          <div class="pad"><h3 style="margin:.2rem 0">Before ↔ After (Concrete Clean)</h3><p class="lead">Prep that makes coatings last longer.</p></div>
         </div>
       </div>
     </section>
 
-    <!-- CORE SERVICES -->
+    <!-- SERVICES GRID -->
     <section class="container services" style="margin:34px auto">
       <h2>Painting & Coatings</h2>
-      <p class="lead">Surface-matched primers, pro enamels, elastomerics, moisture & rust blockers—no guesswork.</p>
+      <p class="lead">Interior & exterior painting, cabinet enamels, stains, concrete/masonry & metal coatings, drywall repair, caulking, wood repair, pressure washing.</p>
       <div class="grid">
         <!-- Interior -->
         <article class="card service">
           <div class="carousel" data-carousel>
-            <button class="carousel-btn prev" aria-label="Previous" data-prev>‹</button>
+            <button class="carousel-btn prev" data-prev aria-label="Previous">‹</button>
             <div class="carousel-track" data-track>
-              <img data-src="interior8.webp" alt="Interior project 1">
-              <img data-src="interior11.webp" alt="Interior project 2">
-              <img data-src="interior1.webp" alt="Interior project 3">
+              <img data-src="interior8.webp" alt="">
+              <img data-src="interior11.webp" alt="">
+              <img data-src="interior1.webp" alt="">
             </div>
-            <button class="carousel-btn next" aria-label="Next" data-next>›</button>
+            <button class="carousel-btn next" data-next aria-label="Next">›</button>
             <div class="carousel-dots" data-dots></div>
           </div>
-          <div class="pad">
-            <h3>Interior Painting</h3>
-            <p class="lead">Walls, ceilings, trim, cabinetry, accent walls.</p>
-            <div style="margin-top:10px"><a class="pill pill--solid" href="/services.html#interior">Explore</a></div>
-          </div>
+          <div class="pad"><h3>Interior Painting</h3><small>Walls, ceilings, trim, accent walls.</small></div>
         </article>
 
         <!-- Exterior -->
         <article class="card service">
           <div class="carousel" data-carousel>
-            <button class="carousel-btn prev" aria-label="Previous" data-prev>‹</button>
+            <button class="carousel-btn prev" data-prev>‹</button>
             <div class="carousel-track" data-track>
-              <img data-src="exterior7.webp" alt="Exterior 1">
-              <img data-src="exterior4.webp" alt="Exterior 2">
-              <img data-src="exterior3.webp" alt="Exterior 3">
+              <img data-src="exterior7.webp" alt="">
+              <img data-src="exterior4.webp" alt="">
+              <img data-src="exterior3.webp" alt="">
             </div>
-            <button class="carousel-btn next" aria-label="Next" data-next>›</button>
+            <button class="carousel-btn next" data-next>›</button>
             <div class="carousel-dots" data-dots></div>
           </div>
-          <div class="pad">
-            <h3>Exterior Painting</h3>
-            <p class="lead">Premium prep + Midwest-ready coatings.</p>
-            <div style="margin-top:10px"><a class="pill pill--solid" href="/services.html#exterior">Explore</a></div>
-          </div>
+          <div class="pad"><h3>Exterior Painting</h3><small>Weather-tough prep & coatings.</small></div>
         </article>
 
-        <!-- Concrete Coatings -->
-        <article class="card service">
-          <div class="carousel" data-carousel>
-            <button class="carousel-btn prev" aria-label="Previous" data-prev>‹</button>
-            <div class="carousel-track" data-track>
-              <img data-src="stock-concrete.webp" alt="Concrete 1">
-              <img data-src="concrete1.webp" alt="Concrete 2">
-              <img data-src="concrete3.webp" alt="Concrete 3">
-            </div>
-            <button class="carousel-btn next" aria-label="Next" data-next>›</button>
-            <div class="carousel-dots" data-dots></div>
-          </div>
-          <div class="pad">
-            <h3>Concrete / Masonry Coatings</h3>
-            <p class="lead">Garages, patios, basements—durable and cleanable.</p>
-            <div style="margin-top:10px"><a class="pill pill--solid" href="/services.html#concrete">Explore</a></div>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <!-- MORE SERVICES -->
-    <section class="container" style="margin:10px auto 34px">
-      <h2>Specialty Work</h2>
-      <div class="grid">
         <!-- Cabinets -->
         <article class="card service">
           <div class="carousel" data-carousel>
-            <button class="carousel-btn prev" aria-label="Previous" data-prev>‹</button>
+            <button class="carousel-btn prev" data-prev>‹</button>
             <div class="carousel-track" data-track>
               <img data-src="cabinets1.webp" alt="">
               <img data-src="cabinets2.webp" alt="">
               <img data-src="stock-cabinets.webp" alt="">
             </div>
-            <button class="carousel-btn next" aria-label="Next" data-next>›</button>
+            <button class="carousel-btn next" data-next>›</button>
             <div class="carousel-dots" data-dots></div>
           </div>
-          <div class="pad">
-            <h3>Cabinet Painting / Refinishing</h3>
-            <p class="lead">Bonding prime + hard-wearing enamel systems.</p>
-          </div>
+          <div class="pad"><h3>Cabinet Painting</h3><small>Factory-smooth enamels.</small></div>
         </article>
 
-        <!-- Stain / Wood -->
+        <!-- Concrete/Masonry -->
         <article class="card service">
           <div class="carousel" data-carousel>
-            <button class="carousel-btn prev" aria-label="Previous" data-prev>‹</button>
+            <button class="carousel-btn prev" data-prev>‹</button>
             <div class="carousel-track" data-track>
-              <img data-src="stock-stain.webp" alt="">
-              <img data-src="stain1.webp" alt="">
-              <img data-src="stain2.webp" alt="">
+              <img data-src="stock-concrete.webp" alt="">
+              <img data-src="concrete1.webp" alt="">
+              <img data-src="concrete3.webp" alt="">
             </div>
-            <button class="carousel-btn next" aria-label="Next" data-next>›</button>
+            <button class="carousel-btn next" data-next>›</button>
             <div class="carousel-dots" data-dots></div>
           </div>
-          <div class="pad">
-            <h3>Staining & Wood Finishes</h3>
-            <p class="lead">Decks, doors, rails—prepped & finished right.</p>
-          </div>
+          <div class="pad"><h3>Concrete / Masonry Coatings</h3><small>Garages, patios, basements.</small></div>
         </article>
 
         <!-- Drywall -->
         <article class="card service">
           <div class="carousel" data-carousel>
-            <button class="carousel-btn prev" aria-label="Previous" data-prev>‹</button>
+            <button class="carousel-btn prev" data-prev>‹</button>
             <div class="carousel-track" data-track>
               <img data-src="stock-drywall.webp" alt="">
               <img data-src="drywall2.webp" alt="">
               <img data-src="drywall1.webp" alt="">
             </div>
-            <button class="carousel-btn next" aria-label="Next" data-next>›</button>
+            <button class="carousel-btn next" data-next>›</button>
             <div class="carousel-dots" data-dots></div>
           </div>
-          <div class="pad">
-            <h3>Drywall Repair</h3>
-            <p class="lead">Repairs and resurfacing for paint-ready surfaces.</p>
-          </div>
+          <div class="pad"><h3>Drywall Repair</h3><small>Repairs & resurfacing.</small></div>
         </article>
-      </div>
-    </section>
 
-    <!-- “AND MORE” SERVICES -->
-    <section class="container" style="margin:10px auto 34px">
-      <h2>And More</h2>
-      <div class="grid">
         <!-- Caulking -->
         <article class="card service">
           <div class="carousel" data-carousel>
-            <button class="carousel-btn prev" aria-label="Previous" data-prev>‹</button>
+            <button class="carousel-btn prev" data-prev>‹</button>
             <div class="carousel-track" data-track>
               <img data-src="stock-caulking.webp" alt="">
               <img data-src="caulking1.webp" alt="">
               <img data-src="caulking2.webp" alt="">
             </div>
-            <button class="carousel-btn next" aria-label="Next" data-next>›</button>
+            <button class="carousel-btn next" data-next>›</button>
             <div class="carousel-dots" data-dots></div>
           </div>
           <div class="pad"><h3>Caulking / Sealants</h3></div>
@@ -351,13 +338,13 @@
         <!-- Wood repair -->
         <article class="card service">
           <div class="carousel" data-carousel>
-            <button class="carousel-btn prev" aria-label="Previous" data-prev>‹</button>
+            <button class="carousel-btn prev" data-prev>‹</button>
             <div class="carousel-track" data-track>
               <img data-src="woodrepair1.webp" alt="">
               <img data-src="woodrepair2.webp" alt="">
               <img data-src="woodrepair3.webp" alt="">
             </div>
-            <button class="carousel-btn next" aria-label="Next" data-next>›</button>
+            <button class="carousel-btn next" data-next>›</button>
             <div class="carousel-dots" data-dots></div>
           </div>
           <div class="pad"><h3>Wood Repair / Replacement</h3></div>
@@ -366,13 +353,13 @@
         <!-- Pressure washing -->
         <article class="card service">
           <div class="carousel" data-carousel>
-            <button class="carousel-btn prev" aria-label="Previous" data-prev>‹</button>
+            <button class="carousel-btn prev" data-prev>‹</button>
             <div class="carousel-track" data-track>
               <img data-src="pressurewashing1.webp" alt="">
               <img data-src="pressurewashing2.webp" alt="">
               <img data-src="pressurewashing3.webp" alt="">
             </div>
-            <button class="carousel-btn next" aria-label="Next" data-next>›</button>
+            <button class="carousel-btn next" data-next>›</button>
             <div class="carousel-dots" data-dots></div>
           </div>
           <div class="pad"><h3>Pressure Washing</h3></div>
@@ -381,13 +368,13 @@
         <!-- Metal coatings -->
         <article class="card service">
           <div class="carousel" data-carousel>
-            <button class="carousel-btn prev" aria-label="Previous" data-prev>‹</button>
+            <button class="carousel-btn prev" data-prev>‹</button>
             <div class="carousel-track" data-track>
               <img data-src="stock-metal.webp" alt="">
               <img data-src="metal1.webp" alt="">
               <img data-src="exterior10.webp" alt="">
             </div>
-            <button class="carousel-btn next" aria-label="Next" data-next>›</button>
+            <button class="carousel-btn next" data-next>›</button>
             <div class="carousel-dots" data-dots></div>
           </div>
           <div class="pad"><h3>Metal Coatings</h3></div>
@@ -395,34 +382,105 @@
       </div>
     </section>
 
+    <!-- SYSTEMS / PRICING -->
+    <section class="container" style="margin:34px auto">
+      <h2>Coating Systems That Perform</h2>
+      <div class="grid" style="grid-template-columns:1fr;gap:var(--gap)">
+        <div class="grid" style="grid-template-columns:1fr;gap:var(--gap)">
+          <div class="card"><div class="pad">
+            <h3>Refresh</h3>
+            <ul class="list">
+              <li>Clean & mask, minor patch/caulk</li>
+              <li>Spot/bonding prime where needed</li>
+              <li>1 finish coat</li>
+            </ul>
+            <div class="tag">$ • Budget-friendly</div>
+          </div></div>
+          <div class="card"><div class="pad">
+            <h3>Standard</h3>
+            <ul class="list">
+              <li>Full prep, gaps sealed</li>
+              <li>Bonding primer matched to substrate</li>
+              <li>2 finish coats to spec</li>
+            </ul>
+            <div class="tag">$$ • Most popular</div>
+          </div></div>
+          <div class="card"><div class="pad">
+            <h3>Premium Shield</h3>
+            <ul class="list">
+              <li>Repair + sand + fill to smoothness target</li>
+              <li>Pro enamel/urethane or elastomeric topcoat</li>
+              <li>Moisture/rust block where applicable</li>
+            </ul>
+            <div class="tag">$$$ • Longest life</div>
+          </div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- BEFORE / AFTER (2 sliders) -->
+    <section class="container" style="margin:34px auto">
+      <h2>See the Difference</h2>
+      <div class="grid" style="grid-template-columns:1fr;gap:22px">
+        <div class="compare">
+          <div class="compare__wrap" data-compare data-before="brickbefore.webp" data-after="brickafter.webp">
+            <img data-role="before" alt="Before — brick">
+            <img class="compare__after" data-role="after" alt="After — brick">
+            <div class="compare__bar" data-bar></div>
+            <div class="compare__knob" aria-hidden="true">↔</div>
+            <input type="range" min="0" max="100" value="50" aria-label="Slide to compare">
+          </div>
+          <div class="pad"><p class="lead">Brick whitewash transformation.</p></div>
+        </div>
+        <div class="compare">
+          <div class="compare__wrap" data-compare data-before="pressurewashing1.webp" data-after="pressurewashing2.webp">
+            <img data-role="before" alt="Before — concrete wash">
+            <img class="compare__after" data-role="after" alt="After — concrete wash">
+            <div class="compare__bar" data-bar></div>
+            <div class="compare__knob" aria-hidden="true">↔</div>
+            <input type="range" min="0" max="100" value="50" aria-label="Slide to compare">
+          </div>
+          <div class="pad"><p class="lead">Prep that makes coatings last longer.</p></div>
+        </div>
+      </div>
+    </section>
+
     <!-- PROCESS -->
-    <section class="container" style="margin:10px auto 34px">
+    <section class="container" style="margin:34px auto">
       <h2>How We Work</h2>
       <div class="process">
-        <div class="step"><b>1) Consult</b> Walk-through, scope, and clear written quote.</div>
-        <div class="step"><b>2) Prep Standard</b> Masking, sanding, repairs, caulking, spot/bonding prime.</div>
+        <div class="step"><b>1) Consult</b> Walk-through, scope, and written quote.</div>
+        <div class="step"><b>2) Prep Standard</b> Masking, sanding, repairs, caulking, prime.</div>
         <div class="step"><b>3) Pro Coatings</b> Surface-matched systems: enamels, elastomerics, rust-inhibitives.</div>
-        <div class="step"><b>4) Tidy Walkthrough</b> Clean site, punch-list, you sign off.</div>
+        <div class="step"><b>4) Tidy Walkthrough</b> Clean site, punch-list, your sign-off.</div>
         <div class="step"><b>5) Warranty</b> Workmanship covered—and we answer the phone.</div>
       </div>
     </section>
 
     <!-- TESTIMONIALS -->
-    <section class="container testimonials" style="margin:10px auto 34px">
+    <section class="container testimonials" style="margin:34px auto">
       <h2>What Homeowners Say</h2>
       <div class="grid">
-        <div class="quote">“DuraHaus is a trusting, reliable company that will provide quality work.”<div class="who">— Rosita L.</div></div>
-        <div class="quote">“Always our go-to! Clean, caring when working inside the home, and excellent quality.”<div class="who">— Jacqueline M.</div></div>
-        <div class="quote">“Highly recommend! Multiple projects, always 10/10. High caliber workmanship, excellent communication, fair pricing.”<div class="who">— Christian M.</div></div>
+        <div class="quote">“DuraHaus Painting and Construction is a trusting, reliable company that will provide quality work.”<div class="who">— Rosita L.</div></div>
+        <div class="quote">“Always our go-to for home projects! Clean, caring when working inside the home, and excellent quality work!”<div class="who">— Jacqueline M.</div></div>
+        <div class="quote">“Highly recommend DuraHaus! Multiple houses—always 10/10. High caliber workmanship, excellent communication, fair pricing.”<div class="who">— Christian M.</div></div>
       </div>
     </section>
 
-    <!-- GUARANTEE / CTA -->
-    <section class="container" style="margin:10px auto 34px">
+    <!-- FAQ -->
+    <section class="container faq" style="margin:34px auto">
+      <h2>FAQs</h2>
+      <details><summary>How fast can you quote?</summary><div class="a">Most quotes are turned around within 24–48 hours after a quick walkthrough.</div></details>
+      <details><summary>What coatings do you use?</summary><div class="a">We match products to the surface: bonding primers for glossy trim, cabinet enamels for durability, elastomerics for hairline exterior cracks, and rust-inhibitives for metal.</div></details>
+      <details><summary>Are you insured? Do you warranty?</summary><div class="a">Yes—fully insured. Every project includes a written workmanship warranty.</div></details>
+    </section>
+
+    <!-- CTA -->
+    <section class="container" style="margin:34px auto 28px">
       <div class="band">
         <div>
-          <h2 style="margin:.2rem 0">Your Home. Our Standard.</h2>
-          <p class="lead">Fully insured. Written workmanship warranty. If something isn’t right, we make it right—fast.</p>
+          <h2 style="margin:.2rem 0">Ready to start?</h2>
+          <p class="lead" style="margin:.2rem 0">Fast estimates, tidy jobsites, and results that hold up.</p>
         </div>
         <div style="display:flex;gap:10px;flex-wrap:wrap">
           <a class="pill pill--solid" href="/quote.html">Request a Quote</a>
@@ -431,7 +489,7 @@
       </div>
     </section>
 
-    <!-- PRE-FOOTER -->
+    <!-- Pre-footer -->
     <div class="container" style="display:flex;gap:18px;align-items:center;justify-content:space-between;flex-wrap:wrap;margin:2rem auto 1rem">
       <img data-src="seal-white.webp" alt="DuraHaus seal" style="width:120px;height:auto;opacity:.95;filter:invert(1) brightness(1.6)">
       <nav style="display:flex;gap:10px;flex-wrap:wrap">
@@ -450,113 +508,167 @@
   </footer>
 
   <script>
-    // ==== Asset base (works for prod and /durahaus-test/)
-    (function(){
-      const base = location.pathname.includes('/durahaus-test/') ? '/durahaus-test/assets/' : '/assets/';
-      document.querySelectorAll('[data-src]').forEach(el=>{
-        const f = el.getAttribute('data-src');
-        if(!f) return;
-        // allow svg/png/jpg placed in assets as well
-        el.src = base + f;
-      });
-      // Before/After loaders
-      document.querySelectorAll('[data-compare]').forEach(wrap=>{
-        const before = wrap.querySelector('[data-role="before"]');
-        const after  = wrap.querySelector('[data-role="after"]');
-        before.src = base + wrap.getAttribute('data-before');
-        after.src  = base + wrap.getAttribute('data-after');
-      });
-    })();
+    // === Dynamic asset base (works at root and /durahaus-test/)
+    const ASSET_BASE = location.pathname.includes('/durahaus-test/') ? '/durahaus-test/assets/' : '/assets/';
 
     // Year
     document.getElementById('y').textContent = new Date().getFullYear();
 
-    // ==== Compare sliders (multi-instance)
+    // === Lazy image loader (uses data-src)
+    (function(){
+      const imgs = [...document.querySelectorAll('[data-src]')];
+      if(!('IntersectionObserver' in window)){
+        imgs.forEach(el=> el.src = ASSET_BASE + el.getAttribute('data-src'));
+        return;
+      }
+      const io = new IntersectionObserver((entries,obs)=>{
+        entries.forEach(e=>{
+          if(!e.isIntersecting) return;
+          const el = e.target;
+          el.src = ASSET_BASE + el.getAttribute('data-src');
+          obs.unobserve(el);
+        });
+      },{rootMargin:'200px 0px 200px 0px'});
+      imgs.forEach(el=> io.observe(el));
+    })();
+
+    // === Counters (animate on view)
+    (function(){
+      const els = [...document.querySelectorAll('[data-count]')];
+      if(!els.length) return;
+      const io = new IntersectionObserver((entries,obs)=>{
+        entries.forEach(e=>{
+          if(!e.isIntersecting) return;
+          const el = e.target; obs.unobserve(el);
+          const end = +el.getAttribute('data-count'); const start = 0; const dur = 900;
+          const t0 = performance.now();
+          function tick(t){
+            const p = Math.min(1,(t - t0)/dur);
+            el.textContent = Math.floor(start + p*(end-start));
+            if(p<1) requestAnimationFrame(tick);
+          }
+          requestAnimationFrame(tick);
+        });
+      },{threshold:.3});
+      els.forEach(el=> io.observe(el));
+    })();
+
+    // === Finish Finder (simple rules)
+    (function(){
+      const out = document.querySelector('[data-ff-out]');
+      function calc(){
+        const scope = document.querySelector('input[name="ff-scope"]:checked')?.value;
+        const cond  = document.querySelector('input[name="ff-condition"]:checked')?.value;
+        const speed = document.querySelector('input[name="ff-speed"]:checked')?.value;
+        let rec = 'Standard • Full prep, bonding prime, two finish coats.';
+        if(speed==='fast' && cond==='light') rec = 'Refresh • Light prep, spot/bonding prime, one finish coat.';
+        if(speed==='max' || cond==='tough' || scope==='cabinets') rec = 'Premium Shield • Repairs to spec, pro enamel/urethane or elastomeric, moisture/rust block.';
+        out.textContent = rec;
+      }
+      document.querySelectorAll('input[name^="ff-"]').forEach(i=> i.addEventListener('change', calc));
+      calc();
+    })();
+
+    // === Before/After sliders (multi-instance)
     (function(){
       document.querySelectorAll('[data-compare]').forEach(wrap=>{
-        const rng = wrap.querySelector('input[type="range"]');
-        const after = wrap.querySelector('[data-role="after"]');
-        const handle = wrap.querySelector('[data-handle]');
-        const knob = wrap.querySelector('.compare__knob');
-        function setSplit(v){
+        const before = wrap.querySelector('[data-role="before"]');
+        const after  = wrap.querySelector('[data-role="after"]');
+        before.src = ASSET_BASE + wrap.getAttribute('data-before');
+        after.src  = ASSET_BASE + wrap.getAttribute('data-after');
+
+        const bar = wrap.querySelector('[data-bar]');
+        const range = wrap.querySelector('input[type="range"]');
+        function set(v){
           v = Math.max(0, Math.min(100, v));
           after.style.clipPath = `inset(0 ${100-v}% 0 0)`;
-          handle.style.left = knob.style.left = v + '%';
+          bar.style.left = v + '%';
         }
-        rng.addEventListener('input', e=> setSplit(e.target.value));
-        setSplit(rng.value);
+        range.addEventListener('input', e=> set(+e.target.value));
+        function pos(clientX){ const r = wrap.getBoundingClientRect(); return ((clientX - r.left)/r.width)*100; }
+        wrap.addEventListener('pointerdown', e=> set(pos(e.clientX)));
+        wrap.addEventListener('pointermove', e=> { if(e.buttons) set(pos(e.clientX)); });
+        wrap.addEventListener('touchstart', e=> set(pos(e.touches[0].clientX)), {passive:true});
+        wrap.addEventListener('touchmove', e=> set(pos(e.touches[0].clientX)), {passive:true});
+        set(50);
       });
     })();
 
-    // ==== Carousel (pointer + touch, swipe works across all slides)
+    // === Carousel (robust swipe all slides)
     (function(){
       const carousels = document.querySelectorAll('[data-carousel]');
-      function attach(c){
+      carousels.forEach(c=>{
         const track = c.querySelector('[data-track]');
         const slides = [...track.children];
         const prev = c.querySelector('[data-prev]');
         const next = c.querySelector('[data-next]');
         const dots = c.querySelector('[data-dots]');
-        dots.innerHTML = '';
-        slides.forEach((_, i)=>{
+        dots.innerHTML='';
+
+        slides.forEach((_, idx)=>{
           const b = document.createElement('button');
-          b.type='button'; b.setAttribute('aria-label','Go to slide '+(i+1));
-          b.addEventListener('click', e=>{ e.stopPropagation(); go(i); });
+          b.type='button';
+          b.setAttribute('aria-label','Go to slide '+(idx+1));
+          b.addEventListener('click', e=>{ e.stopPropagation(); go(idx); });
           dots.appendChild(b);
         });
+
         let i=0, startX=0, dragX=0, dragging=false;
-        const width = ()=> c.getBoundingClientRect().width;
+        const W = () => c.getBoundingClientRect().width;
         const clamp = n => Math.max(0, Math.min(slides.length-1, n));
-        const go = n => { i=clamp(n); track.style.transition=''; track.style.transform=`translateX(${-100*i}%)`; updateBtns(); };
-        const updateBtns = ()=>{
-          [...dots.children].forEach((d,di)=> d.setAttribute('aria-current', di===i));
+        function update(){
+          track.style.transform = `translateX(${i * -100}%)`;
+          [...dots.children].forEach((d, di)=> d.setAttribute('aria-current', di===i));
           prev.style.visibility = (i===0)?'hidden':'visible';
           next.style.visibility = (i===slides.length-1)?'hidden':'visible';
-        };
+        }
+        function go(n){ i = clamp(n); track.style.transition=''; update(); }
+        function onStart(x){ dragging=true; startX=x; dragX=0; track.style.transition='none'; }
+        function onMove(x){
+          if(!dragging) return;
+          dragX = x - startX;
+          const pct = (dragX / W()) * 100;
+          track.style.transform = `translateX(calc(${i * -100}% + ${pct}%))`;
+        }
+        function onEnd(){
+          if(!dragging) return;
+          track.style.transition='';
+          const threshold = W() * 0.15;
+          if (Math.abs(dragX) > threshold){ if (dragX < 0) i++; else i--; }
+          go(i);
+          dragging=false;
+        }
+
         prev.addEventListener('click', e=>{ e.preventDefault(); e.stopPropagation(); go(i-1); });
         next.addEventListener('click', e=>{ e.preventDefault(); e.stopPropagation(); go(i+1); });
 
-        const usePointer = 'PointerEvent' in window;
-        function onStart(e, x){
-          dragging=true; startX=x; dragX=0;
-          document.addEventListener('touchmove', onMove, {passive:false});
-          document.addEventListener('mousemove', onMove);
-          document.addEventListener('touchend', onEnd);
-          document.addEventListener('mouseup', onEnd);
-        }
-        function onMove(e){
-          if(!dragging) return;
-          dragX = getX(e) - startX;
-          track.style.transition='none';
-          const pct = (dragX/width())*100;
-          track.style.transform = `translateX(calc(${-100*i}% + ${pct}%))`;
-          e.preventDefault?.();
-        }
-        function onEnd(){
-          track.style.transition='';
-          const threshold = width()*0.15;
-          if(Math.abs(dragX)>threshold){ if(dragX<0) go(i+1); else go(i-1); } else { go(i); }
-          dragging=false;
-          document.removeEventListener('touchmove', onMove);
-          document.removeEventListener('mousemove', onMove);
-          document.removeEventListener('touchend', onEnd);
-          document.removeEventListener('mouseup', onEnd);
-        }
-        function getX(e){ return (e.touches && e.touches[0]?.clientX) ?? e.clientX; }
-
-        if(usePointer){
-          track.addEventListener('pointerdown', e=>{
-            if(e.pointerType==='mouse' && e.button!==0) return;
-            onStart(e, e.clientX);
-          }, {passive:true});
-        }else{
-          track.addEventListener('touchstart', e=> onStart(e, e.touches[0].clientX), {passive:true});
-          track.addEventListener('mousedown', e=> onStart(e, e.clientX));
-        }
         track.querySelectorAll('img').forEach(img=> img.draggable=false);
+        track.addEventListener('pointerdown', e=>{ if(e.pointerType==='mouse'&&e.button!==0) return; onStart(e.clientX); }, {passive:true});
+        window.addEventListener('pointermove', e=>{ if(!dragging) return; e.preventDefault(); onMove(e.clientX); }, {passive:false});
+        window.addEventListener('pointerup', onEnd);
+        window.addEventListener('pointercancel', onEnd);
+
+        track.addEventListener('touchstart', e=> onStart(e.touches[0].clientX), {passive:true});
+        window.addEventListener('touchmove', e=>{ if(!dragging) return; onMove(e.touches[0].clientX); }, {passive:false});
+        window.addEventListener('touchend', onEnd);
+
         go(0);
-      }
-      carousels.forEach(attach);
+      });
+    })();
+
+    // === Dev: 404 checker (?dev=1)
+    (function(){
+      if(new URLSearchParams(location.search).get('dev')!=='1') return;
+      const urls = [...document.images].map(i=> i.currentSrc || i.src);
+      Promise.all(urls.map(u=>fetch(u,{method:'HEAD'}).then(r=>({u,ok:r.ok})).catch(()=>({u,ok:false}))))
+        .then(list=>{
+          const miss = list.filter(x=>!x.ok);
+          if(!miss.length) return;
+          const box=document.createElement('pre');
+          box.textContent = 'Missing assets:\n' + miss.map(m=>m.u).join('\n');
+          box.style.cssText='position:fixed;left:12px;right:12px;bottom:90px;z-index:90;background:#1a0000;color:#ffdcdc;border:2px solid #a33;border-radius:12px;padding:14px';
+          document.body.appendChild(box);
+        });
     })();
   </script>
 </body>
