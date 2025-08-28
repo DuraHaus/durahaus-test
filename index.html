@@ -3,9 +3,37 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>DuraHaus — Painting and Construction</title>
-  <meta name="description" content="Interior & exterior painting, cabinets, stain, concrete coatings, drywall repair, caulking, wood repair, pressure washing, and metal coatings.">
+  <title>DuraHaus — Painting & Coatings in Cincinnati</title>
+  <meta name="description" content="Clean, on-time painting and high-performance coatings. Interior & exterior, cabinets, staining, drywall repair, caulking & sealants, wood repair, pressure washing, and metal building coatings. Free onsite estimate.">
   <link rel="preload" as="image" href="assets/stock-hero.webp">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="DuraHaus — Painting & Coatings in Cincinnati">
+  <meta property="og:description" content="Clean, on-time, pro-grade finishes. Interior & exterior painting, cabinet refinishing, staining, concrete & metal coatings, drywall repair, caulking, wood repair, and pressure washing.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://durahauspainting.com/durahaus-test/assets/stock-hero.webp">
+
+  <!-- LocalBusiness JSON-LD -->
+  <!--
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "PaintingContractor",
+    "name": "DuraHaus Painting & Construction",
+    "url": "https://durahauspainting.com/durahaus-test/",
+    "logo": "https://durahauspainting.com/durahaus-test/assets/durahaus-logo.svg",
+    "image": [
+      "https://durahauspainting.com/durahaus-test/assets/interior8.webp",
+      "https://durahauspainting.com/durahaus-test/assets/exterior7.webp",
+      "https://durahauspainting.com/durahaus-test/assets/cabinets1.webp"
+    ],
+    "telephone": "+1-513-668-4382",
+    "areaServed": ["Cincinnati OH", "Northern Kentucky", "Mason OH", "West Chester OH", "Hyde Park OH", "Anderson OH", "Fort Thomas KY"],
+    "description": "Interior & exterior painting, cabinet refinishing, staining & wood care, drywall repair, caulking & sealants, concrete & metal coatings, pressure washing."
+  }
+  </script>
+  -->
+
   <style>
     :root{--bg:#0a0a0a;--panel:#101010;--ink:#fff;--muted:#bdbdbd;--line:#1a1a1a;--max:1120px;--r:14px;--gap:28px}
     *{box-sizing:border-box}
@@ -36,6 +64,11 @@
     .lead{color:var(--muted);font-size:clamp(16px,1.8vw,19px)}
     .row{display:grid;grid-template-columns:1fr;gap:var(--gap);margin:3rem 0}
     @media (min-width:860px){.hero{grid-template-columns:1.05fr .95fr}.hero__copy{padding:4.2rem 0 4rem 2rem}.row{grid-template-columns:1.05fr .95fr;align-items:center}}
+
+    /* Trust strip */
+    .trust{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:#0e0e10}
+    .trust .container{display:flex;gap:16px;flex-wrap:wrap;align-items:center;justify-content:center;padding:12px 0;color:#d9d9db;font-size:15px}
+    .trust .tag{display:inline-flex;align-items:center;gap:8px;padding:.4rem .6rem;border:1px solid var(--line);border-radius:999px}
 
     /* Cards / grids */
     .card{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
@@ -100,6 +133,17 @@
     </div>
   </header>
 
+  <!-- Service area + trust -->
+  <section class="trust" aria-label="assurances">
+    <div class="container">
+      <span>Serving Cincinnati, NKY, Mason, West Chester, Hyde Park, Anderson, Ft. Thomas</span>
+      <span class="tag">Fully Insured</span>
+      <span class="tag">Written Warranty</span>
+      <span class="tag">Clean Jobsites</span>
+      <span class="tag">On-Time Scheduling</span>
+    </div>
+  </section>
+
   <main>
     <!-- Hero -->
     <section class="hero">
@@ -108,9 +152,13 @@
       </div>
       <div class="hero__copy container">
         <h1>Pro Services. Pro Results.<br>The DuraHaus Standard</h1>
-        <p class="lead">From interiors to exteriors, cabinets to concrete — we approach every job with care, craftsmanship, and materials built to perform.</p>
+        <p class="lead">
+          We don’t just paint—we protect your home inside and out. Our crews follow a disciplined prep and coating process,
+          keep a tidy workspace, and communicate clearly from estimate to final walkthrough. The result: clean lines, durable finishes,
+          and work that holds up season after season.
+        </p>
         <div class="stack" style="margin-top:1.1rem">
-          <a class="pill pill--solid" href="services.html">Explore Services</a>
+          <a class="pill pill--solid" href="quote.html">Free Onsite Estimate</a>
         </div>
       </div>
     </section>
@@ -122,10 +170,13 @@
       </div>
       <div>
         <h2>Protecting What’s Built. <br>Enhancing What’s Seen.</h2>
-        <p class="lead">Interior/Exterior Painting, Cabinet Finishes, Staining, Concrete Coatings, Drywall Repair, Caulking & Sealants, Wood Repair, Pressure Washing, and Metal Coatings.</p>
+        <p class="lead">
+          Every project is approached with professional prep, premium primers and topcoats, and attention to detail where it counts most—substrate condition, adhesion, and weather resistance.
+          We work neatly, show up when we say we will, and stand behind our workmanship. That’s why homeowners across Butler, Hamilton, and Warren counties choose DuraHaus.
+        </p>
         <div class="stack" style="margin-top:1rem">
-          <a class="pill pill--solid" href="about.html">About</a>
-          <a class="pill" href="tel:15136684382">Call Us</a>
+          <a class="pill pill--solid" href="about.html">About Us</a>
+          <a class="pill" href="services.html">All Services</a>
         </div>
       </div>
     </section>
@@ -144,13 +195,14 @@
         </div>
         <div class="pad">
           <h3 style="margin:.2rem 0">Before ↔ After</h3>
-          <p class="lead">Slide to see the difference a DuraHaus finish makes.</p>
+          <p class="lead">This brick exterior had faded, porous surfaces. We cleaned, repaired, and coated with a breathable, color-stable system for a uniform finish that stands up to weather.</p>
         </div>
       </div>
     </section>
 
     <!-- Core services -->
     <section class="container" style="margin-top:2rem">
+      <h2 style="margin-bottom:.8rem">Painting & Coatings</h2>
       <div class="grid">
 
         <!-- Interior Painting -->
@@ -164,10 +216,15 @@
             </div>
             <button class="carousel-btn next" aria-label="Next" data-arrow="next">›</button>
           </div>
-          <a class="pad service-link" href="services.html#interior">
+          <div class="pad">
             <h3 style="margin:0 0 .25rem">Interior Painting</h3>
-            <p>Walls, ceilings, trim, cabinetry, accent walls, etc.</p>
-          </a>
+            <p>
+              Crisp lines, smooth walls, and durable finishes for high-traffic spaces. We protect floors and furnishings,
+              repair and sand surfaces, and apply pro-grade primers and enamels matched to each room. Perfect for walls,
+              ceilings, trim, and cabinetry. Fast, tidy, and built to last.
+            </p>
+            <a class="pill" style="margin-top:.8rem;display:inline-block" href="services.html#interior">Learn more</a>
+          </div>
         </div>
 
         <!-- Exterior Painting -->
@@ -181,10 +238,15 @@
             </div>
             <button class="carousel-btn next" aria-label="Next" data-arrow="next">›</button>
           </div>
-          <a class="pad service-link" href="services.html#exterior">
+          <div class="pad">
             <h3 style="margin:0 0 .25rem">Exterior Painting</h3>
-            <p>Premium prep and coatings that handle Midwest weather.</p>
-          </a>
+            <p>
+              Prep is everything outside. We address peeling, chalking, and failed caulk; repair substrates;
+              then prime and coat with weather-rated systems designed for Midwest freeze/thaw. Expect strong adhesion,
+              even color, and clean details on siding, brick, trim, doors, and more.
+            </p>
+            <a class="pill" style="margin-top:.8rem;display:inline-block" href="services.html#exterior">Learn more</a>
+          </div>
         </div>
 
         <!-- Concrete Coatings -->
@@ -198,10 +260,15 @@
             </div>
             <button class="carousel-btn next" aria-label="Next" data-arrow="next">›</button>
           </div>
-          <a class="pad service-link" href="services.html#concrete">
+          <div class="pad">
             <h3 style="margin:0 0 .25rem">Concrete Coatings</h3>
-            <p>Garage, patios, and basements — durable and easy to clean.</p>
-          </a>
+            <p>
+              Garage floors, patios, and basements that stay cleaner and look better. We prep mechanically,
+              address cracks, and apply coatings selected for abrasion, UV, and chemical resistance.
+              Options from satin to high-build systems to match your use and budget.
+            </p>
+            <a class="pill" style="margin-top:.8rem;display:inline-block" href="services.html#concrete">Learn more</a>
+          </div>
         </div>
 
       </div>
@@ -209,6 +276,7 @@
 
     <!-- More services -->
     <section class="container" style="margin-top:2rem">
+      <h2 style="margin-bottom:.8rem">Cabinets, Stain & Drywall</h2>
       <div class="grid">
 
         <!-- Cabinet Refinishing -->
@@ -222,10 +290,15 @@
             </div>
             <button class="carousel-btn next" aria-label="Next" data-arrow="next">›</button>
           </div>
-          <a class="pad service-link" href="services.html#cabinets">
+          <div class="pad">
             <h3 style="margin:0 0 .25rem">Cabinet Refinishing</h3>
-            <p>Factory-smooth primers and hard-wearing topcoats.</p>
-          </a>
+            <p>
+              Transform kitchens and built-ins with factory-smooth finishes. We clean and degloss,
+              repair, sand, prime with bonding systems, and spray durable enamels for a hard, even finish.
+              A beautiful upgrade at a fraction of replacement cost.
+            </p>
+            <a class="pill" style="margin-top:.8rem;display:inline-block" href="services.html#cabinets">Learn more</a>
+          </div>
         </div>
 
         <!-- Staining & Wood Care -->
@@ -239,10 +312,14 @@
             </div>
             <button class="carousel-btn next" aria-label="Next" data-arrow="next">›</button>
           </div>
-          <a class="pad service-link" href="services.html#stain">
+          <div class="pad">
             <h3 style="margin:0 0 .25rem">Staining & Wood Care</h3>
-            <p>Decks, doors, and rails prepped and finished right.</p>
-          </a>
+            <p>
+              Enhance grain and protect wood from sun and moisture. We wash and prep decks, doors, and rails;
+              replace failing boards; and apply quality stains and clear coats for a rich, even look with the right sheen.
+            </p>
+            <a class="pill" style="margin-top:.8rem;display:inline-block" href="services.html#stain">Learn more</a>
+          </div>
         </div>
 
         <!-- Drywall & Repair -->
@@ -256,10 +333,14 @@
             </div>
             <button class="carousel-btn next" aria-label="Next" data-arrow="next">›</button>
           </div>
-          <a class="pad service-link" href="services.html#drywall">
-            <h3 style="margin:0 0 .25rem">Drywall & Repair</h3>
-            <p>Repairs and resurfacing for flat, paint-ready surfaces.</p>
-          </a>
+          <div class="pad">
+            <h3 style="margin:0 0 .25rem">Drywall Repair</h3>
+            <p>
+              From patching to resurfacing, we fix damage and texture mismatches so paint looks flawless.
+              Expect clean joints, smooth edges, proper priming, and dust control that keeps the rest of your home clean.
+            </p>
+            <a class="pill" style="margin-top:.8rem;display:inline-block" href="services.html#drywall">Learn more</a>
+          </div>
         </div>
 
       </div>
@@ -267,6 +348,7 @@
 
     <!-- Even more services (What We Do add-ons) -->
     <section class="container" style="margin-top:2rem">
+      <h2 style="margin-bottom:.8rem">What We Do — More Ways We Help</h2>
       <div class="grid">
 
         <!-- Caulking & Sealants -->
@@ -280,10 +362,15 @@
             </div>
             <button class="carousel-btn next" aria-label="Next" data-arrow="next">›</button>
           </div>
-          <a class="pad service-link" href="services.html#caulking">
+          <div class="pad">
             <h3 style="margin:0 0 .25rem">Caulking & Sealants</h3>
-            <p>Clean, watertight lines inside & out.</p>
-          </a>
+            <p>
+              Airtight, watertight joints that make paint last longer. We remove failing caulk, clean and dry surfaces,
+              and install premium sealants matched to the substrate and movement. Cleaner lines, better energy performance,
+              and fewer callbacks.
+            </p>
+            <a class="pill" style="margin-top:.8rem;display:inline-block" href="services.html#caulking">Learn more</a>
+          </div>
         </div>
 
         <!-- Wood Repair & Replacement -->
@@ -297,10 +384,15 @@
             </div>
             <button class="carousel-btn next" aria-label="Next" data-arrow="next">›</button>
           </div>
-          <a class="pad service-link" href="services.html#wood-repair">
+          <div class="pad">
             <h3 style="margin:0 0 .25rem">Wood Repair & Replacement</h3>
-            <p>Rot fixes, trim swaps, and substrate prep for lasting coatings.</p>
-          </a>
+            <p>
+              Rotting or damaged trim invites water and ruins the look. We cut out rot, rebuild with epoxy where appropriate,
+              or replace with the right materials, then prime and coat for a seamless finish. Proper repair ensures your
+              paint system performs for years.
+            </p>
+            <a class="pill" style="margin-top:.8rem;display:inline-block" href="services.html#wood-repair">Learn more</a>
+          </div>
         </div>
 
         <!-- Pressure Washing -->
@@ -314,10 +406,14 @@
             </div>
             <button class="carousel-btn next" aria-label="Next" data-arrow="next">›</button>
           </div>
-          <a class="pad service-link" href="services.html#pressure-washing">
+          <div class="pad">
             <h3 style="margin:0 0 .25rem">Pressure Washing</h3>
-            <p>Prep that makes coatings last longer and look better.</p>
-          </a>
+            <p>
+              Proper cleaning is the foundation of great results. We remove dirt, chalk, mildew, and loose coatings with the
+              right detergents and pressure, protecting landscaping and adjacent surfaces. Essential prep for lasting adhesion.
+            </p>
+            <a class="pill" style="margin-top:.8rem;display:inline-block" href="services.html#pressure-washing">Learn more</a>
+          </div>
         </div>
 
       </div>
@@ -336,28 +432,45 @@
             </div>
             <button class="carousel-btn next" aria-label="Next" data-arrow="next">›</button>
           </div>
-          <a class="pad service-link" href="services.html#metal">
+          <div class="pad">
             <h3 style="margin:0 0 .25rem">Metal Coatings</h3>
-            <p>Pro primers and finishes for metal buildings, rails, and trim.</p>
-          </a>
+            <p>
+              Metal buildings, rails, and trim need specific prep and coatings. We clean and treat rust,
+              select compatible primers (including DTM/industrial systems), and apply finishes designed for
+              UV and corrosion resistance. A sharper look with real protection.
+            </p>
+            <a class="pill" style="margin-top:.8rem;display:inline-block" href="services.html#metal">Learn more</a>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- FAQ -->
+    <!-- FAQs -->
     <section class="container" style="margin:3rem 0">
       <h2 style="margin-bottom:.6rem">FAQs</h2>
       <details><summary><strong>Do you offer free estimates?</strong></summary>
-        <div class="lead" style="color:var(--muted)">Yes. We can visit on-site within 48 hours in most cases and provide a written, itemized quote.</div>
+        <div class="lead" style="color:var(--muted)">Yes. We can visit on-site quickly in most cases and provide a written, itemized quote.</div>
       </details>
       <details><summary><strong>How soon can you start?</strong></summary>
         <div class="lead" style="color:var(--muted)">Scheduling depends on scope and season. Smaller interior projects can often begin within 1–2 weeks.</div>
       </details>
-      <details><summary><strong>What materials do you use?</strong></summary>
-        <div class="lead" style="color:var(--muted)">Pro-grade primers, enamels, and exterior coatings matched to each substrate for durability and finish quality.</div>
+      <details><summary><strong>How do you prepare surfaces?</strong></summary>
+        <div class="lead" style="color:var(--muted)">We clean, repair, sand, and prime as needed, then apply coatings matched to the substrate and environment. Proper prep is the key to durability.</div>
       </details>
-      <details><summary><strong>Are you insured and do you provide a warranty?</strong></summary>
-        <div class="lead" style="color:var(--muted)">Yes—fully insured. We include a workmanship warranty with every project.</div>
+      <details><summary><strong>What materials do you use?</strong></summary>
+        <div class="lead" style="color:var(--muted)">Pro-grade primers, enamels, and exterior coatings chosen for adhesion, coverage, and weather resistance. We’ll specify products on your quote.</div>
+      </details>
+      <details><summary><strong>How do you protect my home?</strong></summary>
+        <div class="lead" style="color:var(--muted)">We cover floors and furnishings, mask as needed, protect landscaping, and keep a tidy jobsite with daily cleanup.</div>
+      </details>
+      <details><summary><strong>Do you help with colors and finishes?</strong></summary>
+        <div class="lead" style="color:var(--muted)">Yes—sheen and color affect look and durability. We can recommend options that fit your lighting and lifestyle.</div>
+      </details>
+      <details><summary><strong>Are you insured? Do you offer a warranty?</strong></summary>
+        <div class="lead" style="color:var(--muted)">Yes—fully insured. Every project includes a workmanship warranty. Details are included on your quote.</div>
+      </details>
+      <details><summary><strong>What about payment and scheduling?</strong></summary>
+        <div class="lead" style="color:var(--muted)">We schedule to minimize disruption and keep you informed. Typical terms include a deposit and final payment upon walkthrough.</div>
       </details>
     </section>
 
@@ -388,7 +501,7 @@
       </nav>
     </div>
 
-    <!-- Contact strip (phone, email, socials) -->
+    <!-- Contact strip -->
     <section class="contactbar">
       <div class="container row">
         <a href="tel:+15136684382" aria-label="Call">
@@ -439,7 +552,7 @@
       setSplit(range.value);
     })();
 
-    // Carousel buttons (swipe is native via scroll-snap)
+    // Carousel arrows (swipe is native via scroll-snap)
     document.querySelectorAll('.carousel').forEach(car=>{
       const track=car.querySelector('[data-track]');
       const prev=car.querySelector('[data-arrow="prev"]');
