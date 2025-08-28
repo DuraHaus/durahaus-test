@@ -10,12 +10,11 @@
     :root{
       --bg:#0a0a0a; --panel:#101010; --ink:#ffffff; --muted:#bdbdbd;
       --line:#1a1a1a; --max:1120px; --r:14px; --gap:28px;
-      --brand:#ffffff; --accent:#ffffff;
       --google:#1a73e8; --star:#fbbc04;
     }
     html[data-theme="light"]{
       --bg:#ffffff; --panel:#f7f7f8; --ink:#0b0b0c; --muted:#5e5e62;
-      --line:#e6e6ea; --brand:#0b0b0c; --accent:#0b0b0c;
+      --line:#e6e6ea;
     }
 
     *{box-sizing:border-box}
@@ -28,7 +27,6 @@
     a{color:inherit;text-decoration:none}
     img{display:block;width:100%;height:auto;background:#0d0d0d}
     html[data-theme="light"] img{background:#eee}
-    .brand img{background:transparent!important}
     .container{max-width:var(--max);margin:0 auto;padding:0 20px}
 
     /* Header */
@@ -36,11 +34,14 @@
       position:sticky;top:0;z-index:50;background:rgba(10,10,10,.92);
       backdrop-filter:saturate(140%) blur(8px);border-bottom:1px solid var(--line)
     }
-    html[data-theme="light"] header{background:rgba(255,255,255,.88)}
+    html[data-theme="light"] header{background:rgba(255,255,255,.9)}
     .nav{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:12px 0}
     .brand{display:flex;align-items:center;gap:14px;min-width:0}
-    .brand picture{display:block;line-height:0}
-    .brand img{height:56px;width:auto;display:block}
+    .brand img{height:56px;width:auto;display:block;background:transparent!important}
+    /* White logo -> appears dark in light mode */
+    html[data-theme="light"] .brand img{
+      filter: invert(1) grayscale(1) brightness(0.12) contrast(1.35);
+    }
     .brand .wordmark{font-weight:800;letter-spacing:.03em;white-space:nowrap}
 
     .navlinks{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-left:20px}
@@ -55,12 +56,6 @@
       .brand img{height:44px}
       .pill{font-size:13px;padding:.45rem .7rem}
       .iconbtn{width:38px;height:38px}
-    }
-
-    /* White logo -> black in light mode */
-    html[data-theme="light"] .brand img{
-      filter: invert(1) grayscale(1) brightness(0.14) contrast(1.3);
-      background:transparent !important;
     }
 
     /* Hero */
@@ -503,123 +498,92 @@
   <script>
     document.getElementById('y').textContent = new Date().getFullYear();
 
-    // === Carousel (robust swipe: handles pointerup, leave, cancel, lostcapture) ===
+    // === Minimal, robust carousel swipe (no pointer capture; cleans up reliably) ===
     (function(){
       const carousels = document.querySelectorAll('[data-carousel]');
+
       carousels.forEach(c=>{
         const track = c.querySelector('[data-track]');
-        const slides = [...track.children];
+        const slides = Array.from(track.children);
         const prev = c.querySelector('[data-prev]');
         const next = c.querySelector('[data-next]');
-        const dots = c.querySelector('[data-dots]');
+        const dotsWrap = c.querySelector('[data-dots]');
 
-        dots.innerHTML='';
-        slides.forEach((_,idx)=>{
-          const b=document.createElement('button');
-          b.type='button';
+        // Ensure images never steal the pointer
+        slides.forEach(img => { img.style.pointerEvents = 'none'; });
+
+        // Dots (kept hidden by CSS)
+        dotsWrap.innerHTML = '';
+        slides.forEach((_, idx)=>{
+          const b = document.createElement('button');
+          b.type = 'button';
           b.setAttribute('aria-label','Go to slide '+(idx+1));
-          b.addEventListener('click',e=>{e.stopPropagation(); go(idx);});
-          dots.appendChild(b);
+          b.addEventListener('click', e => { e.stopPropagation(); go(idx, true); });
+          dotsWrap.appendChild(b);
         });
 
-        let i=0, startX=0, dragX=0, dragging=false, activeId=null;
-        const viewW = () => c.getBoundingClientRect().width;
+        let i = 0;
+        let startX = 0;
+        let dragX = 0;
+        let dragging = false;
 
-        const clamp = n => Math.max(0, Math.min(slides.length-1, n));
-        const go = n => { i = clamp(n); update(true); };
-        const nextSlide = () => go(i+1);
-        const prevSlide = () => go(i-1);
+        const vw = () => c.getBoundingClientRect().width;
 
-        function update(animate){
-          track.style.transition = animate ? 'transform 280ms ease' : '';
+        function clamp(n){ return Math.max(0, Math.min(slides.length-1, n)); }
+        function go(n, animate){
+          i = clamp(n);
+          track.style.transition = animate ? 'transform 280ms ease' : 'none';
           track.style.transform = `translateX(${i * -100}%)`;
-          [...dots.children].forEach((d,di)=> d.setAttribute('aria-current', di===i));
-          prev.style.visibility = (i===0)?'hidden':'visible';
-          next.style.visibility = (i===slides.length-1)?'hidden':'visible';
-          dragX = 0; // reset after each settle
+          [...dotsWrap.children].forEach((d, di)=> d.setAttribute('aria-current', di===i));
+          prev.style.visibility = (i===0) ? 'hidden' : 'visible';
+          next.style.visibility = (i===slides.length-1) ? 'hidden' : 'visible';
+          if (animate) {
+            const done = () => { track.style.transition = 'none'; track.removeEventListener('transitionend', done); };
+            track.addEventListener('transitionend', done);
+          }
         }
+        function nextSlide(){ go(i+1, true); }
+        function prevSlide(){ go(i-1, true); }
 
-        [prev,next,dots,track].forEach(el=> el.addEventListener('click',e=>e.stopPropagation()));
+        // Prevent clicks from bubbling to the card link
+        [prev, next, dotsWrap, track].forEach(el => el.addEventListener('click', e => e.stopPropagation()));
         prev.addEventListener('click', prevSlide);
         next.addEventListener('click', nextSlide);
 
-        const usePointer = 'PointerEvent' in window;
-        if(usePointer){
-          track.addEventListener('pointerdown', onPointerDown, {passive:false});
-          track.addEventListener('lostpointercapture', onPointerUp);
-          track.querySelectorAll('img').forEach(img=> img.draggable=false);
-        }else{
-          track.addEventListener('touchstart', onStart, {passive:true});
-          track.addEventListener('mousedown', onStart);
-        }
+        // Pointer events (mouse, touch, pen)
+        track.addEventListener('pointerdown', onDown, {passive:true});
+        track.addEventListener('pointermove', onMove, {passive:false});
+        track.addEventListener('pointerup', onUp);
+        track.addEventListener('pointerleave', onUp);
+        track.addEventListener('pointercancel', onUp);
 
-        function onPointerDown(e){
-          if (e.pointerType==='mouse' && e.button!==0) return;
-          e.preventDefault();
-          dragging=true; startX=e.clientX; dragX=0; activeId=e.pointerId;
-          track.setPointerCapture?.(activeId);
-          track.style.cursor='grabbing';
-          document.addEventListener('pointermove', onPointerMove, {passive:false});
-          document.addEventListener('pointerup', onPointerUp);
-          document.addEventListener('pointerleave', onPointerUp);
-          document.addEventListener('pointercancel', onPointerUp);
-        }
-        function onPointerMove(e){
-          if(!dragging || e.pointerId!==activeId) return;
-          dragX = e.clientX - startX;
-          track.style.transition='none';
-          const pct = (dragX / viewW()) * 100;
-          track.style.transform = `translateX(calc(${i * -100}% + ${pct}%))`;
-          e.preventDefault?.();
-        }
-        function onPointerUp(e){
-          if(!dragging) return;
-          // Only end if this was our pointer OR a global cancel/leave
-          if(e && e.type==='pointerup' && activeId!=null && e.pointerId!==activeId) return;
-          const threshold = viewW() * 0.15;
-          const shouldAdvance = Math.abs(dragX) > threshold;
-          if (shouldAdvance) (dragX < 0 ? nextSlide() : prevSlide()); else update(true);
-          if(activeId!=null) track.releasePointerCapture?.(activeId);
-          cleanupPointer();
-        }
-        function cleanupPointer(){
-          dragging=false; activeId=null; dragX=0; track.style.cursor='';
-          document.removeEventListener('pointermove', onPointerMove);
-          document.removeEventListener('pointerup', onPointerUp);
-          document.removeEventListener('pointerleave', onPointerUp);
-          document.removeEventListener('pointercancel', onPointerUp);
-        }
-
-        // Touch/mouse fallback
-        function onStart(e){
-          dragging=true; startX=getX(e); dragX=0;
-          document.addEventListener('touchmove', onMove, {passive:false});
-          document.addEventListener('mousemove', onMove);
-          document.addEventListener('touchend', onEnd);
-          document.addEventListener('mouseup', onEnd);
-          document.addEventListener('touchcancel', onEnd);
+        function onDown(e){
+          if (e.pointerType === 'mouse' && e.button !== 0) return;
+          dragging = true;
+          startX = e.clientX;
+          dragX = 0;
+          track.style.transition = 'none';
         }
         function onMove(e){
-          if(!dragging) return;
-          dragX = getX(e) - startX;
-          track.style.transition='none';
-          const pct = (dragX / viewW()) * 100;
+          if (!dragging) return;
+          dragX = e.clientX - startX;
+          const pct = (dragX / vw()) * 100;
           track.style.transform = `translateX(calc(${i * -100}% + ${pct}%))`;
-          e.preventDefault?.();
+          e.preventDefault(); // keep horizontal swipe active
         }
-        function onEnd(){
-          const threshold = viewW() * 0.15;
-          Math.abs(dragX) > threshold ? (dragX<0 ? nextSlide() : prevSlide()) : update(true);
-          dragging=false; dragX=0;
-          document.removeEventListener('touchmove', onMove);
-          document.removeEventListener('mousemove', onMove);
-          document.removeEventListener('touchend', onEnd);
-          document.removeEventListener('mouseup', onEnd);
-          document.removeEventListener('touchcancel', onEnd);
+        function onUp(){
+          if (!dragging) return;
+          const threshold = vw() * 0.15;
+          if (Math.abs(dragX) > threshold){
+            (dragX < 0) ? nextSlide() : prevSlide();
+          } else {
+            go(i, true);
+          }
+          dragging = false;
+          dragX = 0;
         }
-        const getX = e => (e.touches && e.touches[0]?.clientX) ?? e.clientX;
 
-        update(false);
+        go(0, false);
       });
     })();
 
