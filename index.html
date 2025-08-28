@@ -11,8 +11,8 @@
       --bg:#0a0a0a; --panel:#101010; --ink:#ffffff; --muted:#bdbdbd;
       --line:#1a1a1a; --max:1120px; --r:14px; --gap:28px;
       --brand:#ffffff; --accent:#ffffff;
+      --google:#1a73e8; --star:#fbbc04;
     }
-    /* Light theme tokens */
     html[data-theme="light"]{
       --bg:#ffffff; --panel:#f7f7f8; --ink:#0b0b0c; --muted:#5e5e62;
       --line:#e6e6ea; --brand:#0b0b0c; --accent:#0b0b0c;
@@ -57,7 +57,7 @@
       .iconbtn{width:38px;height:38px}
     }
 
-    /* Make white logo appear black in light mode (no asset swap needed) */
+    /* White logo -> black in light mode */
     html[data-theme="light"] .brand img{
       filter: invert(1) grayscale(1) brightness(0.14) contrast(1.3);
       background:transparent !important;
@@ -92,6 +92,24 @@
     @media (min-width:900px){.why .cols{grid-template-columns:repeat(3,1fr)}}
     .why .tile{border:1px solid var(--line);border-radius:var(--r);padding:1.2rem;background:var(--panel)}
     .why h3{margin:.1rem 0 .4rem;font-size:1.1rem}
+
+    /* Google-like Reviews */
+    .reviews{margin:2.5rem auto}
+    .reviews .ghead{display:flex;align-items:center;gap:10px;margin-bottom:.6rem}
+    .reviews .ghead .glogo{display:inline-flex;align-items:center;gap:8px;font-weight:800}
+    .reviews .ghead .glogo svg{width:18px;height:18px}
+    .reviews .grid{grid-template-columns:repeat(3,1fr)}
+    @media (max-width:900px){.reviews .grid{grid-template-columns:1fr}}
+    .gcard{background:var(--panel);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+    .gcard .top{display:flex;align-items:center;gap:10px;padding:12px;border-bottom:1px solid var(--line)}
+    .avatar{width:36px;height:36px;border-radius:50%;background:#ccc;flex:0 0 auto;overflow:hidden}
+    .avatar img{width:100%;height:100%;object-fit:cover;background:#ddd}
+    .gname{font-weight:700}
+    .gbadge{margin-left:auto;font-size:12px;color:#fff;background:var(--google);padding:4px 8px;border-radius:999px}
+    .stars{display:flex;gap:2px;margin:8px 0}
+    .stars svg{width:16px;height:16px;fill:var(--star)}
+    .gcard .body{padding:12px}
+    .gcard small{color:var(--muted)}
 
     /* FAQ */
     .faq{margin:3rem auto}
@@ -148,19 +166,7 @@
     .carousel-dots{display:none !important;}
     .card .pad.service-link { display:block; border-top:1px solid var(--line); }
 
-    /* === Before/After compare slider === */
-    .compare{position:relative;max-width:var(--max);margin:2.5rem auto;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;background:var(--panel)}
-    .compare__wrap{position:relative;aspect-ratio:16/9;overflow:hidden}
-    .compare img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-    .compare__after{clip-path:inset(0 50% 0 0)} /* start 50/50 */
-    .compare__handle{position:absolute;left:50%;top:0;bottom:0;width:2px;background:var(--ink);opacity:.85;z-index:3}
-    .compare__knob{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:34px;height:34px;border-radius:50%;background:var(--ink);color:var(--bg);display:grid;place-items:center;font-weight:700;z-index:4;border:1px solid var(--line)}
-    .compare input[type="range"]{position:absolute;inset:0;z-index:5;appearance:none;background:transparent}
-    .compare input[type="range"]::-webkit-slider-thumb{appearance:none;width:0;height:0}
-    .compare input[type="range"]::-moz-range-thumb{width:0;height:0;border:0}
-    .compare .pad{padding:1rem}
-
-    /* === Floating theme toggle === */
+    /* Floating theme toggle */
     .theme-toggle{
       position:fixed;right:14px;bottom:14px;z-index:60;
       width:44px;height:44px;border-radius:999px;border:1px solid var(--line);
@@ -228,24 +234,6 @@
         <div class="stack" style="margin-top:1rem">
           <a class="pill pill--solid" href="/about.html">About</a>
           <a class="pill pill--ghost" href="tel:15136684382">Call Us</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- Before/After Slider -->
-    <section class="container">
-      <div class="compare">
-        <div class="compare__wrap" data-compare>
-          <!-- Swap these two file names to your actual assets -->
-          <img src="/assets/brickbefore.webp" alt="Before">
-          <img class="compare__after" src="/assets/brickafter.webp" alt="After" data-after>
-          <div class="compare__handle" data-handle></div>
-          <div class="compare__knob" aria-hidden="true">↔</div>
-          <input type="range" min="0" max="100" value="50" aria-label="Slide to compare before and after" data-range>
-        </div>
-        <div class="pad">
-          <h3 style="margin:.2rem 0">Before ↔ After</h3>
-          <p class="lead">Slide to see the difference a DuraHaus finish makes.</p>
         </div>
       </div>
     </section>
@@ -370,19 +358,90 @@
         </div>
 
       </div>
-    </section>
 
-    <!-- Reviews -->
-    <section class="container" style="margin-top:2rem">
-      <h2 style="margin-bottom:.6rem">What Homeowners Say</h2>
-      <div class="grid" style="grid-template-columns:repeat(3,1fr);gap:18px">
-        <div class="card"><div class="pad"><strong>“On time, neat, and the results are gorgeous.”</strong><p class="lead">— K.M., West Chester</p></div></div>
-        <div class="card"><div class="pad"><strong>“Fair price and the prep work was next level.”</strong><p class="lead">— A.B., Fairfield</p></div></div>
-        <div class="card"><div class="pad"><strong>“Would recommend DuraHaus to anyone.”</strong><p class="lead">— T.S., Liberty Twp</p></div></div>
+      <!-- And more pill -->
+      <div class="container" style="text-align:center;margin-top:1rem">
+        <a class="pill pill--ghost" href="/services.html#more">And more →</a>
       </div>
     </section>
 
-    <!-- Service Areas (Butler, Hamilton, Warren only) -->
+    <!-- Reviews (Google style) -->
+    <section class="container reviews">
+      <div class="ghead">
+        <span class="glogo">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#1a73e8" d="M21.35 11.1h-9.18v2.98h5.27c-.23 1.42-1.59 4.16-5.27 4.16-3.17 0-5.76-2.62-5.76-5.85s2.59-5.85 5.76-5.85c1.81 0 3.02.77 3.72 1.43l2.54-2.46C16.83 3.73 15 2.8 12.17 2.8 6.93 2.8 2.7 7.03 2.7 12.29s4.23 9.49 9.47 9.49c5.46 0 9.07-3.84 9.07-9.25 0-.62-.07-1.1-.16-1.43z"/></svg>
+          Google Reviews
+        </span>
+        <span class="pill" style="margin-left:auto">5.0 ★★★★★</span>
+      </div>
+
+      <div class="grid">
+        <div class="gcard">
+          <div class="top">
+            <span class="avatar"><img src="/assets/rev1.webp" alt=""></span>
+            <div>
+              <div class="gname">K. Moore</div>
+              <div class="stars">
+                <svg viewBox="0 0 24 24"><path d="M12 17.3l6.18 3.7-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                <svg viewBox="0 0 24 24"><path d="M12 17.3l6.18 3.7-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                <svg viewBox="0 0 24 24"><path d="M12 17.3l6.18 3.7-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                <svg viewBox="0 0 24 24"><path d="M12 17.3l6.18 3.7-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                <svg viewBox="0 0 24 24"><path d="M12 17.3l6.18 3.7-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+              </div>
+              <small>Interior repaint • West Chester</small>
+            </div>
+            <span class="gbadge">Google</span>
+          </div>
+          <div class="body">
+            “On time, neat, and the results are gorgeous. Communication was clear the whole way.”
+          </div>
+        </div>
+
+        <div class="gcard">
+          <div class="top">
+            <span class="avatar"><img src="/assets/rev2.webp" alt=""></span>
+            <div>
+              <div class="gname">A. Baker</div>
+              <div class="stars">
+                <svg viewBox="0 0 24 24"><path d="M12 17.3l6.18 3.7-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                <svg viewBox="0 0 24 24"><path d="M12 17.3l6.18 3.7-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                <svg viewBox="0 0 24 24"><path d="M12 17.3l6.18 3.7-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                <svg viewBox="0 0 24 24"><path d="M12 17.3l6.18 3.7-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                <svg viewBox="0 0 24 24"><path d="M12 17.3l6.18 3.7-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+              </div>
+              <small>Exterior + wood repair • Fairfield</small>
+            </div>
+            <span class="gbadge">Google</span>
+          </div>
+          <div class="body">
+            “Fair price and the prep work was next level. House looks brand new.”
+          </div>
+        </div>
+
+        <div class="gcard">
+          <div class="top">
+            <span class="avatar"><img src="/assets/rev3.webp" alt=""></span>
+            <div>
+              <div class="gname">T. Sanchez</div>
+              <div class="stars">
+                <svg viewBox="0 0 24 24"><path d="M12 17.3l6.18 3.7-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                <svg viewBox="0 0 24 24"><path d="M12 17.3l6.18 3.7-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                <svg viewBox="0 0 24 24"><path d="M12 17.3l6.18 3.7-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                <svg viewBox="0 0 24 24"><path d="M12 17.3l6.18 3.7-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                <svg viewBox="0 0 24 24"><path d="M12 17.3l6.18 3.7-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+              </div>
+              <small>Cabinets + enamel • Liberty Twp</small>
+            </div>
+            <span class="gbadge">Google</span>
+          </div>
+          <div class="body">
+            “Would recommend DuraHaus to anyone. Cabinets feel factory finished.”
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Service Areas -->
     <section class="container" style="margin-top:2rem">
       <h2 style="margin-bottom:.6rem">Service Areas</h2>
       <div class="grid" style="grid-template-columns:repeat(3,1fr);gap:18px">
@@ -480,7 +539,6 @@
     </section>
   </main>
 
-  <!-- Footer -->
   <footer>
     <div class="container foot">
       <small>© <span id="y"></span> DuraHaus Painting & Construction. All rights reserved.</small>
@@ -489,32 +547,13 @@
 
   <!-- Floating theme toggle -->
   <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark or light theme" title="Toggle theme">
-    <!-- icon swapped by JS for a11y; initial is moon -->
     <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
   </button>
 
   <script>
     document.getElementById('y').textContent = new Date().getFullYear();
 
-    // === Compare slider ===
-    (function(){
-      const wrap = document.querySelector('[data-compare]');
-      if(!wrap) return;
-      const range = wrap.querySelector('[data-range]');
-      const after = wrap.querySelector('[data-after]');
-      const handle = wrap.querySelector('[data-handle]');
-      const knob = wrap.querySelector('.compare__knob');
-      function setSplit(v){
-        const pct = Math.max(0, Math.min(100, v));
-        after.style.clipPath = `inset(0 ${100-pct}% 0 0)`;
-        handle.style.left = pct + '%';
-        knob.style.left = pct + '%';
-      }
-      range.addEventListener('input', e=> setSplit(e.target.value));
-      setSplit(range.value);
-    })();
-
-    // === Carousel (uses viewport width so swipe works on every slide) ===
+    // === Carousel (viewport-based swipe + proper pointer release) ===
     (function(){
       const carousels = document.querySelectorAll('[data-carousel]');
       carousels.forEach(c=>{
@@ -533,7 +572,7 @@
           dots.appendChild(b);
         });
 
-        let i=0, startX=0, dragX=0, dragging=false;
+        let i=0, startX=0, dragX=0, dragging=false, activePointerId=null;
         const viewW = () => c.getBoundingClientRect().width;
 
         const clamp = n => Math.max(0, Math.min(slides.length-1, n));
@@ -555,7 +594,7 @@
 
         const usePointer = 'PointerEvent' in window;
         if (usePointer){
-          track.addEventListener('pointerdown', onPointerDown);
+          track.addEventListener('pointerdown', onPointerDown, {passive:false});
           track.querySelectorAll('img').forEach(img=> img.draggable=false);
         }else{
           track.addEventListener('touchstart', onStart, {passive:true});
@@ -564,26 +603,29 @@
 
         function onPointerDown(e){
           if (e.pointerType==='mouse' && e.button!==0) return;
-          dragging = true; startX = e.clientX; dragX=0;
-          track.setPointerCapture?.(e.pointerId);
+          e.preventDefault();
+          dragging = true; startX = e.clientX; dragX=0; activePointerId=e.pointerId;
+          track.setPointerCapture?.(activePointerId);
           document.addEventListener('pointermove', onPointerMove, {passive:false});
           document.addEventListener('pointerup', onPointerUp);
           document.addEventListener('pointercancel', onPointerUp);
         }
         function onPointerMove(e){
-          if(!dragging) return;
+          if(!dragging || e.pointerId!==activePointerId) return;
           dragX = e.clientX - startX;
           track.style.transition='none';
           const pct = (dragX / viewW()) * 100;
           track.style.transform = `translateX(calc(${i * -100}% + ${pct}%))`;
           e.preventDefault?.();
         }
-        function onPointerUp(){
+        function onPointerUp(e){
+          if(e && activePointerId!=null && e.pointerId!==activePointerId) return;
           if(!dragging) return;
           track.style.transition='';
           const threshold = viewW() * 0.15;
           Math.abs(dragX) > threshold ? (dragX<0 ? nextSlide() : prevSlide()) : update();
-          dragging=false;
+          if(activePointerId!=null) track.releasePointerCapture?.(activePointerId);
+          dragging=false; activePointerId=null;
           document.removeEventListener('pointermove', onPointerMove);
           document.removeEventListener('pointerup', onPointerUp);
           document.removeEventListener('pointercancel', onPointerUp);
