@@ -1,22 +1,16 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>DuraHaus — Painting and Construction</title>
   <meta name="description" content="Interior & exterior painting, cabinets, stain, concrete coatings, drywall and sealing. Clean, on-time, built to perform.">
-  <!-- hero preload (rewritten below for /durahaus-test/) -->
-  <link id="preHero" rel="preload" as="image" href="/assets/stock-hero.webp">
+  <link rel="preload" as="image" href="/assets/stock-hero.webp">
   <style>
     :root{
       --bg:#0a0a0a; --panel:#101010; --ink:#ffffff; --muted:#bdbdbd;
       --line:#1a1a1a; --max:1120px; --r:14px; --gap:28px;
     }
-    /* Light mode (toggled via html[data-theme="light"]) */
-    html[data-theme="light"]{
-      --bg:#ffffff; --panel:#f6f6f7; --ink:#111; --muted:#6b7280; --line:#e5e7eb;
-    }
-
     *{box-sizing:border-box} html,body{height:100%}
     body{margin:0;background:var(--bg);color:var(--ink);
       font:16px/1.55 ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;
@@ -29,7 +23,6 @@
     /* Header */
     header{position:sticky;top:0;z-index:50;background:rgba(10,10,10,.92);
       backdrop-filter:saturate(140%) blur(8px);border-bottom:1px solid var(--line)}
-    html[data-theme="light"] header{background:rgba(255,255,255,.88)}
     .nav{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:12px 0}
     .brand{display:flex;align-items:center;gap:14px;min-width:0}
     .brand picture{display:block;line-height:0}
@@ -40,8 +33,9 @@
     .pill{padding:.5rem .8rem;border:1px solid var(--line);border-radius:999px;font-size:14px}
     .pill--solid{background:#fff;color:#000;border-color:#fff;font-weight:700}
     .pill--ghost{background:transparent}
+    .cta{background:#fff;color:#000;border-color:#fff;font-weight:700}
     .iconbtn{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border:1px solid var(--line);border-radius:999px}
-    .iconbtn svg{width:18px;height:18px;fill:currentColor}
+    .iconbtn svg{width:18px;height:18px;fill:#fff}
     @media (max-width:600px){
       .nav{padding:10px 0}
       .brand img{height:44px}
@@ -49,9 +43,14 @@
       .iconbtn{width:38px;height:38px}
     }
 
+    /* Make white logo appear black in light mode (no asset swap needed) */
+    html[data-theme="light"] .brand img{
+      filter: invert(1) grayscale(1) brightness(0.12) contrast(1.2);
+      background:transparent !important;
+    }
+
     /* Hero */
     .hero{display:grid;grid-template-columns:1fr;background:#0c0c0c;border-bottom:1px solid var(--line)}
-    html[data-theme="light"] .hero{background:#fafafa}
     .hero__media{position:relative;aspect-ratio:16/9;max-height:70vh;overflow:hidden}
     .hero__media img{width:100%;height:100%;object-fit:cover;opacity:.95;}
     .hero__copy{padding:3rem 0}
@@ -73,13 +72,14 @@
     @media (min-width:900px){.grid{grid-template-columns:repeat(3,1fr)}}
 
     /* Why */
-    .faq, .why{margin:3rem auto}
+    .why{margin:3rem auto 0}
     .why .cols{display:grid;gap:var(--gap)}
     @media (min-width:900px){.why .cols{grid-template-columns:repeat(3,1fr)}}
     .why .tile{border:1px solid var(--line);border-radius:var(--r);padding:1.2rem;background:var(--panel)}
     .why h3{margin:.1rem 0 .4rem;font-size:1.1rem}
 
     /* FAQ */
+    .faq{margin:3rem auto}
     .faq details{border:1px solid var(--line);border-radius:12px;padding:.9rem 1.1rem;background:var(--panel)}
     .faq details+details{margin-top:12px}
     .faq summary{cursor:pointer;list-style:none;font-weight:700}
@@ -104,12 +104,11 @@
     .foot{display:grid;gap:18px;align-items:center;padding:1.2rem 0;grid-template-columns:1fr}
     small{color:var(--muted)}
 
-    /* Contact strip (above footer) */
+    /* Contact strip */
     .contactbar{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:#0e0e10}
-    html[data-theme="light"] .contactbar{background:#f3f4f6}
     .contactbar .row{display:flex;gap:16px;align-items:center;justify-content:flex-start;flex-wrap:wrap;margin:0;padding:14px 0}
-    .contactbar a{display:inline-flex;align-items:center;gap:8px;color:var(--ink);opacity:.9;font-size:15px}
-    .contactbar a:hover{opacity:1}
+    .contactbar a{display:inline-flex;align-items:center;gap:8px;color:#d9d9db;font-size:15px}
+    .contactbar a:hover{color:#fff}
     .contactbar svg{width:20px;height:20px;fill:currentColor}
 
     /* Sticky tidy footer for short pages */
@@ -130,43 +129,7 @@
     .carousel-btn.prev{left:8px}.carousel-btn.next{right:8px}
     .carousel-btn:hover{background:rgba(0,0,0,.65)}
     .carousel-dots{display:none !important;}
-
-    /* Make the text block the only clickable area under the image */
     .card .pad.service-link { display:block; border-top:1px solid var(--line); }
-
-    /* === Before/After compare === */
-    .compare{border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--panel);margin:2.2rem 0}
-    .compare__wrap{position:relative;aspect-ratio:16/9}
-    .compare__wrap img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-    .compare__after{clip-path:inset(0 50% 0 0)}
-    .compare__bar{position:absolute;top:0;bottom:0;width:2px;background:#fff;left:50%;z-index:3}
-    .compare__knob{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:36px;height:36px;border-radius:50%;background:#fff;color:#000;display:grid;place-items:center;font-weight:700;z-index:4;border:1px solid #0006}
-    .compare input[type="range"]{position:absolute;inset:0;appearance:none;background:transparent;z-index:5}
-    .compare input[type="range"]::-webkit-slider-thumb{appearance:none;width:0;height:0}
-    .compare input[type="range"]::-moz-range-thumb{width:0;height:0;border:0}
-    .compare .pad{padding:1rem}
-
-    /* === Reviews === */
-    .reviews{display:grid;gap:16px;grid-template-columns:1fr}
-    @media (min-width:900px){.reviews{grid-template-columns:repeat(3,1fr)}}
-    .review{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:14px}
-    .review .who{font-weight:700}
-    .review .tag{font-size:.85rem;opacity:.8}
-
-    /* === Areas Served === */
-    .areas{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(160px,1fr))}
-    .areas .city{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:.7rem 1rem}
-
-    /* === Theme toggle (bottom-right) === */
-    .theme-toggle{
-      position:fixed;right:14px;bottom:14px;z-index:90;
-      display:inline-flex;align-items:center;gap:10px;
-      background:var(--panel);color:var(--ink);
-      border:1px solid var(--line);border-radius:999px;
-      padding:.55rem .8rem; box-shadow:0 8px 24px rgba(0,0,0,.18);
-    }
-    .theme-toggle button{border:0;background:#000;color:#fff;border-radius:999px;padding:.5rem .8rem;font-weight:700;cursor:pointer}
-    html[data-theme="light"] .theme-toggle button{background:#111;color:#fff}
   </style>
 </head>
 <body>
@@ -200,7 +163,7 @@
     <!-- Hero -->
     <section class="hero">
       <div class="hero__media">
-        <img id="heroImg" src="/assets/stock-hero.webp" alt="Cincinnati high-end home exterior" loading="eager" decoding="async">
+        <img src="/assets/stock-hero.webp" alt="Cincinnati high-end home exterior">
       </div>
       <div class="hero__copy container">
         <h1>Pro Services. Pro Results.<br>The DuraHaus Standard </h1>
@@ -216,7 +179,7 @@
     <!-- Mission -->
     <section class="container row">
       <div class="card">
-        <img src="/assets/interior4.webp" alt="Interior detail" data-auto>
+        <img src="/assets/interior4.webp" alt="Interior detail">
       </div>
       <div>
         <h2>Protecting What’s Built. <br>Enhancing What’s Seen.</h2>
@@ -230,22 +193,6 @@
       </div>
     </section>
 
-    <!-- Before/After -->
-    <section class="container">
-      <div class="compare">
-        <div class="compare__wrap" data-compare data-before="brickbefore.webp" data-after="brickafter.webp">
-          <img data-role="before" alt="Before"><img class="compare__after" data-role="after" alt="After">
-          <div class="compare__bar" data-bar></div>
-          <div class="compare__knob" aria-hidden="true">↔</div>
-          <input type="range" min="0" max="100" value="50" aria-label="Slide to compare">
-        </div>
-        <div class="pad">
-          <h3 style="margin:.2rem 0">Before ↔ After</h3>
-          <p class="lead">Slide to see the difference our prep and finish systems make.</p>
-        </div>
-      </div>
-    </section>
-
     <!-- Services grid -->
     <section class="container" style="margin-top:2rem">
       <div class="grid">
@@ -255,16 +202,16 @@
           <div class="carousel" data-carousel>
             <button class="carousel-btn prev" aria-label="Previous image" data-prev>‹</button>
             <div class="carousel-track" data-track>
-              <img src="/assets/interior8.webp" alt="Interior painting 1" data-auto>
-              <img src="/assets/interior11.webp" alt="Interior painting 2" data-auto>
-              <img src="/assets/interior1.webp" alt="Interior painting 3" data-auto>
+              <img src="/assets/interior8.webp" alt="Interior painting 1">
+              <img src="/assets/interior11.webp" alt="Interior painting 2">
+              <img src="/assets/interior1.webp" alt="Interior painting 3">
             </div>
             <button class="carousel-btn next" aria-label="Next image" data-next>›</button>
             <div class="carousel-dots" data-dots></div>
           </div>
           <a class="pad service-link" href="/services.html#interior">
             <h3 style="margin:0 0 .25rem">Interior Painting</h3>
-            <p>Rooms, ceilings, trim, and doors. We protect floors, fix pops and seams, sand and caulk joints, then prime and finish with pro enamels for a tight, uniform result.</p>
+            <p>Walls, ceilings, trim, cabinetry, accent walls, etc.</p>
           </a>
         </div>
 
@@ -273,16 +220,16 @@
           <div class="carousel" data-carousel>
             <button class="carousel-btn prev" aria-label="Previous image" data-prev>‹</button>
             <div class="carousel-track" data-track>
-              <img src="/assets/exterior7.webp" alt="Exterior painting 1" data-auto>
-              <img src="/assets/exterior4.webp" alt="Exterior painting 2" data-auto>
-              <img src="/assets/exterior3.webp" alt="Exterior painting 3" data-auto>
+              <img src="/assets/exterior7.webp" alt="Exterior painting 1">
+              <img src="/assets/exterior4.webp" alt="Exterior painting 2">
+              <img src="/assets/exterior3.webp" alt="Exterior painting 3">
             </div>
             <button class="carousel-btn next" aria-label="Next image" data-next>›</button>
             <div class="carousel-dots" data-dots></div>
           </div>
           <a class="pad service-link" href="/services.html#exterior">
             <h3 style="margin:0 0 .25rem">Exterior Painting</h3>
-            <p>Wash, scrape/sand, spot-prime, and re-caulk where needed; then brush/roll/spray high-build coatings matched to your siding (wood, fiber-cement, aluminum, or vinyl).</p>
+            <p>Premium prep and coatings that handle Midwest weather.</p>
           </a>
         </div>
 
@@ -291,16 +238,16 @@
           <div class="carousel" data-carousel>
             <button class="carousel-btn prev" aria-label="Previous image" data-prev>‹</button>
             <div class="carousel-track" data-track>
-              <img src="/assets/stock-concrete.webp" alt="Concrete coatings 1" data-auto>
-              <img src="/assets/concrete1.webp" alt="Concrete coatings 2" data-auto>
-              <img src="/assets/concrete3.webp" alt="Concrete coatings 3" data-auto>
+              <img src="/assets/stock-concrete.webp" alt="Concrete coatings 1">
+              <img src="/assets/concrete1.webp" alt="Concrete coatings 2">
+              <img src="/assets/concrete3.webp" alt="Concrete coatings 3">
             </div>
             <button class="carousel-btn next" aria-label="Next image" data-next>›</button>
             <div class="carousel-dots" data-dots></div>
           </div>
           <a class="pad service-link" href="/services.html#concrete">
             <h3 style="margin:0 0 .25rem">Concrete Coatings</h3>
-            <p>Garages, basements, patios. We profile the slab, repair cracks, then install epoxy/urethane or polyaspartic systems for abrasion and chemical resistance.</p>
+            <p>Garage, patios, and basements — durable and easy to clean.</p>
           </a>
         </div>
 
@@ -316,16 +263,16 @@
           <div class="carousel" data-carousel>
             <button class="carousel-btn prev" aria-label="Previous image" data-prev>‹</button>
             <div class="carousel-track" data-track>
-              <img src="/assets/cabinets1.webp" alt="Cabinet refinishing 1" data-auto>
-              <img src="/assets/cabinets2.webp" alt="Cabinet refinishing 2" data-auto>
-              <img src="/assets/stock-cabinets.webp" alt="Cabinet refinishing 3" data-auto>
+              <img src="/assets/cabinets1.webp" alt="Cabinet refinishing 1">
+              <img src="/assets/cabinets2.webp" alt="Cabinet refinishing 2">
+              <img src="/assets/stock-cabinets.webp" alt="Cabinet refinishing 3">
             </div>
             <button class="carousel-btn next" aria-label="Next image" data-next>›</button>
             <div class="carousel-dots" data-dots></div>
           </div>
           <a class="pad service-link" href="/services.html#cabinets">
-            <h3 style="margin:0 0 .25rem">Cabinet Painting / Refinishing</h3>
-            <p>Doors/drawers removed, degreased, sanded & deglossed, bonded with pro primer, then sprayed enamel topcoats in a clean zone for factory-smooth durability.</p>
+            <h3 style="margin:0 0 .25rem">Cabinet Refinishing</h3>
+            <p>Factory-smooth primers and hard-wearing topcoats.</p>
           </a>
         </div>
 
@@ -334,16 +281,16 @@
           <div class="carousel" data-carousel>
             <button class="carousel-btn prev" aria-label="Previous image" data-prev>‹</button>
             <div class="carousel-track" data-track>
-              <img src="/assets/stock-stain.webp" alt="Staining and wood care 1" data-auto>
-              <img src="/assets/stain1.webp" alt="Staining and wood care 2" data-auto>
-              <img src="/assets/stain2.webp" alt="Staining and wood care 3" data-auto>
+              <img src="/assets/stock-stain.webp" alt="Staining and wood care 1">
+              <img src="/assets/stain1.webp" alt="Staining and wood care 2">
+              <img src="/assets/stain2.webp" alt="Staining and wood care 3">
             </div>
             <button class="carousel-btn next" aria-label="Next image" data-next>›</button>
             <div class="carousel-dots" data-dots></div>
           </div>
           <a class="pad service-link" href="/services.html#stain">
-            <h3 style="margin:0 0 .25rem">Staining & Wood Finishes</h3>
-            <p>Decks, rails, doors, beams. Full clean/neutralize, moisture check, sand to open grain, then penetrating stain or film-build finish based on use and UV.</p>
+            <h3 style="margin:0 0 .25rem">Staining & Wood Care</h3>
+            <p>Decks, doors, and rails prepped and finished right.</p>
           </a>
         </div>
 
@@ -352,61 +299,19 @@
           <div class="carousel" data-carousel>
             <button class="carousel-btn prev" aria-label="Previous image" data-prev>‹</button>
             <div class="carousel-track" data-track>
-              <img src="/assets/stock-drywall.webp" alt="Drywall repair 1" data-auto>
-              <img src="/assets/drywall2.webp" alt="Drywall repair 2" data-auto>
-              <img src="/assets/drywall1.webp" alt="Drywall repair 3" data-auto>
+              <img src="/assets/stock-drywall.webp" alt="Drywall repair 1">
+              <img src="/assets/drywall2.webp" alt="Drywall repair 2">
+              <img src="/assets/drywall1.webp" alt="Drywall repair 3">
             </div>
             <button class="carousel-btn next" aria-label="Next image" data-next>›</button>
             <div class="carousel-dots" data-dots></div>
           </div>
           <a class="pad service-link" href="/services.html#drywall">
-            <h3 style="margin:0 0 .25rem">Drywall Repair</h3>
-            <p>From small holes to skim-coating rooms. Tape, mud, sand, and prime for a uniform surface that won’t telegraph through the finish coat.</p>
+            <h3 style="margin:0 0 .25rem">Drywall & Repair</h3>
+            <p>Repairs and resurfacing for flat, paint-ready surfaces.</p>
           </a>
         </div>
 
-      </div>
-    </section>
-
-    <!-- Areas Served -->
-    <section class="container" id="service-areas" style="margin:2.5rem auto">
-      <h2 style="margin:0 0 .6rem">Areas Served</h2>
-      <p class="lead">We serve Hamilton and nearby communities in Butler &amp; Warren Counties.</p>
-      <div class="areas" aria-label="Service areas">
-        <div class="city">Hamilton</div>
-        <div class="city">Fairfield</div>
-        <div class="city">West Chester</div>
-        <div class="city">Liberty Township</div>
-        <div class="city">Monroe</div>
-        <div class="city">Middletown</div>
-        <div class="city">Oxford</div>
-        <div class="city">Trenton</div>
-        <div class="city">Lebanon</div>
-        <div class="city">Mason</div>
-        <div class="city">South Lebanon</div>
-        <div class="city">Blue Ash</div>
-        <div class="city">Sharonville</div>
-        <div class="city">Colerain Township</div>
-        <div class="city">Cincinnati</div>
-      </div>
-    </section>
-
-    <!-- Reviews -->
-    <section class="container" style="margin:2.5rem auto">
-      <h2 style="margin:0 0 .6rem">What Homeowners Say</h2>
-      <div class="reviews">
-        <div class="review">
-          <div class="who">Rosita L. <span class="tag">via Facebook</span></div>
-          <p>“DuraHaus Painting and Construction is a trusting, reliable company that will provide quality work.”</p>
-        </div>
-        <div class="review">
-          <div class="who">Jacqueline M. <span class="tag">via Facebook</span></div>
-          <p>“Always our go-to for home projects! Clean, caring when working inside the home, and excellent quality work!”</p>
-        </div>
-        <div class="review">
-          <div class="who">Christian M. <span class="tag">via Facebook</span></div>
-          <p>“Highly recommend DuraHaus! High caliber, professional workmanship, excellent communication, and fair pricing.”</p>
-        </div>
       </div>
     </section>
 
@@ -424,12 +329,6 @@
       </details>
       <details><summary>Are you insured and do you provide a warranty?</summary>
         <div class="a">Yes—fully insured. We include a workmanship warranty with every project. Details are listed on your written quote.</div>
-      </details>
-      <details><summary>Can you help with colors and product selection?</summary>
-        <div class="a">Yes—we advise on sheen, product lines, and color placement to balance durability and design. We can arrange professional color consults if desired.</div>
-      </details>
-      <details><summary>How do you keep interiors clean while working?</summary>
-        <div class="a">We isolate work zones, lay floor protection, mask with plastic and tape, run dust control where needed, and clean daily.</div>
       </details>
     </section>
 
@@ -449,10 +348,10 @@
       </div>
     </section>
 
-    <!-- Pre-footer: stamp + mini nav -->
+    <!-- Pre-footer -->
     <div class="container prefooter">
       <div class="stampwrap">
-        <img src="/assets/seal-white.PNG" alt="DuraHaus stamp (white)" data-auto>
+        <img src="/assets/seal-white.PNG" alt="DuraHaus stamp (white)">
       </div>
       <nav class="menu" aria-label="Footer quick links">
         <a href="/services.html" class="pill">Services</a>
@@ -465,7 +364,7 @@
       </nav>
     </div>
 
-    <!-- Contact strip (phone, email, socials) -->
+    <!-- Contact strip -->
     <section class="contactbar">
       <div class="container row">
         <a href="tel:+15136684382" aria-label="Call">
@@ -495,128 +394,88 @@
     </div>
   </footer>
 
-  <!-- bottom-right theme toggle -->
-  <div class="theme-toggle" aria-live="polite">
-    <span id="themeLabel">Light</span>
-    <button id="themeToggle" type="button">Toggle</button>
-  </div>
-
   <script>
-    // Year
     document.getElementById('y').textContent = new Date().getFullYear();
 
-    // ===== Path helper so /durahaus-test/ works =====
-    const IS_TEST = location.pathname.includes('/durahaus-test/');
-    const ASSET_BASE = IS_TEST ? '/durahaus-test/assets/' : '/assets/';
-    // fix preload + hero
-    document.getElementById('preHero').href = ASSET_BASE + 'stock-hero.webp';
-    document.getElementById('heroImg').src = ASSET_BASE + 'stock-hero.webp';
-    // rewrite any <img data-auto src="/assets/...">
-    document.querySelectorAll('img[data-auto]').forEach(img=>{
-      const name = img.getAttribute('src').split('/').pop();
-      img.src = ASSET_BASE + name;
-    });
-
-    // === Compare slider ===
-    (function(){
-      document.querySelectorAll('[data-compare]').forEach(wrap=>{
-        const before = wrap.querySelector('[data-role="before"]');
-        const after  = wrap.querySelector('[data-role="after"]');
-        const bar    = wrap.querySelector('[data-bar]');
-        const range  = wrap.querySelector('input[type="range"]');
-        before.src = ASSET_BASE + wrap.dataset.before;
-        after.src  = ASSET_BASE + wrap.dataset.after;
-        const set = v => {
-          v=Math.max(0,Math.min(100,v));
-          after.style.clipPath=`inset(0 ${100-v}% 0 0)`;
-          bar.style.left=v+'%'; range.value=v;
-        };
-        const pct = x=>{
-          const r=wrap.getBoundingClientRect();
-          return ((x-r.left)/r.width)*100;
-        };
-        wrap.addEventListener('pointerdown',e=>set(pct(e.clientX)));
-        wrap.addEventListener('pointermove',e=>{ if(e.buttons) set(pct(e.clientX)); });
-        wrap.addEventListener('touchstart',e=>set(pct(e.touches[0].clientX)),{passive:true});
-        wrap.addEventListener('touchmove', e=>set(pct(e.touches[0].clientX)),{passive:true});
-        range.addEventListener('input',e=>set(+e.target.value));
-        set(50);
-      });
-    })();
-
-    // === Carousel (Pointer Events with touch/mouse fallback) ===
+    // === Carousel (uses viewport width so swipe works on every slide) ===
     (function(){
       const carousels = document.querySelectorAll('[data-carousel]');
 
-      function attachPointer(c){
+      carousels.forEach(c=>{
         const track = c.querySelector('[data-track]');
         const slides = [...track.children];
         const prev = c.querySelector('[data-prev]');
         const next = c.querySelector('[data-next]');
-        const dotsWrap = c.querySelector('[data-dots]');
-        slides.forEach((_, idx)=>{
-          const b = document.createElement('button');
-          b.type = 'button';
-          b.setAttribute('aria-label', 'Go to slide '+(idx+1));
-          b.addEventListener('click', (e)=>{ e.stopPropagation(); go(idx); });
-          dotsWrap.appendChild(b);
+        const dots = c.querySelector('[data-dots]');
+
+        dots.innerHTML='';
+        slides.forEach((_,i)=>{
+          const b=document.createElement('button');
+          b.type='button';
+          b.setAttribute('aria-label','Go to slide '+(i+1));
+          b.addEventListener('click',e=>{e.stopPropagation(); go(i);});
+          dots.appendChild(b);
         });
 
-        let i = 0, startX = 0, dragX = 0, dragging = false;
+        let i=0, startX=0, dragX=0, dragging=false;
+        const viewW = () => c.getBoundingClientRect().width;
+
+        const clamp = n => Math.max(0, Math.min(slides.length-1, n));
+        const go = n => { i = clamp(n); update(); };
+        const nextSlide = () => go(i+1);
+        const prevSlide = () => go(i-1);
 
         function update(){
+          track.style.transition='';
           track.style.transform = `translateX(${i * -100}%)`;
-          [...dotsWrap.children].forEach((d, di)=> d.setAttribute('aria-current', di===i));
+          [...dots.children].forEach((d,di)=> d.setAttribute('aria-current', di===i));
           prev.style.visibility = (i===0)?'hidden':'visible';
           next.style.visibility = (i===slides.length-1)?'hidden':'visible';
         }
-        const clamp=n=>Math.max(0,Math.min(slides.length-1,n));
-        const go=n=>{ i = clamp(n); update(); };
-        const nextSlide=()=>go(i+1);
-        const prevSlide=()=>go(i-1);
 
-        [prev, next, dotsWrap, track].forEach(el=>{
-          el && el.addEventListener('click', ev=>ev.stopPropagation());
-        });
+        [prev,next,dots,track].forEach(el=> el.addEventListener('click',e=>e.stopPropagation()));
         prev.addEventListener('click', prevSlide);
         next.addEventListener('click', nextSlide);
 
         const usePointer = 'PointerEvent' in window;
-        if (usePointer) {
+        if (usePointer){
           track.addEventListener('pointerdown', onPointerDown);
-          track.querySelectorAll('img').forEach(img=> img.draggable = false);
-        } else {
+          track.querySelectorAll('img').forEach(img=> img.draggable=false);
+        }else{
           track.addEventListener('touchstart', onStart, {passive:true});
           track.addEventListener('mousedown', onStart);
         }
 
         function onPointerDown(e){
-          if (e.pointerType === 'mouse' && e.button !== 0) return;
-          dragging = true; startX = e.clientX; dragX = 0;
+          if (e.pointerType==='mouse' && e.button!==0) return;
+          dragging = true; startX = e.clientX; dragX=0;
           track.setPointerCapture?.(e.pointerId);
-          document.addEventListener('pointermove', onPointerMove);
+          document.addEventListener('pointermove', onPointerMove, {passive:false});
           document.addEventListener('pointerup', onPointerUp);
+          document.addEventListener('pointercancel', onPointerUp);
         }
         function onPointerMove(e){
           if(!dragging) return;
           dragX = e.clientX - startX;
-          track.style.transition = 'none';
-          const pct = (dragX / track.clientWidth) * 100;
+          track.style.transition='none';
+          const pct = (dragX / viewW()) * 100;
           track.style.transform = `translateX(calc(${i * -100}% + ${pct}%))`;
+          e.preventDefault?.();
         }
         function onPointerUp(){
           if(!dragging) return;
-          track.style.transition = '';
-          const threshold = track.clientWidth * 0.15;
-          if (Math.abs(dragX) > threshold){ dragX < 0 ? nextSlide() : prevSlide(); }
-          else update();
-          dragging = false;
+          track.style.transition='';
+          const threshold = viewW() * 0.15;
+          Math.abs(dragX) > threshold ? (dragX<0 ? nextSlide() : prevSlide()) : update();
+          dragging=false;
           document.removeEventListener('pointermove', onPointerMove);
           document.removeEventListener('pointerup', onPointerUp);
+          document.removeEventListener('pointercancel', onPointerUp);
         }
 
+        // Touch/mouse fallback
         function onStart(e){
-          dragging = true; startX = getX(e); dragX = 0;
+          dragging=true; startX=getX(e); dragX=0;
           document.addEventListener('touchmove', onMove, {passive:false});
           document.addEventListener('mousemove', onMove);
           document.addEventListener('touchend', onEnd);
@@ -625,43 +484,24 @@
         function onMove(e){
           if(!dragging) return;
           dragX = getX(e) - startX;
-          track.style.transition = 'none';
-          const pct = (dragX / track.clientWidth) * 100;
+          track.style.transition='none';
+          const pct = (dragX / viewW()) * 100;
           track.style.transform = `translateX(calc(${i * -100}% + ${pct}%))`;
           e.preventDefault?.();
         }
         function onEnd(){
-          track.style.transition = '';
-          const threshold = track.clientWidth * 0.15;
-          if (Math.abs(dragX) > threshold){ dragX < 0 ? nextSlide() : prevSlide(); }
-          else update();
-          dragging = false;
+          track.style.transition='';
+          const threshold = viewW() * 0.15;
+          Math.abs(dragX) > threshold ? (dragX<0 ? nextSlide() : prevSlide()) : update();
+          dragging=false;
           document.removeEventListener('touchmove', onMove);
           document.removeEventListener('mousemove', onMove);
           document.removeEventListener('touchend', onEnd);
           document.removeEventListener('mouseup', onEnd);
         }
-        const getX=e=>(e.touches && e.touches[0]?.clientX) ?? e.clientX;
+        const getX = e => (e.touches && e.touches[0]?.clientX) ?? e.clientX;
 
         update();
-      }
-
-      carousels.forEach(attachPointer);
-    })();
-
-    // === Theme toggle ===
-    (function(){
-      const root = document.documentElement;
-      const saved = localStorage.getItem('dh-theme');
-      if(saved) root.dataset.theme = saved;
-      const label = document.getElementById('themeLabel');
-      const setLabel = ()=> label.textContent = (root.dataset.theme==='dark')?'Dark':'Light';
-      setLabel();
-      document.getElementById('themeToggle').addEventListener('click', ()=>{
-        const next = (root.dataset.theme === 'dark') ? 'light' : 'dark';
-        root.dataset.theme = next;
-        localStorage.setItem('dh-theme', next);
-        setLabel();
       });
     })();
   </script>
