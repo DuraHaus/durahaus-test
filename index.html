@@ -10,19 +10,33 @@
     :root{
       --bg:#0a0a0a; --panel:#101010; --ink:#ffffff; --muted:#bdbdbd;
       --line:#1a1a1a; --max:1120px; --r:14px; --gap:28px;
+      --brand:#ffffff; --accent:#ffffff;
     }
-    *{box-sizing:border-box} html,body{height:100%}
-    body{margin:0;background:var(--bg);color:var(--ink);
+    /* Light theme tokens */
+    html[data-theme="light"]{
+      --bg:#ffffff; --panel:#f7f7f8; --ink:#0b0b0c; --muted:#5e5e62;
+      --line:#e6e6ea; --brand:#0b0b0c; --accent:#0b0b0c;
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;background:var(--bg);color:var(--ink);
       font:16px/1.55 ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;
-      -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;}
+      -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
+    }
     a{color:inherit;text-decoration:none}
     img{display:block;width:100%;height:auto;background:#0d0d0d}
+    html[data-theme="light"] img{background:#eee}
     .brand img{background:transparent!important}
     .container{max-width:var(--max);margin:0 auto;padding:0 20px}
 
     /* Header */
-    header{position:sticky;top:0;z-index:50;background:rgba(10,10,10,.92);
-      backdrop-filter:saturate(140%) blur(8px);border-bottom:1px solid var(--line)}
+    header{
+      position:sticky;top:0;z-index:50;background:rgba(10,10,10,.92);
+      backdrop-filter:saturate(140%) blur(8px);border-bottom:1px solid var(--line)
+    }
+    html[data-theme="light"] header{background:rgba(255,255,255,.88)}
     .nav{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:12px 0}
     .brand{display:flex;align-items:center;gap:14px;min-width:0}
     .brand picture{display:block;line-height:0}
@@ -31,11 +45,11 @@
 
     .navlinks{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-left:20px}
     .pill{padding:.5rem .8rem;border:1px solid var(--line);border-radius:999px;font-size:14px}
-    .pill--solid{background:#fff;color:#000;border-color:#fff;font-weight:700}
+    .pill--solid{background:#000;color:#fff;border-color:#000;font-weight:700}
+    html[data-theme="light"] .pill--solid{background:#000;color:#fff;border-color:#000}
     .pill--ghost{background:transparent}
-    .cta{background:#fff;color:#000;border-color:#fff;font-weight:700}
     .iconbtn{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border:1px solid var(--line);border-radius:999px}
-    .iconbtn svg{width:18px;height:18px;fill:#fff}
+    .iconbtn svg{width:18px;height:18px;fill:currentColor}
     @media (max-width:600px){
       .nav{padding:10px 0}
       .brand img{height:44px}
@@ -45,12 +59,13 @@
 
     /* Make white logo appear black in light mode (no asset swap needed) */
     html[data-theme="light"] .brand img{
-      filter: invert(1) grayscale(1) brightness(0.12) contrast(1.2);
+      filter: invert(1) grayscale(1) brightness(0.14) contrast(1.3);
       background:transparent !important;
     }
 
     /* Hero */
     .hero{display:grid;grid-template-columns:1fr;background:#0c0c0c;border-bottom:1px solid var(--line)}
+    html[data-theme="light"] .hero{background:#fafafa}
     .hero__media{position:relative;aspect-ratio:16/9;max-height:70vh;overflow:hidden}
     .hero__media img{width:100%;height:100%;object-fit:cover;opacity:.95;}
     .hero__copy{padding:3rem 0}
@@ -93,6 +108,7 @@
     .prefooter{margin:3rem auto 1.5rem;display:flex;gap:22px;align-items:center;justify-content:space-between;flex-wrap:wrap}
     .prefooter .stampwrap{display:flex;align-items:center;gap:14px}
     .prefooter img{width:128px;height:auto;opacity:.95;filter:invert(1) brightness(1.6);background:transparent}
+    html[data-theme="light"] .prefooter img{filter:none;opacity:1}
     .prefooter .menu{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
     @media (max-width:720px){
       .prefooter{justify-content:center;text-align:center}
@@ -106,9 +122,10 @@
 
     /* Contact strip */
     .contactbar{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:#0e0e10}
+    html[data-theme="light"] .contactbar{background:#f6f7f8}
     .contactbar .row{display:flex;gap:16px;align-items:center;justify-content:flex-start;flex-wrap:wrap;margin:0;padding:14px 0}
-    .contactbar a{display:inline-flex;align-items:center;gap:8px;color:#d9d9db;font-size:15px}
-    .contactbar a:hover{color:#fff}
+    .contactbar a{display:inline-flex;align-items:center;gap:8px;color:var(--ink);font-size:15px}
+    .contactbar a:hover{opacity:.9}
     .contactbar svg{width:20px;height:20px;fill:currentColor}
 
     /* Sticky tidy footer for short pages */
@@ -130,6 +147,28 @@
     .carousel-btn:hover{background:rgba(0,0,0,.65)}
     .carousel-dots{display:none !important;}
     .card .pad.service-link { display:block; border-top:1px solid var(--line); }
+
+    /* === Before/After compare slider === */
+    .compare{position:relative;max-width:var(--max);margin:2.5rem auto;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;background:var(--panel)}
+    .compare__wrap{position:relative;aspect-ratio:16/9;overflow:hidden}
+    .compare img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+    .compare__after{clip-path:inset(0 50% 0 0)} /* start 50/50 */
+    .compare__handle{position:absolute;left:50%;top:0;bottom:0;width:2px;background:var(--ink);opacity:.85;z-index:3}
+    .compare__knob{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:34px;height:34px;border-radius:50%;background:var(--ink);color:var(--bg);display:grid;place-items:center;font-weight:700;z-index:4;border:1px solid var(--line)}
+    .compare input[type="range"]{position:absolute;inset:0;z-index:5;appearance:none;background:transparent}
+    .compare input[type="range"]::-webkit-slider-thumb{appearance:none;width:0;height:0}
+    .compare input[type="range"]::-moz-range-thumb{width:0;height:0;border:0}
+    .compare .pad{padding:1rem}
+
+    /* === Floating theme toggle === */
+    .theme-toggle{
+      position:fixed;right:14px;bottom:14px;z-index:60;
+      width:44px;height:44px;border-radius:999px;border:1px solid var(--line);
+      display:grid;place-items:center;background:var(--panel);color:var(--ink);
+      cursor:pointer; box-shadow:0 6px 18px rgba(0,0,0,.24);
+    }
+    .theme-toggle svg{width:20px;height:20px;fill:currentColor}
+    .theme-toggle:active{transform:scale(.98)}
   </style>
 </head>
 <body>
@@ -166,7 +205,7 @@
         <img src="/assets/stock-hero.webp" alt="Cincinnati high-end home exterior">
       </div>
       <div class="hero__copy container">
-        <h1>Pro Services. Pro Results.<br>The DuraHaus Standard </h1>
+        <h1>Pro Services. Pro Results.<br>The DuraHaus Standard</h1>
         <p class="lead">
           From interiors to exteriors, cabinets to concrete — we approach every job with care, craftsmanship, and materials built to perform. All to make your home more beautiful, more durable, and better protected against time and weather.
         </p>
@@ -189,6 +228,24 @@
         <div class="stack" style="margin-top:1rem">
           <a class="pill pill--solid" href="/about.html">About</a>
           <a class="pill pill--ghost" href="tel:15136684382">Call Us</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Before/After Slider -->
+    <section class="container">
+      <div class="compare">
+        <div class="compare__wrap" data-compare>
+          <!-- Swap these two file names to your actual assets -->
+          <img src="/assets/brickbefore.webp" alt="Before">
+          <img class="compare__after" src="/assets/brickafter.webp" alt="After" data-after>
+          <div class="compare__handle" data-handle></div>
+          <div class="compare__knob" aria-hidden="true">↔</div>
+          <input type="range" min="0" max="100" value="50" aria-label="Slide to compare before and after" data-range>
+        </div>
+        <div class="pad">
+          <h3 style="margin:.2rem 0">Before ↔ After</h3>
+          <p class="lead">Slide to see the difference a DuraHaus finish makes.</p>
         </div>
       </div>
     </section>
@@ -315,6 +372,36 @@
       </div>
     </section>
 
+    <!-- Reviews -->
+    <section class="container" style="margin-top:2rem">
+      <h2 style="margin-bottom:.6rem">What Homeowners Say</h2>
+      <div class="grid" style="grid-template-columns:repeat(3,1fr);gap:18px">
+        <div class="card"><div class="pad"><strong>“On time, neat, and the results are gorgeous.”</strong><p class="lead">— K.M., West Chester</p></div></div>
+        <div class="card"><div class="pad"><strong>“Fair price and the prep work was next level.”</strong><p class="lead">— A.B., Fairfield</p></div></div>
+        <div class="card"><div class="pad"><strong>“Would recommend DuraHaus to anyone.”</strong><p class="lead">— T.S., Liberty Twp</p></div></div>
+      </div>
+    </section>
+
+    <!-- Service Areas (Butler, Hamilton, Warren only) -->
+    <section class="container" style="margin-top:2rem">
+      <h2 style="margin-bottom:.6rem">Service Areas</h2>
+      <div class="grid" style="grid-template-columns:repeat(3,1fr);gap:18px">
+        <div class="card"><div class="pad">
+          <h3 style="margin:0 0 .4rem">Butler County</h3>
+          <p>Hamilton, Fairfield, West Chester, Liberty Township, Oxford, Trenton, Monroe, Middletown.</p>
+        </div></div>
+        <div class="card"><div class="pad">
+          <h3 style="margin:0 0 .4rem">Hamilton County</h3>
+          <p>Cincinnati (North), Colerain, Green Township, Blue Ash, Sharonville, Madeira, Reading, Evendale.</p>
+        </div></div>
+        <div class="card"><div class="pad">
+          <h3 style="margin:0 0 .4rem">Warren County</h3>
+          <p>Mason, Lebanon, Springboro, Franklin, South Lebanon, Maineville, Loveland (Warren).</p>
+        </div></div>
+      </div>
+      <p class="lead" style="margin-top:.8rem">If you’re nearby and not listed, reach out — we may be able to help.</p>
+    </section>
+
     <!-- FAQ -->
     <section class="container faq">
       <h2 style="margin-bottom:.6rem">FAQs</h2>
@@ -329,6 +416,12 @@
       </details>
       <details><summary>Are you insured and do you provide a warranty?</summary>
         <div class="a">Yes—fully insured. We include a workmanship warranty with every project. Details are listed on your written quote.</div>
+      </details>
+      <details><summary>Do you handle wood repair and caulking before paint?</summary>
+        <div class="a">Absolutely. We replace rotted trim, repair substrate, and apply premium sealants so the finish lasts.</div>
+      </details>
+      <details><summary>Can you help choose colors and sheens?</summary>
+        <div class="a">Yes—happy to recommend combinations and finishes that fit your space, lighting, and durability needs.</div>
       </details>
     </section>
 
@@ -394,13 +487,36 @@
     </div>
   </footer>
 
+  <!-- Floating theme toggle -->
+  <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark or light theme" title="Toggle theme">
+    <!-- icon swapped by JS for a11y; initial is moon -->
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+  </button>
+
   <script>
     document.getElementById('y').textContent = new Date().getFullYear();
+
+    // === Compare slider ===
+    (function(){
+      const wrap = document.querySelector('[data-compare]');
+      if(!wrap) return;
+      const range = wrap.querySelector('[data-range]');
+      const after = wrap.querySelector('[data-after]');
+      const handle = wrap.querySelector('[data-handle]');
+      const knob = wrap.querySelector('.compare__knob');
+      function setSplit(v){
+        const pct = Math.max(0, Math.min(100, v));
+        after.style.clipPath = `inset(0 ${100-pct}% 0 0)`;
+        handle.style.left = pct + '%';
+        knob.style.left = pct + '%';
+      }
+      range.addEventListener('input', e=> setSplit(e.target.value));
+      setSplit(range.value);
+    })();
 
     // === Carousel (uses viewport width so swipe works on every slide) ===
     (function(){
       const carousels = document.querySelectorAll('[data-carousel]');
-
       carousels.forEach(c=>{
         const track = c.querySelector('[data-track]');
         const slides = [...track.children];
@@ -503,6 +619,31 @@
 
         update();
       });
+    })();
+
+    // === Floating light/dark toggle with persistence ===
+    (function(){
+      const html = document.documentElement;
+      const btn = document.getElementById('themeToggle');
+      const stored = localStorage.getItem('theme');
+      if (stored) html.setAttribute('data-theme', stored);
+      updateIcon();
+
+      btn.addEventListener('click', ()=>{
+        const now = html.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+        html.setAttribute('data-theme', now);
+        localStorage.setItem('theme', now);
+        updateIcon();
+      });
+
+      function updateIcon(){
+        const light = html.getAttribute('data-theme') === 'light';
+        btn.innerHTML = light
+          ? '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.76 4.84l-1.8-1.79L3.17 4.84l1.79 1.79 1.8-1.79zM1 13h3v-2H1v2zm10 10h2v-3h-2v3zm7.03-3.16l1.79 1.79 1.79-1.79-1.79-1.79-1.79 1.79zM20 13h3v-2h-3v2zM12 4a8 8 0 100 16 8 8 0 000-16zM4.22 18.36l1.79-1.79-1.79-1.79L2.43 16.57l1.79 1.79zM17.24 4.84l1.79-1.79 1.79 1.79-1.79 1.79-1.79-1.79z"/></svg>'
+          : '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
+        btn.setAttribute('aria-label', light ? 'Switch to dark theme' : 'Switch to light theme');
+        btn.title = btn.getAttribute('aria-label');
+      }
     })();
   </script>
 </body>
