@@ -1,208 +1,249 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>DuraHaus — Protecting What’s Built. Enhancing What’s Seen.</title>
-  <meta name="description" content="Premium painting & protective coatings in Butler, Hamilton & Warren counties." />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <style>
-    :root{ --bg:#0e0f12; --fg:#f7f7f7; --muted:#b6bcc6; --card:#15171c; --line:#22252b; }
-    *{box-sizing:border-box} html,body{height:100%}
-    body{margin:0;font-family:Poppins,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,'Helvetica Neue',Arial,sans-serif;background:var(--bg);color:var(--fg);line-height:1.6;overflow-x:hidden}
-    a{color:inherit;text-decoration:none}
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>DuraHaus — Premium Painting & Protective Coatings</title>
+<meta name="description" content="DuraHaus: Premium interior/exterior painting, cabinet refinishing, drywall repair, concrete coatings, waterproofing, and caulking in Butler, Hamilton & Warren counties." />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0f1114;        /* neutral charcoal */
+    --surface:#13161a;   /* card background */
+    --line:#1f2329;      /* hairline borders */
+    --fg:#f6f7f8;        /* primary text */
+    --muted:#aeb4bd;     /* secondary text */
+    --accent:#e8eaee;    /* quiet UI accents */
+    --radius:14px;
+    --shadow:0 10px 30px rgba(0,0,0,.25);
+  }
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{
+    margin:0; background:var(--bg); color:var(--fg);
+    font-family:Poppins,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,'Helvetica Neue',Arial,sans-serif;
+    line-height:1.6; -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
+  }
+  a{color:inherit; text-decoration:none}
+  img{max-width:100%; display:block}
 
-    /* Header */
-    .site-header{position:sticky;top:0;z-index:50;display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:0.9rem clamp(1rem,4vw,2.5rem);background:linear-gradient(180deg,rgba(14,15,18,.95),rgba(14,15,18,.6) 60%,rgba(14,15,18,0));backdrop-filter:saturate(1.3) blur(10px);border-bottom:1px solid rgba(255,255,255,.06)}
-    .brand{display:flex;flex-direction:column;gap:.25rem}
-    .stamp{font-weight:700;letter-spacing:.5px;display:inline-flex;gap:.6rem;align-items:baseline}
-    .stamp span{font-weight:500;font-size:.8rem;opacity:.6;border-left:1px solid rgba(255,255,255,.15);padding-left:.6rem}
-    .tag{margin:0;font-size:.9rem;color:var(--muted)}
-    .nav{display:flex;gap:1rem;flex-wrap:wrap}
-    .nav a{opacity:.85;border-bottom:1px solid transparent}
-    .nav a:hover{opacity:1;border-color:rgba(255,255,255,.15)}
-    .cta{padding:.6rem 1rem;border:1px solid rgba(255,255,255,.14);border-radius:999px}
+  /* Header */
+  .header{
+    position:sticky; top:0; z-index:40;
+    display:flex; align-items:center; justify-content:space-between; gap:1rem;
+    padding:.8rem clamp(16px,4vw,28px);
+    background:rgba(15,17,20,.7); backdrop-filter:saturate(1.1) blur(10px);
+    border-bottom:1px solid rgba(255,255,255,.06);
+  }
+  .brand{display:flex; gap:2px; flex-direction:column}
+  .brand .name{font-weight:600; letter-spacing:.2px}
+  .brand .tag{color:var(--muted); font-size:.92rem; margin:0}
+  .nav{display:flex; gap:1rem}
+  .nav a{opacity:.9; border-bottom:1px solid transparent; padding-bottom:2px}
+  .nav a:hover{opacity:1; border-color:rgba(255,255,255,.14)}
+  .cta{padding:.55rem .9rem; border:1px solid rgba(255,255,255,.14); border-radius:999px}
 
-    /* Hero */
-    .hero{position:relative;min-height:78vh;display:grid;place-items:center;padding:6rem 1.5rem 4rem;isolation:isolate}
-    .magic-bg{position:absolute;inset:-20vmax;z-index:-2;background:
-      radial-gradient(50vmax 40vmax at 20% 20%, rgba(0,194,255,.12), transparent 60%),
-      radial-gradient(60vmax 45vmax at 80% 30%, rgba(98,0,255,.10), transparent 60%),
-      radial-gradient(60vmax 45vmax at 50% 90%, rgba(255,255,255,.06), transparent 60%);
-      filter:blur(30px);transform:translateZ(0);animation:drift 18s ease-in-out infinite alternate}
-    @keyframes drift{from{transform:translate3d(-2%,0,0) scale(1.02)}to{transform:translate3d(2%,1%,0) scale(1.04)}}
-    .noise{position:absolute;inset:0;z-index:-1;background-image:url('data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22400%22><filter id=%22n%22><feTurbulence baseFrequency=%220.9%22 numOctaves=%222%22 seed=%220%22 type=%22fractalNoise%22/></filter><rect width=%22400%22 height=%22400%22 filter=%22url(%23n)%22 opacity=%220.02%22/></svg>');opacity:.35;mix-blend-mode:soft-light;pointer-events:none}
-    .hero-inner{max-width:1100px;text-align:center}
-    .hero h1{font-size:clamp(2rem,5vw,4rem);line-height:1.15;margin:0 0 .6rem}
-    .hero h1 .soft{font-weight:300;opacity:.9}
-    .hero p{margin:0 auto 1.5rem;max-width:60ch;color:var(--muted)}
-    .button{display:inline-block;padding:.8rem 1.1rem;border-radius:12px;border:1px solid rgba(255,255,255,.14)}
-    .button.primary{background:#fff;color:#111}
-    .button.ghost{background:transparent}
-    .scroll-indicator{margin-top:2rem;display:inline-flex;flex-direction:column;align-items:center;gap:.35rem;opacity:.8}
-    .scroll-indicator .mouse{width:20px;height:30px;border:2px solid rgba(255,255,255,.35);border-radius:14px;display:grid;place-items:start;padding:4px}
-    .scroll-indicator .wheel{width:2px;height:6px;background:#fff;border-radius:2px;animation:wheel 1.6s ease-in-out infinite}
-    @keyframes wheel{from{transform:translateY(0)}50%{transform:translateY(10px)}to{transform:translateY(0)}}
+  /* Hero */
+  .hero{
+    position:relative; isolation:isolate;
+    min-height:74vh; display:grid; place-items:center; padding:6rem 1.25rem 4rem;
+  }
+  .hero-bg{
+    position:absolute; inset:-20vmax; z-index:-1; filter:blur(28px);
+    background:
+      radial-gradient(45vmax 34vmax at 20% 25%, rgba(255,255,255,.06), transparent 60%),
+      radial-gradient(55vmax 40vmax at 80% 35%, rgba(255,255,255,.05), transparent 60%),
+      radial-gradient(65vmax 50vmax at 50% 90%, rgba(255,255,255,.04), transparent 60%);
+    animation:float 16s ease-in-out infinite alternate;
+  }
+  @keyframes float{from{transform:translate3d(-1%,0,0)}to{transform:translate3d(1%,1%,0)}}
+  .hero .inner{max-width:980px; text-align:center}
+  .hero h1{margin:0 0 .6rem; font-size:clamp(2rem,5vw,3.6rem); line-height:1.12; font-weight:600}
+  .hero .sub{margin:0 auto 1.2rem; max-width:60ch; color:var(--muted)}
+  .buttons{display:flex; gap:.6rem; justify-content:center; flex-wrap:wrap}
+  .btn{display:inline-block; padding:.8rem 1rem; border-radius:12px; border:1px solid rgba(255,255,255,.14)}
+  .btn.primary{background:#fff; color:#0e0e10; font-weight:600}
 
-    /* Sections */
-    main section{padding:4rem 1.5rem}
-    h2{font-size:clamp(1.5rem,3.4vw,2.2rem);margin:0 0 1rem}
+  /* Sections */
+  section{padding:3.6rem 1.25rem}
+  .wrap{max-width:1100px; margin:0 auto}
+  h2{margin:0 0 1rem; font-size:clamp(1.4rem,3.2vw,2.1rem); font-weight:600}
+  .lead{color:var(--muted); margin:0 0 .8rem}
 
-    /* Trust */
-    .trust .badges{display:flex;flex-wrap:wrap;gap:.6rem;justify-content:center;margin:0;padding:0;list-style:none}
-    .badge{display:inline-block;padding:.45rem .75rem;border-radius:999px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);font-size:.9rem}
+  /* Trust row */
+  .trust{padding-top:0}
+  .trust-row{
+    display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:.6rem;
+  }
+  .trust-item{
+    border:1px solid var(--line); border-radius:999px; padding:.55rem .9rem; text-align:center;
+    color:var(--muted); background:rgba(255,255,255,.02);
+  }
 
-    /* Services */
-    .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1rem;margin-top:1rem}
-    .card{padding:1.1rem;border-radius:16px;border:1px solid var(--line);background:linear-gradient(180deg,rgba(255,255,255,.04),rgba(255,255,255,.02));min-height:140px;transition:transform .2s ease;transform-style:preserve-3d;will-change:transform}
-    .card:hover{transform:rotateX(2deg) rotateY(-2deg) translateY(-2px)}
-    .card h3{margin:.2rem 0 .4rem} .card p{color:var(--muted);margin:0}
+  /* Services grid */
+  .grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:12px; margin-top:.6rem}
+  .card{
+    border:1px solid var(--line); border-radius:var(--radius); background:var(--surface);
+    padding:1rem; min-height:128px;
+  }
+  .card h3{margin:.1rem 0 .35rem; font-weight:600; font-size:1.05rem}
+  .card p{margin:0; color:var(--muted)}
 
-    /* Before/After gallery (generic) */
-    .gallery .ba{position:relative;max-width:960px;margin:1rem auto;border-radius:16px;overflow:hidden;border:1px solid var(--line);background:#111}
-    .gallery .ba img{display:block;width:100%;height:auto}
-    .gallery .ba .ba-top{position:absolute;inset:0;overflow:hidden}
-    .gallery .ba input[type=range]{position:absolute;left:0;right:0;bottom:1rem;margin:0 auto;width:clamp(240px,60%,560px);appearance:none;height:4px;background:rgba(255,255,255,.25);border-radius:3px}
-    .gallery .ba input[type=range]::-webkit-slider-thumb{appearance:none;width:18px;height:18px;border-radius:50%;background:#fff;border:1px solid rgba(0,0,0,.2)}
-    .ba-tip{color:var(--muted);text-align:center}
+  /* Caulking section (clean sliders) */
+  .chips{display:flex; gap:.5rem; flex-wrap:wrap; margin:.2rem 0 1rem}
+  .chip{border:1px solid var(--line); border-radius:999px; padding:.4rem .7rem; background:rgba(255,255,255,.02); font-weight:500}
+  .compare-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:12px}
+  .compare-card{border:1px solid var(--line); border-radius:var(--radius); background:var(--surface); overflow:hidden}
+  .frame{position:relative; aspect-ratio:4/3; background:#0e1013}
+  .frame img{width:100%; height:100%; object-fit:cover}
+  .frame .top{position:absolute; inset:0; clip-path:inset(0 50% 0 0)}
+  .slider{
+    position:absolute; left:50%; bottom:12px; width:70%; transform:translateX(-50%);
+    appearance:none; height:4px; background:rgba(255,255,255,.28); border-radius:3px; outline:none;
+  }
+  .slider::-webkit-slider-thumb{appearance:none; width:16px; height:16px; border-radius:50%; background:var(--accent); border:1px solid rgba(0,0,0,.25)}
+  .meta{display:flex; justify-content:space-between; gap:.5rem; align-items:center; padding:.8rem 1rem; border-top:1px solid var(--line)}
+  .meta .left{font-weight:600}
+  .meta .right{color:var(--muted); font-size:.92rem}
 
-    /* NEW: Caulking & Window Sealing Section */
-    .caulk{background:linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.00)); border-top:1px solid var(--line); border-bottom:1px solid var(--line)}
-    .caulk h2{margin-bottom:.4rem}
-    .caulk .lead{color:var(--muted);margin:0 0 1.2rem}
-    .caulk .callouts{display:flex;flex-wrap:wrap;gap:.6rem;margin:0 0 1.2rem}
-    .chip{display:inline-block;padding:.45rem .75rem;border-radius:999px;border:1px solid var(--line);background:rgba(255,255,255,.04);font-weight:500}
-    .caulk-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1rem}
-    .caulk-card{position:relative;border:1px solid var(--line);border-radius:16px;background:#101216;overflow:hidden}
-    .compare{position:relative;aspect-ratio:4/3;background:#0f1115}
-    .compare img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-    .compare .after{clip-path:inset(0 50% 0 0)}
-    .handle{position:absolute;left:50%;top:0;bottom:0;width:2px;background:rgba(255,255,255,.65)}
-    .knob{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:36px;height:36px;border-radius:50%;background:#fff;color:#111;display:grid;place-items:center;font-weight:700;border:1px solid rgba(0,0,0,.2);box-shadow:0 8px 20px rgba(0,0,0,.35)}
-    .caulk-card .meta{padding:.8rem 1rem;border-top:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:.5rem}
-    .caulk-card .meta .left{font-weight:600}
-    .caulk-card .meta .right{opacity:.8;font-size:.9rem}
-    .caulk-cta{margin-top:1rem;display:flex;gap:.6rem;flex-wrap:wrap}
-    .small{font-size:.92rem}
+  /* Generic before/after (hero gallery) */
+  .ba{position:relative; border:1px solid var(--line); border-radius:var(--radius); overflow:hidden; background:#101318; max-width:980px; margin:0 auto}
+  .ba img{width:100%; height:auto; display:block}
+  .ba .top{position:absolute; inset:0; clip-path:inset(0 50% 0 0)}
+  .ba input[type=range]{position:absolute; left:50%; bottom:12px; transform:translateX(-50%); width:60%;
+    appearance:none; height:4px; background:rgba(255,255,255,.28); border-radius:3px}
+  .ba input[type=range]::-webkit-slider-thumb{appearance:none; width:16px; height:16px; border-radius:50%; background:var(--accent); border:1px solid rgba(0,0,0,.25)}
+  .hint{color:var(--muted); text-align:center; margin-top:.6rem}
 
-    /* Areas */
-    .areas .chips{display:flex;flex-wrap:wrap;gap:.5rem;padding:0;list-style:none}
-    .areas .chips li{padding:.4rem .7rem;border-radius:999px;border:1px solid var(--line);background:rgba(255,255,255,.04)}
+  /* Areas */
+  .areas .city-row{display:flex; flex-wrap:wrap; gap:.5rem}
+  .areas .city{border:1px solid var(--line); border-radius:999px; padding:.4rem .7rem; background:rgba(255,255,255,.02)}
 
-    /* Quote + Footer */
-    .quote .quick{display:flex;flex-wrap:wrap;gap:.6rem;justify-content:center}
-    .float-quote{position:fixed;right:clamp(12px,2vw,20px);bottom:clamp(12px,2vw,20px);padding:.85rem 1.1rem;border-radius:999px;background:#fff;color:#111;font-weight:600;box-shadow:0 10px 30px rgba(0,0,0,.35);z-index:100;border:1px solid rgba(255,255,255,.25)}
-    .site-footer{padding:3rem 1.5rem;border-top:1px solid var(--line);text-align:center;color:var(--muted)}
-    .tiny{font-size:.85rem;color:#8b93a1}
+  /* Quote / Footer */
+  .quick{display:flex; gap:.6rem; flex-wrap:wrap}
+  .btn.ghost{background:transparent}
+  .float-cta{
+    position:fixed; right:clamp(12px,2vw,18px); bottom:clamp(12px,2vw,18px);
+    background:#fff; color:#0f1114; padding:.8rem 1rem; border-radius:999px; border:1px solid rgba(255,255,255,.25);
+    box-shadow:var(--shadow); font-weight:600; z-index:50;
+  }
+  footer{padding:3rem 1.25rem; border-top:1px solid var(--line); color:var(--muted); text-align:center}
 
-    /* Reveal-in */
-    .reveal{opacity:0;transform:translateY(12px);transition:opacity .7s ease, transform .7s ease}
-    .reveal.visible{opacity:1;transform:none}
+  /* Reveal */
+  .reveal{opacity:0; transform:translateY(10px); transition:opacity .6s ease, transform .6s ease}
+  .reveal.show{opacity:1; transform:none}
 
-    /* Responsive */
-    @media (max-width:780px){.nav{display:none}}
-  </style>
+  /* Mobile tweaks */
+  @media (max-width:780px){ .nav{display:none} .hero{min-height:68vh} }
+  @media (prefers-reduced-motion:reduce){
+    .reveal{transition:none} .hero-bg{animation:none}
+  }
+</style>
 </head>
 <body>
-  <!-- Header -->
-  <header class="site-header">
-    <div class="brand">
-      <div class="stamp">DuraHaus <span>EST 2025</span></div>
-      <p class="tag">Protecting What’s Built. Enhancing What’s Seen.</p>
-    </div>
-    <nav class="nav">
-      <a href="#services">Services</a><a href="#gallery">Gallery</a>
-      <a href="#caulk">Caulking</a><a href="#areas">Service Area</a><a href="#contact">Contact</a>
-    </nav>
-    <a class="cta" href="#quote">Get a Quote</a>
-  </header>
 
-  <!-- Hero -->
-  <section class="hero">
-    <div class="magic-bg"></div><div class="noise"></div>
-    <div class="hero-inner">
-      <h1><span class="soft">Premium</span> Painting & Coatings</h1>
-      <p>Interior & exterior finishes, cabinets, drywall repair, concrete coatings, waterproofing & more.</p>
-      <div class="hero-actions">
-        <a class="button primary" href="tel:15136684382">Call / Text 513-668-4382</a>
-        <a class="button ghost" href="mailto:durahaus.solutions@gmail.com?subject=Free%20Estimate">Free Estimate</a>
+<header class="header">
+  <div class="brand">
+    <div class="name">DuraHaus</div>
+    <p class="tag">Protecting What’s Built. Enhancing What’s Seen.</p>
+  </div>
+  <nav class="nav" aria-label="Primary">
+    <a href="#services">Services</a>
+    <a href="#caulking">Caulking</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#areas">Service Area</a>
+    <a href="#contact">Contact</a>
+  </nav>
+  <a class="cta" href="#quote">Get a Quote</a>
+</header>
+
+<section class="hero" aria-label="Hero">
+  <div class="hero-bg" aria-hidden="true"></div>
+  <div class="inner">
+    <h1>Premium Painting & Protective Coatings</h1>
+    <p class="sub">Interior & exterior finishes, cabinet refinishing, drywall repair, concrete coatings, waterproofing, and detailed caulking—done right the first time.</p>
+    <div class="buttons">
+      <a class="btn primary" href="tel:15136684382">Call / Text 513-668-4382</a>
+      <a class="btn" href="mailto:durahaus.solutions@gmail.com?subject=Free%20Estimate">Free Estimate</a>
+    </div>
+  </div>
+</section>
+
+<main>
+  <!-- Trust -->
+  <section class="trust">
+    <div class="wrap">
+      <div class="trust-row reveal">
+        <div class="trust-item">Licensed & Insured</div>
+        <div class="trust-item">Sherwin-Williams Pro-Grade</div>
+        <div class="trust-item">Dust & Masking Protocols</div>
+        <div class="trust-item">Satisfaction First</div>
       </div>
-      <div class="scroll-indicator"><span>scroll</span><div class="mouse"><div class="wheel"></div></div></div>
     </div>
   </section>
 
-  <main>
-    <!-- Trust -->
-    <section id="trust" class="trust reveal">
-      <ul class="badges">
-        <li><span class="badge">Licensed & Insured</span></li>
-        <li><span class="badge">Sherwin-Williams Pro-Grade</span></li>
-        <li><span class="badge">Dust & Masking Protocols</span></li>
-        <li><span class="badge">Satisfaction First</span></li>
-      </ul>
-    </section>
-
-    <!-- Services -->
-    <section id="services" class="services reveal">
+  <!-- Services -->
+  <section id="services" aria-label="Services">
+    <div class="wrap">
       <h2>What we do</h2>
-      <div class="cards">
-        <article class="card"><h3>Interior Painting</h3><p>Walls, ceilings, trim, and doors with crisp lines and durable finishes.</p></article>
-        <article class="card"><h3>Exterior Painting</h3><p>Weather-resistant coatings for siding, brick, stucco, and trim.</p></article>
-        <article class="card"><h3>Cabinet Refinishing</h3><p>Factory-smooth cabinet coatings with proper prep and catalyzed finishes.</p></article>
+      <p class="lead">Straight lines, durable systems, and professional prep—interior and exterior.</p>
+      <div class="grid reveal">
+        <article class="card"><h3>Interior Painting</h3><p>Walls, ceilings, trim, doors—crisp and consistent.</p></article>
+        <article class="card"><h3>Exterior Painting</h3><p>Weather-ready coatings for siding, brick, stucco, and trim.</p></article>
+        <article class="card"><h3>Cabinet Refinishing</h3><p>Factory-smooth finishes with proper prep & catalyzed systems.</p></article>
         <article class="card"><h3>Drywall & Repair</h3><p>Patching, texture blending, and flawless repaints.</p></article>
-        <article class="card"><h3>Concrete Coatings</h3><p>Garages, basements, porches — flake, epoxy, and polyaspartic systems.</p></article>
-        <article class="card"><h3>Waterproofing</h3><p>Sealants, caulking, and masonry coatings to keep the elements out.</p></article>
+        <article class="card"><h3>Concrete Coatings</h3><p>Garages, basements, porches—flake, epoxy, polyaspartic.</p></article>
+        <article class="card"><h3>Waterproofing</h3><p>Sealants, caulking, masonry coatings—elements kept out.</p></article>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- NEW: Caulking & Window Sealing interactive -->
-    <section id="caulk" class="caulk reveal">
+  <!-- Caulking & Window Sealing (clean sliders) -->
+  <section id="caulking" aria-label="Caulking & Window Sealing">
+    <div class="wrap">
       <h2>Got cracks? Missing caulking?</h2>
-      <p class="lead">Stop drafts, leaks, and wood rot. We cut out failed caulk, prep properly, and seal with pro-grade systems made to last.</p>
-      <div class="callouts">
+      <p class="lead">We remove failed beads, prep properly, and seal with flexible, exterior-rated systems to stop drafts, leaks, and rot.</p>
+      <div class="chips">
         <span class="chip">Window Perimeters</span>
         <span class="chip">Siding Joints</span>
         <span class="chip">Trim & Fascia</span>
         <span class="chip">Masonry Gaps</span>
       </div>
 
-      <div class="caulk-grid">
+      <div class="compare-grid">
         <!-- Card 1 -->
-        <article class="caulk-card">
-          <div class="compare" data-initial="50">
-            <img class="before" src="assets/caulk1-before.jpg" alt="Cracked window caulking before" onerror="this.src='assets/placeholder-before.jpg'">
-            <img class="after"  src="assets/caulk1-after.jpg"  alt="Window properly caulked and sealed" onerror="this.src='assets/placeholder-after.jpg'">
-            <div class="handle" aria-hidden="true"></div>
-            <div class="knob" aria-label="Drag to compare">⇆</div>
+        <article class="compare-card reveal">
+          <div class="frame">
+            <img src="assets/caulk1-after.jpg" alt="Window perimeter after sealing" onerror="this.src='assets/placeholder-after.jpg'">
+            <div class="top"><img src="assets/caulk1-before.jpg" alt="Window perimeter before sealing" onerror="this.src='assets/placeholder-before.jpg'"></div>
+            <input class="slider" type="range" min="0" max="100" value="50" aria-label="Reveal before/after">
           </div>
           <div class="meta">
-            <div class="left">Window perimeter — water intrusion risk</div>
+            <div class="left">Window perimeter — intrusion risk</div>
             <div class="right">Cut • Clean • Prime • Seal</div>
           </div>
         </article>
 
         <!-- Card 2 -->
-        <article class="caulk-card">
-          <div class="compare" data-initial="45">
-            <img class="before" src="assets/caulk2-before.jpg" alt="Split siding joint before" onerror="this.src='assets/placeholder-before.jpg'">
-            <img class="after"  src="assets/caulk2-after.jpg"  alt="Siding joint sealed smooth" onerror="this.src='assets/placeholder-after.jpg'">
-            <div class="handle" aria-hidden="true"></div>
-            <div class="knob" aria-label="Drag to compare">⇆</div>
+        <article class="compare-card reveal">
+          <div class="frame">
+            <img src="assets/caulk2-after.jpg" alt="Siding joint after sealing" onerror="this.src='assets/placeholder-after.jpg'">
+            <div class="top"><img src="assets/caulk2-before.jpg" alt="Siding joint before sealing" onerror="this.src='assets/placeholder-before.jpg'"></div>
+            <input class="slider" type="range" min="0" max="100" value="50" aria-label="Reveal before/after">
           </div>
           <div class="meta">
-            <div class="left">Siding joint — air & pest channel</div>
-            <div class="right">Flexible exterior sealant</div>
+            <div class="left">Siding joint — air/pest channel</div>
+            <div class="right">Flexible sealant</div>
           </div>
         </article>
 
         <!-- Card 3 -->
-        <article class="caulk-card">
-          <div class="compare" data-initial="55">
-            <img class="before" src="assets/caulk3-before.jpg" alt="Open trim gap before" onerror="this.src='assets/placeholder-before.jpg'">
-            <img class="after"  src="assets/caulk3-after.jpg"  alt="Trim line seamless after" onerror="this.src='assets/placeholder-after.jpg'">
-            <div class="handle" aria-hidden="true"></div>
-            <div class="knob" aria-label="Drag to compare">⇆</div>
+        <article class="compare-card reveal">
+          <div class="frame">
+            <img src="assets/caulk3-after.jpg" alt="Trim gap after sealing" onerror="this.src='assets/placeholder-after.jpg'">
+            <div class="top"><img src="assets/caulk3-before.jpg" alt="Trim gap before sealing" onerror="this.src='assets/placeholder-before.jpg'"></div>
+            <input class="slider" type="range" min="0" max="100" value="50" aria-label="Reveal before/after">
           </div>
           <div class="meta">
             <div class="left">Trim & fascia — cracked bead</div>
@@ -211,111 +252,81 @@
         </article>
       </div>
 
-      <div class="caulk-cta">
-        <a class="button primary" href="tel:15136684382">Seal my home — Call now</a>
-        <a class="button ghost" href="sms:+15136684382?body=Hi%20DuraHaus%2C%20can%20you%20quote%20exterior%20caulking%20and%20window%20sealing%3F">Text for a quick quote</a>
-        <span class="small" style="color:var(--muted)">Most homes sealed in a day, weather permitting.</span>
+      <div class="quick" style="margin-top:1rem">
+        <a class="btn primary" href="tel:15136684382">Seal my home — Call now</a>
+        <a class="btn" href="sms:+15136684382?body=Hi%20DuraHaus%2C%20can%20you%20quote%20exterior%20caulking%20and%20window%20sealing%3F">Text for a quick quote</a>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- Original Before/After block (keep or remove) -->
-    <section id="gallery" class="gallery reveal">
+  <!-- Simple before/after block (optional portfolio) -->
+  <section id="gallery" aria-label="Portfolio Before/After">
+    <div class="wrap">
       <h2>See the difference</h2>
-      <div class="ba">
+      <div class="ba reveal">
         <img src="assets/after.jpg" alt="After photo" onerror="this.src='assets/placeholder-after.jpg'">
-        <div class="ba-top"><img src="assets/before.jpg" alt="Before photo" onerror="this.src='assets/placeholder-before.jpg'"></div>
-        <input type="range" min="0" max="100" value="50">
+        <div class="top"><img src="assets/before.jpg" alt="Before photo" onerror="this.src='assets/placeholder-before.jpg'"></div>
+        <input type="range" min="0" max="100" value="50" aria-label="Reveal before/after">
       </div>
-      <p class="ba-tip">Replace <code>assets/before.jpg</code> and <code>assets/after.jpg</code> with your real photos.</p>
-    </section>
+      <p class="hint">Replace <code>assets/before.jpg</code> and <code>assets/after.jpg</code> with your project photos.</p>
+    </div>
+  </section>
 
-    <!-- Areas -->
-    <section id="areas" class="areas reveal">
+  <!-- Areas -->
+  <section id="areas" class="areas" aria-label="Service Area">
+    <div class="wrap">
       <h2>Serving Butler, Hamilton &amp; Warren Counties</h2>
-      <p>We proudly serve neighborhoods across West Chester, Mason, Hamilton, Fairfield, Liberty Township, Blue Ash, Loveland, and more.</p>
-      <ul class="chips"><li>Mason</li><li>West Chester</li><li>Hamilton</li><li>Fairfield</li><li>Liberty Twp</li><li>Monroe</li><li>Lebanon</li><li>Blue Ash</li></ul>
-    </section>
-
-    <!-- Quote -->
-    <section id="quote" class="quote reveal">
-      <h2>Start your free estimate</h2>
-      <div class="quick">
-        <a class="button primary" href="tel:15136684382">Call 513-668-4382</a>
-        <a class="button ghost" href="sms:+15136684382?body=Hi%20DuraHaus%2C%20can%20I%20get%20a%20free%20estimate%3F">Text Us</a>
-        <a class="button ghost" href="mailto:durahaus.solutions@gmail.com?subject=Free%20Estimate">Email</a>
+      <p class="lead">From West Chester and Mason to Hamilton, Fairfield, and beyond.</p>
+      <div class="city-row reveal">
+        <span class="city">Mason</span><span class="city">West Chester</span><span class="city">Hamilton</span>
+        <span class="city">Fairfield</span><span class="city">Liberty Twp</span><span class="city">Monroe</span>
+        <span class="city">Lebanon</span><span class="city">Blue Ash</span>
       </div>
-    </section>
-  </main>
+    </div>
+  </section>
 
-  <!-- Footer -->
-  <footer id="contact" class="site-footer">
-    <p><strong>DuraHaus Painting &amp; Construction</strong> — Butler, Hamilton &amp; Warren Counties, Ohio</p>
-    <p><a href="tel:15136684382">513-668-4382</a> — <a href="mailto:durahaus.solutions@gmail.com">durahaus.solutions@gmail.com</a></p>
-    <p class="tiny">© 2025 DuraHaus. All rights reserved.</p>
-  </footer>
+  <!-- Quote -->
+  <section id="quote" aria-label="Quote">
+    <div class="wrap">
+      <h2>Start your free estimate</h2>
+      <p class="lead">Call, text, or email—whatever is easiest. We’ll get you a clear, honest quote.</p>
+      <div class="quick">
+        <a class="btn primary" href="tel:15136684382">Call 513-668-4382</a>
+        <a class="btn" href="sms:+15136684382?body=Hi%20DuraHaus%2C%20can%20I%20get%20a%20free%20estimate%3F">Text Us</a>
+        <a class="btn" href="mailto:durahaus.solutions@gmail.com?subject=Free%20Estimate">Email</a>
+      </div>
+    </div>
+  </section>
+</main>
 
-  <a class="float-quote" href="#quote">Get a Quote</a>
+<footer id="contact" aria-label="Footer">
+  <p><strong>DuraHaus Painting &amp; Construction</strong> — Butler, Hamilton &amp; Warren Counties, Ohio</p>
+  <p><a href="tel:15136684382">513-668-4382</a> — <a href="mailto:durahaus.solutions@gmail.com">durahaus.solutions@gmail.com</a></p>
+  <p style="color:var(--muted); font-size:.92rem">© 2025 DuraHaus. All rights reserved.</p>
+</footer>
 
-  <script>
-    /* Generic before/after slider */
-    (function(){
-      const ba=document.querySelector('.ba');
-      if(!ba) return;
-      const top=ba.querySelector('.ba-top');
-      const range=ba.querySelector('input[type="range"]');
-      const update=()=>{ top.style.clipPath=`inset(0 ${100-parseInt(range.value,10)}% 0 0)`; };
-      range.addEventListener('input',update); update();
-    })();
+<a class="float-cta" href="#quote" aria-label="Open quote options">Get a Quote</a>
 
-    /* Reveal on scroll */
-    (function(){
-      const io=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target);}});},{threshold:.16});
-      document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
-    })();
+<script>
+  // Section reveal
+  const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('show');io.unobserve(e.target);}})},{threshold:.15});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 
-    /* Hero parallax */
-    (function(){
-      const hero=document.querySelector('.hero-inner');
-      if(!hero) return;
-      window.addEventListener('scroll',()=>{const y=window.scrollY*0.2; hero.style.transform=`translateY(${y}px)`;},{passive:true});
-    })();
+  // Generic single before/after
+  (function(){
+    const ba=document.querySelector('.ba'); if(!ba) return;
+    const top=ba.querySelector('.top'), range=ba.querySelector('input[type="range"]');
+    const set=()=>{ top.style.clipPath=`inset(0 ${100-parseInt(range.value,10)}% 0 0)`; };
+    range.addEventListener('input', set); set();
+  })();
 
-    /* NEW: Drag-to-reveal for each caulking compare card */
-    (function(){
-      const cards=[...document.querySelectorAll('.compare')];
-      cards.forEach(card=>{
-        const after=card.querySelector('.after');
-        const handle=card.querySelector('.handle');
-        const knob=card.querySelector('.knob');
-        const setPos = (px)=>{
-          const r=card.getBoundingClientRect();
-          const x=Math.max(0, Math.min(px - r.left, r.width));
-          const pct=(x/r.width)*100;
-          after.style.clipPath=`inset(0 ${100-pct}% 0 0)`;
-          handle.style.left=`${pct}%`;
-          knob.style.left=`${pct}%`;
-        };
-        const initial = parseInt(card.getAttribute('data-initial')||'50',10);
-        setPos(card.getBoundingClientRect().left + (card.clientWidth*initial/100));
-
-        let dragging=false;
-        const start=(e)=>{ dragging=true; move(e); e.preventDefault(); };
-        const end=()=>{ dragging=false; };
-        const move=(e)=>{
-          if(!dragging) return;
-          const clientX = (e.touches && e.touches[0]) ? e.touches[0].clientX : e.clientX;
-          setPos(clientX);
-        };
-
-        card.addEventListener('mousedown', start);
-        window.addEventListener('mouseup', end);
-        window.addEventListener('mousemove', move);
-
-        card.addEventListener('touchstart', start, {passive:false});
-        window.addEventListener('touchend', end, {passive:true});
-        window.addEventListener('touchmove', move, {passive:false});
-      });
-    })();
-  </script>
+  // Clean per-card sliders (caulking)
+  document.querySelectorAll('.compare-card').forEach(card=>{
+    const top=card.querySelector('.top');
+    const slider=card.querySelector('.slider');
+    const set=()=>{ top.style.clipPath=`inset(0 ${100-parseInt(slider.value,10)}% 0 0)`; };
+    slider.addEventListener('input', set); set();
+  });
+</script>
 </body>
 </html>
