@@ -1,356 +1,614 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>DuraHaus — Painting • Construction • Sealing</title>
-<meta name="description" content="Premium painting, construction, and professional sealing across Butler, Hamilton & Warren counties." />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
-<meta property="og:title" content="DuraHaus — Painting • Construction • Sealing"/>
-<meta property="og:description" content="Premium painting, construction, and professional sealing across Butler, Hamilton & Warren counties."/>
-<meta property="og:type" content="website"/>
-<meta name="theme-color" content="#0a0a0a"/>
-<style>
-  :root {
-    --bg:#0a0a0a; --fg:#f5f5f5; --muted:#bdbdbd; --line:#1a1a1a; --surface:#111;
-    --rad:14px; --pad:clamp(16px,4vw,28px); --max:1140px; --shadow:0 12px 30px rgba(0,0,0,.35);
-  }
-  *{box-sizing:border-box}
-  html,body{height:100%}
-  body{margin:0;background:var(--bg);color:var(--fg);font-family:Poppins,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,'Helvetica Neue',Arial,sans-serif;line-height:1.6}
-  a{color:inherit;text-decoration:none}
-  img{display:block;max-width:100%;height:auto}
-  .wrap{max-width:var(--max);margin:0 auto;padding:3.2rem var(--pad)}
-  .rule-b{border-bottom:1px solid var(--line)}
-  h1,h2,h3{letter-spacing:.2px}
-  h1{margin:0 0 .5rem;font-size:clamp(2rem,5vw,3.2rem);font-weight:600}
-  h2{margin:0 0 1rem;font-size:clamp(1.4rem,3.2vw,2rem);font-weight:600}
-  .lead{color:var(--muted);margin:.2rem 0 1rem}
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>DuraHaus — Painting and Construction</title>
+  <meta name="description" content="Interior & exterior painting, cabinets, stain, concrete coatings, drywall and sealing. Clean, on-time, built to perform.">
+  <link rel="preload" as="image" href="/assets/stock-hero.webp">
+  <style>
+    :root{
+      --bg:#0a0a0a; --panel:#101010; --ink:#ffffff; --muted:#bdbdbd;
+      --line:#1a1a1a; --max:1120px; --r:14px; --gap:28px;
+    }
+    /* Light mode variables (toggle via data-theme="light") */
+    :root[data-theme="light"]{
+      --bg:#f6f7f9; --panel:#ffffff; --ink:#0a0a0a; --muted:#5b6470;
+      --line:#e6e8ec;
+    }
 
-  /* header */
-  .header{position:sticky;top:0;z-index:50;background:rgba(10,10,10,.92);backdrop-filter:saturate(1.05) blur(8px);border-bottom:1px solid var(--line)}
-  .row{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:.8rem var(--pad);max-width:var(--max);margin:0 auto}
-  .brand{display:flex;gap:2px;flex-direction:column}
-  .tag{color:var(--muted);font-size:.92rem}
-  .nav{display:flex;gap:1rem}
-  .nav a{opacity:.9;border-bottom:1px solid transparent;padding-bottom:2px}
-  .nav a:hover{opacity:1;border-color:#2a2a2a}
-  .cta{padding:.55rem .9rem;border:1px solid #2a2a2a;border-radius:999px}
+    *{box-sizing:border-box} html,body{height:100%}
+    body{margin:0;background:var(--bg);color:var(--ink);
+      font:16px/1.55 ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;
+      -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;}
+    a{color:inherit;text-decoration:none}
+    img{display:block;width:100%;height:auto;background:#0d0d0d}
+    .brand img{background:transparent!important}
+    .container{max-width:var(--max);margin:0 auto;padding:0 20px}
 
-  /* hero */
-  .hero{display:grid;place-items:center;min-height:68vh;text-align:center}
-  .buttons{display:flex;gap:.6rem;justify-content:center;flex-wrap:wrap}
-  .btn{display:inline-block;padding:.8rem 1rem;border-radius:12px;border:1px solid #2a2a2a}
-  .btn.primary{background:#fff;color:#0a0a0a;font-weight:600}
+    /* Header */
+    header{position:sticky;top:0;z-index:50;background:rgba(10,10,10,.92);
+      backdrop-filter:saturate(140%) blur(8px);border-bottom:1px solid var(--line)}
+    :root[data-theme="light"] header{background:rgba(255,255,255,.9)}
+    .nav{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:12px 0}
+    .brand{display:flex;align-items:center;gap:14px;min-width:0}
+    .brand picture{display:block;line-height:0}
+    .brand img{height:56px;width:auto;display:block}
+    .brand .wordmark{font-weight:800;letter-spacing:.03em;white-space:nowrap}
 
-  /* trust + services */
-  .trust{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:10px}
-  .trust-item{border:1px solid var(--line);border-radius:999px;padding:.55rem .9rem;text-align:center;color:var(--muted);background:#0e0e0e}
-  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:10px}
-  .card{border:1px solid var(--line);border-radius:var(--rad);background:var(--surface);padding:1rem;min-height:128px}
-  .card h3{margin:.1rem 0 .3rem;font-weight:600;font-size:1.05rem}
-  .card p{margin:0;color:var(--muted)}
+    .navlinks{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-left:20px}
+    .pill{padding:.5rem .8rem;border:1px solid var(--line);border-radius:999px;font-size:14px}
+    .pill--solid{background:#fff;color:#000;border-color:#fff;font-weight:700}
+    .pill--ghost{background:transparent}
+    .cta{background:#fff;color:#000;border-color:#fff;font-weight:700} /* existing style, still used elsewhere */
+    .iconbtn{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border:1px solid var(--line);border-radius:999px}
+    .iconbtn svg{width:18px;height:18px;fill:currentColor}
+    @media (max-width:600px){
+      .nav{padding:10px 0}
+      .brand img{height:44px}
+      .pill{font-size:13px;padding:.45rem .7rem}
+      .iconbtn{width:38px;height:38px}
+    }
 
-  /* reviews */
-  .reviews{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:12px}
-  .panel{border:1px solid var(--line);border-radius:var(--rad);background:var(--surface);overflow:hidden}
-  .panel-head{display:flex;align-items:center;justify-content:space-between;gap:.5rem;padding:.9rem 1rem;border-bottom:1px solid var(--line)}
-  .pill{border:1px solid var(--line);border-radius:999px;padding:.25rem .6rem;color:var(--muted);font-size:.92rem}
-  .embed{width:100%;min-height:340px;border:0}
-  .fallback{display:grid;gap:10px;padding:1rem}
-  .review{border:1px solid var(--line);border-radius:12px;padding:1rem;background:#0f0f0f}
-  .stars{letter-spacing:1px;font-size:1.05rem}
-  .source{color:var(--muted);font-size:.9rem}
+    /* Hero */
+    .hero{display:grid;grid-template-columns:1fr;background:#0c0c0c;border-bottom:1px solid var(--line)}
+    :root[data-theme="light"] .hero{background:#eef0f3}
+    .hero__media{position:relative;aspect-ratio:16/9;max-height:70vh;overflow:hidden}
+    .hero__media img{width:100%;height:100%;object-fit:cover;opacity:.95;}
+    .hero__copy{padding:3rem 0}
+    h1{margin:0 0 .6rem;font-size:clamp(32px,5.2vw,56px);line-height:1.05;letter-spacing:-.01em}
+    .lead{color:var(--muted);font-size:clamp(16px,1.8vw,19px)}
+    .row{display:grid;grid-template-columns:1fr;gap:var(--gap);margin:3rem 0}
+    @media (min-width:860px){
+      .hero{grid-template-columns:1.05fr .95fr}
+      .hero__copy{padding:4.2rem 0 4rem 2rem}
+      .row{grid-template-columns:1.05fr .95fr;align-items:center}
+    }
 
-  /* FAQ */
-  .faq{display:grid;grid-template-columns:1fr;gap:10px}
-  .qa{border:1px solid var(--line);border-radius:12px;background:#0f0f0f;overflow:hidden}
-  .q{display:flex;align-items:center;justify-content:space-between;gap:.6rem;padding:1rem;cursor:pointer}
-  .q h3{margin:0;font-size:1rem}
-  .a{max-height:0;overflow:hidden;transition:max-height .35s ease}
-  .a-inner{padding:0 1rem 1rem;color:var(--muted)}
-  .qa.open .a{max-height:300px}
+    /* Cards / grids */
+    .card{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
+    .card .pad{padding:1.1rem}
+    h2{margin:0 0 .4rem;font-size:clamp(22px,2.2vw,28px)}
+    p{margin:.25rem 0 0}
+    .grid{display:grid;gap:var(--gap);grid-template-columns:1fr}
+    @media (min-width:900px){.grid{grid-template-columns:repeat(3,1fr)}}
 
-  /* misc */
-  .city-row{display:flex;flex-wrap:wrap;gap:.5rem}
-  .city{border:1px solid var(--line);border-radius:999px;padding:.4rem .7rem;background:#0e0e0e}
-  footer{padding:3rem var(--pad);border-top:1px solid var(--line);color:var(--muted);text-align:center}
-  .float-cta{position:fixed;right:clamp(12px,2vw,18px);bottom:clamp(12px,2vw,18px);background:#fff;color:#0a0a0a;padding:.8rem 1rem;border-radius:999px;border:1px solid #2a2a2a;box-shadow:var(--shadow);font-weight:600;z-index:60}
+    /* Why */
+    .why{margin:3rem auto 0}
+    .why .cols{display:grid;gap:var(--gap)}
+    @media (min-width:900px){.why .cols{grid-template-columns:repeat(3,1fr)}}
+    .why .tile{border:1px solid var(--line);border-radius:var(--r);padding:1.2rem;background:var(--panel)}
+    .why h3{margin:.1rem 0 .4rem;font-size:1.1rem}
 
-  /* reveal */
-  .reveal{opacity:0;transform:translateY(8px);transition:opacity .5s ease, transform .5s ease}
-  .reveal.show{opacity:1;transform:none}
-  @media (max-width:780px){.nav{display:none}}
-  @media (prefers-reduced-motion:reduce){.reveal{transition:none}}
-</style>
+    /* FAQ */
+    .faq{margin:3rem auto}
+    .faq details{border:1px solid var(--line);border-radius:12px;padding:.9rem 1.1rem;background:var(--panel)}
+    .faq details+details{margin-top:12px}
+    .faq summary{cursor:pointer;list-style:none;font-weight:700}
+    .faq summary::-webkit-details-marker{display:none}
+    .faq .a{color:var(--muted);margin:.6rem 0 0}
+
+    /* CTA band */
+    .band{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;padding:1.2rem;border:1px solid var(--line);border-radius:var(--r);background:var(--panel)}
+
+    /* Pre-footer (stamp + mini nav) */
+    .prefooter{margin:3rem auto 1.5rem;display:flex;gap:22px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+    .prefooter .stampwrap{display:flex;align-items:center;gap:14px}
+    .prefooter img{width:128px;height:auto;opacity:.95;filter:invert(1) brightness(1.6);background:transparent}
+    :root[data-theme="light"] .prefooter img{filter:none;opacity:1}
+    .prefooter .menu{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+    @media (max-width:720px){
+      .prefooter{justify-content:center;text-align:center}
+      .prefooter .menu{justify-content:center}
+    }
+
+    /* Footer */
+    footer{border-top:1px solid var(--line);margin-top:2rem}
+    .foot{display:grid;gap:18px;align-items:center;padding:1.2rem 0;grid-template-columns:1fr}
+    small{color:var(--muted)}
+
+    /* Contact strip (above footer) */
+    .contactbar{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:#0e0e10}
+    :root[data-theme="light"] .contactbar{background:#f3f4f6}
+    .contactbar .row{display:flex;gap:16px;align-items:center;justify-content:flex-start;flex-wrap:wrap;margin:0;padding:14px 0}
+    .contactbar a{display:inline-flex;align-items:center;gap:8px;color:#d9d9db;font-size:15px}
+    :root[data-theme="light"] .contactbar a{color:#1f2937}
+    .contactbar a:hover{color:#fff}
+    :root[data-theme="light"] .contactbar a:hover{color:#111}
+    .contactbar svg{width:20px;height:20px;fill:currentColor}
+
+    /* Sticky tidy footer for short pages (optional) */
+    html, body { height: 100%; }
+    body { min-height: 100dvh; display: flex; flex-direction: column; }
+    main { flex: 1 0 auto; }
+
+    /* === Carousel === */
+    .carousel{position:relative;overflow:hidden}
+    .carousel-track{
+      display:flex;
+      transition:transform 280ms ease;
+      touch-action: pan-y; /* allows horizontal swipe on iOS */
+      user-select:none; -webkit-user-drag:none;
+    }
+    .carousel img{width:100%;height:340px;object-fit:cover;flex:0 0 100%}
+    .carousel-btn{position:absolute;top:50%;transform:translateY(-50%);border:none;background:rgba(0,0,0,.45);color:#fff;padding:6px 10px;border-radius:10px;cursor:pointer;z-index:2}
+    .carousel-btn.prev{left:8px}.carousel-btn.next{right:8px}
+    .carousel-btn:hover{background:rgba(0,0,0,.65)}
+    .carousel-dots{display:none !important;} /* keep in DOM, hidden */
+
+    /* Make the text block the only clickable area under the image */
+    .card .pad.service-link { display:block; border-top:1px solid var(--line); }
+
+    /* === Theme toggle pill (bottom-right) === */
+    .theme-toggle{
+      position:fixed; right:16px; bottom:16px; z-index:60;
+      display:inline-flex; align-items:center; gap:8px;
+      padding:.55rem .8rem; border:1px solid var(--line); border-radius:999px;
+      background:var(--panel); color:var(--ink); cursor:pointer; font-weight:700;
+    }
+    .theme-toggle span{font-size:14px}
+  </style>
 </head>
 <body>
 
-<header class="header rule-b" aria-label="Header">
-  <div class="row">
-    <div class="brand">
-      <div style="font-weight:600">DuraHaus</div>
-      <p class="tag">Protecting What’s Built. Enhancing What’s Seen.</p>
-    </div>
-    <nav class="nav" aria-label="Primary">
-      <a href="#services">Services</a>
-      <a href="#reviews">Reviews</a>
-      <a href="#faq">FAQ</a>
-      <a href="#areas">Service Area</a>
-      <a href="#quote">Quote</a>
-    </nav>
-    <a class="cta" href="#quote">Get a Quote</a>
-  </div>
-</header>
+  <!-- Header -->
+  <header>
+    <div class="container nav">
+      <a class="brand" href="/" aria-label="DuraHaus home">
+        <picture>
+          <source srcset="/assets/durahaus-logo.svg" type="image/svg+xml">
+          <source srcset="/assets/durahaus-logo.png" type="image/png">
+          <img src="/assets/durahaus-logo.jpg" alt="DuraHaus logo"
+               onerror="this.closest('.brand').querySelector('.wordmark').style.display='block'">
+        </picture>
+        <span class="wordmark" style="display:none">DURAHAUS</span>
+      </a>
 
-<section class="hero rule-b" aria-label="Hero">
-  <div class="wrap">
-    <h1>Premium Painting, Construction & Sealing</h1>
-    <p class="lead">Straight lines. Durable systems. Professional prep. DuraHaus is the #1 pick for long-lasting finishes and weather-tight homes.</p>
-    <div class="buttons">
-      <a class="btn primary" href="tel:15136684382">Call / Text 513-668-4382</a>
-      <a class="btn" href="mailto:durahaus.solutions@gmail.com?subject=Free%20Estimate">Free Estimate</a>
+      <nav class="navlinks" aria-label="Primary">
+        <a href="/services.html" class="pill">Services</a>
+        <a href="/projects.html" class="pill">Projects</a>
+        <a href="/about.html" class="pill">About</a>
+        <a class="iconbtn" href="tel:15136684382" aria-label="Call DuraHaus">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.2c1.2 2.4 3.1 4.3 5.5 5.5l1.8-1.8c.3-.3.7-.4 1.1-.3 1 .3 2 .5 3 .5.6 0 1 .4 1 1v3.1c0 .6-.4 1-1 1C10.3 19.2 4.8 13.7 4.8 6.1c0-.6.4-1 1-1H9c.6 0 1 .4 1 1 0 1 .2 2 .5 3 .1.4 0 .8-.3 1.1l-1.6 2z"/></svg>
+        </a>
+        <a class="pill pill--solid" href="/quote.html">Get a Quote</a>
+      </nav>
     </div>
-  </div>
-</section>
+  </header>
 
-<main>
-  <!-- Trust -->
-  <section class="rule-b" aria-label="Trust">
-    <div class="wrap">
-      <div class="trust reveal">
-        <div class="trust-item">Licensed & Insured</div>
-        <div class="trust-item">Sherwin-Williams Pro-Grade</div>
-        <div class="trust-item">Dust & Masking Protocols</div>
-        <div class="trust-item">Satisfaction First</div>
+  <main>
+    <!-- Hero -->
+    <section class="hero">
+      <div class="hero__media">
+        <img src="/assets/stock-hero.webp" alt="Cincinnati high-end home exterior">
       </div>
-    </div>
-  </section>
-
-  <!-- Services -->
-  <section id="services" class="rule-b" aria-label="Services">
-    <div class="wrap">
-      <h2>What we do</h2>
-      <p class="lead">Interior & exterior painting, cabinets, drywall, concrete coatings, waterproofing and sealing.</p>
-      <div class="grid reveal">
-        <article class="card"><h3>Interior Painting</h3><p>Walls, ceilings, trim, doors—crisp and consistent.</p></article>
-        <article class="card"><h3>Exterior Painting</h3><p>Weather-ready systems for siding, brick, stucco, trim.</p></article>
-        <article class="card"><h3>Cabinet Refinishing</h3><p>Factory-smooth finishes with the right prep & catalyzed systems.</p></article>
-        <article class="card"><h3>Drywall & Repair</h3><p>Patching, texture blending, flawless repaints.</p></article>
-        <article class="card"><h3>Concrete Coatings</h3><p>Garages, basements, porches—flake, epoxy, polyaspartic.</p></article>
-        <article class="card"><h3>Waterproofing</h3><p>Sealants & masonry coatings to keep the elements out.</p></article>
+      <div class="hero__copy container">
+        <h1>Pro Services. Pro Results.<br>The DuraHaus Standard </h1>
+        <p class="lead">
+          From interiors to exteriors, cabinets to concrete — we approach every job with care, craftsmanship, and materials built to perform. All to make your home more beautiful, more durable, and better protected against time and weather.
+        </p>
+        <div class="stack" style="margin-top:1.1rem">
+          <!-- pill version -->
+          <a class="pill pill--solid" href="/services.html">Explore Services</a>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Reviews -->
-  <section id="reviews" class="rule-b" aria-label="Reviews">
-    <div class="wrap">
-      <h2>Live Reviews</h2>
-      <p class="lead">Google and Facebook feedback, right from customers. (Works live when you paste your embed URLs below.)</p>
+    <!-- Mission -->
+    <section class="container row">
+      <div class="card">
+        <img src="assets/interior4.webp" alt="Interior detail">
+      </div>
+      <div>
+        <h2>Protecting What’s Built. <br>Enhancing What’s Seen.</h2>
+        <p class="lead">
+          At DuraHaus that is our mission. We supply customers with specialized skills and knowledge in Interior/Exterior Painting, Cabinetry Finishes, Staining & Wood Finishes, Surface-Protecting Coatings, Concrete Coatings, Drywall Repair, Interior/Exterior Sealing and more.
+        </p>
+        <div class="stack" style="margin-top:1rem">
+          <!-- pill versions -->
+          <a class="pill pill--solid" href="/about.html">About</a>
+          <a class="pill pill--ghost" href="tel:15136684382">Call Us</a>
+        </div>
+      </div>
+    </section>
 
-      <div class="reviews">
-        <!-- Google Reviews Panel -->
-        <article class="panel reveal" id="google-panel">
-          <div class="panel-head">
-            <strong>Google Reviews</strong>
-            <span class="pill">Live embed or curated cards</span>
-          </div>
-          <div class="panel-body">
-            <!-- If live embed configured, we’ll inject an iframe here -->
-            <iframe class="embed" id="google-embed" title="Google Reviews" loading="lazy" style="display:none;"></iframe>
+    <!-- NEW: Sealing & Durability callout -->
+    <section class="container" style="margin-top:2rem">
+      <div class="card" style="padding:1.2rem">
+        <h2 style="margin:.2rem 0 0">Got cracks? Open seams? Missing caulking?</h2>
+        <p class="lead" style="margin:.5rem 0 0">
+          Small gaps invite water, drafts, pests, and rot. We remove failed beads, prep clean, and seal with exterior-rated, flexible systems so your home stays tighter, drier, and more durable. Windows, siding joints, trim & fascia, and masonry gaps—done right, paint-ready, and built to move with the seasons.
+        </p>
+        <div class="stack" style="margin-top:.8rem">
+          <a class="pill" href="/services.html#sealing">Learn about sealing</a>
+        </div>
+      </div>
+    </section>
 
-            <!-- Fallback curated reviews (edit these anytime) -->
-            <div class="fallback" id="google-fallback">
-              <div class="review">
-                <div class="stars">★★★★★</div>
-                <p>“Flawless lines, zero mess. They protected everything and finished ahead of schedule.”</p>
-                <div class="source">— L. Carter • <a href="https://google.com/maps" target="_blank" rel="noopener">Read on Google</a></div>
-              </div>
-              <div class="review">
-                <div class="stars">★★★★★</div>
-                <p>“Exterior repaint looks factory-new. Caulking is tight and clean throughout.”</p>
-                <div class="source">— L. Nguyen • <a href="https://google.com/maps" target="_blank" rel="noopener">Read on Google</a></div>
-              </div>
-              <div class="review">
-                <div class="stars">★★★★★</div>
-                <p>“Clear estimate, honest pricing, and the results are outstanding.”</p>
-                <div class="source">— D. Ramirez • <a href="https://google.com/maps" target="_blank" rel="noopener">Read on Google</a></div>
-              </div>
+    <!-- Services grid -->
+    <section class="container" style="margin-top:2rem">
+      <div class="grid">
+
+        <!-- Interior Painting -->
+        <div class="card">
+          <div class="carousel" data-carousel>
+            <button class="carousel-btn prev" aria-label="Previous image" data-prev>‹</button>
+            <div class="carousel-track" data-track>
+              <img src="/assets/interior8.webp" alt="Interior painting 1">
+              <img src="/assets/interior11.webp" alt="Interior painting 2">
+              <img src="/assets/interior1.webp" alt="Interior painting 3">
             </div>
+            <button class="carousel-btn next" aria-label="Next image" data-next>›</button>
+            <div class="carousel-dots" data-dots></div>
           </div>
-        </article>
+          <a class="pad service-link" href="/services.html#interior">
+            <h3 style="margin:0 0 .25rem">Interior Painting</h3>
+            <p>Walls, ceilings, trim, cabinetry, accent walls, etc.</p>
+          </a>
+        </div>
 
-        <!-- Facebook Reviews/Recommendations Panel -->
-        <article class="panel reveal" id="fb-panel">
-          <div class="panel-head">
-            <strong>Facebook Recommendations</strong>
-            <span class="pill">Live embed or curated cards</span>
-          </div>
-          <div class="panel-body">
-            <iframe class="embed" id="fb-embed" title="Facebook Reviews" loading="lazy" style="display:none;"></iframe>
-
-            <div class="fallback" id="fb-fallback">
-              <div class="review">
-                <div class="stars">★★★★★</div>
-                <p>“Responsive and professional. Our cabinets look brand new—highly recommend.”</p>
-                <div class="source">— J. Patel • <a href="https://facebook.com" target="_blank" rel="noopener">See on Facebook</a></div>
-              </div>
-              <div class="review">
-                <div class="stars">★★★★★</div>
-                <p>“They fixed all the cracked caulking and sealed everything the right way.”</p>
-                <div class="source">— K. Brooks • <a href="https://facebook.com" target="_blank" rel="noopener">See on Facebook</a></div>
-              </div>
-              <div class="review">
-                <div class="stars">★★★★★</div>
-                <p>“Great communication, precise work, and spotless cleanup.”</p>
-                <div class="source">— M. Reyes • <a href="https://facebook.com" target="_blank" rel="noopener">See on Facebook</a></div>
-              </div>
+        <!-- Exterior Painting -->
+        <div class="card">
+          <div class="carousel" data-carousel>
+            <button class="carousel-btn prev" aria-label="Previous image" data-prev>‹</button>
+            <div class="carousel-track" data-track>
+              <img src="/assets/exterior7.webp" alt="Exterior painting 1">
+              <img src="/assets/exterior4.webp" alt="Exterior painting 2">
+              <img src="/assets/exterior3.webp" alt="Exterior painting 3">
             </div>
+            <button class="carousel-btn next" aria-label="Next image" data-next>›</button>
+            <div class="carousel-dots" data-dots></div>
           </div>
-        </article>
+          <a class="pad service-link" href="/services.html#exterior">
+            <h3 style="margin:0 0 .25rem">Exterior Painting</h3>
+            <p>Premium prep and coatings that handle Midwest weather.</p>
+          </a>
+        </div>
+
+        <!-- Concrete Coatings -->
+        <div class="card">
+          <div class="carousel" data-carousel>
+            <button class="carousel-btn prev" aria-label="Previous image" data-prev>‹</button>
+            <div class="carousel-track" data-track>
+              <img src="/assets/stock-concrete.webp" alt="Concrete coatings 1">
+              <img src="/assets/concrete1.webp" alt="Concrete coatings 2">
+              <img src="/assets/concrete3.webp" alt="Concrete coatings 3">
+            </div>
+            <button class="carousel-btn next" aria-label="Next image" data-next>›</button>
+            <div class="carousel-dots" data-dots></div>
+          </div>
+          <a class="pad service-link" href="/services.html#concrete">
+            <h3 style="margin:0 0 .25rem">Concrete Coatings</h3>
+            <p>Garage, patios, and basements — durable and easy to clean.</p>
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- More services -->
+    <section class="container" style="margin-top:2rem">
+      <div class="grid">
+
+        <!-- Cabinet Refinishing -->
+        <div class="card">
+          <div class="carousel" data-carousel>
+            <button class="carousel-btn prev" aria-label="Previous image" data-prev>‹</button>
+            <div class="carousel-track" data-track>
+              <img src="/assets/cabinets1.webp" alt="Cabinet refinishing 1">
+              <img src="/assets/cabinets2.webp" alt="Cabinet refinishing 2">
+              <img src="/assets/stock-cabinets.webp" alt="Cabinet refinishing 3">
+            </div>
+            <button class="carousel-btn next" aria-label="Next image" data-next>›</button>
+            <div class="carousel-dots" data-dots></div>
+          </div>
+          <a class="pad service-link" href="/services.html#cabinets">
+            <h3 style="margin:0 0 .25rem">Cabinet Refinishing</h3>
+            <p>Factory-smooth primers and hard-wearing topcoats.</p>
+          </a>
+        </div>
+
+        <!-- Staining & Wood Care -->
+        <div class="card">
+          <div class="carousel" data-carousel>
+            <button class="carousel-btn prev" aria-label="Previous image" data-prev>‹</button>
+            <div class="carousel-track" data-track>
+              <img src="/assets/stock-stain.webp" alt="Staining and wood care 1">
+              <img src="/assets/stain1.webp" alt="Staining and wood care 2">
+              <img src="/assets/stain2.webp" alt="Staining and wood care 3">
+            </div>
+            <button class="carousel-btn next" aria-label="Next image" data-next>›</button>
+            <div class="carousel-dots" data-dots></div>
+          </div>
+          <a class="pad service-link" href="/services.html#stain">
+            <h3 style="margin:0 0 .25rem">Staining & Wood Care</h3>
+            <p>Decks, doors, and rails prepped and finished right.</p>
+          </a>
+        </div>
+
+        <!-- Drywall & Repair -->
+        <div class="card">
+          <div class="carousel" data-carousel>
+            <button class="carousel-btn prev" aria-label="Previous image" data-prev>‹</button>
+            <div class="carousel-track" data-track>
+              <img src="/assets/stock-drywall.webp" alt="Drywall repair 1">
+              <img src="/assets/drywall2.webp" alt="Drywall repair 2">
+              <img src="/assets/drywall1.webp" alt="Drywall repair 3">
+            </div>
+            <button class="carousel-btn next" aria-label="Next image" data-next>›</button>
+            <div class="carousel-dots" data-dots></div>
+          </div>
+          <a class="pad service-link" href="/services.html#drywall">
+            <h3 style="margin:0 0 .25rem">Drywall & Repair</h3>
+            <p>Repairs and resurfacing for flat, paint-ready surfaces.</p>
+          </a>
+        </div>
+
       </div>
 
-      <p class="lead" style="margin-top:1rem">Tip: replace the fallback cards with your own quotes & initials, and drop in the live embeds when ready (see tiny config at the bottom).</p>
-    </div>
-  </section>
-
-  <!-- FAQ -->
-  <section id="faq" class="rule-b" aria-label="FAQ">
-    <div class="wrap">
-      <h2>FAQ</h2>
-      <div class="faq">
-        <article class="qa">
-          <button class="q" aria-expanded="false">
-            <h3>How do estimates work?</h3>
-            <span aria-hidden="true">+</span>
-          </button>
-          <div class="a" hidden>
-            <div class="a-inner">Call, text or email. We’ll schedule a quick walkthrough, discuss scope and materials, then send a clear written estimate—no surprises.</div>
-          </div>
-        </article>
-
-        <article class="qa">
-          <button class="q" aria-expanded="false">
-            <h3>What paint and caulking systems do you use?</h3>
-            <span aria-hidden="true">+</span>
-          </button>
-          <div class="a" hidden>
-            <div class="a-inner">We specify pro-grade systems from top manufacturers (e.g., Sherwin-Williams) matched to substrate and exposure. Exterior caulking is high-flex, exterior-rated and tooled to spec.</div>
-          </div>
-        </article>
-
-        <article class="qa">
-          <button class="q" aria-expanded="false">
-            <h3>Do you protect landscaping and interiors?</h3>
-            <span aria-hidden="true">+</span>
-          </button>
-          <div class="a" hidden>
-            <div class="a-inner">Yes—masking, floor protection, and dust control are standard. We treat your home like it’s ours and leave it spotless.</div>
-          </div>
-        </article>
-
-        <article class="qa">
-          <button class="q" aria-expanded="false">
-            <h3>Are you licensed and insured?</h3>
-            <span aria-hidden="true">+</span>
-          </button>
-          <div class="a" hidden>
-            <div class="a-inner">Absolutely. We’re fully licensed and insured—happy to provide proof on request.</div>
-          </div>
-        </article>
+      <!-- NEW: More Services pill (after Drywall & Repair) -->
+      <div style="display:flex;justify-content:center;margin-top:16px">
+        <a class="pill pill--solid" href="/services.html" aria-label="See all services">More Services</a>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Areas -->
-  <section id="areas" class="rule-b" aria-label="Service Area">
-    <div class="wrap">
-      <h2>Serving Butler, Hamilton &amp; Warren Counties</h2>
-      <div class="city-row reveal">
-        <span class="city">Mason</span><span class="city">West Chester</span><span class="city">Hamilton</span>
-        <span class="city">Fairfield</span><span class="city">Liberty Twp</span><span class="city">Monroe</span>
-        <span class="city">Lebanon</span><span class="city">Blue Ash</span>
+    <!-- FAQ -->
+    <section class="container faq">
+      <h2 style="margin-bottom:.6rem">FAQs</h2>
+      <details><summary>Do you offer free estimates?</summary>
+        <div class="a">Yes. We can visit on-site within 48 hours in most cases and provide a written, itemized quote.</div>
+      </details>
+      <details><summary>How soon can you start?</summary>
+        <div class="a">Scheduling depends on scope and season. Smaller interior projects can often begin within 1–2 weeks.</div>
+      </details>
+      <details><summary>What materials do you use?</summary>
+        <div class="a">We spec pro-grade primers, enamels, and exterior coatings matched to each substrate for durability and finish quality.</div>
+      </details>
+      <details><summary>Are you insured and do you provide a warranty?</summary>
+        <div class="a">Yes—fully insured. We include a workmanship warranty with every project. Details are listed on your written quote.</div>
+      </details>
+      <!-- NEW FAQs -->
+      <details><summary>Do you handle surface prep and protection?</summary>
+        <div class="a">Absolutely. Masking, floor and landscape protection, dust control, sanding, patching, and proper priming are built into our process.</div>
+      </details>
+      <details><summary>Which areas do you serve?</summary>
+        <div class="a">Most of Butler, Hamilton, and Warren counties. See the Service Areas section below for specific cities.</div>
+      </details>
+    </section>
+
+    <!-- NEW: Service Areas -->
+    <section class="container" aria-label="Service Areas" style="margin-top:1rem">
+      <h2 style="margin-bottom:.6rem">Service Areas</h2>
+      <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(220px,1fr))">
+        <div class="why tile"><h3>Butler County</h3><p class="lead" style="margin-top:.35rem">West Chester • Liberty Twp • Hamilton • Fairfield • Monroe • Trenton • Oxford</p></div>
+        <div class="why tile"><h3>Hamilton County</h3><p class="lead" style="margin-top:.35rem">Blue Ash • Sharonville • Loveland (HC) • Cincinnati (NE) • Montgomery • Symmes</p></div>
+        <div class="why tile"><h3>Warren County</h3><p class="lead" style="margin-top:.35rem">Mason • Deerfield Twp • Lebanon • Landen • Kings Mills • Maineville • Springboro (N)</p></div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Quote -->
-  <section id="quote" class="rule-b" aria-label="Quote">
-    <div class="wrap">
-      <h2>Start your free estimate</h2>
-      <p class="lead">Call, text or email—whatever is easiest. We’ll provide a clear, honest quote.</p>
-      <div class="buttons">
-        <a class="btn primary" href="tel:15136684382">Call 513-668-4382</a>
-        <a class="btn" href="sms:+15136684382?body=Hi%20DuraHaus%2C%20can%20I%20get%20a%20free%20estimate%3F">Text Us</a>
-        <a class="btn" href="mailto:durahaus.solutions@gmail.com?subject=Free%20Estimate">Email</a>
+    <!-- CTA band -->
+    <section class="container" style="margin:3rem auto 2rem">
+      <div class="band">
+        <div>
+          <h2 style="margin:.2rem 0">Ready to start?</h2>
+          <p style="margin:.2rem 0;color:var(--muted)">Fast estimates, tidy jobsites, and results that hold up.</p>
+        </div>
+        <div class="stack">
+          <a class="pill pill--solid" href="/quote.html">Request a Quote</a>
+          <a class="iconbtn" href="tel:15136684382" aria-label="Call DuraHaus">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.2c1.2 2.4 3.1 4.3 5.5 5.5l1.8-1.8c.3-.3.7-.4 1.1-.3 1 .3 2 .5 3 .5.6 0 1 .4 1 1v3.1c0 .6-.4 1-1 1C10.3 19.2 4.8 13.7 4.8 6.1c0-.6.4-1 1-1H9c.6 0 1 .4 1 1 0 1 .2 2 .5 3 .1.4 0 .8-.3 1.1l-1.6 2z"/></svg>
+          </a>
+        </div>
       </div>
+    </section>
+
+    <!-- Pre-footer: stamp + mini nav -->
+    <div class="container prefooter">
+      <div class="stampwrap">
+        <img src="/assets/seal-white.PNG" alt="DuraHaus stamp (white)">
+      </div>
+      <nav class="menu" aria-label="Footer quick links">
+        <a href="/services.html" class="pill">Services</a>
+        <a href="/projects.html" class="pill">Projects</a>
+        <a href="/about.html" class="pill">About</a>
+        <a class="iconbtn" href="tel:15136684382" aria-label="Call DuraHaus">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.2c1.2 2.4 3.1 4.3 5.5 5.5l1.8-1.8c.3-.3.7-.4 1.1-.3 1 .3 2 .5 3 .5.6 0 1 .4 1 1v3.1c0 .6-.4 1-1 1C10.3 19.2 4.8 13.7 4.8 6.1c0-.6.4-1 1-1H9c.6 0 1 .4 1 1 0 1 .2 2 .5 3 .1.4 0 .8-.3 1.1l-1.6 2z"/></svg>
+        </a>
+        <a class="pill pill--solid" href="/quote.html">Get a Quote</a>
+      </nav>
     </div>
-  </section>
-</main>
 
-<footer id="contact" aria-label="Footer">
-  <p><strong>DuraHaus Painting &amp; Construction</strong> — Butler, Hamilton &amp; Warren Counties, Ohio</p>
-  <p><a href="tel:15136684382">513-668-4382</a> — <a href="mailto:durahaus.solutions@gmail.com">durahaus.solutions@gmail.com</a></p>
-  <p style="color:var(--muted);font-size:.92rem">© 2025 DuraHaus. All rights reserved.</p>
-</footer>
+    <!-- Contact strip (phone, email, socials) -->
+    <section class="contactbar">
+      <div class="container row">
+        <a href="tel:+15136684382" aria-label="Call">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.2c1.2 2.4 3.1 4.3 5.5 5.5l1.8-1.8c.3-.3.7-.4 1.1-.3 1 .3 2 .5 3 .5.6 0 1 .4 1 1v3.1c0 .6-.4 1-1 1C10.3 19.2 4.8 13.7 4.8 6.1c0-.6.4-1 1-1H9c.6 0 1 .4 1 1 0 1 .2 2 .5 3 .1.4 0 .8-.3 1.1l-1.6 2z"/></svg>
+          513-668-4382
+        </a>
+        <a href="mailto:durahaus.solutions@gmail.com" aria-label="Email">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5L4 8V6l8 5 8-5v2z"/></svg>
+          durahaus.solutions@gmail.com
+        </a>
+        <a href="https://www.facebook.com/durahaus" target="_blank" rel="noopener" aria-label="Facebook">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 12a10 10 0 1 0-11.5 9.9v-7h-2v-3h2v-2.3c0-2 1.2-3.1 3-3.1.9 0 1.8.1 1.8.1v2h-1c-1 0-1.3.6-1.3 1.2V12h2.2l-.4 3h-1.8v7A10 10 0 0 0 22 12z"/></svg>
+          Facebook
+        </a>
+        <a href="https://share.google/EBNrz9YGxu5CfbmpO" target="_blank" rel="noopener" aria-label="Google Business Profile">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6a2.5 2.5 0 0 1 0 5z"/></svg>
+          Google
+        </a>
+      </div>
+    </section>
+  </main>
 
-<a class="float-cta" href="#quote" aria-label="Open quote options">Get a Quote</a>
+  <!-- Footer -->
+  <footer>
+    <div class="container foot">
+      <small>© <span id="y"></span> DuraHaus Painting & Construction. All rights reserved.</small>
+    </div>
+  </footer>
 
-<script>
-  /* ---- reveal on scroll ---- */
-  const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('show');io.unobserve(e.target);}})},{threshold:.15});
-  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+  <!-- Light/Dark toggle pill -->
+  <button class="theme-toggle" id="themeToggle" aria-pressed="false" aria-label="Toggle light or dark theme">
+    <span id="themeLabel">Dark</span>
+  </button>
 
-  /* ---- FAQ accordion (accessible) ---- */
-  document.querySelectorAll('.qa .q').forEach(btn=>{
-    btn.addEventListener('click', ()=>{
-      const qa = btn.closest('.qa');
-      const ans = qa.querySelector('.a');
-      const open = qa.classList.toggle('open');
-      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
-      if(open){ ans.hidden = false; } else { ans.hidden = true; }
-    });
-  });
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
 
-  /* ============================
-     REVIEWS CONFIG (paste URLs)
-     ============================
+    // === Theme toggle (persists) ===
+    (function(){
+      const btn = document.getElementById('themeToggle');
+      const label = document.getElementById('themeLabel');
+      const root = document.documentElement;
+      const saved = localStorage.getItem('theme');
+      if(saved === 'light'){ root.setAttribute('data-theme','light'); label.textContent='Light'; btn.setAttribute('aria-pressed','true'); }
+      function syncLabel(){
+        const isLight = root.getAttribute('data-theme')==='light';
+        label.textContent = isLight ? 'Light' : 'Dark';
+        btn.setAttribute('aria-pressed', isLight ? 'true' : 'false');
+      }
+      btn.addEventListener('click', ()=>{
+        const isLight = root.getAttribute('data-theme')==='light';
+        if(isLight){ root.removeAttribute('data-theme'); localStorage.setItem('theme','dark'); }
+        else{ root.setAttribute('data-theme','light'); localStorage.setItem('theme','light'); }
+        syncLabel();
+      });
+      syncLabel();
+    })();
 
-     GOOGLE_EMBED:
-       - In Google Maps, search your business → Share → Embed a map → Copy HTML.
-       - Grab the src URL that looks like: https://www.google.com/maps/embed?pb=...
-       - Paste below as GOOGLE_EMBED.
+    // === Carousel (Pointer Events with touch/mouse fallback) ===
+    (function(){
+      const carousels = document.querySelectorAll('[data-carousel]');
 
-     FB_EMBED:
-       - Go to https://developers.facebook.com/docs/plugins/page-plugin/
-       - Enter your Page URL, choose tabs like "timeline" (or "reviews" if available), set width ~500, height ~380.
-       - Copy the iFrame src (https://www.facebook.com/plugins/page.php?...).
-       - Paste below as FB_EMBED.
-  */
-  const REVIEWS_CONFIG = {
-    GOOGLE_EMBED: "",   // e.g. "https://www.google.com/maps/embed?pb=..."
-    FB_EMBED: ""        // e.g. "https://www.facebook.com/plugins/page.php?href=...&tabs=timeline"
-  };
+      function attachPointer(c){
+        const track = c.querySelector('[data-track]');
+        const slides = [...track.children];
+        const prev = c.querySelector('[data-prev]');
+        const next = c.querySelector('[data-next]');
+        const dotsWrap = c.querySelector('[data-dots]');
 
-  /* ---- Inject live embeds if provided ---- */
-  (function(){
-    const g = document.getElementById('google-embed');
-    const gf = document.getElementById('google-fallback');
-    if(REVIEWS_CONFIG.GOOGLE_EMBED){
-      g.src = REVIEWS_CONFIG.GOOGLE_EMBED;
-      g.style.display = 'block';
-      gf.style.display = 'none';
-    }
-    const f = document.getElementById('fb-embed');
-    const ff = document.getElementById('fb-fallback');
-    if(REVIEWS_CONFIG.FB_EMBED){
-      f.src = REVIEWS_CONFIG.FB_EMBED;
-      f.style.display = 'block';
-      ff.style.display = 'none';
-    }
-  })();
-</script>
+        // create dots (hidden by CSS, kept for a11y/state)
+        slides.forEach((_, idx)=>{
+          const b = document.createElement('button');
+          b.type = 'button';
+          b.setAttribute('aria-label', 'Go to slide '+(idx+1));
+          b.addEventListener('click', (e)=>{ e.stopPropagation(); go(idx); });
+          dotsWrap.appendChild(b);
+        });
+
+        let i = 0;
+        let startX = 0, dragX = 0;
+        let dragging = false;
+
+        function update(){
+          track.style.transition = 'transform 280ms ease';
+          track.style.transform = `translateX(${i * -100}%)`;
+          [...dotsWrap.children].forEach((d, di)=> d.setAttribute('aria-current', di===i));
+          prev.style.visibility = (i===0)?'hidden':'visible';
+          next.style.visibility = (i===slides.length-1)?'hidden':'visible';
+        }
+        function clamp(n){ return Math.max(0, Math.min(slides.length-1, n)); }
+        function go(n){ i = clamp(n); update(); }
+        function nextSlide(){ go(i+1); }
+        function prevSlide(){ go(i-1); }
+
+        // Stop bubbling so the card link isn't triggered
+        [prev, next, dotsWrap, track].forEach(el=>{
+          el && el.addEventListener('click', ev=>ev.stopPropagation());
+        });
+
+        prev.addEventListener('click', prevSlide);
+        next.addEventListener('click', nextSlide);
+
+        // Pointer events (best on iOS/Android + desktop)
+        const usePointer = 'PointerEvent' in window;
+
+        if (usePointer) {
+          track.addEventListener('pointerdown', onPointerDown);
+          // prevent images from being draggable ghosts
+          track.querySelectorAll('img').forEach(img=> img.draggable = false);
+        } else {
+          // Fallback to touch/mouse
+          track.addEventListener('touchstart', onStart, {passive:true});
+          track.addEventListener('mousedown', onStart);
+        }
+
+        function onPointerDown(e){
+          if (e.pointerType === 'mouse' && e.button !== 0) return;
+          dragging = true;
+          startX = e.clientX;
+          dragX = 0;
+          track.setPointerCapture?.(e.pointerId);
+          document.addEventListener('pointermove', onPointerMove);
+          document.addEventListener('pointerup', onPointerUp);
+          document.addEventListener('pointercancel', onPointerCancel);
+        }
+        function onPointerMove(e){
+          if(!dragging) return;
+          dragX = e.clientX - startX;
+          track.style.transition = 'none';
+          const pct = (dragX / track.clientWidth) * 100;
+          track.style.transform = `translateX(calc(${i * -100}% + ${pct}%))`;
+        }
+        function finishDrag(){
+          track.style.transition = '';
+          const threshold = track.clientWidth * 0.15;
+          if (Math.abs(dragX) > threshold){
+            if (dragX < 0) nextSlide(); else prevSlide();
+          } else {
+            update();
+          }
+          dragging = false;
+          dragX = 0;
+        }
+        function onPointerUp(e){
+          if(track.hasPointerCapture?.(e.pointerId)) track.releasePointerCapture?.(e.pointerId);
+          finishDrag();
+          document.removeEventListener('pointermove', onPointerMove);
+          document.removeEventListener('pointerup', onPointerUp);
+          document.removeEventListener('pointercancel', onPointerCancel);
+        }
+        function onPointerCancel(e){
+          if(track.hasPointerCapture?.(e.pointerId)) track.releasePointerCapture?.(e.pointerId);
+          finishDrag();
+          document.removeEventListener('pointermove', onPointerMove);
+          document.removeEventListener('pointerup', onPointerUp);
+          document.removeEventListener('pointercancel', onPointerCancel);
+        }
+
+        // Touch/mouse fallback
+        function onStart(e){
+          dragging = true;
+          startX = getX(e);
+          dragX = 0;
+          document.addEventListener('touchmove', onMove, {passive:false});
+          document.addEventListener('mousemove', onMove);
+          document.addEventListener('touchend', onEnd);
+          document.addEventListener('mouseup', onEnd);
+        }
+        function onMove(e){
+          if(!dragging) return;
+          dragX = getX(e) - startX;
+          track.style.transition = 'none';
+          const pct = (dragX / track.clientWidth) * 100;
+          track.style.transform = `translateX(calc(${i * -100}% + ${pct}%))`;
+          e.preventDefault?.(); // keep horizontal swipe active on iOS
+        }
+        function onEnd(){
+          finishDrag();
+          document.removeEventListener('touchmove', onMove);
+          document.removeEventListener('mousemove', onMove);
+          document.removeEventListener('touchend', onEnd);
+          document.removeEventListener('mouseup', onEnd);
+        }
+        function getX(e){ return (e.touches && e.touches[0]?.clientX) ?? e.clientX; }
+
+        update();
+      }
+
+      carousels.forEach(attachPointer);
+    })();
+  </script>
 </body>
 </html>
