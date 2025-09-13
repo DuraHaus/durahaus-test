@@ -32,10 +32,7 @@
     :root[data-theme="light"] header{background:rgba(255,255,255,.9)}
     .nav{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:12px 0}
     .brand{display:flex;align-items:center;gap:14px;min-width:0}
-    .brand picture{display:block;line-height:0}
     .brand img{height:56px;width:auto;display:block}
-    .brand .wordmark{font-weight:800;letter-spacing:.03em;white-space:nowrap}
-
     .navlinks{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-left:20px}
     .pill{padding:.5rem .8rem;border:1px solid var(--line);border-radius:999px;font-size:14px}
     .pill--solid{background:#fff;color:#000;border-color:#fff;font-weight:700}
@@ -92,6 +89,8 @@
     .band{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;padding:1.2rem;border:1px solid var(--line);border-radius:var(--r);background:var(--panel)}
 
     /* Pre-footer (stamp + mini nav) */
+    <style>
+    </style>
     .prefooter{margin:3rem auto 1.5rem;display:flex;gap:22px;align-items:center;justify-content:space-between;flex-wrap:wrap}
     .prefooter .stampwrap{display:flex;align-items:center;gap:14px}
     .prefooter img{width:128px;height:auto;opacity:.95;filter:invert(1) brightness(1.6);background:transparent}
@@ -130,7 +129,7 @@
       scroll-snap-type:x mandatory;
       scroll-behavior:smooth;
       -webkit-overflow-scrolling:touch;
-      touch-action: pan-y;
+      touch-action: pan-x;          /* ← enable horizontal swipe */
       user-select:none; -webkit-user-drag:none;
     }
     .carousel-track::-webkit-scrollbar{display:none}
@@ -159,13 +158,8 @@
   <header>
     <div class="container nav">
       <a class="brand" href="/" aria-label="DuraHaus home">
-        <picture id="brandPicture">
-          <source id="brandSourceSvg" srcset="/assets/durahaus-logo.svg" type="image/svg+xml">
-          <source id="brandSourcePng" srcset="/assets/durahaus-logo.png" type="image/png">
-          <img id="brandLogo" src="/assets/durahaus-logo.jpg" alt="DuraHaus logo"
-               onerror="this.closest('.brand').querySelector('.wordmark').style.display='block'">
-        </picture>
-        <span class="wordmark" style="display:none">DURAHAUS</span>
+        <!-- simplified: single img that we swap via JS -->
+        <img id="brandLogo" src="/assets/durahaus-logo.svg" alt="DuraHaus logo" height="56">
       </a>
 
       <nav class="navlinks" aria-label="Primary">
@@ -246,7 +240,6 @@
               <img src="/assets/exterior3.webp" alt="Exterior painting 3">
             </div>
             <button class="carousel-btn next" aria-label="Next image" data-next>›</button>
-            <div class="carousel-dots" data-dots></div>
           </div>
           <a class="pad service-link" href="/services.html#exterior">
             <h3 style="margin:0 0 .25rem">Exterior Painting</h3>
@@ -264,7 +257,6 @@
               <img src="/assets/concrete3.webp"      alt="Concrete coatings 3">
             </div>
             <button class="carousel-btn next" aria-label="Next image" data-next>›</button>
-            <div class="carousel-dots" data-dots></div>
           </div>
           <a class="pad service-link" href="/services.html#concrete">
             <h3 style="margin:0 0 .25rem">Concrete Coatings</h3>
@@ -289,7 +281,6 @@
               <img src="/assets/stock-cabinets.webp" alt="Cabinet refinishing 3">
             </div>
             <button class="carousel-btn next" aria-label="Next image" data-next>›</button>
-            <div class="carousel-dots" data-dots></div>
           </div>
           <a class="pad service-link" href="/services.html#cabinets">
             <h3 style="margin:0 0 .25rem">Cabinet Refinishing</h3>
@@ -307,7 +298,6 @@
               <img src="/assets/stain2.webp"      alt="Staining and wood care 3">
             </div>
             <button class="carousel-btn next" aria-label="Next image" data-next>›</button>
-            <div class="carousel-dots" data-dots></div>
           </div>
           <a class="pad service-link" href="/services.html#stain">
             <h3 style="margin:0 0 .25rem">Staining & Wood Care</h3>
@@ -325,7 +315,6 @@
               <img src="/assets/drywall1.webp"      alt="Drywall repair 3">
             </div>
             <button class="carousel-btn next" aria-label="Next image" data-next>›</button>
-            <div class="carousel-dots" data-dots></div>
           </div>
           <a class="pad service-link" href="/services.html#drywall">
             <h3 style="margin:0 0 .25rem">Drywall & Repair</h3>
@@ -463,10 +452,6 @@
       const btn   = document.getElementById('themeToggle');
       const label = document.getElementById('themeLabel');
       const root  = document.documentElement;
-
-      // Brand <picture> parts
-      const pic   = document.getElementById('brandPicture');
-      const srcSvg= document.getElementById('brandSourceSvg');
       const imgEl = document.getElementById('brandLogo');
 
       const WHITE_SVG = '/assets/durahaus-logo.svg'; // dark mode (white)
@@ -476,11 +461,7 @@
         const isLight = root.getAttribute('data-theme')==='light';
         label.textContent = isLight ? 'Light' : 'Dark';
         btn.setAttribute('aria-pressed', isLight ? 'true' : 'false');
-
-        // swap the SVG source in the <picture> and the <img> fallback
-        const target = isLight ? BLACK_SVG : WHITE_SVG;
-        if(srcSvg) srcSvg.setAttribute('srcset', target);
-        if(imgEl)  imgEl.setAttribute('src', target);
+        imgEl.src = isLight ? BLACK_SVG : WHITE_SVG;
       }
 
       const saved = localStorage.getItem('theme');
@@ -505,7 +486,6 @@
         const prev  = c.querySelector('[data-prev]');
         const next  = c.querySelector('[data-next]');
 
-        // Cache original images
         const imgs = Array.from(track.querySelectorAll('img'));
         if(imgs.length < 2) return;
 
