@@ -40,7 +40,7 @@
     .pill{padding:.5rem .8rem;border:1px solid var(--line);border-radius:999px;font-size:14px}
     .pill--solid{background:#fff;color:#000;border-color:#fff;font-weight:700}
     .pill--ghost{background:transparent}
-    .cta{background:#fff;color:#000;border-color:#fff;font-weight:700} /* existing style, still used elsewhere */
+    .cta{background:#fff;color:#000;border-color:#fff;font-weight:700}
     .iconbtn{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border:1px solid var(--line);border-radius:999px}
     .iconbtn svg{width:18px;height:18px;fill:currentColor}
     @media (max-width:600px){
@@ -127,7 +127,7 @@
     .carousel-track{
       display:flex;
       transition:transform 280ms ease;
-      touch-action: pan-y; /* allows horizontal swipe on iOS */
+      touch-action: pan-y;
       user-select:none; -webkit-user-drag:none;
     }
     .carousel img{width:100%;height:340px;object-fit:cover;flex:0 0 100%}
@@ -188,7 +188,6 @@
           From interiors to exteriors, cabinets to concrete — we approach every job with care, craftsmanship, and materials built to perform. All to make your home more beautiful, more durable, and better protected against time and weather.
         </p>
         <div class="stack" style="margin-top:1.1rem">
-          <!-- pill version -->
           <a class="pill pill--solid" href="/services.html">Explore Services</a>
         </div>
       </div>
@@ -205,22 +204,8 @@
           At DuraHaus that is our mission. We supply customers with specialized skills and knowledge in Interior/Exterior Painting, Cabinetry Finishes, Staining & Wood Finishes, Surface-Protecting Coatings, Concrete Coatings, Drywall Repair, Interior/Exterior Sealing and more.
         </p>
         <div class="stack" style="margin-top:1rem">
-          <!-- pill versions -->
           <a class="pill pill--solid" href="/about.html">About</a>
           <a class="pill pill--ghost" href="tel:15136684382">Call Us</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- NEW: Sealing & Durability callout -->
-    <section class="container" style="margin-top:2rem">
-      <div class="card" style="padding:1.2rem">
-        <h2 style="margin:.2rem 0 0">Got cracks? Open seams? Missing caulking?</h2>
-        <p class="lead" style="margin:.5rem 0 0">
-          Small gaps invite water, drafts, pests, and rot. We remove failed beads, prep clean, and seal with exterior-rated, flexible systems so your home stays tighter, drier, and more durable. Windows, siding joints, trim & fascia, and masonry gaps—done right, paint-ready, and built to move with the seasons.
-        </p>
-        <div class="stack" style="margin-top:.8rem">
-          <a class="pill" href="/services.html#sealing">Learn about sealing</a>
         </div>
       </div>
     </section>
@@ -346,9 +331,22 @@
 
       </div>
 
-      <!-- NEW: More Services pill (after Drywall & Repair) -->
+      <!-- More Services pill (after Drywall & Repair) -->
       <div style="display:flex;justify-content:center;margin-top:16px">
         <a class="pill pill--solid" href="/services.html" aria-label="See all services">More Services</a>
+      </div>
+    </section>
+
+    <!-- (MOVED) Sealing & Durability callout -->
+    <section class="container" style="margin-top:2rem">
+      <div class="card" style="padding:1.2rem">
+        <h2 style="margin:.2rem 0 0">Got cracks? Open seams? Missing caulking?</h2>
+        <p class="lead" style="margin:.5rem 0 0">
+          Small gaps invite water, drafts, pests, and rot. We remove failed beads, prep clean, and seal with exterior-rated, flexible systems so your home stays tighter, drier, and more durable. Windows, siding joints, trim & fascia, and masonry gaps—done right, paint-ready, and built to move with the seasons.
+        </p>
+        <div class="stack" style="margin-top:.8rem">
+          <a class="pill" href="/services.html#sealing">Learn about sealing</a>
+        </div>
       </div>
     </section>
 
@@ -367,7 +365,6 @@
       <details><summary>Are you insured and do you provide a warranty?</summary>
         <div class="a">Yes—fully insured. We include a workmanship warranty with every project. Details are listed on your written quote.</div>
       </details>
-      <!-- NEW FAQs -->
       <details><summary>Do you handle surface prep and protection?</summary>
         <div class="a">Absolutely. Masking, floor and landscape protection, dust control, sanding, patching, and proper priming are built into our process.</div>
       </details>
@@ -376,7 +373,7 @@
       </details>
     </section>
 
-    <!-- NEW: Service Areas -->
+    <!-- Service Areas -->
     <section class="container" aria-label="Service Areas" style="margin-top:1rem">
       <h2 style="margin-bottom:.6rem">Service Areas</h2>
       <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(220px,1fr))">
@@ -418,7 +415,7 @@
       </nav>
     </div>
 
-    <!-- Contact strip (phone, email, socials) -->
+    <!-- Contact strip -->
     <section class="contactbar">
       <div class="container row">
         <a href="tel:+15136684382" aria-label="Call">
@@ -477,7 +474,7 @@
       syncLabel();
     })();
 
-    // === Carousel (Pointer Events with touch/mouse fallback) ===
+    // === Carousel (fixed threshold & continuous swipe) ===
     (function(){
       const carousels = document.querySelectorAll('[data-carousel]');
 
@@ -488,7 +485,13 @@
         const next = c.querySelector('[data-next]');
         const dotsWrap = c.querySelector('[data-dots]');
 
+        // viewport width for math (NOT the wide track)
+        let viewportW = c.getBoundingClientRect().width;
+        const ro = new ResizeObserver(() => { viewportW = c.getBoundingClientRect().width; });
+        ro.observe(c);
+
         // create dots (hidden by CSS, kept for a11y/state)
+        dotsWrap.innerHTML = '';
         slides.forEach((_, idx)=>{
           const b = document.createElement('button');
           b.type = 'button';
@@ -521,15 +524,13 @@
         prev.addEventListener('click', prevSlide);
         next.addEventListener('click', nextSlide);
 
-        // Pointer events (best on iOS/Android + desktop)
+        // Pointer events (preferred)
         const usePointer = 'PointerEvent' in window;
 
         if (usePointer) {
           track.addEventListener('pointerdown', onPointerDown);
-          // prevent images from being draggable ghosts
           track.querySelectorAll('img').forEach(img=> img.draggable = false);
         } else {
-          // Fallback to touch/mouse
           track.addEventListener('touchstart', onStart, {passive:true});
           track.addEventListener('mousedown', onStart);
         }
@@ -548,12 +549,12 @@
           if(!dragging) return;
           dragX = e.clientX - startX;
           track.style.transition = 'none';
-          const pct = (dragX / track.clientWidth) * 100;
+          const pct = (dragX / viewportW) * 100;
           track.style.transform = `translateX(calc(${i * -100}% + ${pct}%))`;
         }
         function finishDrag(){
           track.style.transition = '';
-          const threshold = track.clientWidth * 0.15;
+          const threshold = viewportW * 0.15; // FIX: use viewport, not track
           if (Math.abs(dragX) > threshold){
             if (dragX < 0) nextSlide(); else prevSlide();
           } else {
@@ -591,7 +592,7 @@
           if(!dragging) return;
           dragX = getX(e) - startX;
           track.style.transition = 'none';
-          const pct = (dragX / track.clientWidth) * 100;
+          const pct = (dragX / viewportW) * 100; // FIX here too
           track.style.transform = `translateX(calc(${i * -100}% + ${pct}%))`;
           e.preventDefault?.(); // keep horizontal swipe active on iOS
         }
