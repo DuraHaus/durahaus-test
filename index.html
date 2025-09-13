@@ -32,7 +32,10 @@
     :root[data-theme="light"] header{background:rgba(255,255,255,.9)}
     .nav{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:12px 0}
     .brand{display:flex;align-items:center;gap:14px;min-width:0}
+    .brand picture{display:block;line-height:0}
     .brand img{height:56px;width:auto;display:block}
+    .brand .wordmark{font-weight:800;letter-spacing:.03em;white-space:nowrap;display:none}
+
     .navlinks{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-left:20px}
     .pill{padding:.5rem .8rem;border:1px solid var(--line);border-radius:999px;font-size:14px}
     .pill--solid{background:#fff;color:#000;border-color:#fff;font-weight:700}
@@ -89,8 +92,6 @@
     .band{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;padding:1.2rem;border:1px solid var(--line);border-radius:var(--r);background:var(--panel)}
 
     /* Pre-footer (stamp + mini nav) */
-    <style>
-    </style>
     .prefooter{margin:3rem auto 1.5rem;display:flex;gap:22px;align-items:center;justify-content:space-between;flex-wrap:wrap}
     .prefooter .stampwrap{display:flex;align-items:center;gap:14px}
     .prefooter img{width:128px;height:auto;opacity:.95;filter:invert(1) brightness(1.6);background:transparent}
@@ -116,12 +117,12 @@
     :root[data-theme="light"] .contactbar a:hover{color:#111}
     .contactbar svg{width:20px;height:20px;fill:currentColor}
 
-    /* Sticky tidy footer for short pages (optional) */
+    /* Sticky tidy footer for short pages */
     html, body { height: 100%; }
     body { min-height: 100dvh; display: flex; flex-direction: column; }
     main { flex: 1 0 auto; }
 
-    /* === Carousel === (scroll-snap; keeps your markup) */
+    /* === Carousel (scroll-snap; swipe friendly) === */
     .carousel{position:relative;overflow:hidden}
     .carousel-track{
       display:flex;
@@ -129,7 +130,7 @@
       scroll-snap-type:x mandatory;
       scroll-behavior:smooth;
       -webkit-overflow-scrolling:touch;
-      touch-action: pan-x;          /* ← enable horizontal swipe */
+      touch-action: pan-x;           /* allow horizontal swipes */
       user-select:none; -webkit-user-drag:none;
     }
     .carousel-track::-webkit-scrollbar{display:none}
@@ -142,7 +143,7 @@
     /* Make the text block the only clickable area under the image */
     .card .pad.service-link { display:block; border-top:1px solid var(--line); }
 
-    /* === Theme toggle pill (bottom-right) === */
+    /* Theme toggle pill (bottom-right) */
     .theme-toggle{
       position:fixed; right:16px; bottom:16px; z-index:60;
       display:inline-flex; align-items:center; gap:8px;
@@ -158,8 +159,11 @@
   <header>
     <div class="container nav">
       <a class="brand" href="/" aria-label="DuraHaus home">
-        <!-- simplified: single img that we swap via JS -->
-        <img id="brandLogo" src="/assets/durahaus-logo.svg" alt="DuraHaus logo" height="56">
+        <picture id="brandPicture">
+          <source id="brandSource" srcset="/assets/durahaus-logo.svg" type="image/svg+xml">
+          <img id="brandLogo" src="/assets/durahaus-logo.svg" alt="DuraHaus logo">
+        </picture>
+        <span class="wordmark">DURAHAUS</span>
       </a>
 
       <nav class="navlinks" aria-label="Primary">
@@ -215,14 +219,13 @@
         <!-- Interior Painting -->
         <div class="card">
           <div class="carousel" data-carousel>
-            <button class="carousel-btn prev" aria-label="Previous image" data-prev>‹</button>
+            <button class="carousel-btn prev" aria-label="Previous image">‹</button>
             <div class="carousel-track" data-track>
               <img src="/assets/interior8.webp"  alt="Interior painting 1">
               <img src="/assets/interior11.webp" alt="Interior painting 2">
               <img src="/assets/interior1.webp"  alt="Interior painting 3">
             </div>
-            <button class="carousel-btn next" aria-label="Next image" data-next>›</button>
-            <div class="carousel-dots" data-dots></div>
+            <button class="carousel-btn next" aria-label="Next image">›</button>
           </div>
           <a class="pad service-link" href="/services.html#interior">
             <h3 style="margin:0 0 .25rem">Interior Painting</h3>
@@ -233,13 +236,13 @@
         <!-- Exterior Painting -->
         <div class="card">
           <div class="carousel" data-carousel>
-            <button class="carousel-btn prev" aria-label="Previous image" data-prev>‹</button>
+            <button class="carousel-btn prev" aria-label="Previous image">‹</button>
             <div class="carousel-track" data-track>
               <img src="/assets/exterior7.webp" alt="Exterior painting 1">
               <img src="/assets/exterior4.webp" alt="Exterior painting 2">
               <img src="/assets/exterior3.webp" alt="Exterior painting 3">
             </div>
-            <button class="carousel-btn next" aria-label="Next image" data-next>›</button>
+            <button class="carousel-btn next" aria-label="Next image">›</button>
           </div>
           <a class="pad service-link" href="/services.html#exterior">
             <h3 style="margin:0 0 .25rem">Exterior Painting</h3>
@@ -250,13 +253,13 @@
         <!-- Concrete Coatings -->
         <div class="card">
           <div class="carousel" data-carousel>
-            <button class="carousel-btn prev" aria-label="Previous image" data-prev>‹</button>
+            <button class="carousel-btn prev" aria-label="Previous image">‹</button>
             <div class="carousel-track" data-track>
               <img src="/assets/stock-concrete.webp" alt="Concrete coatings 1">
               <img src="/assets/concrete1.webp"      alt="Concrete coatings 2">
               <img src="/assets/concrete3.webp"      alt="Concrete coatings 3">
             </div>
-            <button class="carousel-btn next" aria-label="Next image" data-next>›</button>
+            <button class="carousel-btn next" aria-label="Next image">›</button>
           </div>
           <a class="pad service-link" href="/services.html#concrete">
             <h3 style="margin:0 0 .25rem">Concrete Coatings</h3>
@@ -274,13 +277,13 @@
         <!-- Cabinet Refinishing -->
         <div class="card">
           <div class="carousel" data-carousel>
-            <button class="carousel-btn prev" aria-label="Previous image" data-prev>‹</button>
+            <button class="carousel-btn prev" aria-label="Previous image">‹</button>
             <div class="carousel-track" data-track>
               <img src="/assets/cabinets1.webp"     alt="Cabinet refinishing 1">
               <img src="/assets/cabinets2.webp"     alt="Cabinet refinishing 2">
               <img src="/assets/stock-cabinets.webp" alt="Cabinet refinishing 3">
             </div>
-            <button class="carousel-btn next" aria-label="Next image" data-next>›</button>
+            <button class="carousel-btn next" aria-label="Next image">›</button>
           </div>
           <a class="pad service-link" href="/services.html#cabinets">
             <h3 style="margin:0 0 .25rem">Cabinet Refinishing</h3>
@@ -291,13 +294,13 @@
         <!-- Staining & Wood Care -->
         <div class="card">
           <div class="carousel" data-carousel>
-            <button class="carousel-btn prev" aria-label="Previous image" data-prev>‹</button>
+            <button class="carousel-btn prev" aria-label="Previous image">‹</button>
             <div class="carousel-track" data-track>
               <img src="/assets/stock-stain.webp" alt="Staining and wood care 1">
               <img src="/assets/stain1.webp"      alt="Staining and wood care 2">
               <img src="/assets/stain2.webp"      alt="Staining and wood care 3">
             </div>
-            <button class="carousel-btn next" aria-label="Next image" data-next>›</button>
+            <button class="carousel-btn next" aria-label="Next image">›</button>
           </div>
           <a class="pad service-link" href="/services.html#stain">
             <h3 style="margin:0 0 .25rem">Staining & Wood Care</h3>
@@ -308,13 +311,13 @@
         <!-- Drywall & Repair -->
         <div class="card">
           <div class="carousel" data-carousel>
-            <button class="carousel-btn prev" aria-label="Previous image" data-prev>‹</button>
+            <button class="carousel-btn prev" aria-label="Previous image">‹</button>
             <div class="carousel-track" data-track>
               <img src="/assets/stock-drywall.webp" alt="Drywall repair 1">
               <img src="/assets/drywall2.webp"      alt="Drywall repair 2">
               <img src="/assets/drywall1.webp"      alt="Drywall repair 3">
             </div>
-            <button class="carousel-btn next" aria-label="Next image" data-next>›</button>
+            <button class="carousel-btn next" aria-label="Next image">›</button>
           </div>
           <a class="pad service-link" href="/services.html#drywall">
             <h3 style="margin:0 0 .25rem">Drywall & Repair</h3>
@@ -447,21 +450,25 @@
     // Year
     document.getElementById('y').textContent = new Date().getFullYear();
 
-    // === Theme toggle (persists) + Logo swap for your filenames ===
+    // Theme toggle + logo swap (white in dark, black in light)
     (function(){
       const btn   = document.getElementById('themeToggle');
       const label = document.getElementById('themeLabel');
       const root  = document.documentElement;
-      const imgEl = document.getElementById('brandLogo');
 
-      const WHITE_SVG = '/assets/durahaus-logo.svg'; // dark mode (white)
-      const BLACK_SVG = '/assets/logo-dark.svg';     // light mode (black)
+      const source = document.getElementById('brandSource');
+      const img    = document.getElementById('brandLogo');
+
+      const WHITE_SVG = '/assets/durahaus-logo.svg'; // dark mode
+      const BLACK_SVG = '/assets/logo-dark.svg';     // light mode
 
       function applyUI(){
         const isLight = root.getAttribute('data-theme')==='light';
         label.textContent = isLight ? 'Light' : 'Dark';
         btn.setAttribute('aria-pressed', isLight ? 'true' : 'false');
-        imgEl.src = isLight ? BLACK_SVG : WHITE_SVG;
+        const file = isLight ? BLACK_SVG : WHITE_SVG;
+        source.setAttribute('srcset', file);
+        img.setAttribute('src', file);
       }
 
       const saved = localStorage.getItem('theme');
@@ -479,54 +486,25 @@
       });
     })();
 
-    // === SNAP CAROUSEL with seamless loop (no drag math; works on iPhone) ===
+    // Minimal carousel JS: arrows scroll one full slide; swipe works via CSS
     (function(){
-      document.querySelectorAll('[data-carousel]').forEach((c)=>{
+      document.querySelectorAll('[data-carousel]').forEach(c=>{
         const track = c.querySelector('[data-track]');
-        const prev  = c.querySelector('[data-prev]');
-        const next  = c.querySelector('[data-next]');
-
-        const imgs = Array.from(track.querySelectorAll('img'));
-        if(imgs.length < 2) return;
-
-        // Clone for loop illusion: [last] real... real [first]
-        const firstClone = imgs[0].cloneNode(true);
-        const lastClone  = imgs[imgs.length-1].cloneNode(true);
-        track.insertBefore(lastClone, track.firstChild);
-        track.appendChild(firstClone);
-
-        const realCount = imgs.length;
-        let index = 1; // start at first real slide after [last] clone
+        const prev = c.querySelector('.prev');
+        const next = c.querySelector('.next');
 
         const slideW = ()=> c.getBoundingClientRect().width;
-        const jump   = (i, behavior='smooth') => track.scrollTo({left: i*slideW(), behavior});
+        prev?.addEventListener('click', e=>{
+          e.stopPropagation();
+          track.scrollBy({left: -slideW(), behavior:'smooth'});
+        });
+        next?.addEventListener('click', e=>{
+          e.stopPropagation();
+          track.scrollBy({left:  slideW(), behavior:'smooth'});
+        });
 
-        // initial position
-        requestAnimationFrame(()=>{ track.scrollLeft = index*slideW(); });
-
-        // arrows
-        prev?.addEventListener('click', (e)=>{ e.stopPropagation(); jump(--index); });
-        next?.addEventListener('click', (e)=>{ e.stopPropagation(); jump(++index); });
-
-        // keep centered on resize
-        new ResizeObserver(()=>{ track.scrollLeft = index*slideW(); }).observe(c);
-
-        // loop correction after scroll "settles"
-        let t;
-        track.addEventListener('scroll', ()=>{
-          clearTimeout(t);
-          t = setTimeout(()=>{
-            const raw = Math.round(track.scrollLeft / slideW());
-            index = raw;
-            if(raw === 0){                // at [last] clone → jump to last real
-              index = realCount;
-              jump(index, 'auto');
-            } else if (raw === realCount+1){ // at [first] clone → jump to first real
-              index = 1;
-              jump(index, 'auto');
-            }
-          }, 80);
-        }, {passive:true});
+        // keep centered after resize
+        new ResizeObserver(()=>{}).observe(c);
       });
     })();
   </script>
