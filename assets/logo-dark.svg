@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 260" role="img" aria-label="DURAHAUS — Painting and Construction">
+  <title>DURAHAUS — Painting and Construction</title>
+  <style>
+    .mark { fill: none; stroke: #000; stroke-width: 16; stroke-linecap: round; stroke-linejoin: round; }
+    .word { fill: #000; font-family: "Poppins", Inter, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+    .brand { font-weight: 800; font-size: 96px; letter-spacing: 2px; }
+    .tag   { font-weight: 600; font-size: 36px; letter-spacing: 2.5px; }
+  </style>
+  <path class="mark" d="M60 190 V110 L120 60 L180 110 V190 H60 Z"/>
+  <text class="word brand" x="240" y="135" textLength="520" lengthAdjust="spacingAndGlyphs">DURAHAUS</text>
+  <text class="word tag"   x="240" y="185" textLength="520" lengthAdjust="spacingAndGlyphs">PAINTING AND CONSTRUCTION</text>
+</svg>
