@@ -32,8 +32,10 @@
     :root[data-theme="light"] header{background:rgba(255,255,255,.9)}
     .nav{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:12px 0}
     .brand{display:flex;align-items:center;gap:14px;min-width:0}
+    .brand picture{display:block;line-height:0}
     .brand img{height:56px;width:auto;display:block}
     .brand .wordmark{font-weight:800;letter-spacing:.03em;white-space:nowrap}
+
     .navlinks{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-left:20px}
     .pill{padding:.5rem .8rem;border:1px solid var(--line);border-radius:999px;font-size:14px}
     .pill--solid{background:#fff;color:#000;border-color:#fff;font-weight:700}
@@ -120,18 +122,23 @@
     body { min-height: 100dvh; display: flex; flex-direction: column; }
     main { flex: 1 0 auto; }
 
-    /* === SNAP CAROUSEL (new, keeps your markup) === */
-    .carousel{position:relative}
+    /* === Carousel === (scroll-snap; keeps your markup) */
+    .carousel{position:relative;overflow:hidden}
     .carousel-track{
-      display:flex; overflow-x:auto;
-      scroll-snap-type:x mandatory; scroll-behavior:smooth;
-      -webkit-overflow-scrolling:touch; user-select:none;
+      display:flex;
+      overflow-x:auto;
+      scroll-snap-type:x mandatory;
+      scroll-behavior:smooth;
+      -webkit-overflow-scrolling:touch;
+      touch-action: pan-y;
+      user-select:none; -webkit-user-drag:none;
     }
     .carousel-track::-webkit-scrollbar{display:none}
-    .carousel img{width:100%; height:340px; object-fit:cover; flex:0 0 100%; scroll-snap-align:center}
+    .carousel img{width:100%;height:340px;object-fit:cover;flex:0 0 100%;scroll-snap-align:center}
     .carousel-btn{position:absolute;top:50%;transform:translateY(-50%);border:none;background:rgba(0,0,0,.45);color:#fff;padding:6px 10px;border-radius:10px;cursor:pointer;z-index:2}
     .carousel-btn.prev{left:8px}.carousel-btn.next{right:8px}
     .carousel-btn:hover{background:rgba(0,0,0,.65)}
+    .carousel-dots{display:none !important;} /* keep in DOM, hidden */
 
     /* Make the text block the only clickable area under the image */
     .card .pad.service-link { display:block; border-top:1px solid var(--line); }
@@ -152,8 +159,13 @@
   <header>
     <div class="container nav">
       <a class="brand" href="/" aria-label="DuraHaus home">
-        <!-- swapped to single <img> so we can flip src by theme -->
-        <img id="brandLogo" src="/assets/logo-light.svg" alt="DuraHaus logo">
+        <picture id="brandPicture">
+          <source id="brandSourceSvg" srcset="/assets/durahaus-logo.svg" type="image/svg+xml">
+          <source id="brandSourcePng" srcset="/assets/durahaus-logo.png" type="image/png">
+          <img id="brandLogo" src="/assets/durahaus-logo.jpg" alt="DuraHaus logo"
+               onerror="this.closest('.brand').querySelector('.wordmark').style.display='block'">
+        </picture>
+        <span class="wordmark" style="display:none">DURAHAUS</span>
       </a>
 
       <nav class="navlinks" aria-label="Primary">
@@ -169,7 +181,7 @@
   </header>
 
   <main>
-    <!-- Hero (your original statement) -->
+    <!-- Hero (original) -->
     <section class="hero">
       <div class="hero__media">
         <img src="/assets/stock-hero.webp" alt="Cincinnati high-end home exterior">
@@ -185,7 +197,7 @@
       </div>
     </section>
 
-    <!-- Mission (your original statement) -->
+    <!-- Mission (original) -->
     <section class="container row">
       <div class="card">
         <img src="assets/interior4.webp" alt="Interior detail">
@@ -211,9 +223,9 @@
           <div class="carousel" data-carousel>
             <button class="carousel-btn prev" aria-label="Previous image" data-prev>‹</button>
             <div class="carousel-track" data-track>
-              <img src="/assets/interior8.webp" alt="Interior painting 1">
+              <img src="/assets/interior8.webp"  alt="Interior painting 1">
               <img src="/assets/interior11.webp" alt="Interior painting 2">
-              <img src="/assets/interior1.webp" alt="Interior painting 3">
+              <img src="/assets/interior1.webp"  alt="Interior painting 3">
             </div>
             <button class="carousel-btn next" aria-label="Next image" data-next>›</button>
             <div class="carousel-dots" data-dots></div>
@@ -248,8 +260,8 @@
             <button class="carousel-btn prev" aria-label="Previous image" data-prev>‹</button>
             <div class="carousel-track" data-track>
               <img src="/assets/stock-concrete.webp" alt="Concrete coatings 1">
-              <img src="/assets/concrete1.webp" alt="Concrete coatings 2">
-              <img src="/assets/concrete3.webp" alt="Concrete coatings 3">
+              <img src="/assets/concrete1.webp"      alt="Concrete coatings 2">
+              <img src="/assets/concrete3.webp"      alt="Concrete coatings 3">
             </div>
             <button class="carousel-btn next" aria-label="Next image" data-next>›</button>
             <div class="carousel-dots" data-dots></div>
@@ -272,8 +284,8 @@
           <div class="carousel" data-carousel>
             <button class="carousel-btn prev" aria-label="Previous image" data-prev>‹</button>
             <div class="carousel-track" data-track>
-              <img src="/assets/cabinets1.webp" alt="Cabinet refinishing 1">
-              <img src="/assets/cabinets2.webp" alt="Cabinet refinishing 2">
+              <img src="/assets/cabinets1.webp"     alt="Cabinet refinishing 1">
+              <img src="/assets/cabinets2.webp"     alt="Cabinet refinishing 2">
               <img src="/assets/stock-cabinets.webp" alt="Cabinet refinishing 3">
             </div>
             <button class="carousel-btn next" aria-label="Next image" data-next>›</button>
@@ -291,8 +303,8 @@
             <button class="carousel-btn prev" aria-label="Previous image" data-prev>‹</button>
             <div class="carousel-track" data-track>
               <img src="/assets/stock-stain.webp" alt="Staining and wood care 1">
-              <img src="/assets/stain1.webp" alt="Staining and wood care 2">
-              <img src="/assets/stain2.webp" alt="Staining and wood care 3">
+              <img src="/assets/stain1.webp"      alt="Staining and wood care 2">
+              <img src="/assets/stain2.webp"      alt="Staining and wood care 3">
             </div>
             <button class="carousel-btn next" aria-label="Next image" data-next>›</button>
             <div class="carousel-dots" data-dots></div>
@@ -309,8 +321,8 @@
             <button class="carousel-btn prev" aria-label="Previous image" data-prev>‹</button>
             <div class="carousel-track" data-track>
               <img src="/assets/stock-drywall.webp" alt="Drywall repair 1">
-              <img src="/assets/drywall2.webp" alt="Drywall repair 2">
-              <img src="/assets/drywall1.webp" alt="Drywall repair 3">
+              <img src="/assets/drywall2.webp"      alt="Drywall repair 2">
+              <img src="/assets/drywall1.webp"      alt="Drywall repair 3">
             </div>
             <button class="carousel-btn next" aria-label="Next image" data-next>›</button>
             <div class="carousel-dots" data-dots></div>
@@ -329,7 +341,7 @@
       </div>
     </section>
 
-    <!-- (MOVED) Sealing & Durability callout -->
+    <!-- Sealing & Durability callout -->
     <section class="container" style="margin-top:2rem">
       <div class="card" style="padding:1.2rem">
         <h2 style="margin:.2rem 0 0">Got cracks? Open seams? Missing caulking?</h2>
@@ -443,55 +455,69 @@
   </button>
 
   <script>
+    // Year
     document.getElementById('y').textContent = new Date().getFullYear();
 
-    // === Theme toggle (persists) + LOGO SWAP ===
+    // === Theme toggle (persists) + Logo swap for your filenames ===
     (function(){
-      const btn = document.getElementById('themeToggle');
+      const btn   = document.getElementById('themeToggle');
       const label = document.getElementById('themeLabel');
-      const root = document.documentElement;
-      const logo = document.getElementById('brandLogo');
-      const LIGHT_LOGO = '/assets/logo-dark.svg';  // black for light theme
-      const DARK_LOGO  = '/assets/logo-light.svg'; // white for dark theme
+      const root  = document.documentElement;
 
-      const saved = localStorage.getItem('theme');
-      if(saved === 'light'){ root.setAttribute('data-theme','light'); }
-      function syncUI(){
+      // Brand <picture> parts
+      const pic   = document.getElementById('brandPicture');
+      const srcSvg= document.getElementById('brandSourceSvg');
+      const imgEl = document.getElementById('brandLogo');
+
+      const WHITE_SVG = '/assets/durahaus-logo.svg'; // dark mode (white)
+      const BLACK_SVG = '/assets/logo-dark.svg';     // light mode (black)
+
+      function applyUI(){
         const isLight = root.getAttribute('data-theme')==='light';
         label.textContent = isLight ? 'Light' : 'Dark';
         btn.setAttribute('aria-pressed', isLight ? 'true' : 'false');
-        logo.src = isLight ? LIGHT_LOGO : DARK_LOGO;
+
+        // swap the SVG source in the <picture> and the <img> fallback
+        const target = isLight ? BLACK_SVG : WHITE_SVG;
+        if(srcSvg) srcSvg.setAttribute('srcset', target);
+        if(imgEl)  imgEl.setAttribute('src', target);
       }
+
+      const saved = localStorage.getItem('theme');
+      if(saved === 'light'){ root.setAttribute('data-theme','light'); }
+      else if(!saved && matchMedia('(prefers-color-scheme: light)').matches){
+        root.setAttribute('data-theme','light');
+      }
+      applyUI();
+
       btn.addEventListener('click', ()=>{
         const isLight = root.getAttribute('data-theme')==='light';
         if(isLight){ root.removeAttribute('data-theme'); localStorage.setItem('theme','dark'); }
         else{ root.setAttribute('data-theme','light'); localStorage.setItem('theme','light'); }
-        syncUI();
+        applyUI();
       });
-      // first paint
-      if(!saved && matchMedia('(prefers-color-scheme: light)').matches){
-        root.setAttribute('data-theme','light');
-      }
-      syncUI();
     })();
 
-    // === SNAP CAROUSEL with seamless loop (keeps your markup) ===
+    // === SNAP CAROUSEL with seamless loop (no drag math; works on iPhone) ===
     (function(){
       document.querySelectorAll('[data-carousel]').forEach((c)=>{
         const track = c.querySelector('[data-track]');
         const prev  = c.querySelector('[data-prev]');
         const next  = c.querySelector('[data-next]');
 
-        // Clone first/last images for loop illusion
+        // Cache original images
         const imgs = Array.from(track.querySelectorAll('img'));
         if(imgs.length < 2) return;
+
+        // Clone for loop illusion: [last] real... real [first]
         const firstClone = imgs[0].cloneNode(true);
         const lastClone  = imgs[imgs.length-1].cloneNode(true);
         track.insertBefore(lastClone, track.firstChild);
         track.appendChild(firstClone);
 
-        const realCount = imgs.length; // before cloning
-        let index = 1; // start at first real slide
+        const realCount = imgs.length;
+        let index = 1; // start at first real slide after [last] clone
+
         const slideW = ()=> c.getBoundingClientRect().width;
         const jump   = (i, behavior='smooth') => track.scrollTo({left: i*slideW(), behavior});
 
@@ -505,15 +531,20 @@
         // keep centered on resize
         new ResizeObserver(()=>{ track.scrollLeft = index*slideW(); }).observe(c);
 
-        // correct after scroll settles (swipe or arrows)
+        // loop correction after scroll "settles"
         let t;
         track.addEventListener('scroll', ()=>{
           clearTimeout(t);
           t = setTimeout(()=>{
             const raw = Math.round(track.scrollLeft / slideW());
             index = raw;
-            if(raw === 0){ index = realCount; jump(index,'auto'); }
-            else if(raw === realCount+1){ index = 1; jump(index,'auto'); }
+            if(raw === 0){                // at [last] clone → jump to last real
+              index = realCount;
+              jump(index, 'auto');
+            } else if (raw === realCount+1){ // at [first] clone → jump to first real
+              index = 1;
+              jump(index, 'auto');
+            }
           }, 80);
         }, {passive:true});
       });
