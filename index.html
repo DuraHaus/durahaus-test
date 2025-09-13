@@ -44,7 +44,7 @@
   .btn{display:inline-block;padding:.8rem 1rem;border-radius:12px;border:1px solid #2a2a2a}
   .btn.primary{background:#fff;color:#0a0a0a;font-weight:600}
 
-  /* trust/services */
+  /* trust + services */
   .trust{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:10px}
   .trust-item{border:1px solid var(--line);border-radius:999px;padding:.55rem .9rem;text-align:center;color:var(--muted);background:#0e0e0e}
   .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:10px}
@@ -52,9 +52,27 @@
   .card h3{margin:.1rem 0 .3rem;font-weight:600;font-size:1.05rem}
   .card p{margin:0;color:var(--muted)}
 
+  /* reviews */
+  .reviews{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:12px}
+  .panel{border:1px solid var(--line);border-radius:var(--rad);background:var(--surface);overflow:hidden}
+  .panel-head{display:flex;align-items:center;justify-content:space-between;gap:.5rem;padding:.9rem 1rem;border-bottom:1px solid var(--line)}
+  .pill{border:1px solid var(--line);border-radius:999px;padding:.25rem .6rem;color:var(--muted);font-size:.92rem}
+  .embed{width:100%;min-height:340px;border:0}
+  .fallback{display:grid;gap:10px;padding:1rem}
+  .review{border:1px solid var(--line);border-radius:12px;padding:1rem;background:#0f0f0f}
+  .stars{letter-spacing:1px;font-size:1.05rem}
+  .source{color:var(--muted);font-size:.9rem}
+
+  /* FAQ */
+  .faq{display:grid;grid-template-columns:1fr;gap:10px}
+  .qa{border:1px solid var(--line);border-radius:12px;background:#0f0f0f;overflow:hidden}
+  .q{display:flex;align-items:center;justify-content:space-between;gap:.6rem;padding:1rem;cursor:pointer}
+  .q h3{margin:0;font-size:1rem}
+  .a{max-height:0;overflow:hidden;transition:max-height .35s ease}
+  .a-inner{padding:0 1rem 1rem;color:var(--muted)}
+  .qa.open .a{max-height:300px}
+
   /* misc */
-  .chips{display:flex;gap:.5rem;flex-wrap:wrap;margin:.2rem 0 1rem}
-  .chip{border:1px solid var(--line);border-radius:999px;padding:.35rem .7rem;background:#0e0e0e}
   .city-row{display:flex;flex-wrap:wrap;gap:.5rem}
   .city{border:1px solid var(--line);border-radius:999px;padding:.4rem .7rem;background:#0e0e0e}
   footer{padding:3rem var(--pad);border-top:1px solid var(--line);color:var(--muted);text-align:center}
@@ -77,6 +95,8 @@
     </div>
     <nav class="nav" aria-label="Primary">
       <a href="#services">Services</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#faq">FAQ</a>
       <a href="#areas">Service Area</a>
       <a href="#quote">Quote</a>
     </nav>
@@ -96,6 +116,7 @@
 </section>
 
 <main>
+  <!-- Trust -->
   <section class="rule-b" aria-label="Trust">
     <div class="wrap">
       <div class="trust reveal">
@@ -107,6 +128,7 @@
     </div>
   </section>
 
+  <!-- Services -->
   <section id="services" class="rule-b" aria-label="Services">
     <div class="wrap">
       <h2>What we do</h2>
@@ -122,18 +144,139 @@
     </div>
   </section>
 
+  <!-- Reviews -->
+  <section id="reviews" class="rule-b" aria-label="Reviews">
+    <div class="wrap">
+      <h2>Live Reviews</h2>
+      <p class="lead">Google and Facebook feedback, right from customers. (Works live when you paste your embed URLs below.)</p>
+
+      <div class="reviews">
+        <!-- Google Reviews Panel -->
+        <article class="panel reveal" id="google-panel">
+          <div class="panel-head">
+            <strong>Google Reviews</strong>
+            <span class="pill">Live embed or curated cards</span>
+          </div>
+          <div class="panel-body">
+            <!-- If live embed configured, we’ll inject an iframe here -->
+            <iframe class="embed" id="google-embed" title="Google Reviews" loading="lazy" style="display:none;"></iframe>
+
+            <!-- Fallback curated reviews (edit these anytime) -->
+            <div class="fallback" id="google-fallback">
+              <div class="review">
+                <div class="stars">★★★★★</div>
+                <p>“Flawless lines, zero mess. They protected everything and finished ahead of schedule.”</p>
+                <div class="source">— L. Carter • <a href="https://google.com/maps" target="_blank" rel="noopener">Read on Google</a></div>
+              </div>
+              <div class="review">
+                <div class="stars">★★★★★</div>
+                <p>“Exterior repaint looks factory-new. Caulking is tight and clean throughout.”</p>
+                <div class="source">— L. Nguyen • <a href="https://google.com/maps" target="_blank" rel="noopener">Read on Google</a></div>
+              </div>
+              <div class="review">
+                <div class="stars">★★★★★</div>
+                <p>“Clear estimate, honest pricing, and the results are outstanding.”</p>
+                <div class="source">— D. Ramirez • <a href="https://google.com/maps" target="_blank" rel="noopener">Read on Google</a></div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Facebook Reviews/Recommendations Panel -->
+        <article class="panel reveal" id="fb-panel">
+          <div class="panel-head">
+            <strong>Facebook Recommendations</strong>
+            <span class="pill">Live embed or curated cards</span>
+          </div>
+          <div class="panel-body">
+            <iframe class="embed" id="fb-embed" title="Facebook Reviews" loading="lazy" style="display:none;"></iframe>
+
+            <div class="fallback" id="fb-fallback">
+              <div class="review">
+                <div class="stars">★★★★★</div>
+                <p>“Responsive and professional. Our cabinets look brand new—highly recommend.”</p>
+                <div class="source">— J. Patel • <a href="https://facebook.com" target="_blank" rel="noopener">See on Facebook</a></div>
+              </div>
+              <div class="review">
+                <div class="stars">★★★★★</div>
+                <p>“They fixed all the cracked caulking and sealed everything the right way.”</p>
+                <div class="source">— K. Brooks • <a href="https://facebook.com" target="_blank" rel="noopener">See on Facebook</a></div>
+              </div>
+              <div class="review">
+                <div class="stars">★★★★★</div>
+                <p>“Great communication, precise work, and spotless cleanup.”</p>
+                <div class="source">— M. Reyes • <a href="https://facebook.com" target="_blank" rel="noopener">See on Facebook</a></div>
+              </div>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <p class="lead" style="margin-top:1rem">Tip: replace the fallback cards with your own quotes & initials, and drop in the live embeds when ready (see tiny config at the bottom).</p>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" class="rule-b" aria-label="FAQ">
+    <div class="wrap">
+      <h2>FAQ</h2>
+      <div class="faq">
+        <article class="qa">
+          <button class="q" aria-expanded="false">
+            <h3>How do estimates work?</h3>
+            <span aria-hidden="true">+</span>
+          </button>
+          <div class="a" hidden>
+            <div class="a-inner">Call, text or email. We’ll schedule a quick walkthrough, discuss scope and materials, then send a clear written estimate—no surprises.</div>
+          </div>
+        </article>
+
+        <article class="qa">
+          <button class="q" aria-expanded="false">
+            <h3>What paint and caulking systems do you use?</h3>
+            <span aria-hidden="true">+</span>
+          </button>
+          <div class="a" hidden>
+            <div class="a-inner">We specify pro-grade systems from top manufacturers (e.g., Sherwin-Williams) matched to substrate and exposure. Exterior caulking is high-flex, exterior-rated and tooled to spec.</div>
+          </div>
+        </article>
+
+        <article class="qa">
+          <button class="q" aria-expanded="false">
+            <h3>Do you protect landscaping and interiors?</h3>
+            <span aria-hidden="true">+</span>
+          </button>
+          <div class="a" hidden>
+            <div class="a-inner">Yes—masking, floor protection, and dust control are standard. We treat your home like it’s ours and leave it spotless.</div>
+          </div>
+        </article>
+
+        <article class="qa">
+          <button class="q" aria-expanded="false">
+            <h3>Are you licensed and insured?</h3>
+            <span aria-hidden="true">+</span>
+          </button>
+          <div class="a" hidden>
+            <div class="a-inner">Absolutely. We’re fully licensed and insured—happy to provide proof on request.</div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Areas -->
   <section id="areas" class="rule-b" aria-label="Service Area">
     <div class="wrap">
       <h2>Serving Butler, Hamilton &amp; Warren Counties</h2>
       <div class="city-row reveal">
         <span class="city">Mason</span><span class="city">West Chester</span><span class="city">Hamilton</span>
-        <span class="city">Fairfield</span><span class="city">Liberty Twp</span>
-        <span class="city">Monroe</span><span class="city">Lebanon</span>
-        <span class="city">Blue Ash</span>
+        <span class="city">Fairfield</span><span class="city">Liberty Twp</span><span class="city">Monroe</span>
+        <span class="city">Lebanon</span><span class="city">Blue Ash</span>
       </div>
     </div>
   </section>
 
+  <!-- Quote -->
   <section id="quote" class="rule-b" aria-label="Quote">
     <div class="wrap">
       <h2>Start your free estimate</h2>
@@ -156,8 +299,58 @@
 <a class="float-cta" href="#quote" aria-label="Open quote options">Get a Quote</a>
 
 <script>
+  /* ---- reveal on scroll ---- */
   const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('show');io.unobserve(e.target);}})},{threshold:.15});
   document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+  /* ---- FAQ accordion (accessible) ---- */
+  document.querySelectorAll('.qa .q').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      const qa = btn.closest('.qa');
+      const ans = qa.querySelector('.a');
+      const open = qa.classList.toggle('open');
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      if(open){ ans.hidden = false; } else { ans.hidden = true; }
+    });
+  });
+
+  /* ============================
+     REVIEWS CONFIG (paste URLs)
+     ============================
+
+     GOOGLE_EMBED:
+       - In Google Maps, search your business → Share → Embed a map → Copy HTML.
+       - Grab the src URL that looks like: https://www.google.com/maps/embed?pb=...
+       - Paste below as GOOGLE_EMBED.
+
+     FB_EMBED:
+       - Go to https://developers.facebook.com/docs/plugins/page-plugin/
+       - Enter your Page URL, choose tabs like "timeline" (or "reviews" if available), set width ~500, height ~380.
+       - Copy the iFrame src (https://www.facebook.com/plugins/page.php?...).
+       - Paste below as FB_EMBED.
+  */
+  const REVIEWS_CONFIG = {
+    GOOGLE_EMBED: "",   // e.g. "https://www.google.com/maps/embed?pb=..."
+    FB_EMBED: ""        // e.g. "https://www.facebook.com/plugins/page.php?href=...&tabs=timeline"
+  };
+
+  /* ---- Inject live embeds if provided ---- */
+  (function(){
+    const g = document.getElementById('google-embed');
+    const gf = document.getElementById('google-fallback');
+    if(REVIEWS_CONFIG.GOOGLE_EMBED){
+      g.src = REVIEWS_CONFIG.GOOGLE_EMBED;
+      g.style.display = 'block';
+      gf.style.display = 'none';
+    }
+    const f = document.getElementById('fb-embed');
+    const ff = document.getElementById('fb-fallback');
+    if(REVIEWS_CONFIG.FB_EMBED){
+      f.src = REVIEWS_CONFIG.FB_EMBED;
+      f.style.display = 'block';
+      ff.style.display = 'none';
+    }
+  })();
 </script>
 </body>
 </html>
