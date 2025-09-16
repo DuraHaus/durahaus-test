@@ -32,9 +32,15 @@
     :root[data-theme="light"] header{background:rgba(255,255,255,.9)}
     .nav{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:12px 0}
     .brand{display:flex;align-items:center;gap:14px;min-width:0}
-    .brand picture{display:block;line-height:0}
-    .brand img{height:56px;width:auto;display:block}
     .brand .wordmark{font-weight:800;letter-spacing:.03em;white-space:nowrap;display:none}
+
+    .brand img{height:56px;width:auto;display:block;background:transparent!important}
+    /* default = DARK theme */
+    .logo-light{display:none}
+    .logo-dark{display:inline-block}
+    /* when LIGHT mode is active */
+    :root[data-theme="light"] .logo-light{display:inline-block}
+    :root[data-theme="light"] .logo-dark{display:none}
 
     .navlinks{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-left:20px}
     .pill{padding:.5rem .8rem;border:1px solid var(--line);border-radius:999px;font-size:14px}
@@ -159,10 +165,10 @@
   <header>
     <div class="container nav">
       <a class="brand" href="/" aria-label="DuraHaus home">
-        <picture id="brandPicture">
-          <source id="brandSource" srcset="/assets/durahaus-logo.svg" type="image/svg+xml">
-          <img id="brandLogo" src="/assets/durahaus-logo.svg" alt="DuraHaus logo">
-        </picture>
+        <!-- Light-mode logo (black/charcoal) -->
+        <img src="/assets/logo-dark.svg" alt="DuraHaus logo" class="brand-logo logo-light">
+        <!-- Dark-mode logo (white) -->
+        <img src="/assets/durahaus-logo.svg" alt="DuraHaus logo" class="brand-logo logo-dark">
         <span class="wordmark">DURAHAUS</span>
       </a>
 
@@ -450,25 +456,16 @@
     // Year
     document.getElementById('y').textContent = new Date().getFullYear();
 
-    // Theme toggle + logo swap (white in dark, black in light)
+    // Theme toggle (no logo swapping needed)
     (function(){
       const btn   = document.getElementById('themeToggle');
       const label = document.getElementById('themeLabel');
       const root  = document.documentElement;
 
-      const source = document.getElementById('brandSource');
-      const img    = document.getElementById('brandLogo');
-
-      const WHITE_SVG = '/assets/durahaus-logo.svg'; // dark mode
-      const BLACK_SVG = '/assets/logo-dark.svg';     // light mode
-
       function applyUI(){
         const isLight = root.getAttribute('data-theme')==='light';
         label.textContent = isLight ? 'Light' : 'Dark';
         btn.setAttribute('aria-pressed', isLight ? 'true' : 'false');
-        const file = isLight ? BLACK_SVG : WHITE_SVG;
-        source.setAttribute('srcset', file);
-        img.setAttribute('src', file);
       }
 
       const saved = localStorage.getItem('theme');
